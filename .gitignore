@@ -5,15 +5,3 @@
 .DS_Store
 /build
 
-/.idea
-*.iml
-*.iws
-*.ipr
-.idea/
-.gradle/
-local.properties
-
-*/build/
-
-*~
-*.swp
