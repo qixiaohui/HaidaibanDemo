@@ -16,7 +16,6 @@ import com.daimajia.slider.library.SliderLayout;
  */
 public class MainTabActivity extends FragmentActivity{	
 	private FragmentTabHost mTabHost;
-	
 
 	private LayoutInflater layoutInflater;
 		
