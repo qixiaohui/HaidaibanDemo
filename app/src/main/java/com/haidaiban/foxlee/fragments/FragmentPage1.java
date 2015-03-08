@@ -1,4 +1,4 @@
-package com.haidaiban.foxlee.haidaibandemo;
+package com.haidaiban.foxlee.fragments;
 
 import java.util.HashMap;
 

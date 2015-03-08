@@ -1,4 +1,4 @@
-package com.haidaiban.foxlee.haidaibandemo;
+package com.haidaiban.foxlee.fragments;
 
 import android.app.ActionBar;
 import android.app.Activity;

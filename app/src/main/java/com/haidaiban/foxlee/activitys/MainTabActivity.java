@@ -1,4 +1,4 @@
-package com.haidaiban.foxlee.haidaibandemo;
+package com.haidaiban.foxlee.activitys;
 
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
@@ -9,7 +9,12 @@ import android.widget.ImageView;
 import android.widget.TabHost.TabSpec;
 import android.widget.TextView;
 
-import com.daimajia.slider.library.SliderLayout;
+import com.haidaiban.foxlee.fragments.FragmentPage1;
+import com.haidaiban.foxlee.fragments.FragmentPage2;
+import com.haidaiban.foxlee.fragments.FragmentPage3;
+import com.haidaiban.foxlee.fragments.FragmentPage4;
+import com.haidaiban.foxlee.fragments.FragmentPage5;
+import com.haidaiban.foxlee.fragments.R;
 
 /**
  * ji li 3.2.2015

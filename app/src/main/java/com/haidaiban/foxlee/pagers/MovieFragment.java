@@ -7,7 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.haidaiban.foxlee.haidaibandemo.R;
+import com.haidaiban.foxlee.fragments.R;
 
 /**
  * Created by qixiaohui on 3/8/15.
