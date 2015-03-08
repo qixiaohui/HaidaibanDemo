@@ -1,0 +1,33 @@
+<resources>
+    <string name="app_name">HaidaibanDemo</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+
+
+    <!-- 注册 -->
+    <string name="registerinfo">输入手机号后，点击"获取密码"，系统会自动向你的手机发送一条短信</string>
+    <string name="register_tip">【提示】\n 1.使用手机号注册免费 \n 2.此手机号用来登录京东\n 3.你还可以选择其他注册方式</string>
+    <string name="register_in_normal">普通用户注册</string>
+    <string name="register_normal_useraccount">帐户名：</string>
+    <string name="register_normal_useraccount_hint">请输入你的手机号</string>
+    <string name="register_normal_email">邮箱：</string>
+    <string name="register_normal_email_hint">请输入邮箱帐号</string>
+    <string name="register_normal_password">密码：</string>
+    <string name="register_normal_password_hint">请输入密码</string>
+    <string name="register_normal_repassword">确认密码：</string>
+    <string name="register_normal_repassword_hint">请输入确认密码</string>
+
+    <!-- 登入 -->
+    <string name="login">登录</string>
+    <string name="loginacount">账号名：</string>
+    <string name="loginpassword">密   码：</string>
+    <string name="inputpassword">请输入密码</string>
+    <string name="inputaccount">请输入账号</string>
+    <string name="register">快速注册</string>
+    <string name="search_info">暂无收索历史</string>
+    <string name="login_btn">登   录</string>
+    <string name="find_password">找回密码</string>
+    <string name="usecooperationaccount">用合作网站帐户登录</string>
+    <string name="registerfree">免费注册</string>
+
+</resources>
