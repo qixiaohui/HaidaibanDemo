@@ -27,5 +27,6 @@ dependencies {
     compile 'com.nineoldandroids:library:2.4.0'
     compile 'com.daimajia.slider:library:1.1.2@aar'
     compile 'com.etsy.android.grid:library:1.0.5'
+    compile 'com.loopj.android:android-async-http:1.4.5'
 
 }
