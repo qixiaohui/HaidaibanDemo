@@ -43,6 +43,55 @@
             android:layout_marginBottom="20dp"
             />
     </LinearLayout>
+    <!-- 下半部分图片框架-->
+    <LinearLayout
+        android:layout_below="@+id/index_top_layout"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:orientation="horizontal"
+        android:background="@color/white"
+        android:id="@+id/linearLayout">
+        <!-- 下部内部图片-->
+
+           <ImageView
+               android:id="@+id/btn_new_discount"
+               android:layout_height="match_parent"
+               android:layout_width="fill_parent"
+               android:layout_weight="1"
+               android:src="@drawable/index_mid_left_deals"
+               android:background="@color/yellow"
+
+               ></ImageView>
+
+           <ImageView
+               android:id="@+id/btn_fillprice"
+               android:layout_height="match_parent"
+               android:layout_width="fill_parent"
+               android:layout_weight="1.5"
+               android:src="@drawable/index_mid_right"
+               android:background="@color/skyblue"
+               ></ImageView>
+
+
+       </LinearLayout>
+
+    <ImageView
+
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+
+        android:src="@drawable/index_mid_flow"
+        android:background="@color/seaShell"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/linearLayout"
+        >
+
+    </ImageView>
+
+
+
 
 
 
