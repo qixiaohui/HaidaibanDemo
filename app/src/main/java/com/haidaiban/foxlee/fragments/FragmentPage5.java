@@ -57,7 +57,7 @@ public class FragmentPage5 extends Fragment{
         protected String doInBackground(String... params) {
             final Webmethod webMethod = new Webmethod(getActivity().getApplicationContext());
             try {
-                webMethod.get();
+                //webMethod.get();
                 webMethod.post();
             }catch (IOException e){
                 System.out.println("%%%%%IOException");
