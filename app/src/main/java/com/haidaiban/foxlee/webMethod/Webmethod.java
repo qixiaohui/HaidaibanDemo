@@ -1,6 +1,11 @@
 package com.haidaiban.foxlee.webMethod;
 
 import android.content.Context;
+import android.content.SharedPreferences;
+import android.os.Looper;
+import android.widget.Toast;
+
+import com.securepreferences.SecurePreferences;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -13,6 +18,10 @@ import org.apache.http.cookie.Cookie;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
+import org.json.JSONException;
+import org.json.JSONObject;
+import org.json.JSONTokener;
+import org.json.JSONArray;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,16 +33,20 @@ import java.io.IOException;
  */
 public class Webmethod {
     private static String url = "http://stage.sanqtech.com:7777/";
-    private Context context;
+    private static Context context;
     private static ArrayList<NameValuePair> pair;
     private static DefaultHttpClient httpClient;
     private static List<Cookie> cookies;
     private static Cookie middleWareToken;
     private static CookieStore cookieStore;
+    private static SharedPreferences sharedPreferences;
+    private static SharedPreferences.Editor editor;
+    private static JSONObject result;
 
     public Webmethod(Context context) {
         this.context = context;
         httpClient = new DefaultHttpClient();
+        sharedPreferences = new SecurePreferences(this.context);
     }
 
     public static void get()throws IOException{
@@ -43,7 +56,7 @@ public class Webmethod {
         cookieStore = httpClient.getCookieStore();
     }
 
-    public static void post()throws IOException{
+    public static int post()throws IOException,JSONException{
 
         pair = new ArrayList<NameValuePair>();
 //        for(Cookie cookie : cookies){
@@ -69,7 +82,15 @@ public class Webmethod {
         HttpEntity entity = httpResponse.getEntity();
         String response = EntityUtils.toString(entity,"UTF-8");
         System.out.println(response+"*************");
-
+        JSONTokener tokener = new JSONTokener(response);
+        result = new JSONObject(tokener);
+        System.out.println(result.get("key"));
+        if(httpResponse.getStatusLine().getStatusCode()==200){
+            editor = sharedPreferences.edit();
+            editor.putString("token",result.get("key").toString());
+            editor.commit();
+        }
+        return httpResponse.getStatusLine().getStatusCode();
     }
 
 }
