@@ -42,6 +42,7 @@ public class Webmethod {
     private static SharedPreferences sharedPreferences;
     private static SharedPreferences.Editor editor;
     private static JSONObject result;
+    private static String token;
 
     public Webmethod(Context context) {
         this.context = context;
@@ -49,14 +50,27 @@ public class Webmethod {
         sharedPreferences = new SecurePreferences(this.context);
     }
 
-    public static void get()throws IOException{
-        HttpGet get = new HttpGet(url);
-        httpClient.execute(get);
-        cookies = httpClient.getCookieStore().getCookies();
-        cookieStore = httpClient.getCookieStore();
+    public static String getToken(){
+        return sharedPreferences.getString("token",null);
     }
 
-    public static int post()throws IOException,JSONException{
+    public static JSONObject get()throws IOException,JSONException{
+
+        token = getToken();
+        HttpGet httpGet = new HttpGet(url+"api/offers");
+        //httpGet.setHeader("Accept","applicatiton/json; indent=4");
+        //System.out.println("token"+token);
+        httpGet.setHeader("Authorization","Token "+token);
+        HttpResponse httpResponse = httpClient.execute(httpGet);
+        HttpEntity entity = httpResponse.getEntity();
+        String response = EntityUtils.toString(entity,"UTF-8");
+        System.out.println(response+"***********");
+        JSONTokener tokener = new JSONTokener(response);
+        return  new JSONObject(tokener);
+
+    }
+
+    public static int post(String userName, String password)throws IOException,JSONException{
 
         pair = new ArrayList<NameValuePair>();
 //        for(Cookie cookie : cookies){
@@ -67,8 +81,9 @@ public class Webmethod {
 //            }
 //        }
 //        pair.add(new BasicNameValuePair("csrfmiddlewaretoken",middleWareToken.getValue()));
-        pair.add(new BasicNameValuePair("username","foxlee"));
-        pair.add(new BasicNameValuePair("password","liji1025"));
+        System.out.println(userName+password+"*********");
+        pair.add(new BasicNameValuePair("username",userName));
+        pair.add(new BasicNameValuePair("password",password));
 
         HttpPost httpPost = new HttpPost(url+"/rest-auth/login/");
         //BasicClientCookie clientCookie = new BasicClientCookie("csrftoken",middleWareToken.getValue());
