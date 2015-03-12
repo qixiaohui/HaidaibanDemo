@@ -24,7 +24,7 @@ public class Offers extends Fragment {
     GetData getData;
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.offers, null);
+        return inflater.inflate(R.layout.test_offers, null);
     }
 
     /*******

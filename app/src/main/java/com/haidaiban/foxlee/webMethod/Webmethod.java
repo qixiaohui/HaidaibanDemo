@@ -105,6 +105,7 @@ public class Webmethod {
             editor.putString("token",result.get("key").toString());
             editor.commit();
         }
+        System.out.print("**********"+userName+"**************"+password);
         return httpResponse.getStatusLine().getStatusCode();
     }
 
