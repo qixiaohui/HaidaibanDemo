@@ -16,6 +16,8 @@ repositories {
     mavenCentral()
 }
 
+project.buildDir = 'target'
+
 dependencies {
     // Required if generating equals, hashCode, or toString methods
     compile 'commons-lang:commons-lang:2.6'
@@ -40,7 +42,7 @@ jsonSchema2Pojo {
 
     // Target directory for generated Java source files. The plugin will add this directory to the
     // java source set so the compiler will find and compile the newly generated source files.
-    targetDirectory = file("src/main/java/")
+    targetDirectory = file("/src/main/java/")
 
     // Package name used for generated Java classes (for types where a fully qualified name has not
     // been supplied in the schema using the 'javaType' property).
@@ -59,14 +61,14 @@ jsonSchema2Pojo {
     includeHashcodeAndEquals = true
 
     // Whether to include a toString method in generated Java types.
-    includeToString = true
+    includeToString = false
 
     // The style of annotations to use in the generated Java types. Supported values:
     //  - jackson (alias of jackson2)
     //  - jackson2 (apply annotations from the Jackson 2.x library)
     //  - jackson1 (apply annotations from the Jackson 1.x library)
     //  - none (apply no annotations at all)
-    annotationStyle = 'jackson'
+    annotationStyle = 'none'
 
     // A fully qualified class name, referring to a custom annotator class that implements
     // com.googlecode.jsonschema2pojo.Annotator and will be used in addition to the one chosen
@@ -89,5 +91,5 @@ jsonSchema2Pojo {
     //  - jsonschema (schema documents, containing formal rules that describe the structure of json data)
     //  - json (documents that represent an example of the kind of json data that the generated Java types
     //          will be mapped to)
-    sourceType = 'jsonschema'
+    sourceType = 'json'
 }
