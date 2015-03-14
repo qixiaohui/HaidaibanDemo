@@ -69,6 +69,29 @@ public class Webmethod {
 
     }
 
+
+    /**
+     * Problem: always got a 404 return
+     * @param userName
+     * @param password1
+     * @param password2
+     * @param email
+     * @return
+     * @throws IOException
+     */
+    public static String register(String userName, String password1, String password2, String email)throws IOException{
+        HttpPost httpPost = new HttpPost(url+"/rest-auth/registration/");
+        httpPost.setHeader("username",userName);
+        httpPost.setHeader("password1",password1);
+        httpPost.setHeader("password2",password2);
+        httpPost.setHeader("email",email);
+        HttpResponse httpResponse = httpClient.execute(httpPost);
+        HttpEntity entity = httpResponse.getEntity();
+        String response = EntityUtils.toString(entity,"UTF-8");
+        System.out.println(httpResponse.getStatusLine()+"status****");
+        return response;
+    }
+
     public static int post(String userName, String password)throws IOException,JSONException{
 
         pair = new ArrayList<NameValuePair>();

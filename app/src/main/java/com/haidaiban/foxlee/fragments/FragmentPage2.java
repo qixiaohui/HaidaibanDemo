@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.haidaiban.foxlee.Util.Utility;
 import com.haidaiban.foxlee.webMethod.Webmethod;
 import com.securepreferences.SecurePreferences;
 
@@ -23,6 +24,7 @@ import java.io.IOException;
 public class FragmentPage2 extends Fragment{
     View view;
     Button login;
+    Button register;
     EditText userNameEdit;
     EditText passwordEdit;
     private String userName;
@@ -33,6 +35,7 @@ public class FragmentPage2 extends Fragment{
 
         view = inflater.inflate(R.layout.login, null);
         login = (Button) view.findViewById(R.id.login);
+        register = (Button) view.findViewById(R.id.register);
         sharedPreferences = new SecurePreferences(getActivity().getApplicationContext());
         userNameEdit = (EditText) view.findViewById(R.id.loginaccount);
         passwordEdit = (EditText) view.findViewById(R.id.loginpassword);
@@ -45,7 +48,7 @@ public class FragmentPage2 extends Fragment{
 
         if(sharedPreferences.contains("token")){
 
-            redirect(getFragmentManager());
+            Utility.redirect(getFragmentManager(), R.id.realtabcontent,new Fragment_MyTempOffer());
 
         }
 
@@ -58,19 +61,13 @@ public class FragmentPage2 extends Fragment{
                 login.execute(new String [] {userName,password});
             }
         });
-    }
 
-    public static void redirect(FragmentManager fm){
-
-        if (fm != null) {
-            // Perform the FragmentTransaction to load in the list tab content.
-            // Using FragmentTransaction#replace will destroy any Fragments
-            // currently inside R.id.fragment_content and add the new Fragment
-            // in its place.
-            android.support.v4.app.FragmentTransaction ft = fm.beginTransaction();
-            ft.replace(R.id.realtabcontent, new Fragment_MyTempOffer());
-            ft.commit();
-        }
+        register.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Utility.redirect(getFragmentManager(),R.id.realtabcontent,new Register());
+            }
+        });
     }
 
     public class loginAsync extends AsyncTask<String,String,String> {
@@ -91,7 +88,7 @@ public class FragmentPage2 extends Fragment{
                         }
                     });
 
-                    redirect(getFragmentManager());
+                    Utility.redirect(getFragmentManager(), R.id.realtabcontent, new Fragment_MyTempOffer());
 
                 }
 //                }else{
