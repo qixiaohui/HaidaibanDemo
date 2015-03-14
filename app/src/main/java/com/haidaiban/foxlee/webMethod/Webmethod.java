@@ -54,7 +54,7 @@ public class Webmethod {
         return sharedPreferences.getString("token",null);
     }
 
-    public static JSONObject get()throws IOException,JSONException{
+    public static String get()throws IOException,JSONException{
 
         token = getToken();
         HttpGet httpGet = new HttpGet(url+"api/offers");
@@ -64,9 +64,8 @@ public class Webmethod {
         HttpResponse httpResponse = httpClient.execute(httpGet);
         HttpEntity entity = httpResponse.getEntity();
         String response = EntityUtils.toString(entity,"UTF-8");
-        System.out.println(response+"***********");
-        JSONTokener tokener = new JSONTokener(response);
-        return  new JSONObject(tokener);
+        //System.out.println(response+"***********");
+        return  response;
 
     }
 
@@ -105,7 +104,7 @@ public class Webmethod {
             editor.putString("token",result.get("key").toString());
             editor.commit();
         }
-        System.out.print("**********"+userName+"**************"+password);
+        System.out.println("**********"+userName+"**************"+password);
         return httpResponse.getStatusLine().getStatusCode();
     }
 

@@ -7,7 +7,9 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import com.google.gson.Gson;
 
+import com.haidaiban.foxlee.model.offer.Offer;
 import com.haidaiban.foxlee.webMethod.Webmethod;
 
 import org.json.JSONException;
@@ -20,7 +22,9 @@ import java.io.IOException;
  */
 public class Offers extends Fragment {
     private Webmethod webmethod;
-    private JSONObject offer;
+    private String offer;
+    private Gson gson;
+    private Offer offers;
     GetData getData;
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -212,6 +216,7 @@ public class Offers extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState){
         super.onViewCreated(view, savedInstanceState);
 
+        gson = new Gson();
         getData = new GetData();
         getData.execute();
 
@@ -223,6 +228,10 @@ public class Offers extends Fragment {
             webmethod = new Webmethod(getActivity().getApplicationContext());
             try {
                 offer = webmethod.get();
+                offers = gson.fromJson(offer,Offer.class);
+                System.out.println("here");
+                System.out.println(offers.getResults().get(0).getCounterquotes().get(0).getCoupon());
+
             }catch(JSONException e){
 
             }catch(IOException e){
