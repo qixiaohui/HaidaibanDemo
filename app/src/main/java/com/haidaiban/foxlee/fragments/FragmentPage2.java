@@ -1,8 +1,5 @@
 package com.haidaiban.foxlee.fragments;
 
-import android.app.FragmentTransaction;
-import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -78,7 +75,7 @@ public class FragmentPage2 extends Fragment{
                         // currently inside R.id.fragment_content and add the new Fragment
                         // in its place.
                         android.support.v4.app.FragmentTransaction ft = fm.beginTransaction();
-                        ft.replace(R.id.realtabcontent, new Offers());
+                        ft.replace(R.id.realtabcontent, new Fragment_MyTempOffer());
                         ft.commit();
                     }
 

@@ -20,7 +20,7 @@ import java.io.IOException;
 /**
  * Created by qixiaohui on 3/10/15.
  */
-public class Offers extends Fragment {
+public class Fragment_MyTempOffer extends Fragment {
     private Webmethod webmethod;
     private String offer;
     private Gson gson;
@@ -220,6 +220,8 @@ public class Offers extends Fragment {
         getData = new GetData();
         getData.execute();
 
+
+
     }
 
     public class GetData extends AsyncTask<String,String,String>{
@@ -227,7 +229,9 @@ public class Offers extends Fragment {
         protected String doInBackground(String... params) {
             webmethod = new Webmethod(getActivity().getApplicationContext());
             try {
+                //get json files
                 offer = webmethod.get();
+                //转化对应offer java class
                 offers = gson.fromJson(offer,Offer.class);
                 System.out.println("here");
                 System.out.println(offers.getResults().get(0).getCounterquotes().get(0).getCoupon());
@@ -248,6 +252,12 @@ public class Offers extends Fragment {
         @Override
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
+            //TO-Do  update listview in here ;
+
+
+            //pull , sax , doom
+
+
         }
     }
 }
