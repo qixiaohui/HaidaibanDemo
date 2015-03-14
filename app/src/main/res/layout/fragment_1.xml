@@ -60,7 +60,7 @@
                android:layout_weight="1"
                android:src="@drawable/index_mid_left_deals"
                android:background="@color/yellow"
-
+               android:clickable="true"
                ></ImageView>
 
            <ImageView
@@ -70,6 +70,7 @@
                android:layout_weight="1.5"
                android:src="@drawable/index_mid_right"
                android:background="@color/skyblue"
+               android:clickable="true"
                ></ImageView>
 
 

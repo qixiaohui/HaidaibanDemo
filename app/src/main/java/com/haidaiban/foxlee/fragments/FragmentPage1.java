@@ -4,16 +4,20 @@ import java.util.HashMap;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 
 import com.daimajia.slider.library.SliderLayout;
 import com.daimajia.slider.library.Animations.DescriptionAnimation;
 import com.daimajia.slider.library.SliderTypes.TextSliderView;
 import com.daimajia.slider.library.SliderTypes.BaseSliderView;
+import com.haidaiban.foxlee.activitys.Activity_PriceFill;
 
 public class FragmentPage1 extends Fragment{
 
@@ -22,16 +26,28 @@ public class FragmentPage1 extends Fragment{
     private SliderLayout slider;
 
     private Context context;
+    private ImageView mBtn_discount;
+    private ImageView mBtn_fillprice;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 
+
         context = container.getContext();
 
-        view = inflater.inflate(R.layout.fragment_1, null);
 
-        slider = (SliderLayout)view.findViewById(R.id.slider);
+        view = inflater.inflate(R.layout.fragment_1, null);
+    //init views ;
+        initView();
+
+        mBtn_fillprice.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), Activity_PriceFill.class);
+                startActivity(intent);
+            }
+        });
 
         HashMap<String, String> urlMap = new HashMap<String,String>();
         urlMap.put("Haniba","http://static2.hypable.com/wp-content/uploads/2013/12/hannibal-season-2-release-date.jpg");
@@ -64,6 +80,13 @@ public class FragmentPage1 extends Fragment{
 
 		return view;
 	}
+
+    private void initView() {
+
+        slider = (SliderLayout)view.findViewById(R.id.slider);
+        mBtn_discount = (ImageView) view.findViewById(R.id.btn_new_discount);
+        mBtn_fillprice = (ImageView) view.findViewById(R.id.btn_fillprice);
+    }
 
 
     @Override

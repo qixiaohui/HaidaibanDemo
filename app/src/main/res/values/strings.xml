@@ -30,4 +30,52 @@
     <string name="usecooperationaccount">用合作网站帐户登录</string>
     <string name="registerfree">免费注册</string>
 
+    <!-- 填写询价单 -->
+    <string name="goodstitle_pricefill">填写询价单</string>
+    <string name="tx_total_ten">每个询价单最多可添加10件商品</string>
+    <string name="goodsname">商品名称</string>
+    <string name="goodsnamehit">输入询价商品名称</string>
+    <string name="goodsnumber">数量</string>
+    <string name="goodsnumberhit">输入购买数量</string>
+
+    <string name="goodstype">型号</string>
+    <string name="goodstypehit">输入尺码，规格，颜色</string>
+    <string name="goodsphoto">图片</string>
+    <string name="goodsphotohit">点击添加图片，最多可以添加三张</string>
+    <string name="goodsmoreinfo">附加信息</string>
+    <string name="goodsmoreinfohit">（选填，详尽信息有助于代办快速接单准确报价）</string>
+    <string name="goodslink">连接</string>
+    <string name="goodslinkhit">http://</string>
+    <string name="goodsofficialprice">官方价格</string>
+    <string name="goodsofficialpricehit">输入商品采购网站折扣后最终外币价格</string>
+    <string name="goodscouponcode">折扣码</string>
+    <string name="goodstax">是否包税</string>
+    <string name="goodstaxhit">包税是指代办为您支付可能出现的关税</string>
+    <string name="goodsshipping">包邮方式</string>
+    <string name="goodsshippinghit">拼邮是值代办把商品批量发回国内再分寄</string>
+    <string name="goodsrecomment">备注</string>
+    <string name="goodsyes">是</string>
+    <string name="goodsno">否</string>
+    <string name="goodsanyway">无所谓</string>
+    <string name="goodsbtnaddmore">添加新商品</string>
+    <string name="goodsbtnpersee">预览询价单</string>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </resources>
