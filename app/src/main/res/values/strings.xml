@@ -60,6 +60,10 @@
     <string name="goodsbtnaddmore">添加新商品</string>
     <string name="goodsbtnpersee">预览询价单</string>
 
+    <!--待发询价单-->
+    <string name="tempoffer_again">指定代办（选填）</string>
+    <string name="tempoffer_again_hit"></string>
+    <string name="tempoffer_again_btn">确定添加</string>
 
 
 

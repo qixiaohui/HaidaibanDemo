@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/AppBaseTheme"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <LinearLayout
+
+        android:id="@+id/ll_tempoffer"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:orientation="vertical">
+
+        <ListView
+
+            android:layout_width="wrap_content"
+            android:layout_height="400dp">
+
+
+        </ListView>
+
+
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="1dp"
+            android:background="@color/gray"
+
+            >
+
+        </TextView>
+<!--inner layout include add again and button-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:text="@string/tempoffer_again"
+            android:textSize="@dimen/small_middle_text_size"
+            android:layout_weight="1"
+            ></TextView>
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:hint="@string/goodsshippinghit"
+                android:textColorHint="@color/gray"
+                android:textSize="@dimen/small_text_size"
+
+                >
+            </EditText>
+            <!--<Button>-->
+            <Button
+                android:layout_height="match_parent"
+                android:layout_width="100dp"
+                android:background="@color/gray"
+                android:textSize="@dimen/medium_text_size"
+                android:layout_weight="1"
+                android:text="@string/tempoffer_again_btn"
+                >
+
+            </Button>
+
+          </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_below="@+id/ll_tempoffer"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btn_addnewitem"
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_weight="1"
+                android:background="@color/skyblue"
+                android:text="New Button"
+                android:textSize="@dimen/medium_text_size" />
+
+            <Button
+                android:id="@+id/btn_submitform"
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_weight="1"
+                android:background="@color/greenyellow"
+                android:text="New Button2"
+
+                android:textSize="@dimen/medium_text_size" />
+        </LinearLayout>
+    </LinearLayout>
+
+</RelativeLayout>
