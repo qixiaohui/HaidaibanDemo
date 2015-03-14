@@ -14,10 +14,10 @@ import android.support.v4.app.FragmentManager;
 import java.util.List;
 import java.util.Vector;
 
+import com.haidaiban.foxlee.adapter.TabPagerAdapter;
 import com.haidaiban.foxlee.pagers.GameFragment;
 import com.haidaiban.foxlee.pagers.MovieFragment;
 import com.haidaiban.foxlee.pagers.MusicFragment;
-import com.haidaiban.foxlee.pagers.TabPagerAdapter;
 
 public class FragmentPage3 extends Fragment implements ActionBar.TabListener{
 
