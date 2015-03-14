@@ -1,5 +1,6 @@
 package com.haidaiban.foxlee.fragments;
 
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -13,6 +14,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.haidaiban.foxlee.webMethod.Webmethod;
+import com.securepreferences.SecurePreferences;
 
 import org.json.JSONException;
 
@@ -25,11 +27,13 @@ public class FragmentPage2 extends Fragment{
     EditText passwordEdit;
     private String userName;
     private String password;
+    private SharedPreferences sharedPreferences;
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
 
         view = inflater.inflate(R.layout.login, null);
         login = (Button) view.findViewById(R.id.login);
+        sharedPreferences = new SecurePreferences(getActivity().getApplicationContext());
         userNameEdit = (EditText) view.findViewById(R.id.loginaccount);
         passwordEdit = (EditText) view.findViewById(R.id.loginpassword);
 		return view;
@@ -38,6 +42,12 @@ public class FragmentPage2 extends Fragment{
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        if(sharedPreferences.contains("token")){
+
+            redirect(getFragmentManager());
+
+        }
 
         login.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -48,6 +58,19 @@ public class FragmentPage2 extends Fragment{
                 login.execute(new String [] {userName,password});
             }
         });
+    }
+
+    public static void redirect(FragmentManager fm){
+
+        if (fm != null) {
+            // Perform the FragmentTransaction to load in the list tab content.
+            // Using FragmentTransaction#replace will destroy any Fragments
+            // currently inside R.id.fragment_content and add the new Fragment
+            // in its place.
+            android.support.v4.app.FragmentTransaction ft = fm.beginTransaction();
+            ft.replace(R.id.realtabcontent, new Fragment_MyTempOffer());
+            ft.commit();
+        }
     }
 
     public class loginAsync extends AsyncTask<String,String,String> {
@@ -67,18 +90,8 @@ public class FragmentPage2 extends Fragment{
                             Toast.makeText(getActivity().getApplicationContext(),"login success",Toast.LENGTH_LONG).show();
                         }
                     });
-                    FragmentManager fm = getFragmentManager();
 
-                    if (fm != null) {
-                        // Perform the FragmentTransaction to load in the list tab content.
-                        // Using FragmentTransaction#replace will destroy any Fragments
-                        // currently inside R.id.fragment_content and add the new Fragment
-                        // in its place.
-                        android.support.v4.app.FragmentTransaction ft = fm.beginTransaction();
-                        ft.replace(R.id.realtabcontent, new Fragment_MyTempOffer());
-                        ft.commit();
-                    }
-
+                    redirect(getFragmentManager());
 
                 }
 //                }else{
