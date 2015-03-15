@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/list_row_selector"
+    android:padding="8dp" >
+
+    <!-- Thumbnail Image -->
+    <com.android.volley.toolbox.NetworkImageView
+        android:id="@+id/img_ls_tempoffer"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginRight="8dp" />
+
+    <!-- Item Title -->
+    <TextView
+        android:id="@+id/ls_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/img_ls_tempoffer"
+        android:layout_toRightOf="@+id/img_ls_tempoffer"
+        android:textSize="@dimen/medium_text_size"
+        android:textStyle="bold" />
+
+    <!-- number -->
+    <TextView
+        android:id="@+id/ls_item_num"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ls_title"
+        android:layout_marginTop="1dip"
+        android:layout_toRightOf="@+id/img_ls_tempoffer"
+        android:textSize="@dimen/small_text_size" />
+
+    <!-- item type -->
+    <TextView
+        android:id="@+id/ls_item_type"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ls_item_num"
+        android:layout_marginTop="5dp"
+        android:layout_toRightOf="@+id/img_ls_tempoffer"
+        android:textColor="@color/gray"
+        android:textSize="@dimen/small_text_size" />
+
+    <!-- Release Year -->
+    <TextView
+        android:id="@+id/releaseYear"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:textColor="@color/gray"
+        android:textSize="@dimen/small_text_size" />
+
+</RelativeLayout>
