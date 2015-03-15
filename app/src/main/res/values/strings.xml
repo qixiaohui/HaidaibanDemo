@@ -65,7 +65,11 @@
     <string name="tempoffer_again_hit"></string>
     <string name="tempoffer_again_btn">确定添加</string>
 
-
+    <string-array name="tabTitle">
+        <item>Newest</item>
+        <item>Hottest</item>
+        <item>Collection</item>
+    </string-array>
 
 
 

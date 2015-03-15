@@ -18,6 +18,7 @@ import com.daimajia.slider.library.Animations.DescriptionAnimation;
 import com.daimajia.slider.library.SliderTypes.TextSliderView;
 import com.daimajia.slider.library.SliderTypes.BaseSliderView;
 import com.haidaiban.foxlee.activitys.Activity_PriceFill;
+import com.haidaiban.foxlee.activitys.LimitedTimeOffer;
 
 public class FragmentPage1 extends Fragment{
 
@@ -45,6 +46,14 @@ public class FragmentPage1 extends Fragment{
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), Activity_PriceFill.class);
+                startActivity(intent);
+            }
+        });
+
+        mBtn_discount.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), LimitedTimeOffer.class);
                 startActivity(intent);
             }
         });

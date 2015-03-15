@@ -88,6 +88,7 @@ public class Webmethod {
         HttpResponse httpResponse = httpClient.execute(httpPost);
         HttpEntity entity = httpResponse.getEntity();
         String response = EntityUtils.toString(entity,"UTF-8");
+        System.out.println(response);
         System.out.println(httpResponse.getStatusLine()+"status****");
         return response;
     }
