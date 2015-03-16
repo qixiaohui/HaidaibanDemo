@@ -19,7 +19,7 @@ import com.haidaiban.foxlee.pagers.GameFragment;
 import com.haidaiban.foxlee.pagers.MovieFragment;
 import com.haidaiban.foxlee.pagers.MusicFragment;
 
-public class FragmentPage3 extends Fragment implements ActionBar.TabListener{
+public class FragmentPage3 extends Fragment{
 
     private View view;
     private ViewPager viewPager;
@@ -28,23 +28,6 @@ public class FragmentPage3 extends Fragment implements ActionBar.TabListener{
     private FragmentManager fragmentManager;
     private String [] titles = {"Game","Music","Movie"};
     private List<Fragment> fragments;
-
-
-    @Override
-    public void onTabSelected(ActionBar.Tab tab, FragmentTransaction ft) {
-        viewPager.setCurrentItem(tab.getPosition());
-
-    }
-
-    @Override
-    public void onTabUnselected(ActionBar.Tab tab, FragmentTransaction ft) {
-
-    }
-
-    @Override
-    public void onTabReselected(ActionBar.Tab tab, FragmentTransaction ft) {
-
-    }
 
     @Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
@@ -55,37 +38,16 @@ public class FragmentPage3 extends Fragment implements ActionBar.TabListener{
         fragments.add(new MovieFragment());
 
         view = inflater.inflate(R.layout.fragment_3, null);
-        viewPager = (ViewPager) view.findViewById(R.id.viewPager);
+        viewPager = (ViewPager) view.findViewById(R.id.pager );
         fragmentManager = getActivity().getSupportFragmentManager();
         System.out.println("!!!!!!!!"+fragments.size());
-        tabPagerAdapter = new TabPagerAdapter(fragmentManager,fragments);
+        tabPagerAdapter = new TabPagerAdapter(fragmentManager,fragments,titles);
 
         viewPager.setAdapter(tabPagerAdapter);
-        viewPager.setOffscreenPageLimit(1);
-        viewPager.setCurrentItem(0);
-        actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
+//        viewPager.setOffscreenPageLimit(1);
+//        viewPager.setCurrentItem(0);
+//        actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
 
-        for(String title : titles){
-            actionBar.addTab(actionBar.newTab().setText(title).setTabListener(this));
-        }
-
-        viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-            @Override
-            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-
-            }
-
-            @Override
-            public void onPageSelected(int position) {
-                actionBar.setSelectedNavigationItem(position);
-
-            }
-
-            @Override
-            public void onPageScrollStateChanged(int state) {
-
-            }
-        });
 
 		return view;
 	}
@@ -94,14 +56,14 @@ public class FragmentPage3 extends Fragment implements ActionBar.TabListener{
     public void onAttach(Activity activity) {
         super.onAttach(activity);
 
-        actionBar = activity.getActionBar();
+//        actionBar = activity.getActionBar();
     }
 
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        actionBar.removeAllTabs();
-        actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
-        viewPager.removeAllViews();
+//        actionBar.removeAllTabs();
+//        actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
+//        viewPager.removeAllViews();
     }
 }

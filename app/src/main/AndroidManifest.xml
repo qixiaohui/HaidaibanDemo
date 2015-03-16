@@ -20,7 +20,9 @@
         </activity>
 
         <activity android:name="com.haidaiban.foxlee.activitys.Activity_PriceFill"></activity>
-        <activity android:name="com.haidaiban.foxlee.activitys.LimitedTimeOffer"></activity>
+        <activity
+            android:name="com.haidaiban.foxlee.activitys.LimitedTimeOffer"
+            android:theme="@style/Theme.AppCompat.Light.DarkActionBar"></activity>
     </application>
 
     <uses-permission android:name="android.permission.INTERNET" />

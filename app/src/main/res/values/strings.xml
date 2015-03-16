@@ -66,12 +66,23 @@
     <string name="tempoffer_again_btn">确定添加</string>
 
     <string-array name="tabTitle">
-        <item>Newest</item>
-        <item>Hottest</item>
-        <item>Collection</item>
+        <item>最新</item>
+        <item>最热</item>
+        <item>收藏</item>
     </string-array>
 
-
+    <string-array name="category">
+        <item>美容护肤</item>
+        <item>服饰鞋包</item>
+        <item>母婴儿童</item>
+        <item>保健食品</item>
+        <item>电气电子</item>
+        <item>电脑相机</item>
+        <item>家具用车</item>
+        <item>运动户外</item>
+        <item>书籍影音</item>
+        <item>其他商品</item>
+    </string-array>
 
 
 

@@ -13,11 +13,12 @@ import java.util.List;
 public class TabPagerAdapter extends FragmentStatePagerAdapter {
 
     private List<Fragment> fragments;
+    private String [] titles;
 
-    public TabPagerAdapter(FragmentManager fm, List<Fragment> fragments) {
+    public TabPagerAdapter(FragmentManager fm, List<Fragment> fragments, String[] titles) {
         super(fm);
         this.fragments = fragments;
-
+        this.titles = titles;
     }
 
     @Override
@@ -35,5 +36,10 @@ public class TabPagerAdapter extends FragmentStatePagerAdapter {
     @Override
     public Parcelable saveState() {
         return null;
+    }
+
+    @Override
+    public CharSequence getPageTitle(int position) {
+        return titles[position];
     }
 }
