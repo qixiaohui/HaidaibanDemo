@@ -5,6 +5,8 @@ import android.content.SharedPreferences;
 import android.os.Looper;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
+import com.haidaiban.foxlee.model.deal.Deal;
 import com.securepreferences.SecurePreferences;
 
 import org.apache.http.HttpEntity;
@@ -43,6 +45,12 @@ public class Webmethod {
     private static SharedPreferences.Editor editor;
     private static JSONObject result;
     private static String token;
+    private static HttpGet httpGet;
+    private static HttpPost httpPost;
+    private static HttpResponse httpResponse;
+    private static HttpEntity entity;
+    private static String response;
+    private static Gson gson;
 
     public Webmethod(Context context) {
         this.context = context;
@@ -57,16 +65,26 @@ public class Webmethod {
     public static String get()throws IOException,JSONException{
 
         token = getToken();
-        HttpGet httpGet = new HttpGet(url+"api/offers");
+        httpGet = new HttpGet(url+"api/offers");
         //httpGet.setHeader("Accept","applicatiton/json; indent=4");
         //System.out.println("token"+token);
         httpGet.setHeader("Authorization","Token "+token);
-        HttpResponse httpResponse = httpClient.execute(httpGet);
-        HttpEntity entity = httpResponse.getEntity();
-        String response = EntityUtils.toString(entity,"UTF-8");
+        httpResponse = httpClient.execute(httpGet);
+        entity = httpResponse.getEntity();
+        response = EntityUtils.toString(entity,"UTF-8");
         //System.out.println(response+"***********");
         return  response;
 
+    }
+
+    public static Deal getDeals()throws IOException,JSONException{
+        token = getToken();
+        httpGet = new HttpGet(url+"/api/deals/");
+        httpGet.setHeader("Authorization","Token"+token);
+        httpResponse = httpClient.execute(httpGet);
+        entity = httpResponse.getEntity();
+        response = EntityUtils.toString(entity,"UTF-8");
+        return new Gson().fromJson(response,Deal.class);
     }
 
 
@@ -80,7 +98,7 @@ public class Webmethod {
      * @throws IOException
      */
     public static String register(String userName, String password1, String password2, String email)throws IOException{
-        HttpPost httpPost = new HttpPost(url+"/rest-auth/registration/");
+        httpPost = new HttpPost(url+"/rest-auth/registration/");
         httpPost.setHeader("username",userName);
         httpPost.setHeader("password1",password1);
         httpPost.setHeader("password2",password2);

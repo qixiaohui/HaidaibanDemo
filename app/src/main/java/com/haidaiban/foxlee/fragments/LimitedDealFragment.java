@@ -49,36 +49,10 @@ public class LimitedDealFragment extends Fragment {
         }
         tabPagerAdapter = new TabPagerAdapter(getActivity().getSupportFragmentManager(),fragments,categorys);
         viewPager.setAdapter(tabPagerAdapter);
-        viewPager.setOffscreenPageLimit(1);
-        viewPager.setCurrentItem(0);
         // Center the tabs in the layout
         slidingTabLayout.setDistributeEvenly(true);
         slidingTabLayout.setViewPager(viewPager);
-        actionBar = getActivity().getActionBar();
 
-
-        viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-            @Override
-            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-
-            }
-
-            @Override
-            public void onPageSelected(int position) {
-
-            }
-
-            @Override
-            public void onPageScrollStateChanged(int state) {
-
-            }
-        });
-    }
-
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        viewPager.removeAllViews();
     }
 
     public void setTitle(String title){
