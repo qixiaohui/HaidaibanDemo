@@ -79,7 +79,7 @@ public class Webmethod {
 
     public static Deal getDeals()throws IOException,JSONException{
         token = getToken();
-        httpGet = new HttpGet(url+"/api/deals/");
+        httpGet = new HttpGet(url+"api/deals");
         httpGet.setHeader("Authorization","Token"+token);
         httpResponse = httpClient.execute(httpGet);
         entity = httpResponse.getEntity();

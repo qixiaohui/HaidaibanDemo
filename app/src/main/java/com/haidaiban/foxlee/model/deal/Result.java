@@ -13,7 +13,7 @@ import com.google.gson.annotations.SerializedName;
 public class Result {
 
     @Expose
-    private List<Object> recommendations = new ArrayList<Object>();
+    private List<Recommendations> recommendations = new ArrayList<Recommendations>();
     @Expose
     private Publisher publisher;
     @Expose
@@ -88,7 +88,7 @@ public class Result {
      * @return
      * The recommendations
      */
-    public List<Object> getRecommendations() {
+    public List<Recommendations> getRecommendations() {
         return recommendations;
     }
 
@@ -97,7 +97,7 @@ public class Result {
      * @param recommendations
      * The recommendations
      */
-    public void setRecommendations(List<Object> recommendations) {
+    public void setRecommendations(List<Recommendations> recommendations) {
         this.recommendations = recommendations;
     }
 

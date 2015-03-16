@@ -13,7 +13,6 @@ import com.haidaiban.foxlee.fragments.R;
 import com.haidaiban.foxlee.model.deal.Deal;
 import com.squareup.picasso.Picasso;
 
-import org.w3c.dom.Text;
 
 /**
  * Created by qixiaohui on 3/15/15.
@@ -21,13 +20,13 @@ import org.w3c.dom.Text;
 public class ListViewAdapter extends BaseAdapter {
     private Deal deals;
     private Context context;
-    private View view;
     private TextView title;
     private ImageView thumbNail;
     private TextView description;
     private TextView category;
     private TextView rating;
-    private String url;
+    private LayoutInflater inflater;
+    private View view;
     @Override
     public int getCount() {
         return deals.getResults().size();
@@ -37,6 +36,7 @@ public class ListViewAdapter extends BaseAdapter {
 
         this.deals = deals;
         this.context = context;
+        this.inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
     @Override
@@ -51,7 +51,10 @@ public class ListViewAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        view = LayoutInflater.from(context).inflate(R.layout.list_row,parent);
+        view = convertView;
+        if (view == null) {
+            view = inflater.inflate(R.layout.list_row, parent, false);
+        }
         title = (TextView) view.findViewById(R.id.title);
         description = (TextView) view.findViewById(R.id.releaseYear);
         category = (TextView) view.findViewById(R.id.genre);
