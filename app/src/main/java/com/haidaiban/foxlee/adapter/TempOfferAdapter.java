@@ -63,22 +63,22 @@ public class TempOfferAdapter extends BaseAdapter{
             view = inflater.inflate(R.layout.lt_row_mytempoffer,parent,false);
         }
 
-        to_thumbNail  = (ImageView) convertView.findViewById(R.id.img_ls_tempoffer);
-        to_Title = (TextView) convertView.findViewById(R.id.ls_title);
-        to_Number = (TextView) convertView.findViewById(R.id.rating);
-        to_Type = (TextView) convertView.findViewById(R.id.genre);
-        to_temp = (TextView) convertView.findViewById(R.id.ls_temp);
+        to_thumbNail  = (ImageView) view.findViewById(R.id.img_ls_tempoffer);
+        to_Title = (TextView) view.findViewById(R.id.ls_title);
+        to_Number = (TextView) view.findViewById(R.id.rating);
+        to_Type = (TextView) view.findViewById(R.id.genre);
+        to_temp = (TextView) view.findViewById(R.id.ls_temp);
 
         //set method
 
-        to_Title.setText(myOffer.getResults().get(position).getCounterquotes().get(position).getQuote().getTitle());
-        to_Number.setText(myOffer.getResults().get(position).getCounterquotes().get(position).getQuote().getQuantity());
-        to_Type.setText(myOffer.getResults().get(position).getCounterquotes().get(position).getQuote().getStyle());
+        to_Title.setText(myOffer.getResults().get(0).getCounterquotes().get(position).getQuote().getTitle());
+        //to_Number.setText(myOffer.getResults().get(0).getCounterquotes().get(position).getQuote().getLastUpdate());
+        //to_Type.setText(myOffer.getResults().get(0).getCounterquotes().get(position).getQuote().getStyle());
 
 
         // thumbnail image
         Picasso.with(context)
-                .load(Constants.getLOGIN_URL()+myOffer.getResults().get(position).getCounterquotes().get(position).getQuote().getDeal().getImage())
+                .load(Constants.getLOGIN_URL()+myOffer.getResults().get(0).getCounterquotes().get(position).getQuote().getDeal().getImage())
                 .resize(50, 50)
                 .centerCrop()
                 .into(to_thumbNail);
