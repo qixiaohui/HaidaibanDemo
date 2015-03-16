@@ -7,8 +7,11 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
+
 import com.google.gson.Gson;
 
+import com.haidaiban.foxlee.adapter.TempOfferAdapter;
 import com.haidaiban.foxlee.model.offer.Offer;
 import com.haidaiban.foxlee.webMethod.Webmethod;
 
@@ -26,9 +29,17 @@ public class Fragment_MyTempOffer extends Fragment {
     private Gson gson;
     private Offer offers;
     GetData getData;
+
+    private View view ;
+    private ListView myTemp_List;
+
+
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.test_offers, null);
+
+        view = inflater.inflate(R.layout.fragment_mytempoffers,null);
+        myTemp_List =(ListView) view.findViewById(R.id.listview_tempoffer);
+        return view;
     }
 
     /*******
@@ -236,6 +247,8 @@ public class Fragment_MyTempOffer extends Fragment {
                 System.out.println("here");
                 System.out.println(offers.getResults().get(0).getCounterquotes().get(0).getCoupon());
 
+
+
             }catch(JSONException e){
 
             }catch(IOException e){
@@ -253,9 +266,9 @@ public class Fragment_MyTempOffer extends Fragment {
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
             //TO-Do  update listview in here ;
+            myTemp_List.setAdapter(new TempOfferAdapter(offers,getActivity().getApplicationContext()));
 
 
-            //pull , sax , doom
 
 
         }

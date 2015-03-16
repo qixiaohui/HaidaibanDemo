@@ -7,6 +7,7 @@ import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.haidaiban.foxlee.model.deal.Deal;
+import com.haidaiban.foxlee.model.offer.Offer;
 import com.securepreferences.SecurePreferences;
 
 import org.apache.http.HttpEntity;
@@ -86,7 +87,6 @@ public class Webmethod {
         response = EntityUtils.toString(entity,"UTF-8");
         return new Gson().fromJson(response,Deal.class);
     }
-
 
     /**
      * Problem: always got a 404 return

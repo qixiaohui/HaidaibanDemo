@@ -1,92 +1,93 @@
-//package com.haidaiban.foxlee.adapter;
-//
-///**
-// * Created by jili on 3/14/15.
-// */
-//         
-//         
-//        import java.util.List;
-//         
-//        import android.app.Activity;
-//        import android.content.Context;
-//        import android.view.LayoutInflater;
-//        import android.view.View;
-//        import android.view.ViewGroup;
-//        import android.widget.BaseAdapter;
-//        import android.widget.TextView;
-//         
-//        import com.android.volley.toolbox.ImageLoader;
-//        import com.android.volley.toolbox.NetworkImageView;
-//         
-//public class CustomListAdapter extends BaseAdapter {
-//        private Activity activity;
-//        private LayoutInflater inflater;
-//        private List<Movie> movieItems;
-//        ImageLoader imageLoader = AppController.getInstance().getImageLoader();
-//     
-//                public CustomListAdapter(Activity activity, List<Movie> movieItems) {
-//                this.activity = activity;
-//                this.movieItems = movieItems;
-//            }
-//     
-//                @Override
-//        public int getCount() {
-//                return movieItems.size();
-//            }
-//     
-//                @Override
-//        public Object getItem(int location) {
-//                return movieItems.get(location);
-//            }
-//     
-//                @Override
-//        public long getItemId(int position) {
-//                return position;
-//            }
-//     
-//                @Override
-//        public View getView(int position, View convertView, ViewGroup parent) {
-//         
-//                if (inflater == null)
-//                    inflater = (LayoutInflater) activity
-//                            .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-//                if (convertView == null)
-//                    convertView = inflater.inflate(R.layout.list_row, null);
-//         
-//                if (imageLoader == null)
-//                    imageLoader = AppController.getInstance().getImageLoader();
-//                NetworkImageView thumbNail = (NetworkImageView) convertView
-//                        .findViewById(R.id.thumbnail);
-//                TextView title = (TextView) convertView.findViewById(R.id.title);
-//                TextView rating = (TextView) convertView.findViewById(R.id.rating);
-//                TextView genre = (TextView) convertView.findViewById(R.id.genre);
-//                TextView year = (TextView) convertView.findViewById(R.id.releaseYear);
-//         
-//                // getting movie data for the row
-//                Movie m = movieItems.get(position);
-//         
-//                // thumbnail image
-//                thumbNail.setImageUrl(m.getThumbnailUrl(), imageLoader);
-//                 
-//                // title
-//                title.setText(m.getTitle());
-//                 
-//                // rating
-//                rating.setText("Rating: " + String.valueOf(m.getRating()));
-//                 
-//                // genre
-//                String genreStr = "";
-//                for (String str : m.getGenre()) {
-//                        genreStr += str + ", ";
-//                    }
-//                genreStr = genreStr.length() > 0 ? genreStr.substring(0,
-//                                genreStr.length() - 2) : genreStr;
-//                genre.setText(genreStr);
-//                 
-//                // release year
-//                year.setText(String.valueOf(m.getYear()));
-//         
-//                return convertView;
-//            }
-//     
-//}
+package com.haidaiban.foxlee.adapter;
+
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import com.haidaiban.foxlee.config.Constants;
+import com.haidaiban.foxlee.fragments.R;
+import com.haidaiban.foxlee.model.offer.Offer;
+import com.squareup.picasso.Picasso;
+
+/**
+ * Created by foxlee on 3/15/15
+ * */
+
+public class TempOfferAdapter extends BaseAdapter{
+
+    private LayoutInflater inflater;
+    private Context context ;
+    private View view;
+    private Offer myOffer;
+
+    //Ui
+    private ImageView to_thumbNail;
+    private TextView to_Title ;
+    private TextView to_Number;
+    private TextView to_Type ;
+    private TextView to_temp ;
+
+
+    public TempOfferAdapter(Offer myOffer,Context context) {
+        this.context = context;
+        this.myOffer = myOffer;
+        this.inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+
+    }
+
+
+    @Override
+    public int getCount() {
+        return myOffer.getResults().size();
+    }
+
+    @Override
+    public Object getItem(int position) {
+        return null;
+    }
+
+    @Override
+    public long getItemId(int position) {
+        return position;
+    }
+
+    @Override
+    public View getView(int position, View convertView, ViewGroup parent) {
+
+        view = convertView;
+        if(view == null){
+            view = inflater.inflate(R.layout.lt_row_mytempoffer,parent,false);
+        }
+
+        to_thumbNail  = (ImageView) convertView.findViewById(R.id.img_ls_tempoffer);
+        to_Title = (TextView) convertView.findViewById(R.id.ls_title);
+        to_Number = (TextView) convertView.findViewById(R.id.rating);
+        to_Type = (TextView) convertView.findViewById(R.id.genre);
+        to_temp = (TextView) convertView.findViewById(R.id.ls_temp);
+
+        //set method
+
+        to_Title.setText(myOffer.getResults().get(position).getCounterquotes().get(position).getQuote().getTitle());
+        to_Number.setText(myOffer.getResults().get(position).getCounterquotes().get(position).getQuote().getQuantity());
+        to_Type.setText(myOffer.getResults().get(position).getCounterquotes().get(position).getQuote().getStyle());
+
+
+        // thumbnail image
+        Picasso.with(context)
+                .load(Constants.getLOGIN_URL()+myOffer.getResults().get(position).getCounterquotes().get(position).getQuote().getDeal().getImage())
+                .resize(50, 50)
+                .centerCrop()
+                .into(to_thumbNail);
+
+
+
+       return view;
+    }
+}
+
+
+
