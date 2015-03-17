@@ -60,6 +60,7 @@
                 ></EditText>
             <!--<Button>-->
             <Button
+                android:id="@+id/btn_temp_again"
                 android:layout_width="100dp"
                 android:layout_height="50dp"
                 android:layout_weight="1"
@@ -80,7 +81,7 @@
             >
 
             <Button
-                android:id="@+id/btn_addnewitem"
+                android:id="@+id/btn_temp_addnewitem"
                 android:layout_width="100dp"
                 android:layout_height="50dp"
                 android:layout_alignParentBottom="true"
@@ -92,7 +93,7 @@
                 android:textSize="@dimen/medium_text_size" />
 
             <Button
-                android:id="@+id/btn_submitform"
+                android:id="@+id/btn_temp_submitform"
                 android:layout_width="100dp"
                 android:layout_height="50dp"
 

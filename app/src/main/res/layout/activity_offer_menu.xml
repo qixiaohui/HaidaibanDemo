@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    >
+
+        <TextView
+
+            android:layout_height="30dp"
+            android:textSize="@dimen/small_text_size"
+            android:layout_width="wrap_content"
+            android:layout_weight="1"
+            android:textColor="@color/black"
+            android:text="@string/tempoffer_menu_tx"
+            android:id="@+id/tx_tempoffermenu_des"
+            android:layout_marginTop="100dp"
+            android:layout_centerHorizontal="true">
+
+        </TextView>
+
+        <Button
+            android:id="@+id/btn_offermenu_new"
+            android:text="@string/tempoffer_menu_btn_creatnewoffer"
+            android:textSize="@dimen/medium_text_size"
+            android:textColor="@color/white"
+            android:gravity="center"
+            android:layout_height="50dp"
+            android:layout_width="200dp"
+            android:background="@color/green"
+            android:layout_weight="1"
+            android:layout_marginTop="81dp"
+            android:layout_below="@+id/tx_tempoffermenu_des"
+            android:layout_alignLeft="@+id/btn_offermenu_review"
+            android:layout_alignStart="@+id/btn_offermenu_review"></Button>
+
+        <Button
+            android:id="@+id/btn_offermenu_review"
+            android:text="@string/tempoffer_menu_btn_reviewoffer"
+            android:textSize="@dimen/medium_text_size"
+            android:textColor="@color/white"
+            android:gravity="center"
+            android:layout_height="50dp"
+            android:layout_width="200dp"
+            android:background="@color/skyblue"
+            android:layout_weight="1"
+            android:layout_below="@+id/btn_offermenu_new"
+            android:layout_alignLeft="@+id/btn_offermenu_back"
+            android:layout_alignStart="@+id/btn_offermenu_back"
+            android:layout_marginTop="35dp"></Button>
+        <Button
+            android:id="@+id/btn_offermenu_back"
+            android:textSize="@dimen/medium_text_size"
+            android:textColor="@color/white"
+            android:gravity="center"
+
+            android:text="@string/tempoffer_menu_btn_backmain"
+            android:layout_height="50dp"
+            android:layout_width="200dp"
+            android:background="@color/gray"
+            android:layout_weight="1"
+            android:layout_marginTop="46dp"
+            android:layout_below="@+id/btn_offermenu_review"
+            android:layout_centerHorizontal="true"></Button>
+
+
+
+
+</RelativeLayout>

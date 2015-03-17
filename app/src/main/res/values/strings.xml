@@ -64,8 +64,17 @@
     <string name="tempoffer_again">指定代办（选填）</string>
     <string name="tempoffer_again_hit">请在此处输入代办ID，可不填</string>
     <string name="tempoffer_again_btn">确定添加</string>
-    <string name="tempoffer_add_btn">确定添加</string>
-    <string name="tempoffer_submit_btn">确定添加</string>
+    <string name="tempoffer_add_btn">添加新商品</string>
+    <string name="tempoffer_submit_btn">提交询价单</string>
+
+
+
+    <!-- 待发询价菜单 -->
+    <string name="tempoffer_menu_btn_creatnewoffer">新建询价单</string>
+    <string name="tempoffer_menu_btn_reviewoffer">查看询价单</string>
+    <string name="tempoffer_menu_btn_backmain">返回首页</string>
+
+    <string name="tempoffer_menu_tx">您的询价单已提交，请耐心等待办理，您还可以</string>
 
     <string-array name="tabTitle">
         <item>最新</item>
