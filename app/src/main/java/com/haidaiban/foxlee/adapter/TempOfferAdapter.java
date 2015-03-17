@@ -65,15 +65,13 @@ public class TempOfferAdapter extends BaseAdapter{
 
         to_thumbNail  = (ImageView) view.findViewById(R.id.img_ls_tempoffer);
         to_Title = (TextView) view.findViewById(R.id.ls_title);
-        to_Number = (TextView) view.findViewById(R.id.rating);
-        to_Type = (TextView) view.findViewById(R.id.genre);
-        to_temp = (TextView) view.findViewById(R.id.ls_temp);
-
-        //set method
+        to_Number = (TextView) view.findViewById(R.id.ls_item_num);
+        to_Type = (TextView) view.findViewById(R.id.ls_item_type);
+        //to_temp = (TextView) view.findViewById(R.id.ls_temp);
 
         to_Title.setText(myOffer.getResults().get(0).getCounterquotes().get(position).getQuote().getTitle());
-        //to_Number.setText(myOffer.getResults().get(0).getCounterquotes().get(position).getQuote().getLastUpdate());
-        //to_Type.setText(myOffer.getResults().get(0).getCounterquotes().get(position).getQuote().getStyle());
+        to_Number.setText(myOffer.getResults().get(0).getCounterquotes().get(position).getQuote().getLastUpdate());
+        to_Type.setText(myOffer.getResults().get(0).getCounterquotes().get(position).getQuote().getStyle());
 
 
         // thumbnail image

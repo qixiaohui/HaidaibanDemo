@@ -6,7 +6,7 @@
     android:padding="8dp" >
 
     <!-- Thumbnail Image -->
-    <com.android.volley.toolbox.NetworkImageView
+    <ImageView
         android:id="@+id/img_ls_tempoffer"
         android:layout_width="80dp"
         android:layout_height="80dp"
@@ -31,6 +31,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/ls_title"
         android:layout_marginTop="1dip"
+        android:textColor="@color/category"
         android:layout_toRightOf="@+id/img_ls_tempoffer"
         android:textSize="@dimen/small_text_size" />
 
@@ -42,7 +43,7 @@
         android:layout_below="@id/ls_item_num"
         android:layout_marginTop="5dp"
         android:layout_toRightOf="@+id/img_ls_tempoffer"
-        android:textColor="@color/gray"
+        android:textColor="@color/category"
         android:textSize="@dimen/small_text_size" />
 
     <!-- Release Year -->
@@ -52,7 +53,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
-        android:textColor="@color/gray"
+        android:textColor="@color/category"
         android:textSize="@dimen/small_text_size" />
 
 </RelativeLayout>
