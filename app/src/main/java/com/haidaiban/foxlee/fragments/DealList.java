@@ -7,7 +7,10 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.ProgressBar;
+import android.widget.Spinner;
 
 import com.haidaiban.foxlee.adapter.ListViewAdapter;
 import com.haidaiban.foxlee.model.deal.Deal;

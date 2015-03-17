@@ -55,20 +55,35 @@ public class ListViewAdapter extends BaseAdapter {
         if (view == null) {
             view = inflater.inflate(R.layout.list_row, parent, false);
         }
-        title = (TextView) view.findViewById(R.id.title);
-        description = (TextView) view.findViewById(R.id.releaseYear);
-        category = (TextView) view.findViewById(R.id.genre);
-        rating = (TextView) view.findViewById(R.id.rating);
-        thumbNail = (ImageView) view.findViewById(R.id.thumbnail);
-        title.setText(deals.getResults().get(position).getTitle());
-        category.setText(deals.getResults().get(position).getBrand());
-        description.setText(deals.getResults().get(position).getStore());
+        ViewHolder viewHolder = null;
+        if(viewHolder == null) {
+            viewHolder = new ViewHolder();
+            viewHolder.title = (TextView) view.findViewById(R.id.title);
+            viewHolder.description = (TextView) view.findViewById(R.id.releaseYear);
+            viewHolder.category = (TextView) view.findViewById(R.id.genre);
+            viewHolder.rating = (TextView) view.findViewById(R.id.rating);
+            viewHolder.thumbNail = (ImageView) view.findViewById(R.id.thumbnail);
+            view.setTag(viewHolder);
+        }else{
+            viewHolder = (ViewHolder) view.getTag();
+        }
+        viewHolder.title.setText(deals.getResults().get(position).getTitle());
+        viewHolder.category.setText(deals.getResults().get(position).getBrand());
+        viewHolder.description.setText(deals.getResults().get(position).getStore());
         Picasso.with(context)
                 .load(Constants.getLOGIN_URL()+deals.getResults().get(position).getImage())
                 .resize(150, 150)
                 .centerCrop()
-                .into(thumbNail);
+                .into(viewHolder.thumbNail);
 
         return view;
+    }
+
+    public static class ViewHolder{
+        private TextView title;
+        private TextView description;
+        private TextView category;
+        private TextView rating;
+        private ImageView thumbNail;
     }
 }

@@ -9,6 +9,8 @@ import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
+
 import java.util.List;
 import java.util.Vector;
 
@@ -49,6 +51,7 @@ public class LimitedDealFragment extends Fragment {
         }
         tabPagerAdapter = new TabPagerAdapter(getActivity().getSupportFragmentManager(),fragments,categorys);
         viewPager.setAdapter(tabPagerAdapter);
+        viewPager.setOffscreenPageLimit(0);
         // Center the tabs in the layout
         slidingTabLayout.setDistributeEvenly(true);
         slidingTabLayout.setViewPager(viewPager);
