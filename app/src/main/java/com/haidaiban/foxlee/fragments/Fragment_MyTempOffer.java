@@ -14,6 +14,7 @@ import android.widget.ListView;
 
 import com.google.gson.Gson;
 
+import com.haidaiban.foxlee.activitys.Activity_PriceFill;
 import com.haidaiban.foxlee.activitys.OfferMenu_Activity;
 import com.haidaiban.foxlee.adapter.TempOfferAdapter;
 import com.haidaiban.foxlee.model.offer.Offer;
@@ -60,6 +61,8 @@ public class Fragment_MyTempOffer extends Fragment {
         btn_TempOffer_Add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), Activity_PriceFill.class);
+                startActivity(intent);
 
             }
         });
@@ -73,7 +76,7 @@ public class Fragment_MyTempOffer extends Fragment {
             }
         });
 
-        //OnClick add add again
+        //OnClick add add again 添加新商品
         btn_tempOffer_AddAgain.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

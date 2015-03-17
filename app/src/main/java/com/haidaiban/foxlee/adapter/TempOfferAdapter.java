@@ -25,11 +25,7 @@ public class TempOfferAdapter extends BaseAdapter{
     private Offer myOffer;
 
     //Ui
-    private ImageView to_thumbNail;
-    private TextView to_Title ;
-    private TextView to_Number;
-    private TextView to_Type ;
-    private TextView to_temp ;
+
 
 
     public TempOfferAdapter(Offer myOffer,Context context) {
@@ -58,20 +54,33 @@ public class TempOfferAdapter extends BaseAdapter{
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 
-        view = convertView;
-        if(view == null){
-            view = inflater.inflate(R.layout.lt_row_mytempoffer,parent,false);
+
+        if(convertView == null) {
+            convertView = inflater.inflate(R.layout.lt_row_mytempoffer, parent, false);
+
         }
 
-        to_thumbNail  = (ImageView) view.findViewById(R.id.img_ls_tempoffer);
-        to_Title = (TextView) view.findViewById(R.id.ls_title);
-        to_Number = (TextView) view.findViewById(R.id.ls_item_num);
-        to_Type = (TextView) view.findViewById(R.id.ls_item_type);
+      ViewHolder  holder = null;
+        if (holder == null){
+
+        holder = new ViewHolder();
+
+        holder.to_thumbNail  = (ImageView) convertView.findViewById(R.id.img_ls_tempoffer);
+        holder.to_Title = (TextView) convertView.findViewById(R.id.ls_title);
+        holder.to_Number = (TextView) convertView.findViewById(R.id.ls_item_num);
+        holder.to_Type = (TextView) convertView.findViewById(R.id.ls_item_type);
         //to_temp = (TextView) view.findViewById(R.id.ls_temp);
 
-        to_Title.setText(myOffer.getResults().get(0).getCounterquotes().get(position).getQuote().getTitle());
-        to_Number.setText(myOffer.getResults().get(0).getCounterquotes().get(position).getQuote().getLastUpdate());
-        to_Type.setText(myOffer.getResults().get(0).getCounterquotes().get(position).getQuote().getStyle());
+            convertView.setTag(holder);
+        }
+        else{
+
+            holder = (ViewHolder) convertView.getTag();
+
+        }
+        holder.to_Title.setText(myOffer.getResults().get(0).getCounterquotes().get(position).getQuote().getTitle());
+        holder.to_Number.setText(myOffer.getResults().get(0).getCounterquotes().get(position).getQuote().getLastUpdate());
+        holder.to_Type.setText(myOffer.getResults().get(0).getCounterquotes().get(position).getQuote().getStyle());
 
 
         // thumbnail image
@@ -79,11 +88,20 @@ public class TempOfferAdapter extends BaseAdapter{
                 .load(Constants.getLOGIN_URL()+myOffer.getResults().get(0).getCounterquotes().get(position).getQuote().getDeal().getImage())
                 .resize(150, 150)
                 .centerCrop()
-                .into(to_thumbNail);
+                .into(holder.to_thumbNail);
 
 
 
-       return view;
+       return convertView;
+    }
+
+    private static class ViewHolder {
+        private ImageView to_thumbNail;
+        private TextView to_Title ;
+        private TextView to_Number;
+        private TextView to_Type ;
+       // private TextView to_temp ;
+
     }
 }
 
