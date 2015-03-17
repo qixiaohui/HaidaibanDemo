@@ -42,7 +42,7 @@ public class TempOfferAdapter extends BaseAdapter{
 
     @Override
     public int getCount() {
-        return myOffer.getResults().size();
+        return myOffer.getResults().get(0).getCounterquotes().size();
     }
 
     @Override
