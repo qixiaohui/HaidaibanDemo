@@ -3,6 +3,7 @@
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
     android:background="@drawable/list_row_selector"
+
     android:padding="8dp" >
 
     <!-- Thumbnail Image -->
@@ -11,6 +12,7 @@
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:layout_alignParentLeft="true"
+        android:background="@color/gray"
         android:layout_marginRight="8dp" />
 
     <!-- Item Title -->
@@ -29,11 +31,11 @@
         android:id="@+id/ls_item_num"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/ls_title"
-        android:layout_marginTop="1dip"
         android:textColor="@color/category"
+        android:textSize="@dimen/micro_text_size"
+        android:layout_alignParentTop="true"
         android:layout_toRightOf="@+id/img_ls_tempoffer"
-        android:textSize="@dimen/small_text_size" />
+        android:layout_toEndOf="@+id/img_ls_tempoffer" />
 
     <!-- item type -->
     <TextView
@@ -44,16 +46,28 @@
         android:layout_marginTop="5dp"
         android:layout_toRightOf="@+id/img_ls_tempoffer"
         android:textColor="@color/category"
-        android:textSize="@dimen/small_text_size" />
+        android:textSize="@dimen/micro_text_size" />
 
-    <!-- Release Year -->
-    <TextView
-        android:id="@+id/ls_temp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:textColor="@color/category"
-        android:textSize="@dimen/small_text_size" />
+    <!-- image button  -->
+    <ImageView
+        android:id="@+id/btn_tempoffer_del"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:background="@color/gray"
+        android:layout_alignBottom="@+id/img_ls_tempoffer"
+        android:layout_alignRight="@+id/ls_item_type"
+        android:layout_alignEnd="@+id/ls_item_type" />
+
+    <ImageView
+        android:id="@+id/btn_tempoffer_edit"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:background="@color/gray"
+        android:layout_alignTop="@+id/btn_tempoffer_del"
+        android:layout_toLeftOf="@+id/btn_tempoffer_del"
+        android:layout_toStartOf="@+id/btn_tempoffer_del"
+        android:layout_marginRight="20dp"
+        android:layout_marginEnd="20dp" />
+
 
 </RelativeLayout>
