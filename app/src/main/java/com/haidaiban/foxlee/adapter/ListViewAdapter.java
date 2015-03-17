@@ -65,7 +65,7 @@ public class ListViewAdapter extends BaseAdapter {
         description.setText(deals.getResults().get(position).getStore());
         Picasso.with(context)
                 .load(Constants.getLOGIN_URL()+deals.getResults().get(position).getImage())
-                .resize(50, 50)
+                .resize(150, 150)
                 .centerCrop()
                 .into(thumbNail);
 

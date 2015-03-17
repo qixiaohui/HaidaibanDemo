@@ -77,7 +77,7 @@ public class TempOfferAdapter extends BaseAdapter{
         // thumbnail image
         Picasso.with(context)
                 .load(Constants.getLOGIN_URL()+myOffer.getResults().get(0).getCounterquotes().get(position).getQuote().getDeal().getImage())
-                .resize(50, 50)
+                .resize(150, 150)
                 .centerCrop()
                 .into(to_thumbNail);
 
