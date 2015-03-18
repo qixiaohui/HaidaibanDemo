@@ -57,7 +57,7 @@ public class TempOfferAdapter extends BaseAdapter{
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, View convertView, ViewGroup parent) {
 
 
         if(convertView == null) {
@@ -97,8 +97,9 @@ public class TempOfferAdapter extends BaseAdapter{
             @Override
             public void onClick(View v) {
                 Log.d(TAG, "=====  del =========");
-
-              //  Toast.makeText("sss");
+                quotes.getResults().remove(position);
+                notifyDataSetChanged();
+                //  Toast.makeText("sss");
                 Toast.makeText(context, "this is my Toast message!!! =)",
                         Toast.LENGTH_LONG).show();
             }
@@ -111,7 +112,6 @@ public class TempOfferAdapter extends BaseAdapter{
                 .resize(150, 150)
                 .centerCrop()
                 .into(holder.to_thumbNail);
-
 
 
        return convertView;
