@@ -18,6 +18,7 @@ import com.haidaiban.foxlee.activitys.Activity_PriceFill;
 import com.haidaiban.foxlee.activitys.OfferMenu_Activity;
 import com.haidaiban.foxlee.adapter.TempOfferAdapter;
 import com.haidaiban.foxlee.model.offer.Offer;
+import com.haidaiban.foxlee.model.quotelist.QuoteList;
 import com.haidaiban.foxlee.webMethod.Webmethod;
 
 import org.json.JSONException;
@@ -32,7 +33,7 @@ public class Fragment_MyTempOffer extends Fragment {
     private Webmethod webmethod;
     private String offer;
     private Gson gson;
-    private Offer offers;
+    private QuoteList quotes;
 
     //ui
 
@@ -109,11 +110,8 @@ public class Fragment_MyTempOffer extends Fragment {
             webmethod = new Webmethod(getActivity().getApplicationContext());
             try {
                 //get json files
-                offer = webmethod.get();
+                quotes = webmethod.getQuotes();
                 //转化对应offer java class
-                offers = gson.fromJson(offer,Offer.class);
-                System.out.println("here");
-                System.out.println(offers.getResults().get(0).getCounterquotes().get(0).getCoupon());
 
 
 
@@ -134,7 +132,7 @@ public class Fragment_MyTempOffer extends Fragment {
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
             //TO-Do  update listview in here ;
-            myTemp_List.setAdapter(new TempOfferAdapter(offers,getActivity().getApplicationContext()));
+            myTemp_List.setAdapter(new TempOfferAdapter(quotes,getActivity().getApplicationContext()));
 
 
 

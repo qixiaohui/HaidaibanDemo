@@ -11,6 +11,7 @@ import android.widget.TextView;
 import com.haidaiban.foxlee.config.Constants;
 import com.haidaiban.foxlee.fragments.R;
 import com.haidaiban.foxlee.model.offer.Offer;
+import com.haidaiban.foxlee.model.quotelist.QuoteList;
 import com.squareup.picasso.Picasso;
 
 /**
@@ -22,15 +23,15 @@ public class TempOfferAdapter extends BaseAdapter{
     private LayoutInflater inflater;
     private Context context ;
     private View view;
-    private Offer myOffer;
+    private QuoteList quotes;
 
     //Ui
 
 
 
-    public TempOfferAdapter(Offer myOffer,Context context) {
+    public TempOfferAdapter(QuoteList quotes,Context context) {
         this.context = context;
-        this.myOffer = myOffer;
+        this.quotes = quotes;
         this.inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
     }
@@ -38,7 +39,7 @@ public class TempOfferAdapter extends BaseAdapter{
 
     @Override
     public int getCount() {
-        return myOffer.getResults().get(0).getCounterquotes().size();
+        return quotes.getResults().size();
     }
 
     @Override
@@ -78,14 +79,14 @@ public class TempOfferAdapter extends BaseAdapter{
             holder = (ViewHolder) convertView.getTag();
 
         }
-        holder.to_Title.setText(myOffer.getResults().get(0).getCounterquotes().get(position).getQuote().getTitle());
-        holder.to_Number.setText(myOffer.getResults().get(0).getCounterquotes().get(position).getQuote().getLastUpdate());
-        holder.to_Type.setText(myOffer.getResults().get(0).getCounterquotes().get(position).getQuote().getStyle());
+        holder.to_Title.setText(quotes.getResults().get(0).getTitle());
+        holder.to_Number.setText(quotes.getResults().get(0).getQuantity().toString());
+        holder.to_Type.setText(quotes.getResults().get(0).getStyle());
 
 
         // thumbnail image
         Picasso.with(context)
-                .load(Constants.getLOGIN_URL()+myOffer.getResults().get(0).getCounterquotes().get(position).getQuote().getDeal().getImage())
+                .load(Constants.getLOGIN_URL()+(String)quotes.getResults().get(0).getImage0())
                 .resize(150, 150)
                 .centerCrop()
                 .into(holder.to_thumbNail);

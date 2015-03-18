@@ -6,8 +6,10 @@ import android.os.Looper;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
+import com.haidaiban.foxlee.config.Constants;
 import com.haidaiban.foxlee.model.deal.Deal;
 import com.haidaiban.foxlee.model.offer.Offer;
+import com.haidaiban.foxlee.model.quotelist.QuoteList;
 import com.securepreferences.SecurePreferences;
 
 import org.apache.http.HttpEntity;
@@ -81,11 +83,22 @@ public class Webmethod {
     public static Deal getDeals()throws IOException,JSONException{
         token = getToken();
         httpGet = new HttpGet(url+"api/deals");
-        httpGet.setHeader("Authorization","Token"+token);
+        httpGet.setHeader("Authorization","Token "+token);
         httpResponse = httpClient.execute(httpGet);
         entity = httpResponse.getEntity();
         response = EntityUtils.toString(entity,"UTF-8");
         return new Gson().fromJson(response,Deal.class);
+    }
+
+    public static QuoteList getQuotes()throws IOException,JSONException{
+        token = getToken();
+        httpGet = new HttpGet(url+"api/quotes/?type=cart");
+        httpGet.setHeader("Authorization","Token "+token);
+        httpResponse = httpClient.execute(httpGet);
+        entity = httpResponse.getEntity();
+        response = EntityUtils.toString(entity,"UTF-8");
+        System.out.println(response);
+        return new Gson().fromJson(response,QuoteList.class);
     }
 
     /**
