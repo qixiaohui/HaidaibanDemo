@@ -1,12 +1,14 @@
 package com.haidaiban.foxlee.adapter;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.haidaiban.foxlee.config.Constants;
 import com.haidaiban.foxlee.fragments.R;
@@ -19,6 +21,8 @@ import com.squareup.picasso.Picasso;
  * */
 
 public class TempOfferAdapter extends BaseAdapter{
+
+    public  static final String TAG = TempOfferAdapter.class.getSimpleName();
 
     private LayoutInflater inflater;
     private Context context ;
@@ -71,7 +75,8 @@ public class TempOfferAdapter extends BaseAdapter{
         holder.to_Number = (TextView) convertView.findViewById(R.id.ls_item_num);
         holder.to_Type = (TextView) convertView.findViewById(R.id.ls_item_type);
         //to_temp = (TextView) view.findViewById(R.id.ls_temp);
-
+        holder.to_del= (ImageView) convertView.findViewById(R.id.btn_tempoffer_del);
+        holder.to_edit= (ImageView) convertView.findViewById(R.id.btn_tempoffer_edit);
             convertView.setTag(holder);
         }
         else{
@@ -82,6 +87,22 @@ public class TempOfferAdapter extends BaseAdapter{
         holder.to_Title.setText(quotes.getResults().get(0).getTitle());
         holder.to_Number.setText(quotes.getResults().get(0).getQuantity().toString());
         holder.to_Type.setText(quotes.getResults().get(0).getStyle());
+
+        /**
+         *  TO-DO click events
+         *    1.  del event
+         *    2. edit click event
+         * */
+        holder.to_del.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d(TAG, "=====  del =========");
+
+              //  Toast.makeText("sss");
+                Toast.makeText(context, "this is my Toast message!!! =)",
+                        Toast.LENGTH_LONG).show();
+            }
+        });
 
 
         // thumbnail image
@@ -102,6 +123,8 @@ public class TempOfferAdapter extends BaseAdapter{
         private TextView to_Number;
         private TextView to_Type ;
        // private TextView to_temp ;
+        private ImageView to_del;
+        private ImageView to_edit;
 
     }
 }
