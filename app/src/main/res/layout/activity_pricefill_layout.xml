@@ -3,56 +3,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/android_layout_bg" >
-<!--Title bar -->
-    <RelativeLayout
-        android:id="@+id/personal_top_layout"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_alignParentTop="true"
-        android:background="@color/white" >
-        <ImageButton
-            android:id="@+id/btn_back_titlebar"
-            android:layout_height="50dp"
-            android:layout_width="50dp"
-            android:src="@drawable/background_corners"
-
-            >
-
-        </ImageButton>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-
-            android:text="@string/goodstitle_pricefill"
-            android:textColor="@color/black"
-            android:textSize="@dimen/medium_text_size"
-            android:layout_centerVertical="true"
-            android:layout_centerHorizontal="true"
-             />
-
-        <ImageButton
-            android:id="@+id/btn_title_photo"
-            android:layout_height="50dp"
-            android:layout_width="50dp"
-            android:src="@drawable/background_corners"
-
-            android:layout_alignParentTop="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true"/>
-
-        <ImageView
-            android:id="@+id/logo"
-            android:layout_width="90dp"
-            android:layout_height="90dp"
-            android:layout_gravity="center_horizontal"
-            android:background="@drawable/login_user_icon_bg"
-            android:src="@drawable/login_user_default_icon"
-            android:layout_centerVertical="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true"
-            android:layout_alignLeft="@+id/btn_title_photo"
-            android:layout_alignStart="@+id/btn_title_photo" />
-    </RelativeLayout>
 
 
 
@@ -375,15 +325,23 @@
             android:textColor="@color/black"
             />
 
-        <TextView
-            android:layout_gravity="center_vertical"
-            android:layout_width="wrap_content"
-            android:layout_marginTop="5dp"
-            android:layout_height="30dp"
-            android:hint="@string/goodstaxhit"
-            android:textColorHint="@color/gray"
-            android:textSize="10dp"
-            android:layout_weight="1" />
+        <RadioButton
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:text="@string/goodsyes"
+            android:id="@+id/radioButton_tax_yes" />
+
+        <RadioButton
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:text="@string/goodsno"
+            android:id="@+id/radioButton_tax_no" />
+
+        <RadioButton
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:text="@string/goodsanyway"
+            android:id="@+id/radioButton_tax_anyway" />
 
 
     </LinearLayout>
@@ -413,15 +371,23 @@
             android:textColor="@color/black"
             />
 
-        <EditText
-            android:layout_gravity="center_vertical"
-            android:layout_width="wrap_content"
-            android:layout_marginTop="5dp"
-            android:layout_height="30dp"
-            android:hint="@string/goodsshippinghit"
-            android:textColorHint="@color/gray"
-            android:textSize="13dp"
-            android:layout_weight="1" />
+        <RadioButton
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:text="@string/goodsyes"
+            android:id="@+id/radioButton_shipping_yes" />
+
+        <RadioButton
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:text="@string/goodsno"
+            android:id="@+id/radioButton_shipping_no" />
+
+        <RadioButton
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:text="@string/goodsanyway"
+            android:id="@+id/radioButton_shipping_anyway" />
 
 
     </LinearLayout>
@@ -433,7 +399,7 @@
             android:background="@color/gray"
 
             />  <LinearLayout
-        android:layout_height="40dp"
+        android:layout_height="112dp"
         android:layout_width="match_parent"
         android:orientation="horizontal"
         android:background="@color/white"
