@@ -43,7 +43,7 @@
     <string name="goodsphoto">图片</string>
     <string name="goodsphotohit">点击添加图片，最多可以添加三张</string>
     <string name="goodsmoreinfo">附加信息</string>
-    <string name="goodsmoreinfohit">（选填，详尽信息有助于代办快速接单准确报价）</string>
+    <string name="goodsmoreinfohit">选填，详尽信息有助于代办快速接单准确报价</string>
     <string name="goodslink">连接</string>
     <string name="goodslinkhit">http://</string>
     <string name="goodsofficialprice">官方价格</string>
