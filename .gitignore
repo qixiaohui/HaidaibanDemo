@@ -4,6 +4,8 @@
 .DS_Store
 /build
 
+app.iml
+
 #built application files
 *.apk
 *.ap_
