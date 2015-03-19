@@ -37,5 +37,6 @@ dependencies {
     compile 'javax.annotation:javax.annotation-api:1.2-b01'
     compile 'com.google.code.gson:gson:1.7.2'
     compile 'com.mcxiaoke.volley:library:1.0.+'
+    compile 'org.apache.httpcomponents:httpclient-android:4.3.5.1'
 
 }

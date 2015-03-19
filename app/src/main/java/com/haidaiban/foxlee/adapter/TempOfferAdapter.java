@@ -1,6 +1,7 @@
 package com.haidaiban.foxlee.adapter;
 
 import android.content.Context;
+import android.os.AsyncTask;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,7 +15,10 @@ import com.haidaiban.foxlee.config.Constants;
 import com.haidaiban.foxlee.fragments.R;
 import com.haidaiban.foxlee.model.offer.Offer;
 import com.haidaiban.foxlee.model.quotelist.QuoteList;
+import com.haidaiban.foxlee.webMethod.Webmethod;
 import com.squareup.picasso.Picasso;
+
+import java.io.IOException;
 
 /**
  * Created by foxlee on 3/15/15
@@ -97,6 +101,7 @@ public class TempOfferAdapter extends BaseAdapter{
             @Override
             public void onClick(View v) {
                 Log.d(TAG, "=====  del =========");
+                (new deleteQuote()).execute(quotes.getResults().get(position).getUid().toString());
                 quotes.getResults().remove(position);
                 notifyDataSetChanged();
                 //  Toast.makeText("sss");
@@ -115,6 +120,28 @@ public class TempOfferAdapter extends BaseAdapter{
 
 
        return convertView;
+    }
+    public class deleteQuote extends AsyncTask<String, String, String> {
+        @Override
+        protected String doInBackground(String... params) {
+            Webmethod webmethod = new Webmethod(context);
+            try {
+                webmethod.deleteQuote(params[0]);
+            }catch (IOException e){
+
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+        }
     }
 
     private static class ViewHolder {
