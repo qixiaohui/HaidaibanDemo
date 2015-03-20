@@ -90,12 +90,18 @@ public class Activity_PriceFill extends Activity {
 
         if(intent.getIntExtra("flag",0)==1){
             try {
-                System.out.println(intent.getStringExtra("data"));
                 byte[] data = Base64.decode(intent.getStringExtra("data"),Base64.NO_WRAP);
                 ObjectInputStream ois = new ObjectInputStream(
                         new ByteArrayInputStream(data));
                 quote = (Result) ois.readObject();
                 ois.close();
+
+                et_item_name.setText(quote.getTitle());
+                et_item_number.setText(quote.getQuantity().toString());
+                et_item_moreInfo.setText(quote.getRemark());
+                et_item_link.setText(quote.getWebLink());
+                et_item_official_price.setText(quote.getPrice()==null?"0":quote.getPrice().toString());
+                et_item_coupon.setText(quote.getCoupon());
             }catch (IOException e){
 
             }catch (ClassNotFoundException e){
