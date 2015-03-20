@@ -1,7 +1,9 @@
 package com.haidaiban.foxlee.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.AsyncTask;
+import android.util.Base64;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,6 +13,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.haidaiban.foxlee.activitys.Activity_PriceFill;
 import com.haidaiban.foxlee.config.Constants;
 import com.haidaiban.foxlee.fragments.R;
 import com.haidaiban.foxlee.model.offer.Offer;
@@ -18,7 +21,9 @@ import com.haidaiban.foxlee.model.quotelist.QuoteList;
 import com.haidaiban.foxlee.webMethod.Webmethod;
 import com.squareup.picasso.Picasso;
 
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.io.ObjectOutputStream;
 
 /**
  * Created by foxlee on 3/15/15
@@ -32,6 +37,7 @@ public class TempOfferAdapter extends BaseAdapter{
     private Context context ;
     private View view;
     private QuoteList quotes;
+    private Intent intent;
 
     //Ui
 
@@ -107,6 +113,25 @@ public class TempOfferAdapter extends BaseAdapter{
                 //  Toast.makeText("sss");
                 Toast.makeText(context, "this is my Toast message!!! =)",
                         Toast.LENGTH_LONG).show();
+            }
+        });
+
+        holder.to_edit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                intent = new Intent(context, Activity_PriceFill.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                intent.putExtra("flag",1);
+                try {
+                    ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                    ObjectOutputStream oos = new ObjectOutputStream(baos);
+                    oos.writeObject(quotes.getResults().get(position));
+                    oos.close();
+                    intent.putExtra("data",new String(Base64.encode(baos.toByteArray(),Base64.NO_WRAP)));
+                    context.startActivity(intent);
+                }catch (IOException e){
+
+                }
             }
         });
 

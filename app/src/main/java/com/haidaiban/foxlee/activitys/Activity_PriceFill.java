@@ -1,7 +1,9 @@
 package com.haidaiban.foxlee.activitys;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Base64;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -9,6 +11,11 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
 import com.haidaiban.foxlee.fragments.R;
+import com.haidaiban.foxlee.model.quotelist.Result;
+
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
 
 
 /**
@@ -65,8 +72,8 @@ public class Activity_PriceFill extends Activity {
     String shipping_result = str_Anyway;
     String tax_result = str_Anyway;
 
-
-
+    Intent intent;
+    Result quote;
 
 
     public Activity_PriceFill() {
@@ -78,6 +85,23 @@ public class Activity_PriceFill extends Activity {
         setContentView(R.layout.activity_pricefill_layout);
         initView();
         getInputFromEdit();
+
+        intent = getIntent();
+
+        if(intent.getIntExtra("flag",0)==1){
+            try {
+                System.out.println(intent.getStringExtra("data"));
+                byte[] data = Base64.decode(intent.getStringExtra("data"),Base64.NO_WRAP);
+                ObjectInputStream ois = new ObjectInputStream(
+                        new ByteArrayInputStream(data));
+                quote = (Result) ois.readObject();
+                ois.close();
+            }catch (IOException e){
+
+            }catch (ClassNotFoundException e){
+
+            }
+        }
 
 
         tax_result = getTaxRadioBtn();
