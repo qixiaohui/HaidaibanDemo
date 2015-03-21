@@ -10,6 +10,7 @@ import com.haidaiban.foxlee.config.Constants;
 import com.haidaiban.foxlee.model.deal.Deal;
 import com.haidaiban.foxlee.model.offer.Offer;
 import com.haidaiban.foxlee.model.quotelist.QuoteList;
+import com.haidaiban.foxlee.model.quotelist.Result;
 import com.securepreferences.SecurePreferences;
 
 import org.apache.http.HttpEntity;
@@ -64,6 +65,7 @@ public class Webmethod {
     private static UsernamePasswordCredentials usernamePasswordCredentials;
     private static HttpClient basicAuthClient;
     private static int status;
+    private static String [] credentials;
 
     public Webmethod(Context context) {
         this.context = context;
@@ -73,6 +75,12 @@ public class Webmethod {
 
     public static String getToken(){
         return sharedPreferences.getString("token",null);
+    }
+
+    public static void getCredential(){
+        credentials = new String [2];
+        credentials[0] = sharedPreferences.getString("userName",null);
+        credentials[1] = sharedPreferences.getString("password",null);
     }
 
     public static String get()throws IOException,JSONException{
@@ -136,7 +144,8 @@ public class Webmethod {
 
     public static void deleteQuote(String uid) throws IOException{
         credentialsProvider = new BasicCredentialsProvider();
-        usernamePasswordCredentials = new UsernamePasswordCredentials("foxlee","liji1025");
+        getCredential();
+        usernamePasswordCredentials = new UsernamePasswordCredentials(credentials[0],credentials[1]);
         credentialsProvider.setCredentials(AuthScope.ANY, usernamePasswordCredentials);
         basicAuthClient = HttpClientBuilder.create().setDefaultCredentialsProvider(credentialsProvider).build();
         pair = new ArrayList<NameValuePair>();
@@ -187,6 +196,38 @@ public class Webmethod {
         }
         System.out.println("**********"+userName+"**************"+password);
         return httpResponse.getStatusLine().getStatusCode();
+    }
+
+    public void updateQuote(Result result) throws IOException{
+        token = getToken();
+        credentialsProvider = new BasicCredentialsProvider();
+        getCredential();
+        usernamePasswordCredentials = new UsernamePasswordCredentials(credentials[0],credentials[1]);
+        credentialsProvider.setCredentials(AuthScope.ANY, usernamePasswordCredentials);
+        basicAuthClient = HttpClientBuilder.create().setDefaultCredentialsProvider(credentialsProvider).build();
+        pair = new ArrayList<NameValuePair>();
+        pair.add(new BasicNameValuePair("_method","PUT"));
+        pair.add(new BasicNameValuePair("deal",result.getDeal()==null?"0":result.getDeal().toString()));
+        pair.add(new BasicNameValuePair("title",result.getTitle()));
+        pair.add(new BasicNameValuePair("web_link",result.getWebLink()));
+        pair.add(new BasicNameValuePair("price",result.getPrice().toString()));
+        pair.add(new BasicNameValuePair("coupon",result.getCoupon()));
+        pair.add(new BasicNameValuePair("style",result.getStyle()));
+        pair.add(new BasicNameValuePair("quantity",result.getQuantity().toString()));
+        pair.add(new BasicNameValuePair("shipping",result.getShipping()==null?"0":result.getShipping().toString()));
+        pair.add(new BasicNameValuePair("weight",result.getWeight()==null?"0":result.getWeight().toString()));
+        pair.add(new BasicNameValuePair("direct_ship",result.getDirectShip()));
+        pair.add(new BasicNameValuePair("remark",result.getRemark()));
+        pair.add(new BasicNameValuePair("image0",result.getImage0()==null?"":result.getImage0().toString()));
+        pair.add(new BasicNameValuePair("is_favorite",result.getIsFavorite()?"True":"False"));
+        pair.add(new BasicNameValuePair("is_draft","True"));
+
+        httpPost = new HttpPost(url+"api/quotes/"+result.getUid());
+        httpPost.setHeader("Authorization","Token "+token);
+        httpPost.setEntity(new UrlEncodedFormEntity(pair));
+        httpResponse = basicAuthClient.execute(httpPost);
+        status = httpResponse.getStatusLine().getStatusCode();
+        System.out.println(status);
     }
 
 }

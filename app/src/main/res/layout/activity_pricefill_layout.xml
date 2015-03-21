@@ -1,530 +1,532 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/android_layout_bg">
+    android:layout_height="match_parent">
 
-
-    <!-- 下面的部分-->
-    <LinearLayout
-        android:id="@+id/layout_out_pricefill"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_below="@+id/personal_top_layout"
-        android:orientation="vertical">
+        android:background="@drawable/android_layout_bg">
 
+
+        <!-- 下面的部分-->
         <LinearLayout
-
+            android:id="@+id/layout_out_pricefill"
             android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:background="@color/skyblue"
+            android:layout_height="match_parent"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/personal_top_layout"
             android:orientation="vertical">
 
+            <LinearLayout
 
-            <TextView
-
-                android:id="@+id/textView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="10dp"
-
-                android:gravity="center"
-                android:text="@string/tx_total_ten"
-                android:textSize="@dimen/medium_text_size" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:background="@color/white"
-            android:orientation="horizontal"
-
-            >
-
-
-            <TextView
-                android:layout_width="100dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_marginLeft="20dp"
-                android:text="@string/goodsname"
-                android:textColor="@color/black"
-                android:textSize="@dimen/medium_text_size" />
-
-            <EditText
-
-                android:id="@+id/et_ap_name"
-                android:layout_width="wrap_content"
-                android:layout_height="30dp"
-                android:layout_gravity="center_vertical"
-                android:layout_marginTop="5dp"
-                android:layout_weight="1"
-                android:background="@color/white"
-                android:hint="@string/goodsnamehit"
-                android:textColorHint="@color/gray"
-                android:textSize="12sp" />
-
-
-        </LinearLayout>
-        <!--分割线-->
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_gravity="center_vertical"
-            android:background="@color/gray"
-
-            />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:background="@color/white"
-            android:orientation="horizontal"
-
-            >
-
-
-            <TextView
-                android:layout_width="100dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_marginLeft="20dp"
-                android:text="@string/goodsnumber"
-                android:textColor="@color/black"
-                android:textSize="@dimen/medium_text_size" />
-
-            <EditText
-                android:id="@+id/et_ap_number"
-                android:layout_width="wrap_content"
-                android:layout_height="30dp"
-                android:layout_gravity="center_vertical"
-                android:layout_marginTop="5dp"
-                android:layout_weight="1"
-                android:hint="@string/goodsnumberhit"
-                android:textColorHint="@color/gray"
-                android:textSize="12sp" />
-
-
-        </LinearLayout>
-        <!--分割线-->
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_gravity="center_vertical"
-            android:background="@color/gray"
-
-            />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:background="@color/white"
-            android:orientation="horizontal"
-
-            >
-
-
-            <TextView
-                android:layout_width="100dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_marginLeft="20dp"
-                android:text="@string/goodsphoto"
-                android:textColor="@color/black"
-                android:textSize="@dimen/medium_text_size" />
-
-            <EditText
-                android:id="@+id/et_ap_photos"
-                android:layout_width="wrap_content"
-                android:layout_height="30dp"
-                android:layout_gravity="center_vertical"
-                android:layout_marginTop="5dp"
-                android:layout_weight="1"
-                android:hint="@string/goodsphotohit"
-                android:textColorHint="@color/gray"
-                android:textSize="12sp" />
-
-
-        </LinearLayout>
-        <!--分割线-->
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_gravity="center_vertical"
-            android:background="@color/gray"
-
-            />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:background="@color/white"
-            android:orientation="horizontal"
-
-            >
-
-
-            <TextView
-                android:layout_width="100dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_marginLeft="20dp"
-                android:text="@string/goodsmoreinfo"
-                android:textColor="@color/black"
-                android:textSize="@dimen/medium_text_size" />
-
-            <EditText
-                android:id="@+id/et_ap_moreinfo"
-                android:layout_width="wrap_content"
-                android:layout_height="30dp"
-                android:layout_gravity="center_vertical"
-                android:layout_marginTop="1dp"
-                android:layout_weight="1"
-                android:hint="@string/goodsmoreinfohit"
-                android:textColorHint="@color/gray"
-                android:textSize="12sp" />
-
-
-        </LinearLayout>
-        <!--分割线-->
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_gravity="center_vertical"
-            android:background="@color/gray"
-
-            />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:background="@color/white"
-            android:orientation="horizontal"
-
-            >
-
-
-            <TextView
-                android:layout_width="100dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_marginLeft="20dp"
-                android:text="@string/goodslink"
-                android:textColor="@color/black"
-                android:textSize="@dimen/medium_text_size" />
-
-            <EditText
-                android:id="@+id/et_ap_link"
-                android:layout_width="wrap_content"
-                android:layout_height="30dp"
-                android:layout_gravity="center_vertical"
-                android:layout_marginTop="5dp"
-                android:layout_weight="1"
-                android:hint="@string/goodslinkhit"
-                android:textColorHint="@color/gray"
-                android:textSize="12sp" />
-
-
-        </LinearLayout>
-        <!--分割线-->
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_gravity="center_vertical"
-            android:background="@color/gray"
-
-            />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:background="@color/white"
-            android:orientation="horizontal"
-
-            >
-
-
-            <TextView
-                android:layout_width="100dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_marginLeft="20dp"
-                android:text="@string/goodsofficialprice"
-                android:textColor="@color/black"
-                android:textSize="@dimen/medium_text_size" />
-
-            <EditText
-                android:id="@+id/et_ap_ofprice"
-                android:layout_width="wrap_content"
-                android:layout_height="30dp"
-                android:layout_gravity="center_vertical"
-                android:layout_marginTop="5dp"
-                android:layout_weight="1"
-                android:hint="@string/goodsofficialpricehit"
-                android:textColorHint="@color/gray"
-                android:textSize="12dp" />
-
-
-        </LinearLayout>
-        <!--分割线-->
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_gravity="center_vertical"
-            android:background="@color/gray"
-
-            />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:background="@color/white"
-            android:orientation="horizontal"
-
-            >
-
-
-            <TextView
-                android:layout_width="100dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_marginLeft="20dp"
-                android:text="@string/goodscouponcode"
-                android:textColor="@color/black"
-                android:textSize="@dimen/medium_text_size" />
-
-            <EditText
-                android:id="@+id/et_ap_coupon"
-                android:layout_width="wrap_content"
-                android:layout_height="30dp"
-                android:layout_gravity="center_vertical"
-                android:layout_marginTop="5dp"
-                android:layout_weight="1"
-                android:textColorHint="@color/gray"
-                android:textSize="@dimen/medium_text_size" />
-
-
-        </LinearLayout>
-        <!--分割线-->
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_gravity="center_vertical"
-            android:background="@color/gray"
-
-            />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:background="@color/white"
-            android:orientation="horizontal"
-
-            >
-
-
-            <TextView
-                android:layout_width="100dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_marginLeft="20dp"
-                android:text="@string/goodstax"
-                android:textColor="@color/black"
-                android:textSize="@dimen/medium_text_size"
-                />
-            <RadioGroup
-                android:id="@+id/radiogrouptax"
-                android:layout_width="200dp"
-                android:orientation="horizontal"
-                android:layout_height="match_parent" >
-
-            <RadioButton
-                android:id="@+id/radioButton_tax_yes"
-                android:layout_width="50dp"
-                android:layout_height="match_parent"
-                android:text="@string/goodsyes"
-                android:textSize="12sp"
-                android:gravity="center"
-                />
-
-            <RadioButton
-                android:id="@+id/radioButton_tax_no"
-                android:layout_width="50dp"
-                android:layout_height="match_parent"
-                android:text="@string/goodsno"
-                android:textSize="12sp"
-                android:gravity="center"
-                />
-
-            <RadioButton
-                android:id="@+id/radioButton_tax_anyway"
-                android:layout_width="80dp"
-                android:layout_height="match_parent"
-                android:text="@string/goodsanyway"
-                android:textSize="12sp"
-                android:gravity="center"
-                android:checked="true"
-                />
-
-            </RadioGroup>
-
-
-        </LinearLayout>
-        <!--分割线-->
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_gravity="center_vertical"
-            android:background="@color/gray"
-
-            />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:background="@color/white"
-            android:orientation="horizontal"
-
-            >
-
-
-            <TextView
-                android:layout_width="100dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_marginLeft="20dp"
-                android:text="@string/goodsshipping"
-                android:textColor="@color/black"
-                android:textSize="@dimen/medium_text_size" />
-            <RadioGroup
-                android:id="@+id/radiogroupShipping"
-                android:layout_width="200dp"
-                android:orientation="horizontal"
-                android:layout_height="match_parent" >
-            <RadioButton
-                android:id="@+id/radioButton_shipping_yes"
-                android:layout_width="50dp"
-                android:layout_height="match_parent"
-                android:text="@string/goodsyes"
-                android:gravity="center"
-                android:textSize="12sp" />
-
-            <RadioButton
-                android:id="@+id/radioButton_shipping_no"
-                android:layout_width="50dp"
-                android:layout_height="match_parent"
-                android:text="@string/goodsno"
-                android:textSize="12sp"
-                android:gravity="center"
-                />
-
-            <RadioButton
-                android:id="@+id/radioButton_shipping_anyway"
-                android:layout_width="80dp"
-                android:layout_height="match_parent"
-                android:text="@string/goodsanyway"
-                android:textSize="12sp"
-                android:gravity="center"
-                android:checked="true"
-                />
-            </RadioGroup>
-
-
-        </LinearLayout>
-        <!--分割线-->
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_gravity="center_vertical"
-            android:background="@color/gray"
-
-            />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="111dp"
-            android:background="@color/white"
-            android:orientation="horizontal"
-
-            >
-
-
-            <TextView
-                android:layout_width="100dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_marginLeft="20dp"
-                android:text="@string/goodsrecomment"
-                android:textColor="@color/black"
-                android:textSize="@dimen/medium_text_size" />
-
-            <EditText
-                android:id="@+id/et_ap_more"
-                android:layout_width="wrap_content"
-                android:layout_height="30dp"
-                android:layout_gravity="center_vertical"
-                android:layout_marginTop="5dp"
-                android:layout_weight="1"
-                android:hint="@string/goodsnamehit"
-                android:textColorHint="@color/gray"
-                android:textSize="@dimen/medium_text_size" />
-
-
-        </LinearLayout>
-        <!--分割线-->
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_gravity="center_vertical"
-            android:background="@color/gray"
-
-            />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:background="@color/white"
-            android:orientation="horizontal"
-
-            >
-
-
-            <Button
-                android:id="@+id/btn_ap_addnewitem"
-                android:layout_width="150dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
                 android:background="@color/skyblue"
-                android:gravity="center"
-                android:text="@string/goodsbtnaddmore"
-                android:textColor="@color/white"
-                android:textSize="@dimen/medium_text_size" />
+                android:orientation="vertical">
 
-            <Button
-                android:id="@+id/btn_ap_perview"
-                android:layout_width="150dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="@color/greenyellow"
-                android:gravity="center"
-                android:text="@string/goodsbtnpersee"
-                android:textColor="@color/white"
-                android:textSize="@dimen/medium_text_size" />
+
+                <TextView
+
+                    android:id="@+id/textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="10dp"
+
+                    android:gravity="center"
+                    android:text="@string/tx_total_ten"
+                    android:textSize="@dimen/medium_text_size" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="@color/white"
+                android:orientation="horizontal"
+
+                >
+
+
+                <TextView
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="20dp"
+                    android:text="@string/goodsname"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/medium_text_size" />
+
+                <EditText
+
+                    android:id="@+id/et_ap_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginTop="5dp"
+                    android:layout_weight="1"
+                    android:background="@color/white"
+                    android:hint="@string/goodsnamehit"
+                    android:textColorHint="@color/gray"
+                    android:textSize="12sp" />
+
+
+            </LinearLayout>
+            <!--分割线-->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_gravity="center_vertical"
+                android:background="@color/gray"
+
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="@color/white"
+                android:orientation="horizontal"
+
+                >
+
+
+                <TextView
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="20dp"
+                    android:text="@string/goodsnumber"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/medium_text_size" />
+
+                <EditText
+                    android:id="@+id/et_ap_number"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginTop="5dp"
+                    android:layout_weight="1"
+                    android:hint="@string/goodsnumberhit"
+                    android:textColorHint="@color/gray"
+                    android:textSize="12sp" />
+
+
+            </LinearLayout>
+            <!--分割线-->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_gravity="center_vertical"
+                android:background="@color/gray"
+
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="@color/white"
+                android:orientation="horizontal"
+
+                >
+
+
+                <TextView
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="20dp"
+                    android:text="@string/goodsphoto"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/medium_text_size" />
+
+                <EditText
+                    android:id="@+id/et_ap_photos"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginTop="5dp"
+                    android:layout_weight="1"
+                    android:hint="@string/goodsphotohit"
+                    android:textColorHint="@color/gray"
+                    android:textSize="12sp" />
+
+
+            </LinearLayout>
+            <!--分割线-->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_gravity="center_vertical"
+                android:background="@color/gray"
+
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="@color/white"
+                android:orientation="horizontal"
+
+                >
+
+
+                <TextView
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="20dp"
+                    android:text="@string/goodsmoreinfo"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/medium_text_size" />
+
+                <EditText
+                    android:id="@+id/et_ap_moreinfo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginTop="1dp"
+                    android:layout_weight="1"
+                    android:hint="@string/goodsmoreinfohit"
+                    android:textColorHint="@color/gray"
+                    android:textSize="12sp" />
+
+
+            </LinearLayout>
+            <!--分割线-->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_gravity="center_vertical"
+                android:background="@color/gray"
+
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="@color/white"
+                android:orientation="horizontal"
+
+                >
+
+
+                <TextView
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="20dp"
+                    android:text="@string/goodslink"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/medium_text_size" />
+
+                <EditText
+                    android:id="@+id/et_ap_link"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginTop="5dp"
+                    android:layout_weight="1"
+                    android:hint="@string/goodslinkhit"
+                    android:textColorHint="@color/gray"
+                    android:textSize="12sp" />
+
+
+            </LinearLayout>
+            <!--分割线-->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_gravity="center_vertical"
+                android:background="@color/gray"
+
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="@color/white"
+                android:orientation="horizontal"
+
+                >
+
+
+                <TextView
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="20dp"
+                    android:text="@string/goodsofficialprice"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/medium_text_size" />
+
+                <EditText
+                    android:id="@+id/et_ap_ofprice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginTop="5dp"
+                    android:layout_weight="1"
+                    android:hint="@string/goodsofficialpricehit"
+                    android:textColorHint="@color/gray"
+                    android:textSize="12dp" />
+
+
+            </LinearLayout>
+            <!--分割线-->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_gravity="center_vertical"
+                android:background="@color/gray"
+
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="@color/white"
+                android:orientation="horizontal"
+
+                >
+
+
+                <TextView
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="20dp"
+                    android:text="@string/goodscouponcode"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/medium_text_size" />
+
+                <EditText
+                    android:id="@+id/et_ap_coupon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginTop="5dp"
+                    android:layout_weight="1"
+                    android:textColorHint="@color/gray"
+                    android:textSize="@dimen/medium_text_size" />
+
+
+            </LinearLayout>
+            <!--分割线-->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_gravity="center_vertical"
+                android:background="@color/gray"
+
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="@color/white"
+                android:orientation="horizontal"
+
+                >
+
+
+                <TextView
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="20dp"
+                    android:text="@string/goodstax"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/medium_text_size" />
+
+                <RadioGroup
+                    android:id="@+id/radiogrouptax"
+                    android:layout_width="200dp"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/radioButton_tax_yes"
+                        android:layout_width="50dp"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:text="@string/goodsyes"
+                        android:textSize="12sp" />
+
+                    <RadioButton
+                        android:id="@+id/radioButton_tax_no"
+                        android:layout_width="50dp"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:text="@string/goodsno"
+                        android:textSize="12sp" />
+
+                    <RadioButton
+                        android:id="@+id/radioButton_tax_anyway"
+                        android:layout_width="80dp"
+                        android:layout_height="match_parent"
+                        android:checked="true"
+                        android:gravity="center"
+                        android:text="@string/goodsanyway"
+                        android:textSize="12sp" />
+
+                </RadioGroup>
+
+
+            </LinearLayout>
+            <!--分割线-->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_gravity="center_vertical"
+                android:background="@color/gray"
+
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="@color/white"
+                android:orientation="horizontal"
+
+                >
+
+
+                <TextView
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="20dp"
+                    android:text="@string/goodsshipping"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/medium_text_size" />
+
+                <RadioGroup
+                    android:id="@+id/radiogroupShipping"
+                    android:layout_width="200dp"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/radioButton_shipping_yes"
+                        android:layout_width="50dp"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:text="@string/goodsyes"
+                        android:textSize="12sp" />
+
+                    <RadioButton
+                        android:id="@+id/radioButton_shipping_no"
+                        android:layout_width="50dp"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:text="@string/goodsno"
+                        android:textSize="12sp" />
+
+                    <RadioButton
+                        android:id="@+id/radioButton_shipping_anyway"
+                        android:layout_width="80dp"
+                        android:layout_height="match_parent"
+                        android:checked="true"
+                        android:gravity="center"
+                        android:text="@string/goodsanyway"
+                        android:textSize="12sp" />
+                </RadioGroup>
+
+
+            </LinearLayout>
+            <!--分割线-->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_gravity="center_vertical"
+                android:background="@color/gray"
+
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="111dp"
+                android:background="@color/white"
+                android:orientation="horizontal"
+
+                >
+
+
+                <TextView
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="20dp"
+                    android:text="@string/goodsrecomment"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/medium_text_size" />
+
+                <EditText
+                    android:id="@+id/et_ap_more"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginTop="5dp"
+                    android:layout_weight="1"
+                    android:hint="@string/goodsnamehit"
+                    android:textColorHint="@color/gray"
+                    android:textSize="@dimen/medium_text_size" />
+
+
+            </LinearLayout>
+            <!--分割线-->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_gravity="center_vertical"
+                android:background="@color/gray"
+
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="@color/white"
+                android:orientation="horizontal"
+
+                >
+
+
+                <Button
+                    android:id="@+id/btn_ap_addnewitem"
+                    android:layout_width="150dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@color/skyblue"
+                    android:gravity="center"
+                    android:text="@string/goodsbtnaddmore"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/medium_text_size" />
+
+                <Button
+                    android:id="@+id/btn_ap_perview"
+                    android:layout_width="150dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@color/greenyellow"
+                    android:gravity="center"
+                    android:text="@string/goodsbtnpersee"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/medium_text_size" />
+            </LinearLayout>
+            <!--分割线-->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_gravity="center_vertical"
+                android:background="@color/gray"
+
+                />
+
+
         </LinearLayout>
-        <!--分割线-->
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_gravity="center_vertical"
-            android:background="@color/gray"
-
-            />
 
 
-    </LinearLayout>
-
-
-</RelativeLayout>
+    </RelativeLayout>
+</ScrollView>

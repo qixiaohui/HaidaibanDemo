@@ -2,6 +2,7 @@ package com.haidaiban.foxlee.activitys;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Base64;
 import android.view.View;
@@ -12,6 +13,7 @@ import android.widget.RadioGroup;
 
 import com.haidaiban.foxlee.fragments.R;
 import com.haidaiban.foxlee.model.quotelist.Result;
+import com.haidaiban.foxlee.webMethod.Webmethod;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
@@ -74,6 +76,8 @@ public class Activity_PriceFill extends Activity {
 
     Intent intent;
     Result quote;
+    Webmethod webmethod;
+    SubmitQuote submitQuote;
 
 
     public Activity_PriceFill() {
@@ -85,6 +89,7 @@ public class Activity_PriceFill extends Activity {
         setContentView(R.layout.activity_pricefill_layout);
         initView();
         getInputFromEdit();
+        webmethod = new Webmethod(getApplicationContext());
 
         intent = getIntent();
 
@@ -119,6 +124,15 @@ public class Activity_PriceFill extends Activity {
                 /***
                  * TO-DO :   sent string to server ,把得到的输入信息 发给服务器
                  */
+                quote.setTitle(et_item_name.getText().toString());
+                quote.setQuantity(Integer.parseInt(et_item_number.getText().toString()));
+                quote.setRemark(et_item_moreInfo.getText().toString());
+                quote.setWebLink(et_item_link.getText().toString());
+                quote.setPrice(et_item_official_price.getText().toString());
+                quote.setCoupon(et_item_coupon.getText().toString());
+
+                submitQuote = new SubmitQuote();
+                submitQuote.execute();
 
             }
         });
@@ -224,5 +238,27 @@ public class Activity_PriceFill extends Activity {
         rbbtn_shipping_no = (RadioButton) findViewById(R.id.radioButton_shipping_no);
         rbbtn_shipping_anyway = (RadioButton) findViewById(R.id.radioButton_shipping_anyway);
 
+    }
+
+    public class SubmitQuote extends AsyncTask<String,String,String>{
+        @Override
+        protected String doInBackground(String... params) {
+            try {
+                webmethod.updateQuote(quote);
+            }catch (IOException e){
+
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+        }
     }
 }

@@ -30,6 +30,7 @@ public class FragmentPage2 extends Fragment{
     private String userName;
     private String password;
     private SharedPreferences sharedPreferences;
+    private SharedPreferences.Editor editor;
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
 
@@ -78,6 +79,10 @@ public class FragmentPage2 extends Fragment{
 //                if(sharedPreferences.contains("token")){
                 //webMethod.get();
                 if(webMethod.post(params[0],params[1])==200){
+                    editor = sharedPreferences.edit();
+                    editor.putString("userName",params[0]);
+                    editor.putString("password",params[1]);
+                    editor.commit();
                     getActivity().runOnUiThread(new Runnable(){
 
                         @Override
