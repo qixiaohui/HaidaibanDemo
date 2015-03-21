@@ -8,6 +8,7 @@ import android.widget.Toast;
 import com.google.gson.Gson;
 import com.haidaiban.foxlee.config.Constants;
 import com.haidaiban.foxlee.model.deal.Deal;
+import com.haidaiban.foxlee.model.message.Message;
 import com.haidaiban.foxlee.model.offer.Offer;
 import com.haidaiban.foxlee.model.quotelist.QuoteList;
 import com.haidaiban.foxlee.model.quotelist.Result;
@@ -96,6 +97,15 @@ public class Webmethod {
         //System.out.println(response+"***********");
         return  response;
 
+    }
+
+    public static Message getMessage() throws IOException{
+        httpGet = new HttpGet(url+"api/sitemessages");
+        httpResponse = httpClient.execute(httpGet);
+        entity = httpResponse.getEntity();
+        response = EntityUtils.toString(entity,"UTF-8");
+        System.out.println(response);
+        return new Gson().fromJson(response,Message.class);
     }
 
     public static Deal getDeals()throws IOException,JSONException{

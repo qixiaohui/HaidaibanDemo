@@ -1,10 +1,12 @@
 package com.haidaiban.foxlee.fragments;
 
+import java.io.IOException;
 import java.util.HashMap;
 
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -19,6 +21,10 @@ import com.daimajia.slider.library.SliderTypes.TextSliderView;
 import com.daimajia.slider.library.SliderTypes.BaseSliderView;
 import com.haidaiban.foxlee.activitys.Activity_PriceFill;
 import com.haidaiban.foxlee.activitys.LimitedTimeOffer;
+import com.haidaiban.foxlee.config.Constants;
+import com.haidaiban.foxlee.model.message.Message;
+import com.haidaiban.foxlee.model.message.Result;
+import com.haidaiban.foxlee.webMethod.Webmethod;
 
 public class FragmentPage1 extends Fragment{
 
@@ -29,6 +35,9 @@ public class FragmentPage1 extends Fragment{
     private Context context;
     private ImageView mBtn_discount;
     private ImageView mBtn_fillprice;
+    private GetMessage getMessage;
+    private Webmethod webmethod;
+    private Message message;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -58,34 +67,8 @@ public class FragmentPage1 extends Fragment{
             }
         });
 
-        HashMap<String, String> urlMap = new HashMap<String,String>();
-        urlMap.put("Haniba","http://static2.hypable.com/wp-content/uploads/2013/12/hannibal-season-2-release-date.jpg");
-        urlMap.put("big bang","http://tvfiles.alphacoders.com/100/hdclearart-10.png");
-        urlMap.put("house of cards","http://cdn3.nflximg.net/images/3093/2043093.jpg");
-        urlMap.put("game of throne","http://images.boomsbeat.com/data/images/full/19640/game-of-thrones-season-4-jpg.jpg");
-
-        HashMap<String,Integer> fileMap = new HashMap<String,Integer>();
-        fileMap.put("Haniba",R.drawable.hannibal);
-        fileMap.put("bang bang",R.drawable.bigbang);
-        fileMap.put("house of cards",R.drawable.house);
-        fileMap.put("game of throne",R.drawable.game_of_thrones);
-
-        System.out.println(fileMap+"map");
-
-        for(String name : fileMap.keySet()){
-            TextSliderView sliderView = new TextSliderView(context);
-            sliderView
-                    .description(name)
-                    .image(fileMap.get(name))
-                    .setScaleType(BaseSliderView.ScaleType.Fit);
-            slider.addSlider(sliderView);
-
-        }
-
-        slider.setPresetTransformer(SliderLayout.Transformer.Accordion);
-        slider.setPresetIndicator(SliderLayout.PresetIndicators.Center_Bottom);
-        slider.setCustomAnimation(new DescriptionAnimation());
-        slider.setDuration(4000);
+        getMessage = new GetMessage();
+        getMessage.execute();
 
 		return view;
 	}
@@ -103,5 +86,55 @@ public class FragmentPage1 extends Fragment{
         super.onAttach(activity);
 
         System.out.println("on attachment"+slider);
+    }
+
+    public class GetMessage extends AsyncTask<String,String,String>{
+        @Override
+        protected String doInBackground(String... params) {
+            webmethod = new Webmethod(getActivity().getApplicationContext());
+            try {
+                message = webmethod.getMessage();
+            }catch (IOException e){
+
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+
+            HashMap<String, String> urlMap = new HashMap<String,String>();
+            for(Result result : message.getResults()){
+                TextSliderView sliderView = new TextSliderView(context);
+                sliderView
+                        .description(result.getMessage())
+                        .image(Constants.getLOGIN_URL()+result.getImage())
+                        .setScaleType(BaseSliderView.ScaleType.Fit);
+                slider.addSlider(sliderView);
+            }
+//            urlMap.put("Haniba","http://static2.hypable.com/wp-content/uploads/2013/12/hannibal-season-2-release-date.jpg");
+//            urlMap.put("big bang","http://tvfiles.alphacoders.com/100/hdclearart-10.png");
+//            urlMap.put("house of cards","http://cdn3.nflximg.net/images/3093/2043093.jpg");
+//            urlMap.put("game of throne","http://images.boomsbeat.com/data/images/full/19640/game-of-thrones-season-4-jpg.jpg");
+
+//            HashMap<String,Integer> fileMap = new HashMap<String,Integer>();
+//            fileMap.put("Haniba",R.drawable.hannibal);
+//            fileMap.put("bang bang",R.drawable.bigbang);
+//            fileMap.put("house of cards",R.drawable.house);
+//            fileMap.put("game of throne",R.drawable.game_of_thrones);
+
+
+            slider.setPresetTransformer(SliderLayout.Transformer.Accordion);
+            slider.setPresetIndicator(SliderLayout.PresetIndicators.Center_Bottom);
+            slider.setCustomAnimation(new DescriptionAnimation());
+            slider.setDuration(4000);
+
+        }
     }
 }
