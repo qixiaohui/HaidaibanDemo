@@ -28,7 +28,7 @@ public class FragmentPage5 extends Fragment{
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
-        view  = inflater.inflate(R.layout.fragment_5, null);
+        view  = inflater.inflate(R.layout.e0_profile_head, null);
 		return view;
 	}
 

@@ -1,0 +1,5 @@
+<root>
+    <item name='android.app.Activity android.app.FragmentManager getFragmentManager()'>
+        <annotation name='org.jetbrains.annotations.Nullable' />
+    </item>
+</root>

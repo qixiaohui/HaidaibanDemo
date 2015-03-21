@@ -76,6 +76,20 @@
 
     <string name="tempoffer_menu_tx">您的询价单已提交，请耐心等待办理，您还可以</string>
 
+    <!-- 个人中心-->
+    <string name="profile_money">我的资金账户</string>
+    <string name="profile_getmessage">我的收件信息</string>
+    <string name="profile_myagain">我的代办管理</string>
+    <string name="profile_myagain_fav">收藏</string>
+    <string name="profile_myagain_blacklist">黑名单</string>
+
+    <string name="profile_myagain_mycredit">我的信用评分 ：</string>
+    <string name="profile_myagain_help">帮组指南</string>
+    <string name="profile_myagain_feedback">用户反馈</string>
+    <string name="profile_myagain_signout">退出登出</string>
+
+
+
     <string-array name="tabTitle">
         <item>最新</item>
         <item>最热</item>
