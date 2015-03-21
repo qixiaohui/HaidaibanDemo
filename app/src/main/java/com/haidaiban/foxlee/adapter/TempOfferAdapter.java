@@ -94,9 +94,9 @@ public class TempOfferAdapter extends BaseAdapter{
             holder = (ViewHolder) convertView.getTag();
 
         }
-        holder.to_Title.setText(quotes.getResults().get(0).getTitle());
-        holder.to_Number.setText(quotes.getResults().get(0).getQuantity().toString());
-        holder.to_Type.setText(quotes.getResults().get(0).getStyle());
+        holder.to_Title.setText(quotes.getResults().get(position).getTitle());
+        holder.to_Number.setText(quotes.getResults().get(position).getQuantity().toString());
+        holder.to_Type.setText(quotes.getResults().get(position).getStyle());
 
         /**
          *  TO-DO click events
