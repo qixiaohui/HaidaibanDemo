@@ -104,13 +104,7 @@ public class Activity_PriceFill extends Activity {
         intent = getIntent();
         flag = intent.getIntExtra("flag",0);
 
-<<<<<<< HEAD
-        if(flag==1){
-=======
-
-
         if(intent.getIntExtra("flag",0)==1){
->>>>>>> 5f14131eb8c7bc507221ab9897a59468cda55b48
             try {
                 byte[] data = Base64.decode(intent.getStringExtra("data"),Base64.NO_WRAP);
                 ObjectInputStream ois = new ObjectInputStream(
