@@ -61,7 +61,7 @@
     <string name="goodsbtnpersee">预览询价单</string>
 
     <!--待发询价单-->
-    <string name="tempoffer_again">指定代办（选填）</string>
+    <string name="tempoffer_again">指定代办</string>
     <string name="tempoffer_again_hit">请在此处输入代办ID，可不填</string>
     <string name="tempoffer_again_btn">确定添加</string>
     <string name="tempoffer_add_btn">添加新商品</string>
@@ -109,6 +109,12 @@
         <item>其他商品</item>
     </string-array>
 
+
+   <!--拍照-->
+    <string name="camera_upload">从本地上传</string>
+    <string name="camera_takephoto">拍照上传</string>
+    <string name="camera_yes">确定</string>
+    <string name="camera_cancel">取消</string>
 
 
 
