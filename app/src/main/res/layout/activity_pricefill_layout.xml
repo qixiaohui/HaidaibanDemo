@@ -103,6 +103,7 @@
         <TableRow
             android:paddingBottom="5dp">
             <ImageButton
+                android:id="@+id/img_upoload1"
                 android:background="@color/white"
                 android:layout_height="50dp"
                 android:layout_marginLeft="10dp"
@@ -110,6 +111,7 @@
                 android:src="@drawable/icon_image"
                 android:scaleType="fitXY"/>
             <ImageButton
+                android:id="@+id/img_upoload2"
                 android:background="@color/white"
                 android:layout_height="50dp"
                 android:layout_marginLeft="10dp"
@@ -119,6 +121,7 @@
                 android:src="@drawable/icon_image"
                 android:scaleType="fitXY"/>
             <ImageButton
+                android:id="@+id/img_upoload3"
                 android:layout_height="50dp"
                 android:layout_width="wrap_content"
                 android:layout_marginRight="10dp"

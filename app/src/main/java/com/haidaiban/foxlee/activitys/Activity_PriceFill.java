@@ -1,13 +1,18 @@
 package com.haidaiban.foxlee.activitys;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Base64;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -15,6 +20,7 @@ import android.widget.Toast;
 
 import com.haidaiban.foxlee.fragments.R;
 import com.haidaiban.foxlee.model.quotelist.Result;
+import com.haidaiban.foxlee.ui.MyCameraDialog;
 import com.haidaiban.foxlee.webMethod.Webmethod;
 
 import java.io.ByteArrayInputStream;
@@ -30,9 +36,9 @@ public class Activity_PriceFill extends Activity {
     private Button btn_addNewOrder;
     private Button btn_perViewOrder;
 
-    private ImageView  btn_upload1 ;
-    private ImageView  btn_upload2 ;
-    private ImageView  btn_upload3 ;
+    private ImageButton btn_upload1 ;
+    private ImageButton  btn_upload2 ;
+    private ImageButton btn_upload3 ;
 
     private EditText et_item_name;
     private EditText et_item_number;
@@ -84,7 +90,6 @@ public class Activity_PriceFill extends Activity {
     SubmitQuote submitQuote;
     public int flag = 0;
 
-
     public Activity_PriceFill() {
     }
 
@@ -99,7 +104,13 @@ public class Activity_PriceFill extends Activity {
         intent = getIntent();
         flag = intent.getIntExtra("flag",0);
 
+<<<<<<< HEAD
         if(flag==1){
+=======
+
+
+        if(intent.getIntExtra("flag",0)==1){
+>>>>>>> 5f14131eb8c7bc507221ab9897a59468cda55b48
             try {
                 byte[] data = Base64.decode(intent.getStringExtra("data"),Base64.NO_WRAP);
                 ObjectInputStream ois = new ObjectInputStream(
@@ -158,8 +169,59 @@ public class Activity_PriceFill extends Activity {
             }
         });
 
+        btn_upload1.setOnClickListener(new View.OnClickListener() {
+
+            /***
+             *  TO-DO : upload1
+             */
+
+            @Override
+
+            public void onClick(View v) {
+
+
+                new MyCameraDialog(Activity_PriceFill.this,R.style.CustomDialog).show();
+            }
+        });
+        btn_upload2.setOnClickListener(new View.OnClickListener() {
+
+            /***
+             *  TO-DO : upload 2
+             */
+
+            @Override
+
+            public void onClick(View v) {
+                new MyCameraDialog(Activity_PriceFill.this,R.style.CustomDialog).show();
+
+            }
+        });
+
+        btn_upload3.setOnClickListener(new View.OnClickListener() {
+
+            /***
+             *  TO-DO : upload3
+             */
+
+            @Override
+
+            public void onClick(View v) {
+                new MyCameraDialog(Activity_PriceFill.this,R.style.CustomDialog).show();
+
+            }
+        });
+
+
 
     }
+
+    private void onpenDialog(Context context) {
+        /***
+         * open dialog
+         */
+
+            }
+
 
     private void getInputFromEdit() {
         item_Name = et_item_name.getText().toString();
@@ -245,6 +307,13 @@ public class Activity_PriceFill extends Activity {
         rbbtn_shipping_yes = (RadioButton) findViewById(R.id.radioButton_shipping_yes);
         rbbtn_shipping_no = (RadioButton) findViewById(R.id.radioButton_shipping_no);
         rbbtn_shipping_anyway = (RadioButton) findViewById(R.id.radioButton_shipping_anyway);
+
+        //imagebutton
+        btn_upload1 = (ImageButton)findViewById(R.id.img_upoload1);
+        btn_upload2 = (ImageButton)findViewById(R.id.img_upoload2);
+        btn_upload3 = (ImageButton)findViewById(R.id.img_upoload3);
+
+
 
     }
 
