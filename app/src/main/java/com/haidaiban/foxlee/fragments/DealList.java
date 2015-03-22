@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.Spinner;
 
 import com.haidaiban.foxlee.adapter.ListViewAdapter;
@@ -31,11 +32,14 @@ public class DealList extends Fragment{
     private Webmethod webmethod;
     private Deal deals;
     private asyncTask loadData;
+    private RelativeLayout loading;
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view  = inflater.inflate(R.layout.offerlist,null);
         listView = (ListView) view.findViewById(R.id.list);
+        loading  = (RelativeLayout) view.findViewById(R.id.loadingPanel);
+        loading.setVisibility(View.GONE);
         return view;
     }
 
@@ -70,11 +74,13 @@ public class DealList extends Fragment{
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
+            loading.setVisibility(View.VISIBLE);
         }
 
         @Override
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
+            loading.setVisibility(View.GONE);
             listView.setAdapter(new ListViewAdapter(deals,getActivity().getApplicationContext()));
         }
     }
