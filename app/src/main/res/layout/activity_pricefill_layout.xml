@@ -286,6 +286,7 @@
                     android:layout_width="50dp"
                     android:layout_height="match_parent"
                     android:gravity="center"
+                    android:textColor="@color/grey"
                     android:text="@string/goodsyes"
                     android:background="@color/white"
                     android:textSize="12sp" />
@@ -295,6 +296,7 @@
                     android:layout_width="50dp"
                     android:layout_height="match_parent"
                     android:gravity="center"
+                    android:textColor="@color/grey"
                     android:text="@string/goodsno"
                     android:background="@color/white"
                     android:textSize="12sp" />
@@ -305,6 +307,7 @@
                     android:layout_height="match_parent"
                     android:checked="true"
                     android:gravity="center"
+                    android:textColor="@color/grey"
                     android:text="@string/goodsanyway"
                     android:background="@color/white"
                     android:textSize="12sp" />
@@ -351,6 +354,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:text="@string/goodsyes"
+                    android:textColor="@color/grey"
                     android:textSize="12sp" />
 
                 <RadioButton
@@ -358,6 +362,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:text="@string/goodsno"
+                    android:textColor="@color/grey"
                     android:textSize="12sp" />
 
                 <RadioButton
@@ -365,6 +370,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:checked="true"
+                    android:textColor="@color/grey"
                     android:text="@string/goodsanyway"
                     android:textSize="12sp" />
             </RadioGroup>
