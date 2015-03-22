@@ -11,6 +11,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Toast;
 
 import com.haidaiban.foxlee.fragments.R;
 import com.haidaiban.foxlee.model.quotelist.Result;
@@ -81,6 +82,7 @@ public class Activity_PriceFill extends Activity {
     Result quote;
     Webmethod webmethod;
     SubmitQuote submitQuote;
+    public int flag = 0;
 
 
     public Activity_PriceFill() {
@@ -95,8 +97,9 @@ public class Activity_PriceFill extends Activity {
         webmethod = new Webmethod(getApplicationContext());
 
         intent = getIntent();
+        flag = intent.getIntExtra("flag",0);
 
-        if(intent.getIntExtra("flag",0)==1){
+        if(flag==1){
             try {
                 byte[] data = Base64.decode(intent.getStringExtra("data"),Base64.NO_WRAP);
                 ObjectInputStream ois = new ObjectInputStream(
@@ -127,6 +130,9 @@ public class Activity_PriceFill extends Activity {
                 /***
                  * TO-DO :   sent string to server ,把得到的输入信息 发给服务器
                  */
+                if(quote == null){
+                    quote = new Result();
+                }
                 quote.setTitle(et_item_name.getText().toString());
                 quote.setQuantity(Integer.parseInt(et_item_number.getText().toString()));
                 quote.setRemark(et_item_moreInfo.getText().toString());
@@ -165,7 +171,6 @@ public class Activity_PriceFill extends Activity {
         item_Link = et_item_link.getText().toString();
         item_OfficePrice = et_item_official_price.getText().toString();
         item_Coupon = et_item_coupon.getText().toString();
-
 
 
     }
@@ -247,7 +252,21 @@ public class Activity_PriceFill extends Activity {
         @Override
         protected String doInBackground(String... params) {
             try {
-                webmethod.updateQuote(quote);
+                if(flag == 1) {
+                    webmethod.updateQuote(quote);
+                }else{
+                    if(webmethod.createQuote(quote)){
+                        Intent intent = new Intent(Activity_PriceFill.this,MainTabActivity.class);
+                        startActivity(intent);
+                    }else{
+                        Activity_PriceFill.this.runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                Toast.makeText(Activity_PriceFill.this,"quote failed",Toast.LENGTH_LONG).show();
+                            }
+                        });
+                    }
+                }
             }catch (IOException e){
 
             }

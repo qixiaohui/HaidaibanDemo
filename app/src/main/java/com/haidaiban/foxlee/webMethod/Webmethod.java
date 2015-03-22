@@ -217,7 +217,7 @@ public class Webmethod {
         basicAuthClient = HttpClientBuilder.create().setDefaultCredentialsProvider(credentialsProvider).build();
         pair = new ArrayList<NameValuePair>();
         pair.add(new BasicNameValuePair("_method","PUT"));
-        pair.add(new BasicNameValuePair("deal",result.getDeal()==null?"0":result.getDeal().toString()));
+        pair.add(new BasicNameValuePair("deal",result.getUid()==null?"0":result.getUid()));
         pair.add(new BasicNameValuePair("title",result.getTitle()));
         pair.add(new BasicNameValuePair("web_link",result.getWebLink()));
         pair.add(new BasicNameValuePair("price",result.getPrice().toString()));
@@ -232,12 +232,50 @@ public class Webmethod {
         pair.add(new BasicNameValuePair("is_favorite",result.getIsFavorite()?"True":"False"));
         pair.add(new BasicNameValuePair("is_draft","True"));
 
-        httpPost = new HttpPost(url+"api/quotes/"+result.getUid());
+        httpPost = new HttpPost(url+"api/quotes/"+result.getOrder());
         httpPost.setHeader("Authorization","Token "+token);
         httpPost.setEntity(new UrlEncodedFormEntity(pair));
         httpResponse = basicAuthClient.execute(httpPost);
         status = httpResponse.getStatusLine().getStatusCode();
         System.out.println(status);
+    }
+
+    public Boolean createQuote(Result result)throws IOException{
+        token = getToken();
+        credentialsProvider = new BasicCredentialsProvider();
+        getCredential();
+        usernamePasswordCredentials = new UsernamePasswordCredentials(credentials[0],credentials[1]);
+        credentialsProvider.setCredentials(AuthScope.ANY,usernamePasswordCredentials);
+        basicAuthClient = HttpClientBuilder.create().setDefaultCredentialsProvider(credentialsProvider).build();
+        pair = new ArrayList<NameValuePair>();
+        pair.add(new BasicNameValuePair("deal",result.getUid()==null?"":result.getUid()));
+        pair.add(new BasicNameValuePair("title",result.getTitle()));
+        pair.add(new BasicNameValuePair("web_link",result.getWebLink()));
+        pair.add(new BasicNameValuePair("price",result.getPrice().toString()));
+        pair.add(new BasicNameValuePair("coupon",result.getCoupon()));
+        pair.add(new BasicNameValuePair("style",result.getStyle()));
+        pair.add(new BasicNameValuePair("quantity",result.getQuantity().toString()));
+        pair.add(new BasicNameValuePair("shipping",result.getShipping()==null?"0":result.getShipping().toString()));
+        pair.add(new BasicNameValuePair("weight",result.getWeight()==null?"0":result.getWeight().toString()));
+        pair.add(new BasicNameValuePair("direct_ship",result.getDirectShip()));
+        pair.add(new BasicNameValuePair("remark",result.getRemark()));
+        pair.add(new BasicNameValuePair("image0",result.getImage0()==null?"":result.getImage0().toString()));
+        if(result.getIsFavorite()==null){
+            result.setIsFavorite(Boolean.FALSE);
+        }
+        pair.add(new BasicNameValuePair("is_favorite",result.getIsFavorite()?"True":"False"));
+        pair.add(new BasicNameValuePair("is_draft","True"));
+
+        httpPost = new HttpPost(Constants.getLOGIN_URL()+"api/quotes/");
+        httpPost.setHeader("Authorization","Token "+token);
+        httpPost.setEntity(new UrlEncodedFormEntity(pair));
+        httpResponse = basicAuthClient.execute(httpPost);
+        status = httpResponse.getStatusLine().getStatusCode();
+        if(status == 201){
+            return Boolean.TRUE;
+        }else{
+            return Boolean.FALSE;
+        }
     }
 
 }
