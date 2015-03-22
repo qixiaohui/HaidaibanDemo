@@ -8,6 +8,7 @@ import android.util.Base64;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
@@ -28,7 +29,9 @@ public class Activity_PriceFill extends Activity {
     private Button btn_addNewOrder;
     private Button btn_perViewOrder;
 
-
+    private ImageView  btn_upload1 ;
+    private ImageView  btn_upload2 ;
+    private ImageView  btn_upload3 ;
 
     private EditText et_item_name;
     private EditText et_item_number;

@@ -39,6 +39,7 @@
                 android:textSize="14sp"
                 android:layout_weight="0.8"
                 android:hint="@string/goodsnamehit"
+                android:background="@color/white"
                 android:textColorHint="@color/gray" />
         </TableRow>
         <TableRow>
@@ -66,6 +67,7 @@
                 android:layout_weight="0.8"
                 android:textSize="14sp"
                 android:hint="@string/goodsnumberhit"
+                android:background="@color/white"
                 android:textColorHint="@color/gray" />
         </TableRow>
         <TableRow>
@@ -94,6 +96,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="0.8"
                 android:textSize="14sp"
+                android:background="@color/white"
                 android:hint="@string/goodsphotohit"
                 android:textColorHint="@color/gray" />
         </TableRow>
@@ -123,6 +126,7 @@
                 android:layout_weight="0.8"
                 android:textSize="14sp"
                 android:hint="@string/goodsmoreinfohit"
+                android:background="@color/white"
                 android:textColorHint="@color/gray" />
         </TableRow>
         <TableRow>
@@ -151,6 +155,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="0.8"
                 android:textSize="14sp"
+                android:background="@color/white"
                 android:hint="@string/goodslinkhit"
                 android:textColorHint="@color/gray" />
         </TableRow>
@@ -179,6 +184,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="0.8"
                 android:textSize="14sp"
+                android:background="@color/white"
                 android:hint="@string/goodsofficialpricehit"
                 android:textColorHint="@color/gray" />
         </TableRow>
@@ -209,6 +215,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="14sp"
                 android:layout_weight="0.8"
+                android:background="@color/white"
                 android:textColorHint="@color/gray" />
         </TableRow>
         <TableRow>
@@ -244,6 +251,7 @@
                 android:layout_width="200dp"
                 android:layout_marginLeft="20dp"
                 android:layout_height="match_parent"
+                android:background="@color/white"
                 android:orientation="horizontal">
 
                 <RadioButton
@@ -252,6 +260,7 @@
                     android:layout_height="match_parent"
                     android:gravity="center"
                     android:text="@string/goodsyes"
+                    android:background="@color/white"
                     android:textSize="12sp" />
 
                 <RadioButton
@@ -260,6 +269,7 @@
                     android:layout_height="match_parent"
                     android:gravity="center"
                     android:text="@string/goodsno"
+                    android:background="@color/white"
                     android:textSize="12sp" />
 
                 <RadioButton
@@ -269,6 +279,7 @@
                     android:checked="true"
                     android:gravity="center"
                     android:text="@string/goodsanyway"
+                    android:background="@color/white"
                     android:textSize="12sp" />
 
             </RadioGroup>
@@ -305,6 +316,7 @@
                 android:layout_width="200dp"
                 android:layout_marginLeft="20dp"
                 android:layout_height="match_parent"
+                android:background="@color/white"
                 android:orientation="horizontal">
 
                 <RadioButton
@@ -358,6 +370,8 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="0.8"
                 android:textSize="14sp"
+                android:background="@color/white"
+
                 android:textColorHint="@color/gray" />
         </TableRow>
         <TableRow>
