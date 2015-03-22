@@ -11,25 +11,6 @@
         <TableRow
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:background="@color/skyblue">
-
-            <TextView
-
-                android:id="@+id/textView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="10dp"
-                android:gravity="center_horizontal"
-                android:text="@string/tx_total_ten"
-                android:textSize="@dimen/medium_text_size" />
-
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
             android:layout_marginBottom="5dp"
             android:layout_marginTop="5dp"
             android:layout_gravity="center_horizontal">
@@ -432,27 +413,25 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="5dp"
-            android:layout_marginTop="5dp"
-            android:layout_gravity="center_horizontal">
-
+            android:layout_marginTop="20dp">
             <Button
                 android:id="@+id/btn_ap_addnewitem"
-                android:layout_width="150dp"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_width="0dp"
                 android:layout_weight="1"
-                android:background="@color/skyblue"
-                android:gravity="center"
+                android:layout_margin="10dp"
+                android:background="@drawable/round_button_blue"
                 android:text="@string/goodsbtnaddmore"
                 android:textColor="@color/white"
                 android:textSize="@dimen/medium_text_size" />
 
             <Button
                 android:id="@+id/btn_ap_perview"
-                android:layout_width="150dp"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:background="@color/greenyellow"
-                android:gravity="center"
+                android:layout_width="0dp"
+                android:layout_margin="10dp"
+                android:background="@drawable/round_button_green"
                 android:text="@string/goodsbtnpersee"
                 android:textColor="@color/white"
                 android:textSize="@dimen/medium_text_size" />

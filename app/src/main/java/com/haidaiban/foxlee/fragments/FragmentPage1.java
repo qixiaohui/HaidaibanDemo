@@ -73,6 +73,8 @@ public class FragmentPage1 extends Fragment{
 		return view;
 	}
 
+
+
     private void initView() {
 
         slider = (SliderLayout)view.findViewById(R.id.slider);
