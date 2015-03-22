@@ -19,7 +19,9 @@
             </intent-filter>
         </activity>
 
-        <activity android:name="com.haidaiban.foxlee.activitys.Activity_PriceFill"></activity>
+        <activity android:name="com.haidaiban.foxlee.activitys.Activity_PriceFill"
+            android:windowSoftInputMode="adjustPan|stateHidden"
+            ></activity>
         <activity android:name="com.haidaiban.foxlee.activitys.OfferMenu_Activity"></activity>
 
         <activity
