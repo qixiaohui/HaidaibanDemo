@@ -6,261 +6,217 @@
     <TableLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#DCDDDE">
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
-            android:layout_marginTop="5dp"
-            android:layout_gravity="center_horizontal">
-
+        android:background="#FFFFFF">
+        <TableRow>
             <TextView
-                android:layout_width="100dp"
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_marginLeft="20dp"
-                android:text="@string/goodsname"
-                android:textColor="@color/black" />
+                android:paddingBottom="10dp"
+                android:paddingTop="10dp"
+                android:layout_weight="1"
+                android:text="@string/tx_total_ten"
+                android:gravity="center"
+                android:background="@color/skyblue" />
         </TableRow>
 
         <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
-            android:layout_marginTop="5dp"
-            android:layout_gravity="center_horizontal">
+            android:paddingTop="15dp"
+            android:paddingBottom="15dp"
+            android:paddingRight="10dp"
+            >
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_weight="1.2"
+                android:text="@string/goodsname"
+                android:textColor="@color/grey" />
             <EditText
-
                 android:id="@+id/et_ap_name"
                 android:layout_width="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                android:layout_weight="1"
+                android:layout_height="wrap_content"
                 android:textSize="14sp"
-                android:background="@drawable/round_state"
+                android:layout_weight="0.8"
                 android:hint="@string/goodsnamehit"
                 android:textColorHint="@color/gray" />
-
+        </TableRow>
+        <TableRow>
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"
+                android:layout_weight="1"
+                android:background="@color/grey" />
         </TableRow>
         <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
-            android:layout_marginTop="5dp"
-            android:layout_gravity="center_horizontal">
+            android:paddingTop="15dp"
+            android:paddingBottom="15dp"
+            android:paddingRight="10dp">
             <TextView
-                android:layout_width="100dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_marginLeft="20dp"
-                android:text="@string/goodsnumber"
-                android:textColor="@color/black" />
-         </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
-            android:layout_marginTop="5dp"
-            android:layout_gravity="center_horizontal">
-
-            <EditText
-                android:id="@+id/et_ap_number"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_weight="1"
+                android:layout_marginLeft="20dp"
+                android:text="@string/goodsnumber"
+                android:layout_weight="1.2"
+                android:textColor="@color/grey" />
+            <EditText
+                android:id="@+id/et_ap_number"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.8"
                 android:textSize="14sp"
-                android:background="@drawable/round_state"
                 android:hint="@string/goodsnumberhit"
                 android:textColorHint="@color/gray" />
         </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
-            android:layout_marginTop="5dp"
-            android:layout_gravity="center_horizontal">
-
-            <TextView
-                android:layout_width="100dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_marginLeft="20dp"
-                android:text="@string/goodsphoto"
-                android:textColor="@color/black" />
+        <TableRow>
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"
+                android:layout_weight="1"
+                android:background="@color/grey" />
         </TableRow>
 
         <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
-            android:layout_marginTop="5dp"
-            android:layout_gravity="center_horizontal">
+            android:paddingTop="15dp"
+            android:paddingBottom="15dp"
+            android:paddingRight="10dp">
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_weight="1.2"
+                android:text="@string/goodsphoto"
+                android:textColor="@color/grey" />
             <EditText
                 android:id="@+id/et_ap_photos"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                android:layout_gravity="center_vertical"
-                android:layout_weight="1"
+                android:layout_weight="0.8"
                 android:textSize="14sp"
-                android:background="@drawable/round_state"
                 android:hint="@string/goodsphotohit"
                 android:textColorHint="@color/gray" />
         </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
-            android:layout_marginTop="5dp"
-            android:layout_gravity="center_horizontal">
-
-            <TextView
-                android:layout_width="100dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_marginLeft="20dp"
-                android:text="@string/goodsmoreinfo"
-                android:textColor="@color/black" />
+        <TableRow>
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"
+                android:layout_weight="1"
+                android:background="@color/grey" />
         </TableRow>
 
         <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
-            android:layout_marginTop="5dp"
-            android:layout_gravity="center_horizontal">
-
+            android:paddingTop="15dp"
+            android:paddingBottom="15dp"
+            android:paddingRight="10dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_weight="1.2"
+                android:text="@string/goodsmoreinfo"
+                android:textColor="@color/grey" />
             <EditText
                 android:id="@+id/et_ap_moreinfo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                android:background="@drawable/round_state"
-                android:layout_gravity="center_vertical"
-                android:layout_weight="1"
+                android:layout_weight="0.8"
                 android:textSize="14sp"
                 android:hint="@string/goodsmoreinfohit"
                 android:textColorHint="@color/gray" />
         </TableRow>
+        <TableRow>
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"
+                android:layout_weight="1"
+                android:background="@color/grey" />
+        </TableRow>
 
         <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
-            android:layout_marginTop="5dp"
-            android:layout_gravity="center_horizontal">
+            android:paddingTop="15dp"
+            android:paddingBottom="15dp"
+            android:paddingRight="10dp">
 
             <TextView
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
+                android:layout_weight="1.2"
                 android:layout_marginLeft="20dp"
                 android:text="@string/goodslink"
-                android:textColor="@color/black" />
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
-            android:layout_marginTop="5dp"
-            android:layout_gravity="center_horizontal">
-
+                android:textColor="@color/grey" />
             <EditText
                 android:id="@+id/et_ap_link"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                android:background="@drawable/round_state"
-                android:layout_gravity="center_vertical"
-                android:layout_weight="1"
+                android:layout_weight="0.8"
                 android:textSize="14sp"
                 android:hint="@string/goodslinkhit"
                 android:textColorHint="@color/gray" />
         </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
-            android:layout_marginTop="5dp"
-            android:layout_gravity="center_horizontal">
-
-            <TextView
-                android:layout_width="100dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_marginLeft="20dp"
-                android:text="@string/goodsofficialprice"
-                android:textColor="@color/black" />
+        <TableRow>
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"
+                android:layout_weight="1"
+                android:background="@color/grey" />
         </TableRow>
 
         <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
-            android:layout_marginTop="5dp"
-            android:layout_gravity="center_horizontal">
-
+            android:paddingTop="15dp"
+            android:paddingBottom="15dp"
+            android:paddingRight="10dp">
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.2"
+                android:layout_marginLeft="20dp"
+                android:text="@string/goodsofficialprice"
+                android:textColor="@color/black" />
             <EditText
                 android:id="@+id/et_ap_ofprice"
                 android:layout_width="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                android:background="@drawable/round_state"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_weight="1"
+                android:layout_weight="0.8"
                 android:textSize="14sp"
                 android:hint="@string/goodsofficialpricehit"
                 android:textColorHint="@color/gray" />
         </TableRow>
+        <TableRow>
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"
+                android:layout_weight="1"
+                android:background="@color/grey" />
+        </TableRow>
 
         <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
-            android:layout_marginTop="5dp"
-            android:layout_gravity="center_horizontal">
+            android:paddingTop="15dp"
+            android:paddingBottom="15dp"
+            android:paddingRight="10dp">
 
             <TextView
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:layout_marginLeft="20dp"
+                android:layout_weight="1.2"
                 android:text="@string/goodscouponcode"
-                android:textColor="@color/black" />
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal">
-
+                android:textColor="@color/grey" />
             <EditText
                 android:id="@+id/et_ap_coupon"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                android:background="@drawable/round_state"
-                android:layout_gravity="center_vertical"
                 android:textSize="14sp"
-                android:layout_weight="1"
+                android:layout_weight="0.8"
                 android:textColorHint="@color/gray" />
+        </TableRow>
+        <TableRow>
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"
+                android:layout_weight="1"
+                android:background="@color/grey" />
         </TableRow>
 
         <TableRow
@@ -276,7 +232,7 @@
                 android:layout_gravity="center_vertical"
                 android:layout_marginLeft="20dp"
                 android:text="@string/goodstax"
-                android:textColor="@color/black" />
+                android:textColor="@color/grey" />
         </TableRow>
         <TableRow
             android:layout_width="match_parent"
@@ -317,6 +273,13 @@
 
             </RadioGroup>
         </TableRow>
+        <TableRow>
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"
+                android:layout_weight="1"
+                android:background="@color/grey" />
+        </TableRow>
 
         <TableRow
             android:layout_width="match_parent"
@@ -331,7 +294,7 @@
                 android:layout_gravity="center_vertical"
                 android:layout_marginLeft="20dp"
                 android:text="@string/goodsshipping"
-                android:textColor="@color/black" />
+                android:textColor="@color/grey" />
         </TableRow>
         <TableRow
             android:layout_width="match_parent"
@@ -370,43 +333,39 @@
                     android:textSize="12sp" />
             </RadioGroup>
         </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
-            android:layout_marginTop="5dp"
-            android:layout_gravity="center_horizontal">
-
-
-            <TextView
-                android:layout_width="100dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_marginLeft="20dp"
-                android:text="@string/goodsrecomment"
-                android:textColor="@color/black" />
+        <TableRow>
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"
+                android:layout_weight="1"
+                android:background="@color/grey" />
         </TableRow>
 
         <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
-            android:layout_marginTop="5dp"
-            android:layout_gravity="center_horizontal">
-
+            android:paddingTop="15dp"
+            android:paddingBottom="15dp"
+            android:paddingRight="10dp">
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.2"
+                android:layout_marginLeft="20dp"
+                android:text="@string/goodsrecomment"
+                android:textColor="@color/grey" />
             <EditText
                 android:id="@+id/et_ap_more"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                android:background="@drawable/round_state"
-                android:layout_gravity="center_vertical"
-                android:layout_weight="1"
+                android:layout_weight="0.8"
                 android:textSize="14sp"
-                android:hint="@string/goodsnamehit"
                 android:textColorHint="@color/gray" />
+        </TableRow>
+        <TableRow>
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"
+                android:layout_weight="1"
+                android:background="@color/grey" />
         </TableRow>
 
         <TableRow
