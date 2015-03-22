@@ -14,6 +14,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 
 import com.daimajia.slider.library.SliderLayout;
 import com.daimajia.slider.library.Animations.DescriptionAnimation;
@@ -38,6 +40,7 @@ public class FragmentPage1 extends Fragment{
     private GetMessage getMessage;
     private Webmethod webmethod;
     private Message message;
+    private RelativeLayout loading;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -80,6 +83,8 @@ public class FragmentPage1 extends Fragment{
         slider = (SliderLayout)view.findViewById(R.id.slider);
         mBtn_discount = (ImageView) view.findViewById(R.id.btn_new_discount);
         mBtn_fillprice = (ImageView) view.findViewById(R.id.btn_fillprice);
+        loading = (RelativeLayout) view.findViewById(R.id.loadingPanel);
+        loading.setVisibility(View.GONE);
     }
 
 
@@ -104,13 +109,14 @@ public class FragmentPage1 extends Fragment{
 
         @Override
         protected void onPreExecute() {
+            loading.setVisibility(View.VISIBLE);
             super.onPreExecute();
         }
 
         @Override
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
-
+            loading.setVisibility(View.GONE);
             HashMap<String, String> urlMap = new HashMap<String,String>();
             for(Result result : message.getResults()){
                 TextSliderView sliderView = new TextSliderView(context);
