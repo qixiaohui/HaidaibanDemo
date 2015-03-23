@@ -1,5 +1,6 @@
 package com.haidaiban.foxlee.activitys;
 
+import android.app.ActionBar;
 import android.app.Activity;
 import android.os.Bundle;
 
@@ -13,6 +14,10 @@ public class Login_Activity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.signin_layout);
+        ActionBar actionBar = getActionBar();
+
+        actionBar.hide();
+
 
     }
 }
