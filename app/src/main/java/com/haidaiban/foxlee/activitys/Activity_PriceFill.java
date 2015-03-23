@@ -20,10 +20,12 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
+import com.haidaiban.foxlee.config.Constants;
 import com.haidaiban.foxlee.fragments.R;
 import com.haidaiban.foxlee.model.quotelist.Result;
 import com.haidaiban.foxlee.ui.MyCameraDialog;
 import com.haidaiban.foxlee.webMethod.Webmethod;
+import com.squareup.picasso.Picasso;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
@@ -340,11 +342,26 @@ public class Activity_PriceFill extends Activity {
                 }
             }else if(mode == 1){
                 if(num == 1){
-                    btn_upload1.setImageURI(data.getData());
+                    //btn_upload1.setImageURI(data.getData());
+                    Picasso.with(this)
+                            .load(data.getData())
+                            .resize(150, 150)
+                            .centerCrop()
+                            .into(btn_upload1);
                 }else if(num == 2){
-                    btn_upload2.setImageURI(data.getData());
+                    //btn_upload2.setImageURI(data.getData());
+                    Picasso.with(this)
+                            .load(data.getData())
+                            .resize(150, 150)
+                            .centerCrop()
+                            .into(btn_upload2);
                 }else if(num == 3){
-                    btn_upload3.setImageURI(data.getData());
+                    //btn_upload3.setImageURI(data.getData());
+                    Picasso.with(this)
+                            .load(data.getData())
+                            .resize(150, 150)
+                            .centerCrop()
+                            .into(btn_upload3);
                 }else{
 
                 }
