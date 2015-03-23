@@ -27,6 +27,9 @@ public class MyCameraDialog extends Dialog {
     private TextView tv_my_camera_from_album;
     private Context mContext;
     private static int mTheme = R.style.CustomDialog;
+    private static int num = 0;
+    private static int request_code = 1000;
+    private static int mode = 0;            //to differentiate between from camera and from photo gallery
 
     /**
      * 自定义Dialog
@@ -42,9 +45,10 @@ public class MyCameraDialog extends Dialog {
      * @param theme
      *            样式
      */
-    public MyCameraDialog(Context context, int theme) {
+    public MyCameraDialog(Context context, int theme, int num) {
         super(context, theme);
         this.mContext = context;
+        this.num = num;
     }
 
     public MyCameraDialog(Context context) {
@@ -64,11 +68,12 @@ public class MyCameraDialog extends Dialog {
 
                     @Override
                     public void onClick(View v) {
+                        mode = 0;
                         MyCameraDialog.this.dismiss();
                         //拍照选择
                         Intent intent = new Intent(
                                 "android.media.action.IMAGE_CAPTURE");
-                        ((Activity) mContext).startActivityForResult(intent, 0);
+                        ((Activity) mContext).startActivityForResult(intent,request_code);
 
                     }
                 });
@@ -79,14 +84,22 @@ public class MyCameraDialog extends Dialog {
                     @Override
                     public void onClick(View v) {
                         //从相册选择
+                        mode = 1;
                         MyCameraDialog.this.dismiss();
                         Intent intent = new Intent(
                                 Intent.ACTION_PICK,
                                 android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-                        ((Activity) mContext).startActivityForResult(intent, 1);
+                        ((Activity) mContext).startActivityForResult(intent, request_code);
                     }
                 });
 
     }
 
+    public static int getNum() {
+        return num;
+    }
+
+    public static int getMode() {
+        return mode;
+    }
 }

@@ -5,6 +5,8 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.Path;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Base64;
@@ -68,6 +70,12 @@ public class Activity_PriceFill extends Activity {
 //    private RadioButton rbtn_shipping_anyway;
       private RadioButton rbtn_Tax;
       private RadioButton rbtn_Shipping;
+
+    private static Bitmap image1;
+    private static Bitmap image2;
+    private static Bitmap image3;
+    private static int num = 0;
+    private static int mode = 0;
 
     String item_Name;
     String item_Number;
@@ -174,7 +182,7 @@ public class Activity_PriceFill extends Activity {
             public void onClick(View v) {
 
 
-                new MyCameraDialog(Activity_PriceFill.this,R.style.CustomDialog).show();
+                new MyCameraDialog(Activity_PriceFill.this,R.style.CustomDialog,1).show();
             }
         });
         btn_upload2.setOnClickListener(new View.OnClickListener() {
@@ -186,7 +194,7 @@ public class Activity_PriceFill extends Activity {
             @Override
 
             public void onClick(View v) {
-                new MyCameraDialog(Activity_PriceFill.this,R.style.CustomDialog).show();
+                new MyCameraDialog(Activity_PriceFill.this,R.style.CustomDialog,2).show();
 
             }
         });
@@ -200,7 +208,7 @@ public class Activity_PriceFill extends Activity {
             @Override
 
             public void onClick(View v) {
-                new MyCameraDialog(Activity_PriceFill.this,R.style.CustomDialog).show();
+                new MyCameraDialog(Activity_PriceFill.this,R.style.CustomDialog,3).show();
 
             }
         });
@@ -311,6 +319,41 @@ public class Activity_PriceFill extends Activity {
 
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == 1000){
+            num = MyCameraDialog.getNum();
+            mode = MyCameraDialog.getMode();
+            if(mode == 0){
+                if(num == 1) {
+                    image1 = (Bitmap) data.getExtras().get("data");
+                    btn_upload1.setImageBitmap(image1);
+                }else if(num == 2){
+                    image2 = (Bitmap) data.getExtras().get("data");
+                    btn_upload2.setImageBitmap(image2);
+                }else if(num == 3){
+                    image3 = (Bitmap) data.getExtras().get("data");
+                    btn_upload3.setImageBitmap(image3);
+                }else{
+
+                }
+            }else if(mode == 1){
+                if(num == 1){
+                    btn_upload1.setImageURI(data.getData());
+                }else if(num == 2){
+                    btn_upload2.setImageURI(data.getData());
+                }else if(num == 3){
+                    btn_upload3.setImageURI(data.getData());
+                }else{
+
+                }
+            }else{
+
+            }
+        }
+    }
+
     public class SubmitQuote extends AsyncTask<String,String,String>{
         @Override
         protected String doInBackground(String... params) {
@@ -346,12 +389,4 @@ public class Activity_PriceFill extends Activity {
             super.onPostExecute(s);
         }
     }
-
-
-
-
-
-
-
-
 }
