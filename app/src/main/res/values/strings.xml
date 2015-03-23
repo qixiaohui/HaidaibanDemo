@@ -116,6 +116,16 @@
     <string name="camera_yes">确定</string>
     <string name="camera_cancel">取消</string>
 
+   <!-- 登入界面-->
+    <string name="signin_title">海代办</string>
+    <string name="signin_emailorname">邮箱或者用户名</string>
+    <string name="signin_password">登入密码</string>
+    <string name="signin_btn_signin">登入</string>
+    <string name="signin_btn_autosignin">自动登入</string>
+    <string name="signin_btn_forgetpw">忘记密码</string>
+    <string name="signin_btn_signup">注册账户</string>
+    <string name="signin_3rdsign">第三方登入</string>
+
 
 
 
