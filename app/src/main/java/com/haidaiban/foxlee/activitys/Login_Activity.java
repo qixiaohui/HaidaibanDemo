@@ -50,7 +50,9 @@ public class Login_Activity extends Activity {
         sharedPreferences = new SecurePreferences(this);
         if(sharedPreferences.contains("token")){
             intent = new Intent(this,MainTabActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(intent);
+            finish();
         }
         setContentView(R.layout.signin_layout);
         register = (TextView) findViewById(R.id.register);
@@ -92,7 +94,9 @@ public class Login_Activity extends Activity {
                     });
 
                     intent = new Intent(getApplicationContext(),MainTabActivity.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(intent);
+                    finish();
                 }
 //                }else{
 //                    Toast.makeText(getActivity().getApplicationContext(),"Already login",Toast.LENGTH_SHORT).show();
