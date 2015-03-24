@@ -358,6 +358,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="15dp"
                     android:layout_weight="1"
+                    android:id="@+id/logout"
                     android:gravity="center_horizontal"
                     android:text="@string/profile_myagain_signout"
                     android:textColor="@color/skyblue"

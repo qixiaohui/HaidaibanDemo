@@ -216,8 +216,8 @@ public class Webmethod {
         credentialsProvider.setCredentials(AuthScope.ANY, usernamePasswordCredentials);
         basicAuthClient = HttpClientBuilder.create().setDefaultCredentialsProvider(credentialsProvider).build();
         pair = new ArrayList<NameValuePair>();
-        pair.add(new BasicNameValuePair("_method","PUT"));
-        pair.add(new BasicNameValuePair("deal",result.getOrder()==null?"0":result.getUid()));
+        pair.add(new BasicNameValuePair("_method","PATCH"));
+        pair.add(new BasicNameValuePair("deal",""));
         pair.add(new BasicNameValuePair("title",result.getTitle()));
         pair.add(new BasicNameValuePair("web_link",result.getWebLink()));
         pair.add(new BasicNameValuePair("price",result.getPrice().toString()));
@@ -228,7 +228,7 @@ public class Webmethod {
         pair.add(new BasicNameValuePair("weight",result.getWeight()==null?"0":result.getWeight().toString()));
         pair.add(new BasicNameValuePair("direct_ship",result.getDirectShip()));
         pair.add(new BasicNameValuePair("remark",result.getRemark()));
-        pair.add(new BasicNameValuePair("image0",result.getImage0()==null?"":result.getImage0().toString()));
+        pair.add(new BasicNameValuePair("image0",""));
         pair.add(new BasicNameValuePair("is_favorite",result.getIsFavorite()?"True":"False"));
         pair.add(new BasicNameValuePair("is_draft","True"));
 
