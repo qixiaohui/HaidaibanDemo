@@ -1,5 +1,6 @@
 package com.haidaiban.foxlee.fragments;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -11,9 +12,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
 import com.haidaiban.foxlee.Util.Utility;
+import com.haidaiban.foxlee.activitys.Activity_PriceFill;
+import com.haidaiban.foxlee.activitys.OfferMenu_Activity;
+import com.haidaiban.foxlee.adapter.TempOfferAdapter;
+import com.haidaiban.foxlee.model.quotelist.QuoteList;
 import com.haidaiban.foxlee.webMethod.Webmethod;
 import com.securepreferences.SecurePreferences;
 
@@ -22,96 +29,95 @@ import org.json.JSONException;
 import java.io.IOException;
 
 public class FragmentPage2 extends Fragment{
-    View view;
-    Button login;
-    Button register;
-    EditText userNameEdit;
-    EditText passwordEdit;
-    private String userName;
-    private String password;
-    private SharedPreferences sharedPreferences;
-    private SharedPreferences.Editor editor;
-	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
+    private Webmethod webmethod;
+    private String offer;
+    private Gson gson;
+    private QuoteList quotes;
 
-        view = inflater.inflate(R.layout.login, null);
-        login = (Button) view.findViewById(R.id.login);
-        register = (Button) view.findViewById(R.id.register);
-        sharedPreferences = new SecurePreferences(getActivity().getApplicationContext());
-        userNameEdit = (EditText) view.findViewById(R.id.loginaccount);
-        passwordEdit = (EditText) view.findViewById(R.id.loginpassword);
-		return view;
-	}
+    //ui
+
+    private Button btn_TempOffer_Add;
+    private Button btn_TempOffer_Submit;
+    private Button btn_tempOffer_AddAgain;
+
+
+    GetData getData;
+
+    private View view ;
+    private ListView myTemp_List;
+
 
     @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        if(sharedPreferences.contains("token")){
+        view = inflater.inflate(R.layout.fragment_2,null);
+        myTemp_List =(ListView) view.findViewById(R.id.listview_tempoffer);
 
-            Utility.redirect(getFragmentManager(), R.id.realtabcontent,new Fragment_MyTempOffer());
+        btn_TempOffer_Add =(Button) view.findViewById(R.id.btn_temp_addnewitem);
+        btn_TempOffer_Submit =(Button) view.findViewById(R.id.btn_temp_submitform);
+        btn_tempOffer_AddAgain =(Button) view.findViewById(R.id.btn_temp_again);
 
-        }
-
-        login.setOnClickListener(new View.OnClickListener() {
+        //OnClick add new offer
+        btn_TempOffer_Add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                userName = userNameEdit.getText().toString();
-                password = passwordEdit.getText().toString();
-                loginAsync login = new loginAsync();
-                login.execute(new String [] {userName,password});
+                Intent intent = new Intent(getActivity(), Activity_PriceFill.class);
+                startActivity(intent);
+
             }
         });
 
-        register.setOnClickListener(new View.OnClickListener() {
+        //OnClick submit offer
+        btn_TempOffer_Submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Utility.redirect(getFragmentManager(),R.id.realtabcontent,new Register());
+                Intent intent = new Intent(getActivity(), OfferMenu_Activity.class);
+                startActivity(intent);
             }
         });
+
+        //OnClick add add again 添加新商品
+        btn_tempOffer_AddAgain.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
+
+
+        return view;
     }
 
-    public class loginAsync extends AsyncTask<String,String,String> {
+
+
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState){
+        super.onViewCreated(view, savedInstanceState);
+
+        gson = new Gson();
+        getData = new GetData();
+        getData.execute();
+
+
+
+    }
+
+    public class GetData extends AsyncTask<String,String,String>{
         @Override
-        protected String doInBackground(String... params){
-            final Webmethod webMethod = new Webmethod(getActivity().getApplicationContext());
+        protected String doInBackground(String... params) {
+            webmethod = new Webmethod(getActivity().getApplicationContext());
             try {
-//                if(sharedPreferences.contains("token")){
-                //webMethod.get();
-                if(webMethod.post(params[0],params[1])==200){
-                    editor = sharedPreferences.edit();
-                    editor.putString("userName",params[0]);
-                    editor.putString("password",params[1]);
-                    editor.commit();
-                    getActivity().runOnUiThread(new Runnable(){
+                //get json files
+                quotes = webmethod.getQuotes();
+                //转化对应offer java class
 
-                        @Override
-                        public void run(){
-                            //update ui here
-                            // display toast here
-                            Toast.makeText(getActivity().getApplicationContext(),"login success",Toast.LENGTH_LONG).show();
-                        }
-                    });
 
-                    Utility.redirect(getFragmentManager(), R.id.realtabcontent, new Fragment_MyTempOffer());
 
-                }
-//                }else{
-//                    Toast.makeText(getActivity().getApplicationContext(),"Already login",Toast.LENGTH_SHORT).show();
-//                }
-            }catch (IOException e){
-                System.out.println("%%%%%IOException");
-            }catch (JSONException e){
-                System.out.println("%%%%%JSONException");
-                getActivity().runOnUiThread(new Runnable(){
+            }catch(JSONException e){
 
-                    @Override
-                    public void run(){
-                        //update ui here
-                        // display toast here
-                        Toast.makeText(getActivity().getApplicationContext(),"login fail",Toast.LENGTH_LONG).show();
-                    }
-                });
+            }catch(IOException e){
+
             }
             return null;
         }
@@ -124,7 +130,12 @@ public class FragmentPage2 extends Fragment{
         @Override
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
+            //TO-Do  update listview in here ;
+            myTemp_List.setAdapter(new TempOfferAdapter(quotes,getActivity().getApplicationContext()));
+
+
+
+
         }
     }
-
 }

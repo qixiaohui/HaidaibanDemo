@@ -11,9 +11,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import com.haidaiban.foxlee.Util.Utility;
-import com.haidaiban.foxlee.fragments.Fragment_MyTempOffer;
 import com.haidaiban.foxlee.fragments.R;
 import com.haidaiban.foxlee.webMethod.Webmethod;
 import com.securepreferences.SecurePreferences;

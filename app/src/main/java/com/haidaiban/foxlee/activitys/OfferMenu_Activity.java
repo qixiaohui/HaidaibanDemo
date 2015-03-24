@@ -6,9 +6,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.view.View.OnClickListener;
-
-import com.haidaiban.foxlee.fragments.FragmentPage1;
-import com.haidaiban.foxlee.fragments.Fragment_MyTempOffer;
 import com.haidaiban.foxlee.fragments.R;
 
 /**
