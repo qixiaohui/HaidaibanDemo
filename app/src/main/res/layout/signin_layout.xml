@@ -29,7 +29,7 @@
 
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
+                android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="@string/signin_title"
                 android:textColor="@color/white"
@@ -163,8 +163,10 @@
 
             <LinearLayout
 
-                android:layout_width="300dp"
-                android:layout_height="30dp"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="25dp"
+                android:layout_marginLeft="25dp"
                 android:layout_gravity="center_horizontal"
                 android:orientation="horizontal">
                 <!--自动登入-->
@@ -173,40 +175,31 @@
                 <CheckBox
 
                     android:id="@+id/checkBox"
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:background="@color/white"
-                    android:textSize="@dimen/medium_text_size" />
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="30dp"
-                    android:layout_gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/signin_btn_autosignin"
                     android:textColor="@color/white"
-                    android:textSize="@dimen/medium_text_size"
-
-                    ></TextView>
+                    android:textSize="12sp" />
 
                 <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="30dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_weight="1"
                     android:text="@string/signin_btn_forgetpw"
                     android:textColor="@color/white"
-                    android:textSize="@dimen/medium_text_size"></TextView>
+                    android:textSize="12sp"></TextView>
 
                 <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="30dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_weight="1"
                     android:id="@+id/register"
                     android:text="@string/signin_btn_signup"
                     android:textColor="@color/white"
-                    android:textSize="@dimen/medium_text_size"></TextView>
+                    android:textSize="12sp"></TextView>
 
             </LinearLayout>
             <!--分割线 下面是第三方-->
@@ -215,8 +208,10 @@
                 android:layout_height="10dp"></TextView>
 
             <LinearLayout
-                android:layout_width="300dp"
-                android:layout_height="30dp"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="25dp"
+                android:layout_marginLeft="25dp"
                 android:layout_gravity="center"
                 android:orientation="horizontal">
 
@@ -250,11 +245,14 @@
                 android:layout_height="10dp"></TextView>
 
             <LinearLayout
-                android:layout_width="300dp"
-                android:layout_height="80dp"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="25dp"
+                android:layout_marginRight="25dp"
                 android:layout_gravity="center"
                 android:orientation="horizontal"
-
+                android:layout_marginBottom="40dp"
 
                 >
 
