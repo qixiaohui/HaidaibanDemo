@@ -1,291 +1,299 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/background_login">
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/background_login">
 
-    <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:orientation="vertical">
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="50dp"></TextView>
-
-        <!-- Logo -->
-
-        <ImageView
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_gravity="center_horizontal"
-            android:src="@drawable/signin_haidailogo" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:gravity="center"
-            android:text="@string/signin_title"
-            android:textColor="@color/white"
-            android:textSize="@dimen/large_text_size">
-
-        </TextView>
-        <!-- 分割处-->
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="30dp"></TextView>
-        <!--输入框-->
 
         <LinearLayout
-
-            android:layout_width="300dp"
-            android:layout_height="121dp"
-            android:layout_gravity="center_horizontal"
-            android:background="@color/white"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
             android:orientation="vertical">
-            <!--上下两个输入框 - 邮箱账户名-->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="10dp"
-                    android:layout_height="match_parent"></TextView>
-
-                <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_gravity="center"
-                    android:src="@drawable/sign_username"></ImageView>
-
-                <EditText
-                    android:background="@color/white"
-                    android:layout_width="200dp"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:hint="@string/signin_emailorname"
-                    android:textColorHint="@color/gray"
-                    android:textSize="@dimen/medium_text_size">
-
-                </EditText>
-
-                <ImageView
-                    android:id="@+id/sign_btn_del"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_gravity="center"
-                    android:src="@drawable/sign_del"
-
-                    ></ImageView>
-
-            </LinearLayout>
 
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/gray"></TextView>
+                android:layout_height="50dp"></TextView>
 
-            <!--上下两个输入框 - 邮箱账户名-->
-            <LinearLayout
+            <!-- Logo -->
+
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_gravity="center_horizontal"
+                android:src="@drawable/signin_haidailogo" />
+
+            <TextView
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="10dp"
-                    android:layout_height="match_parent"></TextView>
-
-                <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_gravity="center"
-                    android:src="@drawable/sign_password"></ImageView>
-
-                <EditText
-                    android:id="@+id/sign_et_ps"
-                    android:background="@color/white"
-                    android:layout_width="200dp"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:hint="@string/signin_password"
-                    android:textColorHint="@color/gray"
-                    android:textSize="@dimen/medium_text_size">
-
-                </EditText>
-
-                <ImageView
-                    android:id="@+id/sign_btn_showps"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_gravity="center"
-                    android:src="@drawable/sign_eyes"
-
-                    ></ImageView>
-
-            </LinearLayout>
-            <!-- 分割处-->
-
-            <!-- 分割处-->
-
-
-        </LinearLayout>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="30dp"></TextView>
-
-        <Button
-            android:layout_width="300dp"
-            android:layout_height="60dp"
-            android:layout_gravity="center"
-            android:background="#0c8ed4"
-            android:gravity="center"
-            android:text="@string/signin_btn_signin"
-            android:textColor="@color/white"
-            android:textSize="@dimen/medium_text_size"></Button>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="10dp"></TextView>
-        <!--自动登入 忘记密码 注册账号-->
-
-
-        <LinearLayout
-
-            android:layout_width="300dp"
-            android:layout_height="30dp"
-            android:layout_gravity="center_horizontal"
-            android:orientation="horizontal">
-            <!--自动登入-->
-
-
-            <CheckBox
-
-                android:id="@+id/checkBox"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:background="@color/white"
-                android:textSize="@dimen/medium_text_size" />
-
-            <TextView
-                android:layout_width="0dp"
                 android:layout_height="30dp"
-                android:layout_gravity="center"
-                android:layout_weight="1"
-                android:text="@string/signin_btn_autosignin"
-                android:textColor="@color/white"
-                android:textSize="@dimen/medium_text_size"
-
-                ></TextView>
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="30dp"
-                android:layout_gravity="center"
-                android:layout_weight="1"
-                android:text="@string/signin_btn_forgetpw"
-                android:textColor="@color/white"
-                android:textSize="@dimen/medium_text_size"></TextView>
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="30dp"
-                android:layout_gravity="center"
-                android:layout_weight="1"
-                android:text="@string/signin_btn_signup"
-                android:textColor="@color/white"
-                android:textSize="@dimen/medium_text_size"></TextView>
-
-        </LinearLayout>
-        <!--分割线 下面是第三方-->
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="10dp"></TextView>
-
-        <LinearLayout
-            android:layout_width="300dp"
-            android:layout_height="30dp"
-            android:layout_gravity="center"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="1dp"
-                android:layout_gravity="center"
-                android:layout_weight="1"
-                android:background="@color/white"></TextView>
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="30dp"
-                android:layout_weight="1"
                 android:gravity="center"
-                android:text="@string/signin_3rdsign"
+                android:text="@string/signin_title"
                 android:textColor="@color/white"
-                android:textSize="@dimen/medium_text_size"></TextView>
+                android:textSize="@dimen/large_text_size">
+
+            </TextView>
+            <!-- 分割处-->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="30dp"></TextView>
+            <!--输入框-->
+
+            <LinearLayout
+
+                android:layout_width="300dp"
+                android:layout_height="121dp"
+                android:layout_gravity="center_horizontal"
+                android:background="@color/white"
+                android:orientation="vertical">
+                <!--上下两个输入框 - 邮箱账户名-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="10dp"
+                        android:layout_height="match_parent"></TextView>
+
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/sign_username"></ImageView>
+
+                    <EditText
+                        android:layout_width="200dp"
+                        android:layout_height="match_parent"
+                        android:background="@color/white"
+                        android:gravity="center"
+                        android:id="@+id/username"
+                        android:hint="@string/signin_emailorname"
+                        android:textColorHint="@color/gray"
+                        android:textSize="@dimen/medium_text_size">
+
+                    </EditText>
+
+                    <ImageView
+                        android:id="@+id/sign_btn_del"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/sign_del"
+
+                        ></ImageView>
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/gray"></TextView>
+
+                <!--上下两个输入框 - 邮箱账户名-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="10dp"
+                        android:layout_height="match_parent"></TextView>
+
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/sign_password"></ImageView>
+
+                    <EditText
+                        android:id="@+id/password"
+                        android:layout_width="200dp"
+                        android:layout_height="match_parent"
+                        android:background="@color/white"
+                        android:gravity="center"
+                        android:hint="@string/signin_password"
+                        android:textColorHint="@color/gray"
+                        android:textSize="@dimen/medium_text_size">
+
+                    </EditText>
+
+                    <ImageView
+                        android:id="@+id/sign_btn_showps"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/sign_eyes"
+
+                        ></ImageView>
+
+                </LinearLayout>
+                <!-- 分割处-->
+
+                <!-- 分割处-->
+
+
+            </LinearLayout>
 
             <TextView
-                android:layout_width="0dp"
-                android:layout_height="1dp"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"></TextView>
+
+            <Button
+                android:layout_width="300dp"
+                android:layout_height="60dp"
                 android:layout_gravity="center"
-                android:layout_weight="1"
-                android:background="@color/white"></TextView>
+                android:background="#0c8ed4"
+                android:gravity="center"
+                android:id="@+id/login"
+                android:text="@string/signin_btn_signin"
+                android:textColor="@color/white"
+                android:textSize="@dimen/medium_text_size"></Button>
 
-        </LinearLayout>
-        <!--分割线 下面是第三方-->
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="10dp"></TextView>
-
-        <LinearLayout
-            android:layout_width="300dp"
-            android:layout_height="80dp"
-            android:layout_gravity="center"
-            android:orientation="horizontal"
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="10dp"></TextView>
+            <!--自动登入 忘记密码 注册账号-->
 
 
-            >
+            <LinearLayout
 
-            <ImageView
-                android:id="@+id/sign_iv_qq"
-                android:layout_width="80dp"
+                android:layout_width="300dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center_horizontal"
+                android:orientation="horizontal">
+                <!--自动登入-->
+
+
+                <CheckBox
+
+                    android:id="@+id/checkBox"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:background="@color/white"
+                    android:textSize="@dimen/medium_text_size" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:text="@string/signin_btn_autosignin"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/medium_text_size"
+
+                    ></TextView>
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:text="@string/signin_btn_forgetpw"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/medium_text_size"></TextView>
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:id="@+id/register"
+                    android:text="@string/signin_btn_signup"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/medium_text_size"></TextView>
+
+            </LinearLayout>
+            <!--分割线 下面是第三方-->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="10dp"></TextView>
+
+            <LinearLayout
+                android:layout_width="300dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:background="@color/white"></TextView>
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="30dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="@string/signin_3rdsign"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/medium_text_size"></TextView>
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:background="@color/white"></TextView>
+
+            </LinearLayout>
+            <!--分割线 下面是第三方-->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="10dp"></TextView>
+
+            <LinearLayout
+                android:layout_width="300dp"
                 android:layout_height="80dp"
-                android:layout_weight="1"
-                android:src="@drawable/sign_img_qq"
+                android:layout_gravity="center"
+                android:orientation="horizontal"
+
 
                 >
 
-            </ImageView>
+                <ImageView
+                    android:id="@+id/sign_iv_qq"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/sign_img_qq"
 
-            <ImageView
-                android:id="@+id/sign_iv_sina"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:layout_weight="1"
-                android:src="@drawable/sign_img_sina"
+                    >
 
-                >
+                </ImageView>
 
-            </ImageView>
+                <ImageView
+                    android:id="@+id/sign_iv_sina"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/sign_img_sina"
+
+                    >
+
+                </ImageView>
 
 
-            <ImageView
-                android:id="@+id/sign_iv_wechat"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:layout_weight="1"
-                android:src="@drawable/sign_img_wechat">
+                <ImageView
+                    android:id="@+id/sign_iv_wechat"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/sign_img_wechat">
 
-            </ImageView>
+                </ImageView>
+
+
+            </LinearLayout>
 
 
         </LinearLayout>
-
-
-    </LinearLayout>
-</RelativeLayout>
+    </RelativeLayout>
+</ScrollView>

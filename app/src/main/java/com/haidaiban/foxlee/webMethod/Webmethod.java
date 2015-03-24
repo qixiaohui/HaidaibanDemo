@@ -217,7 +217,7 @@ public class Webmethod {
         basicAuthClient = HttpClientBuilder.create().setDefaultCredentialsProvider(credentialsProvider).build();
         pair = new ArrayList<NameValuePair>();
         pair.add(new BasicNameValuePair("_method","PUT"));
-        pair.add(new BasicNameValuePair("deal",result.getUid()==null?"0":result.getUid()));
+        pair.add(new BasicNameValuePair("deal",result.getOrder()==null?"0":result.getUid()));
         pair.add(new BasicNameValuePair("title",result.getTitle()));
         pair.add(new BasicNameValuePair("web_link",result.getWebLink()));
         pair.add(new BasicNameValuePair("price",result.getPrice().toString()));
@@ -232,7 +232,7 @@ public class Webmethod {
         pair.add(new BasicNameValuePair("is_favorite",result.getIsFavorite()?"True":"False"));
         pair.add(new BasicNameValuePair("is_draft","True"));
 
-        httpPost = new HttpPost(url+"api/quotes/"+result.getOrder());
+        httpPost = new HttpPost(url+"api/quotes/"+result.getUid());
         httpPost.setHeader("Authorization","Token "+token);
         httpPost.setEntity(new UrlEncodedFormEntity(pair));
         httpResponse = basicAuthClient.execute(httpPost);
