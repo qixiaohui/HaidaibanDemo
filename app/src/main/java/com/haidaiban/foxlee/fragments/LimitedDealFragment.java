@@ -49,9 +49,10 @@ public class LimitedDealFragment extends Fragment {
             dealList.setTitle(title,category);
             fragments.add(dealList);
         }
-        tabPagerAdapter = new TabPagerAdapter(getActivity().getSupportFragmentManager(),fragments,categorys);
+//        getSupportFragmentManager()
+        tabPagerAdapter = new TabPagerAdapter(getChildFragmentManager(),fragments,categorys);
         viewPager.setAdapter(tabPagerAdapter);
-        viewPager.setOffscreenPageLimit(0);
+        viewPager.setOffscreenPageLimit(10);
         // Center the tabs in the layout
         slidingTabLayout.setDistributeEvenly(true);
         slidingTabLayout.setViewPager(viewPager);
