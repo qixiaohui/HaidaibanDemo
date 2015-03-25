@@ -1,5 +1,6 @@
 package com.haidaiban.foxlee.fragments;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
@@ -16,6 +17,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
+import com.haidaiban.foxlee.Util.DataHolder;
 import com.haidaiban.foxlee.Util.Utility;
 import com.haidaiban.foxlee.activitys.Activity_PriceFill;
 import com.haidaiban.foxlee.activitys.OfferMenu_Activity;
@@ -109,7 +111,9 @@ public class FragmentPage2 extends Fragment{
             webmethod = new Webmethod(getActivity().getApplicationContext());
             try {
                 //get json files
-                quotes = webmethod.getQuotes();
+                if(quotes == null) {
+                    quotes = webmethod.getQuotes();
+                }
                 //转化对应offer java class
 
 
@@ -137,5 +141,19 @@ public class FragmentPage2 extends Fragment{
 
 
         }
+    }
+
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        if(DataHolder.getQuoteList() != null){
+            quotes = DataHolder.getQuoteList();
+        }
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        DataHolder.setQuoteList(quotes);
     }
 }

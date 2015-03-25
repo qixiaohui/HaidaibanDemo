@@ -21,6 +21,7 @@ import com.daimajia.slider.library.SliderLayout;
 import com.daimajia.slider.library.Animations.DescriptionAnimation;
 import com.daimajia.slider.library.SliderTypes.TextSliderView;
 import com.daimajia.slider.library.SliderTypes.BaseSliderView;
+import com.haidaiban.foxlee.Util.DataHolder;
 import com.haidaiban.foxlee.activitys.Activity_PriceFill;
 import com.haidaiban.foxlee.activitys.LimitedTimeOffer;
 import com.haidaiban.foxlee.config.Constants;
@@ -93,6 +94,15 @@ public class FragmentPage1 extends Fragment{
         super.onAttach(activity);
 
         System.out.println("on attachment"+slider);
+        if(DataHolder.getMessage() != null){
+            message = DataHolder.getMessage();
+        }
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        DataHolder.setMessage(message);
     }
 
     public class GetMessage extends AsyncTask<String,String,String>{
@@ -100,7 +110,9 @@ public class FragmentPage1 extends Fragment{
         protected String doInBackground(String... params) {
             webmethod = new Webmethod(getActivity().getApplicationContext());
             try {
-                message = webmethod.getMessage();
+                if(message == null) {
+                    message = webmethod.getMessage();
+                }
             }catch (IOException e){
 
             }
