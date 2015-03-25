@@ -108,9 +108,9 @@ public class FragmentPage1 extends Fragment{
     public class GetMessage extends AsyncTask<String,String,String>{
         @Override
         protected String doInBackground(String... params) {
-            webmethod = new Webmethod(getActivity().getApplicationContext());
             try {
                 if(message == null) {
+                    webmethod = new Webmethod(getActivity().getApplicationContext());
                     message = webmethod.getMessage();
                 }
             }catch (IOException e){

@@ -49,7 +49,6 @@ public class DealList extends Fragment{
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        webmethod = new Webmethod(getActivity());
         loadData = new asyncTask();
         loadData.execute();
     }
@@ -66,6 +65,7 @@ public class DealList extends Fragment{
         protected String doInBackground(String... params) {
             try {
                 if(deals == null) {
+                    webmethod = new Webmethod(getActivity());
                     deals = webmethod.getDeals();
                 }
             }catch (IOException e){

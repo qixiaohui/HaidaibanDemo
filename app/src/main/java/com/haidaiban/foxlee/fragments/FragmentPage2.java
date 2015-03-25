@@ -108,10 +108,10 @@ public class FragmentPage2 extends Fragment{
     public class GetData extends AsyncTask<String,String,String>{
         @Override
         protected String doInBackground(String... params) {
-            webmethod = new Webmethod(getActivity().getApplicationContext());
             try {
                 //get json files
                 if(quotes == null) {
+                    webmethod = new Webmethod(getActivity().getApplicationContext());
                     quotes = webmethod.getQuotes();
                 }
                 //转化对应offer java class
