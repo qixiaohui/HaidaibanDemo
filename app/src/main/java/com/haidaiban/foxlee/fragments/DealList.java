@@ -1,6 +1,7 @@
 package com.haidaiban.foxlee.fragments;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -8,6 +9,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.ProgressBar;
@@ -15,6 +17,7 @@ import android.widget.RelativeLayout;
 import android.widget.Spinner;
 
 import com.haidaiban.foxlee.Util.DataHolder;
+import com.haidaiban.foxlee.activitys.ProductDetail;
 import com.haidaiban.foxlee.adapter.ListViewAdapter;
 import com.haidaiban.foxlee.model.deal.Deal;
 import com.haidaiban.foxlee.webMethod.Webmethod;
@@ -36,6 +39,7 @@ public class DealList extends Fragment{
     private asyncTask loadData;
     private RelativeLayout loading;
     private static DataHolder dataHolder;
+    private Intent intent;
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -90,6 +94,15 @@ public class DealList extends Fragment{
                 System.out.println("asynctask*****");
                 listView.setAdapter(new ListViewAdapter(deals, getActivity().getApplicationContext()));
             }
+
+            listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    intent = new Intent(getActivity().getApplicationContext(), ProductDetail.class);
+                    DataHolder.setDealResult(deals.getResults().get(position));
+                    startActivity(intent);
+                }
+            });
         }
     }
 

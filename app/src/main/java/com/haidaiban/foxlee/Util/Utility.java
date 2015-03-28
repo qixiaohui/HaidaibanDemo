@@ -1,7 +1,11 @@
 package com.haidaiban.foxlee.Util;
 
+import android.content.Context;
+import android.graphics.Point;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.view.Display;
+import android.view.WindowManager;
 
 
 /**
@@ -20,5 +24,16 @@ public class Utility {
             ft.replace(fragment, newFragment);
             ft.commit();
         }
+    }
+
+    public static int[] getWindowSize(Context context){
+        int [] size = new int [2];
+        WindowManager wm = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
+        Display display = wm.getDefaultDisplay();
+        Point point = new Point();
+        display.getSize(point);
+        size[0] = point.x;
+        size[1] = point.y;
+        return size;
     }
 }

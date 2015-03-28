@@ -4,6 +4,7 @@ import android.widget.ListView;
 
 import com.haidaiban.foxlee.fragments.DealList;
 import com.haidaiban.foxlee.model.deal.Deal;
+import com.haidaiban.foxlee.model.deal.Result;
 import com.haidaiban.foxlee.model.message.Message;
 import com.haidaiban.foxlee.model.quotelist.QuoteList;
 
@@ -14,6 +15,7 @@ public class DataHolder {
     private static Deal deal;
     private static Message message;
     private static QuoteList quoteList;
+    private static Result dealResult;
 
     public static Deal getDeal() {
         return deal;
@@ -37,5 +39,13 @@ public class DataHolder {
 
     public static void setQuoteList(QuoteList quoteList) {
         DataHolder.quoteList = quoteList;
+    }
+
+    public static Result getDealResult() {
+        return dealResult;
+    }
+
+    public static void setDealResult(Result dealResult) {
+        DataHolder.dealResult = dealResult;
     }
 }
