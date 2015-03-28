@@ -135,4 +135,15 @@
     <string name="signup_moreinfo">点击注册按钮，代办您已阅读信息“海代办使用协议”</string>
 
 
+    <string name="brand">品牌</string>
+    <string name="store">商店</string>
+    <string name="detaillink">链接</string>
+    <string name="discount">折扣</string>
+    <string name="coupon">折扣码</string>
+    <string name="shippingdiscount">运费折扣</string>
+    <string name="shippingcoupon">运费折扣码</string>
+    <string name="special">特别活动</string>
+    <string name="enddate">截止日期</string>
+    <string name="tip">温馨小提示</string>
+
 </resources>
