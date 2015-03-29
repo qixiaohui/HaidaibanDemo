@@ -135,7 +135,7 @@
     <string name="signup_moreinfo">点击注册按钮，代办您已阅读信息“海代办使用协议”</string>
 <!-- action bar-->
     <string name="actionbar_search">search</string>
-
+<!-- details -->
     <string name="brand">品牌</string>
     <string name="store">商店</string>
     <string name="detaillink">链接</string>
