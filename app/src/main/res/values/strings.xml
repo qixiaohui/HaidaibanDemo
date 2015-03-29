@@ -150,5 +150,7 @@
     <string name="usecoupon">用此折扣代购</string>
     <string name="bookmark">收藏</string>
     <string name="related">您可能会喜欢</string>
+    <string name="likeSuccess">收藏成功</string>
+    <string name="unlikeSuccess">取消收藏</string>
 
 </resources>

@@ -278,14 +278,32 @@ public class Webmethod {
         }
     }
 
-    public static void bookmark(String id) throws IOException{
+    public static int bookmark(String id) throws IOException{
         token = getToken();
-        httpPost = new HttpPost(Constants.getLOGIN_URL()+"api/like/deal");
+        pair = new ArrayList<NameValuePair>();
+        pair.add(new BasicNameValuePair("id",id));
+        httpPost = new HttpPost(Constants.getLOGIN_URL()+"api/like/deal/");
         httpPost.setHeader("Authorization","Token "+token);
-        httpPost.setHeader("id",id);
+        httpPost.setEntity(new UrlEncodedFormEntity(pair));
         httpResponse = httpClient.execute(httpPost);
         status = httpResponse.getStatusLine().getStatusCode();
         System.out.println(status);
+        return status;
+    }
+
+    public static int deleteBookmark(String id) throws IOException{
+        token = getToken();
+        token = getToken();
+        pair = new ArrayList<NameValuePair>();
+        pair.add(new BasicNameValuePair("id",id));
+        pair.add(new BasicNameValuePair("_method","DELETE"));
+        httpPost = new HttpPost(Constants.getLOGIN_URL()+"api/like/deal/");
+        httpPost.setHeader("Authorization","Token "+token);
+        httpPost.setEntity(new UrlEncodedFormEntity(pair));
+        httpResponse = httpClient.execute(httpPost);
+        status = httpResponse.getStatusLine().getStatusCode();
+        System.out.println(status);
+        return status;
     }
 
 }
