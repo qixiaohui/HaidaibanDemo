@@ -5,7 +5,13 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <TextView
+        android:id="@+id/tx_search"
+        android:layout_height="30dp"
+        android:layout_width="match_parent"
+        >
 
+    </TextView>
     <ListView
         android:id="@+id/lv_search"
         android:layout_width="match_parent"

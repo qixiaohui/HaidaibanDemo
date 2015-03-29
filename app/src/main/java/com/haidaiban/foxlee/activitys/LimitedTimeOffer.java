@@ -47,7 +47,7 @@ public class LimitedTimeOffer extends ActionBarActivity{
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle presses on the action bar items
         switch (item.getItemId()) {
-            case R.id.menu_search:
+            case R.id.item_search:
                 openSearch();
                 return true;
 
