@@ -27,7 +27,7 @@ import java.util.List;
 /**
  * Created by jili on 3/28/15.
  */
-public class Search_Activity extends ActionBarActivity {
+public class Search_Activity extends ActionBarActivity implements android.support.v7.widget.SearchView.OnQueryTextListener{
 
     private SearchView mSearchView;
     private ActionBar actonBar;
@@ -52,7 +52,7 @@ public class Search_Activity extends ActionBarActivity {
 
 
         SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
-        mSearchView = (SearchView) searchItem.getActionView();
+        mSearchView = (SearchView) MenuItemCompat.getActionView(searchItem);
         Log.i("sss", "is null ====" + mSearchView);
         // Assumes current activity is the searchable activity
        setupSearchView(searchItem);
@@ -87,7 +87,7 @@ public class Search_Activity extends ActionBarActivity {
                 mSearchView.setSearchableInfo(info);
             }
 
-            mSearchView.setOnQueryTextListener((SearchView.OnQueryTextListener) this);
+            mSearchView.setOnQueryTextListener(this);
         }
 
 

@@ -45,7 +45,7 @@
             android:windowSoftInputMode="adjustPan|stateHidden"></activity>
         <activity
             android:name="com.haidaiban.foxlee.activitys.Search_Activity"
-            android:theme="@style/Theme.AppCompat"
+            android:theme="@style/Theme.AppCompat.Light.DarkActionBar"
             android:windowSoftInputMode="adjustPan|stateHidden">
 
             <intent-filter>
