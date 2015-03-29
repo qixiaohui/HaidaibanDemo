@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.HorizontalScrollView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TableLayout;
@@ -47,12 +48,19 @@ public class ProductDetail extends Activity {
     TextView website;
     Asyn asyn;
     Intent intent;
+    HorizontalScrollView horizontalScrollView;
+    LinearLayout container;
+    LinearLayout child;
+    TextView youMightLike;
     private Boolean flag = false;
     int [] size;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.productdetail);
+
+        deal = getDeal();
+
         productImage = (ImageView) findViewById(R.id.productImage);
         title = (TextView) findViewById(R.id.title);
         brand = (TextView) findViewById(R.id.brand);
@@ -72,9 +80,37 @@ public class ProductDetail extends Activity {
         bookmark = (ImageView) findViewById(R.id.bookmark);
         bookmarkButton = (LinearLayout) findViewById(R.id.bookmarkbutton);
         website = (TextView) findViewById(R.id.website);
+        horizontalScrollView = (HorizontalScrollView) findViewById(R.id.horizontal);
+        youMightLike = (TextView) findViewById(R.id.related);
 
         size = Utility.getWindowSize(this);
-        deal = getDeal();
+        if(deal.getRecommendations().size()>0) {
+            horizontalScrollView.setVisibility(View.VISIBLE);
+            youMightLike.setVisibility(View.VISIBLE);
+            container = (LinearLayout) findViewById(R.id.container);
+            for(int i=0; i<deal.getRecommendations().size(); i++){
+                child = new LinearLayout(this);
+                LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
+                        (int)(size[0]/3), (int)(size[1]/4));
+                layoutParams.setMargins(5, 0, 5, 0);
+                child.setOrientation(1);
+                child.setTag(i);
+                ImageView image = new ImageView(this);
+                TextView relateTitle = new TextView(this);
+                relateTitle.setTextColor(getResources().getColor(R.color.black));
+                relateTitle.setTextSize(10);
+                relateTitle.setText(deal.getRecommendations().get(i).getTitle());
+                image.setScaleType(ImageView.ScaleType.FIT_XY);
+                Picasso.with(this)
+                        .load(Constants.getLOGIN_URL() + deal.getRecommendations().get(i).getImage())
+                        .into(image);
+                child.addView(image);
+                child.addView(relateTitle);
+                container.addView(child, layoutParams);
+                image.getLayoutParams().height = (int)(size[1]/5);
+            }
+        }
+
         Picasso.with(this)
                 .load(Constants.getLOGIN_URL() + deal.getImage())
                 .resize((int)(size[0]*0.90),(int)(size[1]*0.35))
