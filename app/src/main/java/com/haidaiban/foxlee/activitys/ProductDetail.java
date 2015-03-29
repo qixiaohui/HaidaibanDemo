@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TableLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.haidaiban.foxlee.Util.DataHolder;
 import com.haidaiban.foxlee.Util.Utility;
@@ -182,7 +183,33 @@ public class ProductDetail extends Activity {
             if(params[0].equals("bookmark")){
                 try{
                     Webmethod webmethod = new Webmethod(getApplicationContext());
-                    webmethod.bookmark(Integer.toString(deal.getId()));
+                    if(!deal.getIsLike()){
+                        if(webmethod.bookmark(Integer.toString(deal.getId()))==200){
+                            deal.setIsLike(true);
+                            runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    bookmark.setImageDrawable(getResources().getDrawable(R.drawable.mark));
+                                    Toast.makeText(getApplicationContext()
+                                            , getResources().getString(R.string.likeSuccess)
+                                            , Toast.LENGTH_LONG)
+                                            .show();;
+                                }
+                            });
+                        }
+                    }else{
+                        if(webmethod.deleteBookmark(Integer.toString(deal.getId()))==200){
+                            deal.setIsLike(false);
+                            runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    bookmark.setImageDrawable(getResources().getDrawable(R.drawable.unmark));
+                                    Toast.makeText(getApplicationContext()
+                                            ,getResources().getString(R.string.unlikeSuccess),Toast.LENGTH_LONG).show();
+                                }
+                            });
+                        }
+                    }
                 }catch (IOException e){
 
                 }

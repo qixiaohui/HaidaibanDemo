@@ -39,6 +39,7 @@
                 android:id="@+id/arrowup"
                 android:layout_width="20dp"
                 android:layout_height="20dp"
+                android:layout_marginTop="15dp"
                 android:layout_alignParentRight="true"
                 android:layout_marginRight="10dp"
                 android:src="@drawable/arrowdown" />
