@@ -278,4 +278,14 @@ public class Webmethod {
         }
     }
 
+    public static void bookmark(String id) throws IOException{
+        token = getToken();
+        httpPost = new HttpPost(Constants.getLOGIN_URL()+"api/like/deal");
+        httpPost.setHeader("Authorization","Token "+token);
+        httpPost.setHeader("id",id);
+        httpResponse = httpClient.execute(httpPost);
+        status = httpResponse.getStatusLine().getStatusCode();
+        System.out.println(status);
+    }
+
 }

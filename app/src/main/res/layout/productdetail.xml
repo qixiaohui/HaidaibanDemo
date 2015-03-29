@@ -409,5 +409,63 @@
                     android:textSize="12sp" />
             </TableRow>
         </TableLayout>
+        <TableLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+
+            <TableRow>
+
+                <TextView
+                    android:id="@+id/website"
+                    android:gravity="center"
+                    android:layout_width="0dp"
+                    android:paddingBottom="7dp"
+                    android:paddingTop="7dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@color/green"
+                    android:text="@string/website"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/usecoupon"
+                    android:layout_width="0dp"
+                    android:gravity="center"
+                    android:paddingBottom="7dp"
+                    android:paddingTop="7dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="#00CCFF"
+                    android:text="@string/usecoupon"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+                <LinearLayout
+                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:id="@+id/bookmarkbutton"
+                    android:background="@color/orange">
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="20dp"
+                    android:layout_weight="1"
+                    android:id="@+id/bookmark"
+                    android:layout_marginRight="5dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/unmark"/>
+                <TextView
+                    android:layout_width="0dp"
+                    android:paddingBottom="7dp"
+                    android:paddingTop="7dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@color/orange"
+                    android:text="@string/bookmark"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+                </LinearLayout>
+            </TableRow>
+        </TableLayout>
     </LinearLayout>
 </ScrollView>

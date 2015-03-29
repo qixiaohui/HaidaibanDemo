@@ -41,6 +41,9 @@
             android:name="com.haidaiban.foxlee.activitys.ProductDetail"
             android:windowSoftInputMode="adjustPan|stateHidden"></activity>
         <activity
+            android:name="com.haidaiban.foxlee.activitys.WebActivity"
+            android:windowSoftInputMode="adjustPan|stateHidden"></activity>
+        <activity
             android:name="com.haidaiban.foxlee.activitys.Search_Activity"
             android:windowSoftInputMode="adjustPan|stateHidden"></activity>
     </application>

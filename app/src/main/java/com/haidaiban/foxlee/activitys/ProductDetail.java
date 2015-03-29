@@ -1,9 +1,13 @@
 package com.haidaiban.foxlee.activitys;
 
 import android.app.Activity;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TableLayout;
 import android.widget.TextView;
 
@@ -12,9 +16,10 @@ import com.haidaiban.foxlee.Util.Utility;
 import com.haidaiban.foxlee.config.Constants;
 import com.haidaiban.foxlee.fragments.R;
 import com.haidaiban.foxlee.model.deal.Result;
+import com.haidaiban.foxlee.webMethod.Webmethod;
 import com.squareup.picasso.Picasso;
 
-import org.w3c.dom.Text;
+import java.io.IOException;
 
 /**
  * Created by qixiaohui on 3/27/15.
@@ -37,6 +42,11 @@ public class ProductDetail extends Activity {
     TextView tip;
     ImageView arrowUp;
     TableLayout info;
+    ImageView bookmark;
+    LinearLayout bookmarkButton;
+    TextView website;
+    Asyn asyn;
+    Intent intent;
     private Boolean flag = false;
     int [] size;
     @Override
@@ -59,7 +69,9 @@ public class ProductDetail extends Activity {
         tip = (TextView) findViewById(R.id.tip);
         arrowUp = (ImageView) findViewById(R.id.arrowup);
         info = (TableLayout) findViewById(R.id.info);
-
+        bookmark = (ImageView) findViewById(R.id.bookmark);
+        bookmarkButton = (LinearLayout) findViewById(R.id.bookmarkbutton);
+        website = (TextView) findViewById(R.id.website);
 
         size = Utility.getWindowSize(this);
         deal = getDeal();
@@ -81,6 +93,11 @@ public class ProductDetail extends Activity {
         endDate.setText(deal.getEndDate()==null?"":deal.getEndDate());
         tip.setText(deal.getTip()==null?"":deal.getTip());
         info.setVisibility(View.GONE);
+        if(deal.getIsLike()){
+            bookmark.setImageDrawable(getResources().getDrawable(R.drawable.mark));
+        }else{
+            bookmark.setImageDrawable(getResources().getDrawable(R.drawable.unmark));
+        }
 
 
         arrowUp.setOnClickListener(new View.OnClickListener() {
@@ -96,10 +113,55 @@ public class ProductDetail extends Activity {
                 }
             }
         });
+
+        bookmarkButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                asyn = new Asyn();
+                asyn.execute("bookmark");
+            }
+        });
+
+        website.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                intent = new Intent(getApplicationContext(),WebActivity.class);
+                intent.putExtra("url",deal.getWeblink());
+                startActivity(intent);
+            }
+        });
+
+
+
     }
 
     public Result getDeal(){
 
         return DataHolder.getDealResult();
+    }
+
+    public class Asyn extends AsyncTask<String,String,String>{
+        @Override
+        protected String doInBackground(String... params) {
+            if(params[0].equals("bookmark")){
+                try{
+                    Webmethod webmethod = new Webmethod(getApplicationContext());
+                    webmethod.bookmark(Integer.toString(deal.getId()));
+                }catch (IOException e){
+
+                }
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+        }
     }
 }
