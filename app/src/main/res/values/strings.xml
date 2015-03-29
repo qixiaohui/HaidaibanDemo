@@ -151,4 +151,8 @@
     <string name="bookmark">收藏</string>
     <string name="related">您可能会喜欢</string>
 
+    <!--- search-->
+    <string name="search">search</string>
+
+
 </resources>

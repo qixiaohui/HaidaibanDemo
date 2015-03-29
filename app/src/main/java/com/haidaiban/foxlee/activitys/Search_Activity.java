@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.SearchView;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -52,8 +53,9 @@ public class Search_Activity extends ActionBarActivity {
 
         SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
         mSearchView = (SearchView) searchItem.getActionView();
+        Log.i("sss", "is null ====" + mSearchView);
         // Assumes current activity is the searchable activity
-       // setupSearchView(searchItem);
+       setupSearchView(searchItem);
 
         return true;
 
