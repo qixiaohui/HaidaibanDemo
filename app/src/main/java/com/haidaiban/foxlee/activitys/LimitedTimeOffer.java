@@ -26,7 +26,7 @@ import java.util.List;
 /**
  * Created by qixiaohui on 3/14/15.
  */
-public class LimitedTimeOffer extends ActionBarActivity implements SearchView.OnQueryTextListener {
+public class LimitedTimeOffer extends ActionBarActivity {
     private FragmentTabHost tabHost;
     private String [] titles;
     private ActionBar actonBar;
@@ -43,8 +43,7 @@ public class LimitedTimeOffer extends ActionBarActivity implements SearchView.On
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 
-        mTx_Search = (TextView) findViewById(R.id.tx_search);
-        mTx_Search = (TextView) findViewById(R.id.tx_search);
+       // mTx_Search = (TextView) findViewById(R.id.tx_search);
         titles = getResources().getStringArray(R.array.tabTitle);
         tabHost = (FragmentTabHost) findViewById(android.R.id.tabhost);
 
@@ -70,77 +69,75 @@ public class LimitedTimeOffer extends ActionBarActivity implements SearchView.On
             mSearchView = (SearchView) MenuItemCompat.getActionView(searchItem);
             Log.i("sss", "is null ====" + mSearchView);
             // Assumes current activity is the searchable activity
-            setupSearchView(searchItem);
+           // setupSearchView(searchItem);
 
             return true;
 
 
         }
-    @TargetApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH)
-    private void setupSearchView(MenuItem searchItem) {
+//    private void setupSearchView(MenuItem searchItem) {
+//
+//        if (isAlwaysExpanded()) {
+//            mSearchView.setIconifiedByDefault(false);
+//        } else {
+//            searchItem.setShowAsActionFlags(MenuItem.SHOW_AS_ACTION_IF_ROOM
+//                    | MenuItem.SHOW_AS_ACTION_COLLAPSE_ACTION_VIEW);
+//        }
+//
+//        SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
+//        if (searchManager != null) {
+//            List<SearchableInfo> searchables = searchManager.getSearchablesInGlobalSearch();
+//
+//            SearchableInfo info = searchManager.getSearchableInfo(getComponentName());
+//            for (SearchableInfo inf : searchables) {
+//                if (inf.getSuggestAuthority() != null
+//                        && inf.getSuggestAuthority().startsWith("applications")) {
+//                    info = inf;
+//                }
+//            }
+//            mSearchView.setSearchableInfo(info);
+//        }
+//
+//        mSearchView.setOnQueryTextListener( this);
+//    }
+//
+//
+//    public boolean onQueryTextChange(String newText) {
+//        mTx_Search.setText("Query = " + newText);
+//        return false;
+//    }
+//
+//    public boolean onQueryTextSubmit(String query) {
+//        mTx_Search.setText("Query = " + query + " : submitted");
+//        return false;
+//    }
+//
+//    public boolean onClose() {
+//        mTx_Search.setText("Closed!");
+//        return false;
+//    }
+//
+//    protected boolean isAlwaysExpanded() {
+//        return false;
+//    }
+//
 
-        if (isAlwaysExpanded()) {
-            mSearchView.setIconifiedByDefault(false);
-        } else {
-            searchItem.setShowAsActionFlags(MenuItem.SHOW_AS_ACTION_IF_ROOM
-                    | MenuItem.SHOW_AS_ACTION_COLLAPSE_ACTION_VIEW);
-        }
 
-        SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
-        if (searchManager != null) {
-            List<SearchableInfo> searchables = searchManager.getSearchablesInGlobalSearch();
-
-            SearchableInfo info = searchManager.getSearchableInfo(getComponentName());
-            for (SearchableInfo inf : searchables) {
-                if (inf.getSuggestAuthority() != null
-                        && inf.getSuggestAuthority().startsWith("applications")) {
-                    info = inf;
-                }
-            }
-            mSearchView.setSearchableInfo(info);
-        }
-
-        mSearchView.setOnQueryTextListener( this);
-    }
-
-
-    public boolean onQueryTextChange(String newText) {
-        mTx_Search.setText("Query = " + newText);
-        return false;
-    }
-
-    public boolean onQueryTextSubmit(String query) {
-        mTx_Search.setText("Query = " + query + " : submitted");
-        return false;
-    }
-
-    public boolean onClose() {
-        mTx_Search.setText("Closed!");
-        return false;
-    }
-
-    protected boolean isAlwaysExpanded() {
-        return false;
-    }
-
-
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle presses on the action bar items
-        switch (item.getItemId()) {
-            case R.id.item_search:
-                openSearch();
-                return true;
-
-            default:
-                return super.onOptionsItemSelected(item);
-        }
-    }
-
-    private void openSearch() {
-        Intent intent = new Intent();
-        intent.setClass(getApplicationContext(),Search_Activity.class);
-        startActivity(intent);
-    }
+//    public boolean onOptionsItemSelected(MenuItem item) {
+//        // Handle presses on the action bar items
+//        switch (item.getItemId()) {
+//            case R.id.item_search:
+//                openSearch();
+//                return true;
+//
+//            default:
+//                return super.onOptionsItemSelected(item);
+//        }
+//    }
+//
+//    private void openSearch() {
+//        Intent intent = new Intent();
+//        intent.setClass(getApplicationContext(),Search_Activity.class);
+//        startActivity(intent);
+//    }
 }
