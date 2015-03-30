@@ -30,7 +30,6 @@ import java.util.List;
 public class Search_Activity extends ActionBarActivity implements android.support.v7.widget.SearchView.OnQueryTextListener{
 
     private SearchView mSearchView;
-    private ActionBar actonBar;
     private TextView mTx_Search ;
 
     private InputMethodManager mInput;
