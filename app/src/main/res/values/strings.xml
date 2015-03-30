@@ -152,6 +152,7 @@
     <string name="related">您可能会喜欢</string>
     <string name="likeSuccess">收藏成功</string>
     <string name="unlikeSuccess">取消收藏</string>
+    <string name="comment">评论</string>
 
     <!--- search-->
     <string name="search">search</string>

@@ -2,6 +2,7 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
+    android:fillViewport="true"
     android:background="@color/white">
 
     <LinearLayout
@@ -493,5 +494,38 @@
                 android:layout_height="wrap_content">
             </LinearLayout>
         </HorizontalScrollView>
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_height="wrap_content"
+            android:layout_width="fill_parent">
+        <RelativeLayout
+            android:id="@+id/loadingPanel"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone"
+            android:gravity="center" >
+            <ProgressBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:indeterminate="true" />
+        </RelativeLayout>
+        <TextView
+            android:id="@+id/commentVerb"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/comment"
+            android:textSize="13sp"
+            android:paddingLeft="10dp"
+            android:background="#F0F0F0"
+            android:paddingBottom="5dp"
+            android:paddingTop="5dp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+                android:visibility="gone" />
+        <ListView
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/commentList" />
+        </LinearLayout>
     </LinearLayout>
 </ScrollView>

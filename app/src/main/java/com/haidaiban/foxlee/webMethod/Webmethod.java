@@ -7,6 +7,7 @@ import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.haidaiban.foxlee.config.Constants;
+import com.haidaiban.foxlee.model.comment.Comment;
 import com.haidaiban.foxlee.model.deal.Deal;
 import com.haidaiban.foxlee.model.message.Message;
 import com.haidaiban.foxlee.model.offer.Offer;
@@ -304,6 +305,17 @@ public class Webmethod {
         status = httpResponse.getStatusLine().getStatusCode();
         System.out.println(status);
         return status;
+    }
+
+    public static Comment getComments(String id) throws IOException,JSONException{
+        token = getToken();
+        httpGet = new HttpGet(Constants.getLOGIN_URL()+"api/comments/?ct=deal.deal&id="+id);
+        httpGet.setHeader("Authorization",token);
+        httpResponse = httpClient.execute(httpGet);
+        entity = httpResponse.getEntity();
+        response = EntityUtils.toString(entity,"UTF-8");
+        System.out.println(response+"****");
+        return new Gson().fromJson(response,Comment.class);
     }
 
 }

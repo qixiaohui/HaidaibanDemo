@@ -9,17 +9,23 @@ import android.view.View;
 import android.widget.HorizontalScrollView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.TableLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.haidaiban.foxlee.Util.DataHolder;
 import com.haidaiban.foxlee.Util.Utility;
+import com.haidaiban.foxlee.adapter.CommentAdapter;
 import com.haidaiban.foxlee.config.Constants;
 import com.haidaiban.foxlee.fragments.R;
+import com.haidaiban.foxlee.model.comment.Comment;
 import com.haidaiban.foxlee.model.deal.Result;
 import com.haidaiban.foxlee.webMethod.Webmethod;
 import com.squareup.picasso.Picasso;
+
+import org.json.JSONException;
 
 import java.io.IOException;
 
@@ -53,6 +59,12 @@ public class ProductDetail extends Activity {
     LinearLayout container;
     LinearLayout child;
     TextView youMightLike;
+    ListView commentList;
+    RelativeLayout loading;
+    Webmethod webmethod;
+    CommentAdapter commentAdapter;
+    Comment comment;
+    TextView commentVerb;
     private Boolean flag = false;
     int [] size;
     @Override
@@ -61,6 +73,7 @@ public class ProductDetail extends Activity {
         setContentView(R.layout.productdetail);
 
         deal = getDeal();
+        asyn = new Asyn();
 
         productImage = (ImageView) findViewById(R.id.productImage);
         title = (TextView) findViewById(R.id.title);
@@ -83,6 +96,11 @@ public class ProductDetail extends Activity {
         website = (TextView) findViewById(R.id.website);
         horizontalScrollView = (HorizontalScrollView) findViewById(R.id.horizontal);
         youMightLike = (TextView) findViewById(R.id.related);
+        commentList = (ListView) findViewById(R.id.commentList);
+        loading = (RelativeLayout) findViewById(R.id.loadingPanel);
+        commentVerb = (TextView) findViewById(R.id.commentVerb);
+
+        asyn.execute("comment");
 
         size = Utility.getWindowSize(this);
         if(deal.getRecommendations().size()>0) {
@@ -154,7 +172,6 @@ public class ProductDetail extends Activity {
         bookmarkButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                asyn = new Asyn();
                 asyn.execute("bookmark");
             }
         });
@@ -180,9 +197,21 @@ public class ProductDetail extends Activity {
     public class Asyn extends AsyncTask<String,String,String>{
         @Override
         protected String doInBackground(String... params) {
+
+            if(params[0].equals("comment")){
+                try{
+                    webmethod = new Webmethod(getApplicationContext());
+                    comment = webmethod.getComments(Integer.toString(deal.getId()));
+                }catch (IOException e){
+
+                }catch (JSONException e){
+
+                }
+            }
+
             if(params[0].equals("bookmark")){
                 try{
-                    Webmethod webmethod = new Webmethod(getApplicationContext());
+                    webmethod = new Webmethod(getApplicationContext());
                     if(!deal.getIsLike()){
                         if(webmethod.bookmark(Integer.toString(deal.getId()))==200){
                             deal.setIsLike(true);
@@ -220,11 +249,16 @@ public class ProductDetail extends Activity {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
+            loading.setVisibility(View.VISIBLE);
         }
 
         @Override
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
+            loading.setVisibility(View.GONE);
+            commentAdapter = new CommentAdapter(comment, getApplicationContext());
+            commentList.setAdapter(commentAdapter);
+            commentVerb.setVisibility(View.VISIBLE);
         }
     }
 }
