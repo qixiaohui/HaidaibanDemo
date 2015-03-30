@@ -106,6 +106,8 @@ public class Search_Activity extends ActionBarActivity implements android.suppor
         return false;
     }
 
+
+
     protected boolean isAlwaysExpanded() {
         return false;
     }
