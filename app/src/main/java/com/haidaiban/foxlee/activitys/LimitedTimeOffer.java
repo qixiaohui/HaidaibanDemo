@@ -17,6 +17,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.haidaiban.foxlee.fragments.LimitedDealFragment;
 import com.haidaiban.foxlee.fragments.R;
@@ -68,76 +69,32 @@ public class LimitedTimeOffer extends ActionBarActivity {
             SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
             mSearchView = (SearchView) MenuItemCompat.getActionView(searchItem);
             Log.i("sss", "is null ====" + mSearchView);
-            // Assumes current activity is the searchable activity
-           // setupSearchView(searchItem);
+            mSearchView.setQueryHint("查找");
+        mSearchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                //Log.e("onQueryTextChange", "called");
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+
+
+                // Do your task here
+
+                Toast.makeText(getApplicationContext(), "search test", Toast.LENGTH_LONG).show();
+
+                return false;
+            }
+
+        });
+
 
             return true;
 
 
         }
-//    private void setupSearchView(MenuItem searchItem) {
-//
-//        if (isAlwaysExpanded()) {
-//            mSearchView.setIconifiedByDefault(false);
-//        } else {
-//            searchItem.setShowAsActionFlags(MenuItem.SHOW_AS_ACTION_IF_ROOM
-//                    | MenuItem.SHOW_AS_ACTION_COLLAPSE_ACTION_VIEW);
-//        }
-//
-//        SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
-//        if (searchManager != null) {
-//            List<SearchableInfo> searchables = searchManager.getSearchablesInGlobalSearch();
-//
-//            SearchableInfo info = searchManager.getSearchableInfo(getComponentName());
-//            for (SearchableInfo inf : searchables) {
-//                if (inf.getSuggestAuthority() != null
-//                        && inf.getSuggestAuthority().startsWith("applications")) {
-//                    info = inf;
-//                }
-//            }
-//            mSearchView.setSearchableInfo(info);
-//        }
-//
-//        mSearchView.setOnQueryTextListener( this);
-//    }
-//
-//
-//    public boolean onQueryTextChange(String newText) {
-//        mTx_Search.setText("Query = " + newText);
-//        return false;
-//    }
-//
-//    public boolean onQueryTextSubmit(String query) {
-//        mTx_Search.setText("Query = " + query + " : submitted");
-//        return false;
-//    }
-//
-//    public boolean onClose() {
-//        mTx_Search.setText("Closed!");
-//        return false;
-//    }
-//
-//    protected boolean isAlwaysExpanded() {
-//        return false;
-//    }
-//
 
-
-//    public boolean onOptionsItemSelected(MenuItem item) {
-//        // Handle presses on the action bar items
-//        switch (item.getItemId()) {
-//            case R.id.item_search:
-//                openSearch();
-//                return true;
-//
-//            default:
-//                return super.onOptionsItemSelected(item);
-//        }
-//    }
-//
-//    private void openSearch() {
-//        Intent intent = new Intent();
-//        intent.setClass(getApplicationContext(),Search_Activity.class);
-//        startActivity(intent);
-//    }
 }
