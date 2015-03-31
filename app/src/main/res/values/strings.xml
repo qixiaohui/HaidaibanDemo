@@ -160,4 +160,10 @@
     <!-- 填写评论 -->
     <string name="sent_comment">填写评论。。。</string>
 
+    <!--product detail title-->
+    <string-array name="productDetailTitle">
+        <item>商品</item>
+        <item>评论</item>
+    </string-array>
+
 </resources>

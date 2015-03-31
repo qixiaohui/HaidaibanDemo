@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.v4.app.FragmentTabHost;
+import android.support.v7.app.ActionBarActivity;
 import android.view.View;
 import android.widget.HorizontalScrollView;
 import android.widget.ImageView;
@@ -19,6 +21,9 @@ import com.haidaiban.foxlee.Util.DataHolder;
 import com.haidaiban.foxlee.Util.Utility;
 import com.haidaiban.foxlee.adapter.CommentAdapter;
 import com.haidaiban.foxlee.config.Constants;
+import com.haidaiban.foxlee.fragments.CommentFragment;
+import com.haidaiban.foxlee.fragments.LimitedDealFragment;
+import com.haidaiban.foxlee.fragments.ProductDetailFragment;
 import com.haidaiban.foxlee.fragments.R;
 import com.haidaiban.foxlee.model.comment.Comment;
 import com.haidaiban.foxlee.model.deal.Result;
@@ -32,233 +37,31 @@ import java.io.IOException;
 /**
  * Created by qixiaohui on 3/27/15.
  */
-public class ProductDetail extends Activity {
-    ImageView productImage;
-    TextView title;
-    Result deal;
-    TextView brand;
-    TextView like;
-    TextView view;
-    TextView store;
-    TextView link;
-    TextView disocunt;
-    TextView coupon;
-    TextView shippingDiscount;
-    TextView shippingCoupon;
-    TextView specialEvent;
-    TextView endDate;
-    TextView tip;
-    ImageView arrowUp;
-    TableLayout info;
-    ImageView bookmark;
-    LinearLayout bookmarkButton;
-    TextView website;
-    Asyn asyn;
-    Intent intent;
-    HorizontalScrollView horizontalScrollView;
-    LinearLayout container;
-    LinearLayout child;
-    TextView youMightLike;
-    ListView commentList;
-    RelativeLayout loading;
-    Webmethod webmethod;
-    CommentAdapter commentAdapter;
-    Comment comment;
-    TextView commentVerb;
-    private Boolean flag = false;
-    int [] size;
+public class ProductDetail extends ActionBarActivity {
+    private String [] titles;
+    FragmentTabHost tabHost;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.productdetail);
+        setContentView(R.layout.productdetailmain);
 
-        deal = getDeal();
-        asyn = new Asyn();
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        productImage = (ImageView) findViewById(R.id.productImage);
-        title = (TextView) findViewById(R.id.title);
-        brand = (TextView) findViewById(R.id.brand);
-        like = (TextView) findViewById(R.id.like);
-        view = (TextView) findViewById(R.id.view);
-        store = (TextView) findViewById(R.id.store);
-        link = (TextView) findViewById(R.id.link);
-        disocunt = (TextView) findViewById(R.id.discount);
-        coupon = (TextView) findViewById(R.id.coupon);
-        shippingDiscount = (TextView) findViewById(R.id.shippingdiscount);
-        shippingCoupon = (TextView) findViewById(R.id.shippingcoupon);
-        specialEvent = (TextView) findViewById(R.id.special);
-        endDate = (TextView) findViewById(R.id.enddate);
-        tip = (TextView) findViewById(R.id.tip);
-        arrowUp = (ImageView) findViewById(R.id.arrowup);
-        info = (TableLayout) findViewById(R.id.info);
-        bookmark = (ImageView) findViewById(R.id.bookmark);
-        bookmarkButton = (LinearLayout) findViewById(R.id.bookmarkbutton);
-        website = (TextView) findViewById(R.id.website);
-        horizontalScrollView = (HorizontalScrollView) findViewById(R.id.horizontal);
-        youMightLike = (TextView) findViewById(R.id.related);
-        commentList = (ListView) findViewById(R.id.commentList);
-        loading = (RelativeLayout) findViewById(R.id.loadingPanel);
-        commentVerb = (TextView) findViewById(R.id.commentVerb);
 
-        asyn.execute("comment");
+        // mTx_Search = (TextView) findViewById(R.id.tx_search);
+        titles = getResources().getStringArray(R.array.productDetailTitle);
+        tabHost = (FragmentTabHost) findViewById(android.R.id.tabhost);
 
-        size = Utility.getWindowSize(this);
-        if(deal.getRecommendations().size()>0) {
-            horizontalScrollView.setVisibility(View.VISIBLE);
-            youMightLike.setVisibility(View.VISIBLE);
-            container = (LinearLayout) findViewById(R.id.container);
-            for(int i=0; i<deal.getRecommendations().size(); i++){
-                child = new LinearLayout(this);
-                LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
-                        (int)(size[0]/3), (int)(size[1]/4));
-                layoutParams.setMargins(5, 0, 5, 0);
-                child.setOrientation(1);
-                child.setTag(i);
-                ImageView image = new ImageView(this);
-                TextView relateTitle = new TextView(this);
-                relateTitle.setTextColor(getResources().getColor(R.color.black));
-                relateTitle.setTextSize(10);
-                relateTitle.setText(deal.getRecommendations().get(i).getTitle());
-                image.setScaleType(ImageView.ScaleType.FIT_XY);
-                Picasso.with(this)
-                        .load(Constants.getLOGIN_URL() + deal.getRecommendations().get(i).getImage())
-                        .into(image);
-                child.addView(image);
-                child.addView(relateTitle);
-                container.addView(child, layoutParams);
-                image.getLayoutParams().height = (int)(size[1]/5);
+        tabHost.setup(this,getSupportFragmentManager(),R.id.tabcontent);
+
+        for(String title : titles){
+            if(title.equals("商品")) {
+                tabHost.addTab(tabHost.newTabSpec(title).setIndicator(title), ProductDetailFragment.class, null);
+            }else if(title.equals("评论")){
+                tabHost.addTab(tabHost.newTabSpec(title).setIndicator(title), CommentFragment.class, null);
             }
         }
 
-        Picasso.with(this)
-                .load(Constants.getLOGIN_URL() + deal.getImage())
-                .resize((int)(size[0]*0.90),(int)(size[1]*0.35))
-                .into(productImage);
-        title.setText(deal.getTitle());
-        brand.setText(getResources().getString(R.string.brand)+": "+deal.getBrand());
-        view.setText(Integer.toString(deal.getReadCount()));
-        like.setText(deal.getLikeCount()==null?"0":Integer.toString(deal.getLikeCount()));
-        store.setText(deal.getStore());
-        link.setText(deal.getWeblink());
-        disocunt.setText(deal.getDiscMain());
-        coupon.setText(deal.getCouponMain());
-        shippingDiscount.setText(deal.getDiscShip());
-        shippingCoupon.setText(deal.getCouponShip());
-        specialEvent.setText(deal.getInstrSpecial()==null?"":deal.getInstrSpecial());
-        endDate.setText(deal.getEndDate()==null?"":deal.getEndDate());
-        tip.setText(deal.getTip()==null?"":deal.getTip());
-        info.setVisibility(View.GONE);
-        if(deal.getIsLike()){
-            bookmark.setImageDrawable(getResources().getDrawable(R.drawable.mark));
-        }else{
-            bookmark.setImageDrawable(getResources().getDrawable(R.drawable.unmark));
-        }
 
-
-        arrowUp.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                flag = !flag;
-                if(flag){
-                    info.setVisibility(View.VISIBLE);
-                    arrowUp.setImageDrawable(getResources().getDrawable(R.drawable.arrowup));
-                }else{
-                    info.setVisibility(View.GONE);
-                    arrowUp.setImageDrawable(getResources().getDrawable(R.drawable.arrowdown));
-                }
-            }
-        });
-
-        bookmarkButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                asyn.execute("bookmark");
-            }
-        });
-
-        website.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                intent = new Intent(getApplicationContext(),WebActivity.class);
-                intent.putExtra("url",deal.getWeblink());
-                startActivity(intent);
-            }
-        });
-
-
-
-    }
-
-    public Result getDeal(){
-
-        return DataHolder.getDealResult();
-    }
-
-    public class Asyn extends AsyncTask<String,String,String>{
-        @Override
-        protected String doInBackground(String... params) {
-
-            if(params[0].equals("comment")){
-                try{
-                    webmethod = new Webmethod(getApplicationContext());
-                    comment = webmethod.getComments(Integer.toString(deal.getId()));
-                }catch (IOException e){
-
-                }catch (JSONException e){
-
-                }
-            }
-
-            if(params[0].equals("bookmark")){
-                try{
-                    webmethod = new Webmethod(getApplicationContext());
-                    if(!deal.getIsLike()){
-                        if(webmethod.bookmark(Integer.toString(deal.getId()))==200){
-                            deal.setIsLike(true);
-                            runOnUiThread(new Runnable() {
-                                @Override
-                                public void run() {
-                                    bookmark.setImageDrawable(getResources().getDrawable(R.drawable.mark));
-                                    Toast.makeText(getApplicationContext()
-                                            , getResources().getString(R.string.likeSuccess)
-                                            , Toast.LENGTH_LONG)
-                                            .show();;
-                                }
-                            });
-                        }
-                    }else{
-                        if(webmethod.deleteBookmark(Integer.toString(deal.getId()))==200){
-                            deal.setIsLike(false);
-                            runOnUiThread(new Runnable() {
-                                @Override
-                                public void run() {
-                                    bookmark.setImageDrawable(getResources().getDrawable(R.drawable.unmark));
-                                    Toast.makeText(getApplicationContext()
-                                            ,getResources().getString(R.string.unlikeSuccess),Toast.LENGTH_LONG).show();
-                                }
-                            });
-                        }
-                    }
-                }catch (IOException e){
-
-                }
-            }
-            return null;
-        }
-
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-            loading.setVisibility(View.VISIBLE);
-        }
-
-        @Override
-        protected void onPostExecute(String s) {
-            super.onPostExecute(s);
-            loading.setVisibility(View.GONE);
-            commentAdapter = new CommentAdapter(comment, getApplicationContext());
-            commentList.setAdapter(commentAdapter);
-            commentVerb.setVisibility(View.VISIBLE);
-        }
     }
 }

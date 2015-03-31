@@ -39,6 +39,7 @@
 
         <activity
             android:name="com.haidaiban.foxlee.activitys.ProductDetail"
+            android:theme="@style/Theme.AppCompat.Light.DarkActionBar"
             android:windowSoftInputMode="adjustPan|stateHidden"></activity>
         <activity
             android:name="com.haidaiban.foxlee.activitys.WebActivity"
