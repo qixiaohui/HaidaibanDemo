@@ -157,5 +157,7 @@
     <!--- search-->
     <string name="search">search</string>
 
+    <!-- 填写评论 -->
+    <string name="sent_comment">填写评论。。。</string>
 
 </resources>
