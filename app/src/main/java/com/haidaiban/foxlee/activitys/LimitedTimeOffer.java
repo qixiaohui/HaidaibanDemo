@@ -63,7 +63,7 @@ public class LimitedTimeOffer extends ActionBarActivity {
             // Inflate the menu; this adds items to the action bar if it is present.
             MenuInflater inflater = getMenuInflater();
             inflater.inflate(R.menu.menu_search, menu);
-            MenuItem searchItem = menu.findItem(R.id.item_search);
+            final MenuItem searchItem = menu.findItem(R.id.item_search);
 
 
             SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
@@ -85,7 +85,8 @@ public class LimitedTimeOffer extends ActionBarActivity {
                 // Do your task here
 
                 Toast.makeText(getApplicationContext(), "search test", Toast.LENGTH_LONG).show();
-
+                // close search
+                MenuItemCompat.collapseActionView(searchItem);
                 return false;
             }
 
