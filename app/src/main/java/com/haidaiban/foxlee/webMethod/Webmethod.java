@@ -318,4 +318,18 @@ public class Webmethod {
         return new Gson().fromJson(response,Comment.class);
     }
 
+    public static int addComment(String id,String comment) throws IOException{
+        token = getToken();
+        pair = new ArrayList<NameValuePair>();
+        pair.add(new BasicNameValuePair("content_type","deal.deal"));
+        pair.add(new BasicNameValuePair("object_pk",id));
+        pair.add(new BasicNameValuePair("comment",comment));
+        httpPost = new HttpPost(Constants.getLOGIN_URL()+"api/comment/write/");
+        httpPost.setHeader("Authorization","Token "+token);
+        httpPost.setEntity(new UrlEncodedFormEntity(pair));
+        httpResponse = httpClient.execute(httpPost);
+        status = httpResponse.getStatusLine().getStatusCode();
+        System.out.println(status+"*****");
+        return status;
+    }
 }

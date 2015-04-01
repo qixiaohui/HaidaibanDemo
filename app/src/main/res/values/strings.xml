@@ -165,5 +165,8 @@
         <item>商品</item>
         <item>评论</item>
     </string-array>
+    <string name="commentFirst">please comment first</string>
+    <string name="commentSuccess">comment success</string>
+    <string name="commentFailed">comment failed, please check connection</string>
 
 </resources>

@@ -29,7 +29,7 @@ import java.io.IOException;
 /**
  * Created by tom on 3/30/15.
  */
-public class CommentFragment extends Fragment {
+public class CommentFragment extends Fragment{
 
     private View mView;
     private Button btn_comment;

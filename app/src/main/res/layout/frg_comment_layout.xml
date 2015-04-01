@@ -21,7 +21,6 @@
                 android:indeterminate="true" />
         </RelativeLayout>
         <TextView
-            android:layout_marginTop="10dp"
             android:id="@+id/commentVerb"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
