@@ -5,22 +5,52 @@
     android:orientation="vertical"
     android:background="@color/white"
     >
-
-
-    <Button
-        android:layout_marginTop="@dimen/abc_action_bar_default_height_material"
-        android:id="@+id/btn_write_comment"
-        android:layout_width="match_parent"
-        android:layout_height="44dp"
-        android:background="@color/skyblue"
-        android:gravity="center"
-        android:text="@string/comment"
-        android:textSize="@dimen/medium_text_size" />
-
-    <ListView
-        android:layout_width="match_parent"
-        android:layout_height="400dp"
-        android:id="@+id/comment_listView"
-        />
-
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_height="match_parent"
+        android:layout_width="fill_parent">
+        <RelativeLayout
+            android:id="@+id/loadingPanel"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone"
+            android:gravity="center" >
+            <ProgressBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:indeterminate="true" />
+        </RelativeLayout>
+        <TextView
+            android:layout_marginTop="10dp"
+            android:id="@+id/commentVerb"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/comment"
+            android:textSize="13sp"
+            android:paddingLeft="10dp"
+            android:background="#F0F0F0"
+            android:paddingBottom="5dp"
+            android:paddingTop="5dp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:visibility="gone" />
+        <ListView
+            android:layout_width="fill_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:id="@+id/commentList" />
+        <Button
+            android:id="@+id/btn_write_comment"
+            android:layout_weight="0"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="20dp"
+            android:layout_marginLeft="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:background="@color/skyblue"
+            android:gravity="center"
+            android:text="@string/comment"
+            android:textSize="@dimen/medium_text_size" />
+    </LinearLayout>
 </LinearLayout>

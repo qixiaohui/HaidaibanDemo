@@ -54,31 +54,16 @@ public class ProductDetail extends ActionBarActivity {
         titles = getResources().getStringArray(R.array.productDetailTitle);
         tabHost = (FragmentTabHost) findViewById(android.R.id.tabhost);
 
-        tabHost.setup(this,getSupportFragmentManager(),R.id.tabcontent);
+        tabHost.setup(this, getSupportFragmentManager(), R.id.tabcontent);
         tabHost.setBackgroundColor(getResources().getColor(R.color.list_divider));
 
-        for(String title : titles){
-            if(title.equals("商品")) {
+        for (String title : titles) {
+            if (title.equals("商品")) {
                 tabHost.addTab(tabHost.newTabSpec(title).setIndicator(title), ProductDetailFragment.class, null);
-            }else if(title.equals("评论")){
+            } else if (title.equals("评论")) {
                 tabHost.addTab(tabHost.newTabSpec(title).setIndicator(title), CommentFragment.class, null);
             }
         }
-
-        setTabColor(tabHost);
-
-        tabHost.setOnTabChangedListener(new TabHost.OnTabChangeListener() {
-            @Override
-            public void onTabChanged(String tabId) {
-                setTabColor(tabHost);
-            }
-        });
     }
 
-    public static void setTabColor(TabHost tabhost) {
-        for(int i=0;i<tabhost.getTabWidget().getChildCount();i++) {
-            tabhost.getTabWidget().getChildAt(i).setBackgroundColor(Color.parseColor("#FFFFFF")); //unselected
-        }
-        tabhost.getTabWidget().getChildAt(tabhost.getCurrentTab()).setBackgroundColor(Color.parseColor("#87ceeb")); // selected
-    }
 }

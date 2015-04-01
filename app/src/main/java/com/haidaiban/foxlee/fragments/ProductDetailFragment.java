@@ -61,12 +61,7 @@ public class ProductDetailFragment extends Fragment {
     LinearLayout container;
     LinearLayout child;
     TextView youMightLike;
-    ListView commentList;
-    RelativeLayout loading;
     Webmethod webmethod;
-    CommentAdapter commentAdapter;
-    Comment comment;
-    TextView commentVerb;
     private Boolean flag = false;
     int[] size;
     View view;
@@ -98,9 +93,6 @@ public class ProductDetailFragment extends Fragment {
         website = (TextView) view.findViewById(R.id.website);
         horizontalScrollView = (HorizontalScrollView) view.findViewById(R.id.horizontal);
         youMightLike = (TextView) view.findViewById(R.id.related);
-        commentList = (ListView) view.findViewById(R.id.commentList);
-        loading = (RelativeLayout) view.findViewById(R.id.loadingPanel);
-        commentVerb = (TextView) view.findViewById(R.id.commentVerb);
 
         asyn.execute("comment");
 
@@ -113,7 +105,7 @@ public class ProductDetailFragment extends Fragment {
                 child = new LinearLayout(getActivity().getApplicationContext());
                 LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
                         (int) (size[0] / 3), (int) (size[1] / 4));
-                layoutParams.setMargins(5, 0, 5, 0);
+                layoutParams.setMargins(5, 0, 5, 5);
                 child.setOrientation(1);
                 child.setTag(i);
                 ImageView image = new ImageView(getActivity().getApplicationContext());
@@ -204,17 +196,6 @@ public class ProductDetailFragment extends Fragment {
         @Override
         protected String doInBackground(String... params) {
 
-            if (params[0].equals("comment")) {
-                try {
-                    webmethod = new Webmethod(getActivity().getApplicationContext());
-                    comment = webmethod.getComments(Integer.toString(deal.getId()));
-                } catch (IOException e) {
-
-                } catch (JSONException e) {
-
-                }
-            }
-
             if (params[0].equals("bookmark")) {
                 try {
                     webmethod = new Webmethod(getActivity().getApplicationContext());
@@ -256,18 +237,11 @@ public class ProductDetailFragment extends Fragment {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            loading.setVisibility(View.VISIBLE);
         }
 
         @Override
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
-            loading.setVisibility(View.GONE);
-            commentAdapter = new CommentAdapter(comment, getActivity().getApplicationContext());
-            if (comment.getResults().size() > 0) {
-                commentList.setAdapter(commentAdapter);
-                commentVerb.setVisibility(View.VISIBLE);
-            }
         }
     }
 }

@@ -1,5 +1,6 @@
 package com.haidaiban.foxlee.fragments;
 
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -9,9 +10,21 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import android.widget.Toast;
 
+import com.haidaiban.foxlee.Util.DataHolder;
+import com.haidaiban.foxlee.adapter.CommentAdapter;
+import com.haidaiban.foxlee.model.comment.Comment;
+import com.haidaiban.foxlee.model.deal.Result;
 import com.haidaiban.foxlee.ui.MyCameraDialog;
 import com.haidaiban.foxlee.ui.SentCommentDialog;
+import com.haidaiban.foxlee.webMethod.Webmethod;
+
+import org.json.JSONException;
+
+import java.io.IOException;
 
 /**
  * Created by tom on 3/30/15.
@@ -19,8 +32,16 @@ import com.haidaiban.foxlee.ui.SentCommentDialog;
 public class CommentFragment extends Fragment {
 
     private View mView;
-    private ListView commentList;
     private Button btn_comment;
+    ListView commentList;
+    RelativeLayout loading;
+    Webmethod webmethod;
+    CommentAdapter commentAdapter;
+    Comment comment;
+    TextView commentVerb;
+    Result deal;
+    Asyn asyn;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -33,8 +54,6 @@ public class CommentFragment extends Fragment {
     }
 
     private void initView() {
-
-        commentList = (ListView) mView.findViewById(R.id.comment_listView);
         btn_comment = (Button) mView.findViewById(R.id.btn_write_comment);
 
         // click on edittext will display the dialog for write comment ;
@@ -47,6 +66,17 @@ public class CommentFragment extends Fragment {
 
 
         });
+        commentList = (ListView) mView.findViewById(R.id.commentList);
+        loading = (RelativeLayout) mView.findViewById(R.id.loadingPanel);
+        commentVerb = (TextView) mView.findViewById(R.id.commentVerb);
+        deal = getDeal();
+        asyn = new Asyn();
+        asyn.execute();
+    }
+
+    public Result getDeal() {
+
+        return DataHolder.getDealResult();
     }
 
     private void showComment_Dialog() {
@@ -58,5 +88,39 @@ public class CommentFragment extends Fragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+    }
+
+
+    public class Asyn extends AsyncTask<String, String, String> {
+        @Override
+        protected String doInBackground(String... params) {
+
+            try {
+                webmethod = new Webmethod(getActivity().getApplicationContext());
+                comment = webmethod.getComments(Integer.toString(deal.getId()));
+            } catch (IOException e) {
+
+            } catch (JSONException e) {
+
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            loading.setVisibility(View.VISIBLE);
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+            loading.setVisibility(View.GONE);
+            commentAdapter = new CommentAdapter(comment, getActivity().getApplicationContext());
+            if (comment.getResults().size() > 0) {
+                commentList.setAdapter(commentAdapter);
+                commentVerb.setVisibility(View.VISIBLE);
+            }
+        }
     }
 }

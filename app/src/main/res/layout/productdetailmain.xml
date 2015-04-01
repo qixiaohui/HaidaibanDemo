@@ -10,7 +10,8 @@
 
         <FrameLayout
             android:id="@+id/tabcontent"
-            android:background="@color/list_divider"
+            android:paddingTop="49dp"
+            android:background="@color/white"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
     </android.support.v4.app.FragmentTabHost>
