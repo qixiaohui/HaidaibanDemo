@@ -32,6 +32,7 @@ import com.haidaiban.foxlee.model.deal.Deal;
 import com.haidaiban.foxlee.webMethod.Webmethod;
 
 import java.io.IOException;
+import java.nio.charset.Charset;
 import java.util.List;
 
 /**

@@ -335,7 +335,7 @@ public class Webmethod {
 
     public static Deal getSearch(String search) throws IOException{
         token = getToken();
-        httpGet = new HttpGet(Constants.getLOGIN_URL()+"api/deal/search/?api="+search);
+        httpGet = new HttpGet(Constants.getLOGIN_URL()+"api/deal/search/?q="+search);
         httpGet.setHeader("Authorization","Token "+token);
         httpResponse = httpClient.execute(httpGet);
         entity = httpResponse.getEntity();
