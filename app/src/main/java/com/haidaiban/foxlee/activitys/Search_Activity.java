@@ -54,7 +54,7 @@ public class Search_Activity extends ActionBarActivity implements android.suppor
         mSearchView = (SearchView) MenuItemCompat.getActionView(searchItem);
         Log.i("sss", "is null ====" + mSearchView);
         // Assumes current activity is the searchable activity
-       setupSearchView(searchItem);
+        //       setupSearchView(searchItem);
 
         return true;
 

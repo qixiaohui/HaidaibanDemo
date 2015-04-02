@@ -68,20 +68,34 @@ public class LimitedTimeOffer extends ActionBarActivity {
             // Inflate the menu; this adds items to the action bar if it is present.
             MenuInflater inflater = getMenuInflater();
             inflater.inflate(R.menu.menu_search, menu);
-            final MenuItem searchItem = menu.findItem(R.id.item_search);
-            searchItem.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
-                @Override
-                public boolean onMenuItemClick(MenuItem item) {
-                    intent = new Intent(getApplicationContext(),Search_Activity.class);
-                    startActivity(intent);
-                    return false;
-                }
-            });
 
 
-            return true;
-
+        return super.onCreateOptionsMenu(menu);
 
         }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle presses on the action bar items
+        switch (item.getItemId()) {
+            case R.id.item_search:
+                openSearch_Activty();
+                return true;
+//            case R.id.action_compose:
+//                composeMessage();
+//                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
+    private void openSearch_Activty() {
+
+       Intent  intent = new Intent(getApplicationContext(),Search_Activity.class);
+        startActivity(intent);
+
+    }
+
 
 }
+
+
