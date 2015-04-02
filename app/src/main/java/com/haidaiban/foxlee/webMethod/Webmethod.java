@@ -332,4 +332,14 @@ public class Webmethod {
         System.out.println(status+"*****");
         return status;
     }
+
+    public static Deal getSearch(String search) throws IOException{
+        token = getToken();
+        httpGet = new HttpGet(Constants.getLOGIN_URL()+"api/deal/search/?api="+search);
+        httpGet.setHeader("Authorization","Token "+token);
+        httpResponse = httpClient.execute(httpGet);
+        entity = httpResponse.getEntity();
+        response = EntityUtils.toString(entity,"UTF-8");
+        return new Gson().fromJson(response,Deal.class);
+    }
 }

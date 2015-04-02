@@ -16,6 +16,8 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -33,8 +35,11 @@ public class LimitedTimeOffer extends ActionBarActivity {
     private ActionBar actonBar;
 
     //search bar
-    private SearchView mSearchView;
+    private ImageView mSearchView;
     private TextView mTx_Search ;
+    Intent intent;
+
+
 
 
     @Override
@@ -64,33 +69,14 @@ public class LimitedTimeOffer extends ActionBarActivity {
             MenuInflater inflater = getMenuInflater();
             inflater.inflate(R.menu.menu_search, menu);
             final MenuItem searchItem = menu.findItem(R.id.item_search);
-
-
-            SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
-            mSearchView = (SearchView) MenuItemCompat.getActionView(searchItem);
-            Log.i("sss", "is null ====" + mSearchView);
-            mSearchView.setQueryHint("查找");
-        mSearchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-
-            @Override
-            public boolean onQueryTextChange(String newText) {
-                //Log.e("onQueryTextChange", "called");
-                return false;
-            }
-
-            @Override
-            public boolean onQueryTextSubmit(String query) {
-
-
-                // Do your task here
-
-                Toast.makeText(getApplicationContext(), "search test", Toast.LENGTH_LONG).show();
-                // close search
-                MenuItemCompat.collapseActionView(searchItem);
-                return false;
-            }
-
-        });
+            searchItem.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+                @Override
+                public boolean onMenuItemClick(MenuItem item) {
+                    intent = new Intent(getApplicationContext(),Search_Activity.class);
+                    startActivity(intent);
+                    return false;
+                }
+            });
 
 
             return true;
