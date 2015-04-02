@@ -63,39 +63,34 @@ public class LimitedTimeOffer extends ActionBarActivity {
             // Inflate the menu; this adds items to the action bar if it is present.
             MenuInflater inflater = getMenuInflater();
             inflater.inflate(R.menu.menu_search, menu);
-            final MenuItem searchItem = menu.findItem(R.id.item_search);
 
 
-            SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
-            mSearchView = (SearchView) MenuItemCompat.getActionView(searchItem);
-            Log.i("sss", "is null ====" + mSearchView);
-            mSearchView.setQueryHint("查找");
-        mSearchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-
-            @Override
-            public boolean onQueryTextChange(String newText) {
-                //Log.e("onQueryTextChange", "called");
-                return false;
-            }
-
-            @Override
-            public boolean onQueryTextSubmit(String query) {
-
-
-                // Do your task here
-
-                Toast.makeText(getApplicationContext(), "search test", Toast.LENGTH_LONG).show();
-                // close search
-                MenuItemCompat.collapseActionView(searchItem);
-                return false;
-            }
-
-        });
-
-
-            return true;
-
+        return super.onCreateOptionsMenu(menu);
 
         }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle presses on the action bar items
+        switch (item.getItemId()) {
+            case R.id.item_search:
+                openSearch_Activty();
+                return true;
+//            case R.id.action_compose:
+//                composeMessage();
+//                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
+    private void openSearch_Activty() {
+
+       Intent  intent = new Intent(getApplicationContext(),Search_Activity.class);
+        startActivity(intent);
+
+    }
+
 
 }
+
+
