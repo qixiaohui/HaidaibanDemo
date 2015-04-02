@@ -53,6 +53,9 @@ public class Search_Activity extends ActionBarActivity implements android.suppor
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        getSupportActionBar().setHomeButtonEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         setContentView(R.layout.search_layout);
         mTx_Search = (TextView) findViewById(R.id.tx_search);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -93,6 +96,18 @@ public class Search_Activity extends ActionBarActivity implements android.suppor
         return true;
 
 
+    }
+
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle presses on the action bar items
+        switch (item.getItemId()) {
+
+            case android.R.id.home:
+                finish();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 
 

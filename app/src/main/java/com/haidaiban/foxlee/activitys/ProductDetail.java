@@ -8,6 +8,9 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.FragmentTabHost;
 import android.support.v7.app.ActionBarActivity;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.HorizontalScrollView;
 import android.widget.ImageView;
@@ -47,6 +50,8 @@ public class ProductDetail extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.productdetailmain);
 
+        getSupportActionBar().setHomeButtonEnabled(true);
+
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 
@@ -65,5 +70,30 @@ public class ProductDetail extends ActionBarActivity {
             }
         }
     }
+
+    @Override
+    // Inflate the menu items for use in the action bar
+    public boolean onCreateOptionsMenu(Menu menu) {
+        super.onCreateOptionsMenu(menu);
+        // Inflate the menu; this adds items to the action bar if it is present.
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_main, menu);
+
+
+        return super.onCreateOptionsMenu(menu);
+
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle presses on the action bar items
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                finish();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
 
 }
