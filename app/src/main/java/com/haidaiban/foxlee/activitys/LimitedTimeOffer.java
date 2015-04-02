@@ -46,6 +46,7 @@ public class LimitedTimeOffer extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.limitedoffer);
+        getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 
@@ -80,9 +81,9 @@ public class LimitedTimeOffer extends ActionBarActivity {
             case R.id.item_search:
                 openSearch_Activty();
                 return true;
-//            case R.id.action_compose:
-//                composeMessage();
-//                return true;
+            case android.R.id.home:
+                finish();
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
