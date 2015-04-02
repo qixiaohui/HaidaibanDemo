@@ -6,6 +6,8 @@ import android.app.Activity;
 import android.app.SearchManager;
 import android.app.SearchableInfo;
 import android.content.Context;
+import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.view.MenuItemCompat;
@@ -17,11 +19,19 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.AdapterView;
 import android.widget.EditText;
+import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.haidaiban.foxlee.Util.DataHolder;
+import com.haidaiban.foxlee.adapter.ListViewAdapter;
 import com.haidaiban.foxlee.fragments.R;
+import com.haidaiban.foxlee.model.deal.Deal;
+import com.haidaiban.foxlee.webMethod.Webmethod;
 
+import java.io.IOException;
 import java.util.List;
 
 /**
@@ -31,8 +41,13 @@ public class Search_Activity extends ActionBarActivity implements android.suppor
 
     private SearchView mSearchView;
     private TextView mTx_Search ;
-
+    private Webmethod webmethod;
+    private Asyn asyn;
+    private Deal deals;
     private InputMethodManager mInput;
+    private ListView listView;
+    private RelativeLayout loading;
+    private Intent intent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +55,9 @@ public class Search_Activity extends ActionBarActivity implements android.suppor
         setContentView(R.layout.search_layout);
         mTx_Search = (TextView) findViewById(R.id.tx_search);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        listView = (ListView) findViewById(R.id.list);
+        loading  = (RelativeLayout) findViewById(R.id.loadingPanel);
+        loading.setVisibility(View.GONE);
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -51,10 +69,25 @@ public class Search_Activity extends ActionBarActivity implements android.suppor
 
 
         SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
+        searchItem.expandActionView();
         mSearchView = (SearchView) MenuItemCompat.getActionView(searchItem);
         Log.i("sss", "is null ====" + mSearchView);
         // Assumes current activity is the searchable activity
         //       setupSearchView(searchItem);
+        mSearchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String s) {
+                asyn = new Asyn();
+                asyn.execute(s);
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String s) {
+                return false;
+            }
+        });
+        mSearchView.onActionViewExpanded();
 
         return true;
 
@@ -108,7 +141,47 @@ public class Search_Activity extends ActionBarActivity implements android.suppor
 
 
     protected boolean isAlwaysExpanded() {
-        return false;
+        return true;
+    }
+
+    public class Asyn extends AsyncTask<String, String, String>{
+        @Override
+        protected String doInBackground(String... params) {
+            webmethod = new Webmethod(getApplicationContext());
+            try {
+                deals = webmethod.getSearch(params[0]);
+            }catch (IOException e){
+
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            listView.setVisibility(View.GONE);
+            loading.setVisibility(View.VISIBLE);
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+            loading.setVisibility(View.GONE);
+            listView.setVisibility(View.VISIBLE);
+            if(listView != null && deals != null) {
+                System.out.println("asynctask*****");
+                listView.setAdapter(new ListViewAdapter(deals, getApplicationContext()));
+            }
+
+            listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    intent = new Intent(getApplicationContext(), ProductDetail.class);
+                    DataHolder.setDealResult(deals.getResults().get(position));
+                    startActivity(intent);
+                }
+            });
+        }
     }
     }
 
