@@ -74,6 +74,7 @@
                         android:id="@+id/username"
                         android:hint="@string/signin_emailorname"
                         android:textColorHint="@color/gray"
+                        android:textColor="@color/black"
                         android:textSize="@dimen/medium_text_size">
 
                     </EditText>
@@ -119,7 +120,9 @@
                         android:gravity="center"
                         android:hint="@string/signin_password"
                         android:textColorHint="@color/gray"
-                        android:textSize="@dimen/medium_text_size">
+                        android:textSize="@dimen/medium_text_size"
+                        android:textColor="@color/black"
+                        >
 
                     </EditText>
 
