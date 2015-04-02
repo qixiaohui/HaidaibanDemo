@@ -16,6 +16,8 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -33,8 +35,11 @@ public class LimitedTimeOffer extends ActionBarActivity {
     private ActionBar actonBar;
 
     //search bar
-    private SearchView mSearchView;
+    private ImageView mSearchView;
     private TextView mTx_Search ;
+    Intent intent;
+
+
 
 
     @Override
