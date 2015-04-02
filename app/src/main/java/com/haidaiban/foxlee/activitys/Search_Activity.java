@@ -46,7 +46,7 @@ public class Search_Activity extends ActionBarActivity implements android.suppor
         super.onCreateOptionsMenu(menu);
         // Inflate the menu; this adds items to the action bar if it is present.
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.menu_search, menu);
+        inflater.inflate(R.menu.menu_search_activity, menu);
         MenuItem searchItem = menu.findItem(R.id.item_search);
 
 
