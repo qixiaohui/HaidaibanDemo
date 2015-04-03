@@ -130,7 +130,7 @@ public class ProductDetailFragment extends Fragment {
                 child.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        showComment_Dialog();
+                        showRecomment_Dialog();
                     }
                 });
             }
@@ -209,7 +209,7 @@ public class ProductDetailFragment extends Fragment {
         return view;
     }
 
-    private void showComment_Dialog() {
+    private void showRecomment_Dialog() {
 //  new SentCommentDialog(getActivity(), R.style.CustomDialog).show();
         new RecommendationDialog(getActivity()).show();
 

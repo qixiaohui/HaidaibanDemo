@@ -71,7 +71,7 @@ public class RecommendationDialog extends Dialog {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.dialog_sentcomment);
+        setContentView(R.layout.dialog_recommendation);
         tv_UseCoupon = (TextView) findViewById(R.id.dia_tv_usecoupon);
         tv_GoOfficialSite = (TextView) findViewById(R.id.dia_tv_officialsite);
 
