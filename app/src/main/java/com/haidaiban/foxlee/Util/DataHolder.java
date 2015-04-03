@@ -16,6 +16,7 @@ public class DataHolder {
     private static Message message;
     private static QuoteList quoteList;
     private static Result dealResult;
+    private static com.haidaiban.foxlee.model.quotelist.Result quotelistResult;
 
     public static Deal getDeal() {
         return deal;
@@ -47,5 +48,13 @@ public class DataHolder {
 
     public static void setDealResult(Result dealResult) {
         DataHolder.dealResult = dealResult;
+    }
+
+    public static com.haidaiban.foxlee.model.quotelist.Result getQuotelistResult() {
+        return quotelistResult;
+    }
+
+    public static void setQuotelistResult(com.haidaiban.foxlee.model.quotelist.Result quotelistResult) {
+        DataHolder.quotelistResult = quotelistResult;
     }
 }

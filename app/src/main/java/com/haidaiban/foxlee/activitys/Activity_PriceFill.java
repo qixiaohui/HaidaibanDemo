@@ -20,6 +20,7 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
+import com.haidaiban.foxlee.Util.DataHolder;
 import com.haidaiban.foxlee.config.Constants;
 import com.haidaiban.foxlee.fragments.R;
 import com.haidaiban.foxlee.model.quotelist.Result;
@@ -51,6 +52,7 @@ public class Activity_PriceFill extends Activity {
     private EditText et_item_link;
     private EditText et_item_official_price;
     private EditText et_item_coupon;
+    private EditText et_attach;
 
     private RadioButton rbbtn_tax_yes;
     private RadioButton rbbtn_tax_no;
@@ -133,6 +135,14 @@ public class Activity_PriceFill extends Activity {
             }catch (ClassNotFoundException e){
 
             }
+        }else if(intent.getIntExtra("flag",0)==2){
+            quote = DataHolder.getQuotelistResult();
+            et_item_name.setText(quote.getTitle());
+            et_item_number.setText(quote.getQuantity().toString());
+            et_item_link.setText(quote.getWebLink());
+            et_item_coupon.setText(quote.getCoupon());
+            et_attach.setText(quote.getRemark());
+
         }
 
 
@@ -300,6 +310,7 @@ public class Activity_PriceFill extends Activity {
         et_item_link = (EditText) findViewById(R.id.et_ap_link);
         et_item_official_price = (EditText) findViewById(R.id.et_ap_ofprice);
         et_item_coupon = (EditText) findViewById(R.id.et_ap_coupon);
+        et_attach = (EditText) findViewById(R.id.et_attach);
         // radio buttons
         rg_tax = (RadioGroup) findViewById(R.id.radiogrouptax);
         rg_shipping = (RadioGroup) findViewById(R.id.radiogroupShipping);

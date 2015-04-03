@@ -19,6 +19,7 @@ import android.widget.Toast;
 
 import com.haidaiban.foxlee.Util.DataHolder;
 import com.haidaiban.foxlee.Util.Utility;
+import com.haidaiban.foxlee.activitys.Activity_PriceFill;
 import com.haidaiban.foxlee.activitys.WebActivity;
 import com.haidaiban.foxlee.adapter.CommentAdapter;
 import com.haidaiban.foxlee.config.Constants;
@@ -61,7 +62,9 @@ public class ProductDetailFragment extends Fragment {
     LinearLayout container;
     LinearLayout child;
     TextView youMightLike;
+    TextView useCoupon;
     Webmethod webmethod;
+    com.haidaiban.foxlee.model.quotelist.Result quoteList;
     private Boolean flag = false;
     int[] size;
     View view;
@@ -93,6 +96,7 @@ public class ProductDetailFragment extends Fragment {
         website = (TextView) view.findViewById(R.id.website);
         horizontalScrollView = (HorizontalScrollView) view.findViewById(R.id.horizontal);
         youMightLike = (TextView) view.findViewById(R.id.related);
+        useCoupon = (TextView) view.findViewById(R.id.usecoupon);
 
         asyn.execute("comment");
 
@@ -175,6 +179,22 @@ public class ProductDetailFragment extends Fragment {
             public void onClick(View v) {
                 intent = new Intent(getActivity().getApplicationContext(), WebActivity.class);
                 intent.putExtra("url", deal.getWeblink());
+                startActivity(intent);
+            }
+        });
+
+        useCoupon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                intent = new Intent(getActivity().getApplicationContext(), Activity_PriceFill.class);
+                quoteList = new com.haidaiban.foxlee.model.quotelist.Result();
+                quoteList.setTitle(deal.getTitle());
+                quoteList.setQuantity(1);
+                quoteList.setWebLink(deal.getWeblink());
+                quoteList.setCoupon(deal.getCouponMain());
+                quoteList.setRemark(deal.getDiscMain());
+                DataHolder.setQuotelistResult(quoteList);
+                intent.putExtra("flag",2);
                 startActivity(intent);
             }
         });

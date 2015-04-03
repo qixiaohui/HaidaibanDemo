@@ -38,6 +38,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="14sp"
                 android:layout_weight="0.8"
+                android:textColor="@color/black"
                 android:hint="@string/goodsnamehit"
                 android:background="@color/white"
                 android:textColorHint="@color/gray" />
@@ -66,6 +67,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="0.8"
                 android:textSize="14sp"
+                android:textColor="@color/black"
                 android:hint="@string/goodsnumberhit"
                 android:background="@color/white"
                 android:textColorHint="@color/gray" />
@@ -156,6 +158,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="0.8"
                 android:textSize="14sp"
+                android:textColor="@color/black"
                 android:hint="@string/goodsmoreinfohit"
                 android:background="@color/white"
                 android:textColorHint="@color/gray" />
@@ -186,6 +189,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="0.8"
                 android:textSize="14sp"
+                android:textColor="@color/black"
                 android:background="@color/white"
                 android:hint="@string/goodslinkhit"
                 android:textColorHint="@color/gray" />
@@ -215,6 +219,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="0.8"
                 android:textSize="14sp"
+                android:textColor="@color/black"
                 android:background="@color/white"
                 android:hint="@string/goodsofficialpricehit"
                 android:textColorHint="@color/gray" />
@@ -246,6 +251,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="14sp"
                 android:layout_weight="0.8"
+                android:textColor="@color/black"
                 android:background="@color/white"
                 android:textColorHint="@color/gray" />
         </TableRow>
@@ -399,11 +405,12 @@
                 android:text="@string/goodsrecomment"
                 android:textColor="@color/grey" />
             <EditText
-                android:id="@+id/et_ap_more"
+                android:id="@+id/et_attach"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.8"
                 android:textSize="14sp"
+                android:textColor="@color/black"
                 android:background="@color/white"
 
                 android:textColorHint="@color/gray" />
