@@ -152,7 +152,7 @@ public class ProductDetailFragment extends Fragment {
                 @Override
                 public void onClick(View v) {
                     quoteList = new com.haidaiban.foxlee.model.quotelist.Result();
-                    quoteList.setTitle(titleArray.get(index[0])+" "+deal.getTitle());
+                    quoteList.setTitle(titleArray.get(index[0])+" @"+deal.getTitle());
                     quoteList.setQuantity(1);
                     quoteList.setWebLink(weblinkArray.get(index[0]));
                     quoteList.setImage0(image0Array.get(index[0]));

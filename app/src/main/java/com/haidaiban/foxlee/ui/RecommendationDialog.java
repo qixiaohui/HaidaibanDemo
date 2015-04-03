@@ -15,6 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.haidaiban.foxlee.Util.DataHolder;
+import com.haidaiban.foxlee.activitys.Activity_PriceFill;
 import com.haidaiban.foxlee.activitys.WebActivity;
 import com.haidaiban.foxlee.config.Constants;
 import com.haidaiban.foxlee.fragments.R;
@@ -89,7 +90,9 @@ public class RecommendationDialog extends Dialog {
                         /***
                          *  here : use this coupon
                          */
-
+                    intent = new Intent(mContext, Activity_PriceFill.class);
+                    intent.putExtra("flag",2);
+                     mContext.startActivity(intent);
                      }
                 });
 
