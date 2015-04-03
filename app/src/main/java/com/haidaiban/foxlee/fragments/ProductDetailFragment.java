@@ -25,6 +25,7 @@ import com.haidaiban.foxlee.adapter.CommentAdapter;
 import com.haidaiban.foxlee.config.Constants;
 import com.haidaiban.foxlee.model.comment.Comment;
 import com.haidaiban.foxlee.model.deal.Result;
+import com.haidaiban.foxlee.ui.SentCommentDialog;
 import com.haidaiban.foxlee.webMethod.Webmethod;
 import com.squareup.picasso.Picasso;
 
@@ -125,6 +126,12 @@ public class ProductDetailFragment extends Fragment {
                 child.addView(relateTitle);
                 container.addView(child, layoutParams);
                 image.getLayoutParams().height = (int) (size[1] / 5);
+                child.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        showComment_Dialog();
+                    }
+                });
             }
         }
 
@@ -199,6 +206,12 @@ public class ProductDetailFragment extends Fragment {
             }
         });
         return view;
+    }
+
+    private void showComment_Dialog() {
+//  new SentCommentDialog(getActivity(), R.style.CustomDialog).show();
+        new SentCommentDialog(getActivity()).show();
+
     }
 
     @Override
