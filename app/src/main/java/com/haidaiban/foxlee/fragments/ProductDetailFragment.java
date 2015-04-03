@@ -117,8 +117,8 @@ public class ProductDetailFragment extends Fragment {
         if (deal.getRecommendations().size() > 0) {
             horizontalScrollView.setVisibility(View.VISIBLE);
             youMightLike.setVisibility(View.VISIBLE);
+
             container = (LinearLayout) view.findViewById(R.id.container);
-            int j=0;
             for (int i = 0; i < deal.getRecommendations().size(); i++) {
                 titleArray.add(deal.getRecommendations().get(i).getTitle());
                 weblinkArray.add(deal.getRecommendations().get(i).getWeblink());

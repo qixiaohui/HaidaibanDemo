@@ -7,6 +7,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Path;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Base64;
@@ -31,6 +32,7 @@ import com.squareup.picasso.Picasso;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
+import java.net.URI;
 
 
 /**
@@ -142,7 +144,11 @@ public class Activity_PriceFill extends Activity {
             et_item_link.setText(quote.getWebLink());
             et_item_coupon.setText(quote.getCoupon());
             et_attach.setText(quote.getRemark());
-
+            Picasso.with(this)
+                    .load(Constants.getLOGIN_URL()+quote.getImage0().toString())
+                    .resize(150, 150)
+                    .centerCrop()
+                    .into(btn_upload1);
         }
 
 
