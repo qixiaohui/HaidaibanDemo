@@ -168,5 +168,8 @@
     <string name="commentFirst">please comment first</string>
     <string name="commentSuccess">comment success</string>
     <string name="commentFailed">comment failed, please check connection</string>
+<!--推荐商品dialog-->
+    <string name="dialog_recomm_usethiscoupon">使用此折扣</string>
+    <string name="dialog_recomm_officialsite">进入官网</string>
 
 </resources>
