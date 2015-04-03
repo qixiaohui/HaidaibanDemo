@@ -33,6 +33,7 @@ import com.squareup.picasso.Picasso;
 import org.json.JSONException;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 /**
  * Created by tom on 3/30/15.
@@ -67,6 +68,11 @@ public class ProductDetailFragment extends Fragment {
     TextView useCoupon;
     Webmethod webmethod;
     com.haidaiban.foxlee.model.quotelist.Result quoteList;
+    ArrayList<String> titleArray;
+    ArrayList<String> weblinkArray;
+    ArrayList<String> image0Array;
+    ArrayList<String> priceArray;
+    final int[] index = new int[] {0};
     private Boolean flag = false;
     int[] size;
     View view;
@@ -100,6 +106,11 @@ public class ProductDetailFragment extends Fragment {
         youMightLike = (TextView) view.findViewById(R.id.related);
         useCoupon = (TextView) view.findViewById(R.id.usecoupon);
 
+        titleArray = new ArrayList<String>();
+        weblinkArray = new ArrayList<String>();
+        image0Array = new ArrayList<String>();
+        priceArray = new ArrayList<String>();
+
         asyn.execute("comment");
 
         size = Utility.getWindowSize(getActivity().getApplicationContext());
@@ -107,7 +118,13 @@ public class ProductDetailFragment extends Fragment {
             horizontalScrollView.setVisibility(View.VISIBLE);
             youMightLike.setVisibility(View.VISIBLE);
             container = (LinearLayout) view.findViewById(R.id.container);
+            int j=0;
             for (int i = 0; i < deal.getRecommendations().size(); i++) {
+                titleArray.add(deal.getRecommendations().get(i).getTitle());
+                weblinkArray.add(deal.getRecommendations().get(i).getWeblink());
+                image0Array.add(deal.getRecommendations().get(i).getImage());
+                priceArray.add(deal.getRecommendations().get(i).getFullPrice());
+
                 child = new LinearLayout(getActivity().getApplicationContext());
                 LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
                         (int) (size[0] / 3), (int) (size[1] / 4));
@@ -126,15 +143,29 @@ public class ProductDetailFragment extends Fragment {
                 child.addView(image);
                 child.addView(relateTitle);
                 container.addView(child, layoutParams);
+
                 image.getLayoutParams().height = (int) (size[1] / 5);
-                child.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        showRecomment_Dialog();
-                    }
-                });
             }
         }
+        for(int i=0; i<container.getChildCount(); i++){
+            container.getChildAt(i).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    quoteList = new com.haidaiban.foxlee.model.quotelist.Result();
+                    quoteList.setTitle(titleArray.get(index[0])+" "+deal.getTitle());
+                    quoteList.setQuantity(1);
+                    quoteList.setWebLink(weblinkArray.get(index[0]));
+                    quoteList.setImage0(image0Array.get(index[0]));
+                    quoteList.setPrice(priceArray.get(index[0]));
+                    quoteList.setCoupon(deal.getCouponMain());
+                    quoteList.setRemark(deal.getDiscMain());
+                    DataHolder.setQuotelistResult(quoteList);
+                    showRecomment_Dialog();
+                    index[0]++;
+                }
+            });
+        }
+
 
         Picasso.with(getActivity().getApplicationContext())
                 .load(Constants.getLOGIN_URL() + deal.getImage())
@@ -159,7 +190,6 @@ public class ProductDetailFragment extends Fragment {
         } else {
             bookmark.setImageDrawable(getResources().getDrawable(R.drawable.unmark));
         }
-
 
         arrowUp.setOnClickListener(new View.OnClickListener() {
             @Override

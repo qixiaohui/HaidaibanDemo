@@ -6,6 +6,7 @@ package com.haidaiban.foxlee.ui;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
@@ -14,6 +15,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.haidaiban.foxlee.Util.DataHolder;
+import com.haidaiban.foxlee.activitys.WebActivity;
+import com.haidaiban.foxlee.config.Constants;
 import com.haidaiban.foxlee.fragments.R;
 import com.haidaiban.foxlee.model.deal.Result;
 import com.haidaiban.foxlee.webMethod.Webmethod;
@@ -40,6 +43,7 @@ public class RecommendationDialog extends Dialog {
     private Webmethod webmethod;
     private Result deal;
     private int status;
+    private Intent intent;
 
     String str_getInput;
 
@@ -99,7 +103,9 @@ public class RecommendationDialog extends Dialog {
                         /***
                          *  here : Go to official site
                          */
-
+                    intent = new Intent(mContext, WebActivity.class);
+                    intent.putExtra("url", DataHolder.getQuotelistResult().getWebLink());
+                    mContext.startActivity(intent);
                     }
                 });
     }
