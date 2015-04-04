@@ -1,6 +1,5 @@
 package com.haidaiban.foxlee.activitys;
 
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTabHost;
@@ -10,9 +9,9 @@ import android.widget.ImageView;
 import android.widget.TabHost.TabSpec;
 import android.widget.TextView;
 
+import com.haidaiban.foxlee.fragments.C_SentedOfferFragment;
 import com.haidaiban.foxlee.fragments.FragmentPage1;
 import com.haidaiban.foxlee.fragments.FragmentPage2;
-import com.haidaiban.foxlee.fragments.FragmentPage3;
 import com.haidaiban.foxlee.fragments.FragmentPage4;
 import com.haidaiban.foxlee.fragments.FragmentPage5;
 import com.haidaiban.foxlee.fragments.R;
@@ -26,7 +25,7 @@ public class MainTabActivity extends FragmentActivity{
 	private LayoutInflater layoutInflater;
 		
 	// each fragment
-	private Class fragmentArray[] = {FragmentPage1.class,FragmentPage2.class,FragmentPage3.class,FragmentPage4.class,FragmentPage5.class};
+	private Class fragmentArray[] = {FragmentPage1.class,FragmentPage2.class,C_SentedOfferFragment.class,FragmentPage4.class,FragmentPage5.class};
 	
 	//底部菜单 图片
 	private int mImageViewArray[] = {R.drawable.main_bottom_tab_category_normal,R.drawable.tab_message_btn,R.drawable.tab_selfinfo_btn,

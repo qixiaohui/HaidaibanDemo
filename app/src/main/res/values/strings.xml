@@ -165,6 +165,15 @@
         <item>商品</item>
         <item>评论</item>
     </string-array>
+
+    <!--sended  Price title-->
+    <string-array name="SendedPriceTitle">
+        <item>全部</item>
+        <item>待报价</item>
+        <item>已报价</item>
+        <item>已关闭</item>
+    </string-array>
+
     <string name="commentFirst">please comment first</string>
     <string name="commentSuccess">comment success</string>
     <string name="commentFailed">comment failed, please check connection</string>
