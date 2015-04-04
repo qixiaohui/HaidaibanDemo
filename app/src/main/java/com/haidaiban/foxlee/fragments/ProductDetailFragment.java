@@ -147,21 +147,21 @@ public class ProductDetailFragment extends Fragment {
                 image.getLayoutParams().height = (int) (size[1] / 5);
             }
         }
-        for(int i=0; i<container.getChildCount(); i++){
-            container.getChildAt(i).setOnClickListener(new View.OnClickListener() {
+        for(index[0]=0; index[0]<container.getChildCount(); index[0]++){
+            container.getChildAt(index[0]).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    System.out.println(index[0]+"&&&&&&&");
                     quoteList = new com.haidaiban.foxlee.model.quotelist.Result();
-                    quoteList.setTitle(titleArray.get(index[0])+" @"+deal.getTitle());
+                    quoteList.setTitle(titleArray.get(index[0]-1)+" @"+deal.getTitle());
                     quoteList.setQuantity(1);
-                    quoteList.setWebLink(weblinkArray.get(index[0]));
-                    quoteList.setImage0(image0Array.get(index[0]));
-                    quoteList.setPrice(priceArray.get(index[0]));
+                    quoteList.setWebLink(weblinkArray.get(index[0]-1));
+                    quoteList.setImage0(image0Array.get(index[0]-1));
+                    quoteList.setPrice(priceArray.get(index[0]-1));
                     quoteList.setCoupon(deal.getCouponMain());
                     quoteList.setRemark(deal.getDiscMain());
                     DataHolder.setQuotelistResult(quoteList);
                     showRecomment_Dialog();
-                    index[0]++;
                 }
             });
         }
