@@ -7,15 +7,13 @@ import javax.annotation.Generated;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-import java.io.Serializable;
-
 @Generated("org.jsonschema2pojo")
-public class Result implements Serializable{
+public class Result {
 
     @Expose
     private Integer customer;
     @Expose
-    private Object deal;
+    private Deal deal;
     @Expose
     private Object image0;
     @Expose
@@ -23,7 +21,7 @@ public class Result implements Serializable{
     @Expose
     private Object image2;
     @Expose
-    private Object recommendation;
+    private Recommendation recommendation;
     @SerializedName("is_submitted")
     @Expose
     private Boolean isSubmitted;
@@ -33,7 +31,7 @@ public class Result implements Serializable{
     @Expose
     private String webLink;
     @Expose
-    private Object price;
+    private String price;
     @Expose
     private String coupon;
     @Expose
@@ -85,7 +83,7 @@ public class Result implements Serializable{
      * @return
      * The deal
      */
-    public Object getDeal() {
+    public Deal getDeal() {
         return deal;
     }
 
@@ -94,7 +92,7 @@ public class Result implements Serializable{
      * @param deal
      * The deal
      */
-    public void setDeal(Object deal) {
+    public void setDeal(Deal deal) {
         this.deal = deal;
     }
 
@@ -157,7 +155,7 @@ public class Result implements Serializable{
      * @return
      * The recommendation
      */
-    public Object getRecommendation() {
+    public Recommendation getRecommendation() {
         return recommendation;
     }
 
@@ -166,7 +164,7 @@ public class Result implements Serializable{
      * @param recommendation
      * The recommendation
      */
-    public void setRecommendation(Object recommendation) {
+    public void setRecommendation(Recommendation recommendation) {
         this.recommendation = recommendation;
     }
 
@@ -229,7 +227,7 @@ public class Result implements Serializable{
      * @return
      * The price
      */
-    public Object getPrice() {
+    public String getPrice() {
         return price;
     }
 
@@ -238,7 +236,7 @@ public class Result implements Serializable{
      * @param price
      * The price
      */
-    public void setPrice(Object price) {
+    public void setPrice(String price) {
         this.price = price;
     }
 
