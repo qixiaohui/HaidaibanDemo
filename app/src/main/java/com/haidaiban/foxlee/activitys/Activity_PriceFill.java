@@ -119,36 +119,19 @@ public class Activity_PriceFill extends Activity {
         flag = intent.getIntExtra("flag",0);
 
         if(intent.getIntExtra("flag",0)==1){
-            try {
-                byte[] data = Base64.decode(intent.getStringExtra("data"),Base64.NO_WRAP);
-                ObjectInputStream ois = new ObjectInputStream(
-                        new ByteArrayInputStream(data));
-                quote = (Result) ois.readObject();
-                ois.close();
-
-                et_item_name.setText(quote.getTitle());
-                et_item_number.setText(quote.getQuantity().toString());
-                et_item_moreInfo.setText(quote.getRemark());
-                et_item_link.setText(quote.getWebLink());
-                et_item_official_price.setText(quote.getPrice()==null?"0":quote.getPrice().toString());
-                et_item_coupon.setText(quote.getCoupon());
-            }catch (IOException e){
-
-            }catch (ClassNotFoundException e){
-
-            }
-        }else if(intent.getIntExtra("flag",0)==2){
             quote = DataHolder.getQuotelistResult();
             et_item_name.setText(quote.getTitle());
             et_item_number.setText(quote.getQuantity().toString());
             et_item_link.setText(quote.getWebLink());
             et_item_coupon.setText(quote.getCoupon());
             et_attach.setText(quote.getRemark());
-            Picasso.with(this)
-                    .load(Constants.getLOGIN_URL()+quote.getImage0().toString())
-                    .resize(150, 150)
-                    .centerCrop()
-                    .into(btn_upload1);
+            if(quote.getImage0()!=null) {
+                Picasso.with(this)
+                        .load(Constants.getLOGIN_URL() + quote.getImage0().toString())
+                        .resize(150, 150)
+                        .centerCrop()
+                        .into(btn_upload1);
+            }
         }
 
 

@@ -13,6 +13,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.haidaiban.foxlee.Util.DataHolder;
 import com.haidaiban.foxlee.activitys.Activity_PriceFill;
 import com.haidaiban.foxlee.config.Constants;
 import com.haidaiban.foxlee.fragments.R;
@@ -122,16 +123,17 @@ public class TempOfferAdapter extends BaseAdapter{
                 intent = new Intent(context, Activity_PriceFill.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 intent.putExtra("flag",1);
-                try {
-                    ByteArrayOutputStream baos = new ByteArrayOutputStream();
-                    ObjectOutputStream oos = new ObjectOutputStream(baos);
-                    oos.writeObject(quotes.getResults().get(position));
-                    oos.close();
-                    intent.putExtra("data",new String(Base64.encode(baos.toByteArray(),Base64.NO_WRAP)));
-                    context.startActivity(intent);
-                }catch (IOException e){
-
+                if(quotes.getResults().get(position).getRecommendation()!=null){
+                    quotes.getResults()
+                            .get(position)
+                            .setImage0(quotes
+                                    .getResults()
+                                    .get(position)
+                                    .getRecommendation()
+                                    .getImage());
                 }
+                DataHolder.setQuotelistResult(quotes.getResults().get(position));
+                context.startActivity(intent);
             }
         });
 

@@ -240,7 +240,7 @@ public class ProductDetailFragment extends Fragment {
                 quoteList.setCoupon(deal.getCouponMain());
                 quoteList.setRemark(deal.getDiscMain());
                 DataHolder.setQuotelistResult(quoteList);
-                intent.putExtra("flag",2);
+                intent.putExtra("flag",1);
                 startActivity(intent);
             }
         });
