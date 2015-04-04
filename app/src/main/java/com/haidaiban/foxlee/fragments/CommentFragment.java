@@ -70,9 +70,8 @@ public class CommentFragment extends Fragment{
         loading = (RelativeLayout) mView.findViewById(R.id.loadingPanel);
         commentVerb = (TextView) mView.findViewById(R.id.commentVerb);
         deal = getDeal();
-        asyn = new Asyn();
-        asyn.execute();
     }
+
 
     public Result getDeal() {
 
@@ -123,4 +122,5 @@ public class CommentFragment extends Fragment{
             }
         }
     }
+
 }
