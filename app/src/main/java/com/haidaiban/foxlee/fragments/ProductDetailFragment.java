@@ -156,20 +156,20 @@ public class ProductDetailFragment extends Fragment {
             container.getChildAt(index[0]).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    System.out.println(index[0]+"&&&&&&&");
-                    Log.d(TAG, "======>"+index[0]);
+                    System.out.println(Integer.parseInt(v.getTag().toString())+"&&&&&&&");
+                    Log.d(TAG, "======>"+Integer.parseInt(v.getTag().toString()));
                     quoteList = new com.haidaiban.foxlee.model.quotelist.Result();
 
-                    quoteList.setTitle(titleArray.get(index[0] - 1) + " @" + deal.getTitle());
+                    quoteList.setTitle(titleArray.get(Integer.parseInt(v.getTag().toString())) + " @" + deal.getTitle());
                     quoteList.setQuantity(1);
-                    quoteList.setWebLink(weblinkArray.get(index[0] - 1));
-                    quoteList.setImage0(image0Array.get(index[0]-1));
-                    quoteList.setPrice(priceArray.get(index[0] - 1));
+                    quoteList.setWebLink(weblinkArray.get(Integer.parseInt(v.getTag().toString())));
+                    quoteList.setImage0(image0Array.get(Integer.parseInt(v.getTag().toString())));
+                    quoteList.setPrice(priceArray.get(Integer.parseInt(v.getTag().toString())));
                     quoteList.setCoupon(deal.getCouponMain());
                     quoteList.setRemark(deal.getDiscMain());
                     DataHolder.setQuotelistResult(quoteList);
                     showRecomment_Dialog();
-                    Log.d(TAG, "======>"+index[0]);
+                    Log.d(TAG, "======>"+Integer.parseInt(v.getTag().toString()));
                 }
             });
         }
