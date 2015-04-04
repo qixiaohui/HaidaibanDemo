@@ -5,6 +5,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -39,6 +40,9 @@ import java.util.ArrayList;
  * Created by tom on 3/30/15.
  */
 public class ProductDetailFragment extends Fragment {
+
+  public static  String TAG = "PDF";
+
     ImageView productImage;
     TextView title;
     Result deal;
@@ -72,7 +76,8 @@ public class ProductDetailFragment extends Fragment {
     ArrayList<String> weblinkArray;
     ArrayList<String> image0Array;
     ArrayList<String> priceArray;
-    final int[] index = new int[] {0};
+//    final int[] index = new int[] {0};
+     int[] index = new int[] {0};
     private Boolean flag = false;
     int[] size;
     View view;
@@ -152,16 +157,19 @@ public class ProductDetailFragment extends Fragment {
                 @Override
                 public void onClick(View v) {
                     System.out.println(index[0]+"&&&&&&&");
+                    Log.d(TAG, "======>"+index[0]);
                     quoteList = new com.haidaiban.foxlee.model.quotelist.Result();
-                    quoteList.setTitle(titleArray.get(index[0]-1)+" @"+deal.getTitle());
+
+                    quoteList.setTitle(titleArray.get(index[0] - 1) + " @" + deal.getTitle());
                     quoteList.setQuantity(1);
-                    quoteList.setWebLink(weblinkArray.get(index[0]-1));
+                    quoteList.setWebLink(weblinkArray.get(index[0] - 1));
                     quoteList.setImage0(image0Array.get(index[0]-1));
-                    quoteList.setPrice(priceArray.get(index[0]-1));
+                    quoteList.setPrice(priceArray.get(index[0] - 1));
                     quoteList.setCoupon(deal.getCouponMain());
                     quoteList.setRemark(deal.getDiscMain());
                     DataHolder.setQuotelistResult(quoteList);
                     showRecomment_Dialog();
+                    Log.d(TAG, "======>"+index[0]);
                 }
             });
         }
