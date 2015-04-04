@@ -136,14 +136,35 @@ public class TempOfferAdapter extends BaseAdapter{
                 context.startActivity(intent);
             }
         });
-
-
-        // thumbnail image
-        Picasso.with(context)
-                .load(Constants.getLOGIN_URL()+(String)quotes.getResults().get(0).getImage0())
-                .resize(150, 150)
-                .centerCrop()
-                .into(holder.to_thumbNail);
+        if(quotes.getResults().get(position).getDeal()!=null
+                && quotes.getResults().get(position).getRecommendation()==null){
+            // thumbnail image
+            Picasso.with(context)
+                    .load(Constants.getLOGIN_URL()+(String)quotes
+                            .getResults()
+                            .get(position).getDeal()
+                            .getImage())
+                    .resize(150, 150)
+                    .centerCrop()
+                    .into(holder.to_thumbNail);
+        }else if(quotes.getResults().get(position).getDeal()!=null
+                && quotes.getResults().get(position).getRecommendation()!=null){
+            // thumbnail image
+            Picasso.with(context)
+                    .load(Constants.getLOGIN_URL()+(String)quotes
+                            .getResults()
+                            .get(position)
+                            .getRecommendation()
+                            .getImage())
+                    .resize(150, 150)
+                    .centerCrop()
+                    .into(holder.to_thumbNail);
+        }else{
+            // thumbnail image
+            holder.to_thumbNail.setImageDrawable(context
+                    .getResources()
+                    .getDrawable(R.drawable.productnoimage));
+        }
 
 
        return convertView;
