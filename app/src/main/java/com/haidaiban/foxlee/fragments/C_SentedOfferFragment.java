@@ -54,6 +54,7 @@ public class C_SentedOfferFragment extends Fragment{
         // Center the tabs in the layout
         slidingTabLayout.setDistributeEvenly(true);
         slidingTabLayout.setViewPager(viewPager);
+        slidingTabLayout.setBackgroundColor(getResources().getColor(R.color.fragment_c_viewpager));
 
     }
 

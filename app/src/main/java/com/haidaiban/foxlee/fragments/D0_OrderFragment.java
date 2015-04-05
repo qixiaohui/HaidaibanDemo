@@ -32,6 +32,7 @@ public class D0_OrderFragment extends Fragment{
         view  = inflater.inflate(R.layout.d0offer_fragment,null);
         viewPager = (ViewPager) view.findViewById(R.id.pager);
         slidingTabLayout = (SlidingTabLayout) view.findViewById(R.id.sliding_tabs);
+        slidingTabLayout.setBackgroundColor(getResources().getColor(R.color.fragment_c_viewpager));
         return view;
     }
 
