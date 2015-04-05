@@ -15,7 +15,7 @@
         <RelativeLayout
             android:id="@+id/loadingPanel"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="250dp"
             android:gravity="center" >
             <ProgressBar
                 android:layout_width="wrap_content"
@@ -91,15 +91,16 @@
     <ImageView
 
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:layout_margin="2dp"
+        android:layout_height="170dp"
         android:src="@drawable/index_mid_flow"
         android:background="@color/seaShell"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/linearLayout"
-        >
+        android:layout_marginLeft="2dp"
+        android:layout_marginRight="2dp"
+        android:layout_marginBottom="2dp"
+        android:layout_below="@+id/linearLayout">
 
     </ImageView>
 
