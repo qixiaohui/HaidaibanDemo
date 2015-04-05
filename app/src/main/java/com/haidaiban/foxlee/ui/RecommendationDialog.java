@@ -91,7 +91,7 @@ public class RecommendationDialog extends Dialog {
                          *  here : use this coupon
                          */
                     intent = new Intent(mContext, Activity_PriceFill.class);
-                    intent.putExtra("flag",2);
+                    intent.putExtra("flag",1);
                      mContext.startActivity(intent);
                      }
                 });
