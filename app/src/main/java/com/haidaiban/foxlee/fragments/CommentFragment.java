@@ -1,5 +1,7 @@
 package com.haidaiban.foxlee.fragments;
 
+import android.app.Dialog;
+import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -18,8 +20,6 @@ import com.haidaiban.foxlee.Util.DataHolder;
 import com.haidaiban.foxlee.adapter.CommentAdapter;
 import com.haidaiban.foxlee.model.comment.Comment;
 import com.haidaiban.foxlee.model.deal.Result;
-import com.haidaiban.foxlee.ui.MyCameraDialog;
-import com.haidaiban.foxlee.ui.SentCommentDialog;
 import com.haidaiban.foxlee.webMethod.Webmethod;
 
 import org.json.JSONException;
@@ -41,9 +41,16 @@ public class CommentFragment extends Fragment implements OnUpdateComment{
     TextView commentVerb;
     Result deal;
     Asyn asyn;
+    Context context;
 
     @Override
-    public void updateComment() {
+    public void updateComment(Context context, Result deal, ListView listView, TextView textView, RelativeLayout relativeLayout) {
+        webmethod = new Webmethod(context);
+        this.context = context;
+        this.deal = deal;
+        this.commentList = listView;
+        this.commentVerb = textView;
+        this.loading = relativeLayout;
         asyn = new Asyn();
         asyn.execute();
     }
@@ -75,7 +82,24 @@ public class CommentFragment extends Fragment implements OnUpdateComment{
         loading = (RelativeLayout) mView.findViewById(R.id.loadingPanel);
         commentVerb = (TextView) mView.findViewById(R.id.commentVerb);
         deal = getDeal();
-        updateComment();
+        executeAsync();
+    }
+
+    public void executeAsync(){
+        asyn = new Asyn();
+        asyn.execute();
+    }
+
+    public ListView getCommentList() {
+        return commentList;
+    }
+
+    public RelativeLayout getLoading() {
+        return loading;
+    }
+
+    public TextView getCommentVerb() {
+        return commentVerb;
     }
 
     public Result getDeal() {
@@ -100,7 +124,6 @@ public class CommentFragment extends Fragment implements OnUpdateComment{
         protected String doInBackground(String... params) {
 
             try {
-                webmethod = new Webmethod(getActivity().getApplicationContext());
                 comment = webmethod.getComments(Integer.toString(deal.getId()));
             } catch (IOException e) {
 
@@ -124,12 +147,139 @@ public class CommentFragment extends Fragment implements OnUpdateComment{
             if (loading!=null) {
                 loading.setVisibility(View.GONE);
             }
-            commentAdapter = new CommentAdapter(comment, getActivity().getApplicationContext());
+            commentAdapter = new CommentAdapter(comment,context==null?getActivity().getApplicationContext():context);
             if (comment.getResults().size() > 0) {
-                commentList.setAdapter(commentAdapter);
-                commentVerb.setVisibility(View.VISIBLE);
+                if(commentList != null) {
+                    commentList.setAdapter(commentAdapter);
+                    commentVerb.setVisibility(View.VISIBLE);
+                }else{
+                    commentAdapter.notifyDataSetChanged();
+                }
             }
         }
     }
 
+
+    public class SentCommentDialog extends Dialog {
+
+        private EditText et_comment;
+        private TextView tv_sentbtn;
+        private Context mContext;
+        private int mTheme = R.style.CustomDialog;
+        private int num = 0;
+        private int request_code = 1000;
+        private int mode = 0;            //to differentiate between from camera and from photo gallery
+        private Asyn asyn;
+        private Webmethod webmethod;
+        private Result deal;
+        private int status;
+        ListView refList;
+        RelativeLayout refLoading;
+        TextView refText;
+
+
+        String str_getInput;
+
+        public SentCommentDialog(Context context) {
+            super(context);
+        }
+
+        @Override
+        protected void onCreate(Bundle savedInstanceState) {
+            super.onCreate(savedInstanceState);
+            setContentView(R.layout.dialog_sentcomment);
+            et_comment = (EditText) findViewById(R.id.et_comment);
+            tv_sentbtn = (TextView) findViewById(R.id.dialog_btn_sentcomment);
+            refList = getCommentList();
+            refLoading = getLoading();
+            refText = getCommentVerb();
+
+//        tv_my_camera_take_photo
+//                .setOnClickListener(new View.OnClickListener() {
+//
+//                    @Override
+//                    public void onClick(View v) {
+//                        mode = 0;
+//                        SentCommentDialog.this.dismiss();
+//                        //拍照选择
+//                        Intent intent = new Intent(
+//                                "android.media.action.IMAGE_CAPTURE");
+//                        ((Activity) mContext).startActivityForResult(intent,request_code);
+//
+//                    }
+//                });
+
+
+            tv_sentbtn
+                    .setOnClickListener(new View.OnClickListener() {
+
+                        @Override
+                        public void onClick(View v) {
+                            str_getInput = et_comment.getText().toString();
+                            //从相册选择
+                            mode = 1;
+                            SentCommentDialog.this.dismiss();
+//                        Intent intent = new Intent(
+//                                Intent.ACTION_PICK,
+//                                android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+//                        ((Activity) mContext).startActivityForResult(intent, request_code);
+
+                            /**
+                             * sent get str to server.
+                             * */
+                            if (str_getInput.equals("")) {
+                                Toast.makeText(getContext()
+                                        , getContext().getResources().getString(R.string.commentFirst)
+                                        , Toast.LENGTH_LONG).show();
+                                ;
+                            } else {
+                                asyn = new Asyn();
+                                asyn.execute(et_comment.getText().toString());
+                                deal = getDeal();
+                            }
+
+                        }
+                    });
+        }
+
+        public Result getDeal() {
+
+            return DataHolder.getDealResult();
+        }
+
+        public class Asyn extends AsyncTask<String, String, String> {
+            @Override
+            protected String doInBackground(String... params) {
+                webmethod = new Webmethod(getContext());
+                try {
+                    status = webmethod.addComment(Integer.toString(deal.getId()), params[0]);
+                } catch (IOException e) {
+
+                }
+
+                return null;
+            }
+
+            @Override
+            protected void onPreExecute() {
+                super.onPreExecute();
+            }
+
+            @Override
+            protected void onPostExecute(String s) {
+                super.onPostExecute(s);
+                if (status == 201) {
+                    Toast.makeText(getContext()
+                            , getContext().getResources().getString(R.string.commentSuccess)
+                            , Toast.LENGTH_LONG).show();
+                    CommentFragment commentFragment = new CommentFragment();
+                    commentFragment.updateComment(getActivity().getApplicationContext(), deal, refList, refText, refLoading);
+                } else {
+                    Toast.makeText(getContext()
+                            , getContext().getResources().getString(R.string.commentFailed)
+                            , Toast.LENGTH_LONG).show();
+                }
+            }
+        }
+    }
 }

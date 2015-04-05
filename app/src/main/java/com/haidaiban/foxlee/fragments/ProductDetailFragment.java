@@ -27,7 +27,6 @@ import com.haidaiban.foxlee.config.Constants;
 import com.haidaiban.foxlee.model.comment.Comment;
 import com.haidaiban.foxlee.model.deal.Result;
 import com.haidaiban.foxlee.ui.RecommendationDialog;
-import com.haidaiban.foxlee.ui.SentCommentDialog;
 import com.haidaiban.foxlee.webMethod.Webmethod;
 import com.squareup.picasso.Picasso;
 
