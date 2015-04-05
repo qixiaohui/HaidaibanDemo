@@ -16,6 +16,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.haidaiban.foxlee.Util.DataHolder;
+import com.haidaiban.foxlee.fragments.CommentFragment;
 import com.haidaiban.foxlee.fragments.R;
 import com.haidaiban.foxlee.model.deal.Result;
 import com.haidaiban.foxlee.webMethod.Webmethod;
@@ -161,6 +162,8 @@ public class SentCommentDialog extends Dialog {
                 Toast.makeText(getContext()
                         ,getContext().getResources().getString(R.string.commentSuccess)
                         ,Toast.LENGTH_LONG).show();
+                CommentFragment commentFragment = new CommentFragment();
+                commentFragment.updateComment();
             }else{
                 Toast.makeText(getContext()
                         ,getContext().getResources().getString(R.string.commentFailed)

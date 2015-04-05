@@ -18,6 +18,8 @@ import com.haidaiban.foxlee.Util.DataHolder;
 import com.haidaiban.foxlee.activitys.Activity_PriceFill;
 import com.haidaiban.foxlee.activitys.WebActivity;
 import com.haidaiban.foxlee.config.Constants;
+import com.haidaiban.foxlee.fragments.CommentFragment;
+import com.haidaiban.foxlee.fragments.OnUpdateComment;
 import com.haidaiban.foxlee.fragments.R;
 import com.haidaiban.foxlee.model.deal.Result;
 import com.haidaiban.foxlee.webMethod.Webmethod;
@@ -45,7 +47,7 @@ public class RecommendationDialog extends Dialog {
     private Result deal;
     private int status;
     private Intent intent;
-
+    private OnUpdateComment commentFragment;
     String str_getInput;
 
     /**
@@ -154,6 +156,12 @@ public class RecommendationDialog extends Dialog {
                 Toast.makeText(getContext()
                         ,getContext().getResources().getString(R.string.commentSuccess)
                         ,Toast.LENGTH_LONG).show();
+                commentFragment = (OnUpdateComment) getOwnerActivity()
+                        .getFragmentManager()
+                        .getBackStackEntryAt(getOwnerActivity()
+                                .getFragmentManager()
+                                .getBackStackEntryCount());
+                commentFragment.updateComment();
             }else{
                 Toast.makeText(getContext()
                         ,getContext().getResources().getString(R.string.commentFailed)

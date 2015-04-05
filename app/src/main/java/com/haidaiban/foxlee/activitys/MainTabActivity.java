@@ -45,8 +45,7 @@ public class MainTabActivity extends FragmentActivity{
 		layoutInflater = LayoutInflater.from(this);
 				
 		mTabHost = (FragmentTabHost)findViewById(android.R.id.tabhost);
-		mTabHost.setup(this, getSupportFragmentManager(), R.id.realtabcontent);	
-		
+		mTabHost.setup(this, getSupportFragmentManager(), R.id.realtabcontent);
 		int count = fragmentArray.length;
 
 
@@ -55,6 +54,7 @@ public class MainTabActivity extends FragmentActivity{
 			mTabHost.addTab(tabSpec, fragmentArray[i], null);
 			mTabHost.getTabWidget().getChildAt(i).setBackgroundResource(R.color.white);
 		}
+        mTabHost.setBackgroundColor(getResources().getColor(R.color.white));
 	}
 
 	private View getTabItemView(int index){

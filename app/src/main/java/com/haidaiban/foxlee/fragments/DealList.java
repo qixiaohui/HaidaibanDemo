@@ -47,6 +47,7 @@ public class DealList extends Fragment{
         listView = (ListView) view.findViewById(R.id.list);
         loading  = (RelativeLayout) view.findViewById(R.id.loadingPanel);
         loading.setVisibility(View.GONE);
+        view.setBackgroundColor(getResources().getColor(R.color.white));
         return view;
     }
 

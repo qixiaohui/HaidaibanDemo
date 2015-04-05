@@ -29,7 +29,7 @@ import java.io.IOException;
 /**
  * Created by tom on 3/30/15.
  */
-public class CommentFragment extends Fragment{
+public class CommentFragment extends Fragment implements OnUpdateComment{
 
     private View mView;
     private Button btn_comment;
@@ -42,6 +42,11 @@ public class CommentFragment extends Fragment{
     Result deal;
     Asyn asyn;
 
+    @Override
+    public void updateComment() {
+        asyn = new Asyn();
+        asyn.execute();
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -70,8 +75,8 @@ public class CommentFragment extends Fragment{
         loading = (RelativeLayout) mView.findViewById(R.id.loadingPanel);
         commentVerb = (TextView) mView.findViewById(R.id.commentVerb);
         deal = getDeal();
+        updateComment();
     }
-
 
     public Result getDeal() {
 
@@ -108,13 +113,17 @@ public class CommentFragment extends Fragment{
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            loading.setVisibility(View.VISIBLE);
+            if (loading!=null) {
+                loading.setVisibility(View.VISIBLE);
+            }
         }
 
         @Override
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
-            loading.setVisibility(View.GONE);
+            if (loading!=null) {
+                loading.setVisibility(View.GONE);
+            }
             commentAdapter = new CommentAdapter(comment, getActivity().getApplicationContext());
             if (comment.getResults().size() > 0) {
                 commentList.setAdapter(commentAdapter);
