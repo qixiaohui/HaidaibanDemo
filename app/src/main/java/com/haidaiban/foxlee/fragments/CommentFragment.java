@@ -29,7 +29,7 @@ import java.io.IOException;
 /**
  * Created by tom on 3/30/15.
  */
-public class CommentFragment extends Fragment implements OnUpdateComment{
+public class CommentFragment extends Fragment implements OnUpdateComment {
 
     private View mView;
     private Button btn_comment;
@@ -85,7 +85,7 @@ public class CommentFragment extends Fragment implements OnUpdateComment{
         executeAsync();
     }
 
-    public void executeAsync(){
+    public void executeAsync() {
         asyn = new Asyn();
         asyn.execute();
     }
@@ -109,7 +109,7 @@ public class CommentFragment extends Fragment implements OnUpdateComment{
 
     private void showComment_Dialog() {
 //  new SentCommentDialog(getActivity(), R.style.CustomDialog).show();
-        new SentCommentDialog(getActivity()).show();
+        new SentCommentDialog(getActivity(),R.style.CustomDialog).show();
 
     }
 
@@ -136,7 +136,7 @@ public class CommentFragment extends Fragment implements OnUpdateComment{
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            if (loading!=null) {
+            if (loading != null) {
                 loading.setVisibility(View.VISIBLE);
             }
         }
@@ -144,15 +144,15 @@ public class CommentFragment extends Fragment implements OnUpdateComment{
         @Override
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
-            if (loading!=null) {
+            if (loading != null) {
                 loading.setVisibility(View.GONE);
             }
-            commentAdapter = new CommentAdapter(comment,context==null?getActivity().getApplicationContext():context);
+            commentAdapter = new CommentAdapter(comment, context == null ? getActivity().getApplicationContext() : context);
             if (comment.getResults().size() > 0) {
-                if(commentList != null) {
+                if (commentList != null) {
                     commentList.setAdapter(commentAdapter);
                     commentVerb.setVisibility(View.VISIBLE);
-                }else{
+                } else {
                     commentAdapter.notifyDataSetChanged();
                 }
             }
@@ -180,8 +180,10 @@ public class CommentFragment extends Fragment implements OnUpdateComment{
 
         String str_getInput;
 
-        public SentCommentDialog(Context context) {
-            super(context);
+        public SentCommentDialog(Context context, int themes) {
+            super(context,themes);
+
+
         }
 
         @Override
@@ -194,21 +196,6 @@ public class CommentFragment extends Fragment implements OnUpdateComment{
             refLoading = getLoading();
             refText = getCommentVerb();
 
-//        tv_my_camera_take_photo
-//                .setOnClickListener(new View.OnClickListener() {
-//
-//                    @Override
-//                    public void onClick(View v) {
-//                        mode = 0;
-//                        SentCommentDialog.this.dismiss();
-//                        //拍照选择
-//                        Intent intent = new Intent(
-//                                "android.media.action.IMAGE_CAPTURE");
-//                        ((Activity) mContext).startActivityForResult(intent,request_code);
-//
-//                    }
-//                });
-
 
             tv_sentbtn
                     .setOnClickListener(new View.OnClickListener() {
@@ -219,10 +206,7 @@ public class CommentFragment extends Fragment implements OnUpdateComment{
                             //从相册选择
                             mode = 1;
                             SentCommentDialog.this.dismiss();
-//                        Intent intent = new Intent(
-//                                Intent.ACTION_PICK,
-//                                android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-//                        ((Activity) mContext).startActivityForResult(intent, request_code);
+
 
                             /**
                              * sent get str to server.
