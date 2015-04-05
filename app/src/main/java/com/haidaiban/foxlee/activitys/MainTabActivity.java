@@ -45,13 +45,14 @@ public class MainTabActivity extends FragmentActivity{
 		layoutInflater = LayoutInflater.from(this);
 				
 		mTabHost = (FragmentTabHost)findViewById(android.R.id.tabhost);
-		mTabHost.setup(this, getSupportFragmentManager(), R.id.realtabcontent);	
+		mTabHost.setup(this, getSupportFragmentManager(), R.id.realtabcontent);
 		
 		int count = fragmentArray.length;
 
 
 		for(int i = 0; i < count; i++){	
 			TabSpec tabSpec = mTabHost.newTabSpec(mTextviewArray[i]).setIndicator(getTabItemView(i));
+
 			mTabHost.addTab(tabSpec, fragmentArray[i], null);
 			mTabHost.getTabWidget().getChildAt(i).setBackgroundResource(R.color.white);
 		}
