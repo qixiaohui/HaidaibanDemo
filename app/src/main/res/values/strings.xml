@@ -192,4 +192,38 @@
     <string name="dialog_recomm_usethiscoupon">使用此折扣</string>
     <string name="dialog_recomm_officialsite">进入官网</string>
 
+
+    <!-- D 我的订单-->
+    <string name="d_myorder">我的订单</string>
+    <string name="d_processing">采购中</string>
+    <string name="d_ordernumber">订单编号</string>
+    <string name="d_again">代办</string>
+    <string name="d_order_stats">订单状态</string>
+    <string name="d_title_orderdetails">订单详情</string>
+    <string name="d_titile_tracking">状态追踪</string>
+    <string name="d_titile_orderinfo">订单信息</string>
+    <string name="d_titile_receiveinfo">收货人信息</string>
+
+    <!--收货人信息-->
+    <string name="d_receiveinfo_name">收货人 :</string>
+    <string name="d_receiveinfo_add"> 地 址  :</string>
+    <string name="d_receiveinfo_phone"> 联系电话 :</string>
+
+    <!--收货人信息 button-->
+    <string name="d_btn_pay">补款</string>
+    <string name="d_btn_applyextention">申请延期</string>
+    <string name="d_btn_confirm">确认收货</string>
+
+    <string name="d_btn_review">评价</string>
+    <string name="d_btn_shareorder">晒单</string>
+    <string name="d_btn_orderagain">再次下单</string>
+
+
+    <string name="d_btn_cancel">弃单</string>
+    <string name="d_btn_argue">投诉维权</string>
+
+
+
+
+
 </resources>
