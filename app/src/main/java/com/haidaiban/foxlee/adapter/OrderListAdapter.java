@@ -50,7 +50,7 @@ public class OrderListAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         view = convertView;
         if(view == null){
-            view = inflater.inflate(R.layout.orderlist,parent,false);
+            view = inflater.inflate(R.layout.order_list_row,parent,false);
         }
         ViewHolder viewHolder = null;
         if(viewHolder == null){
@@ -83,7 +83,7 @@ public class OrderListAdapter extends BaseAdapter {
         viewHolder.dealName.setText(order.getResults().get(position).getQuotes().get(0).getTitle());
         viewHolder.orderNumber.setText("询价单号: "+order.getResults().get(position).getQuotes().get(0).getOrder());
         if(order.getResults().get(position).getQuotes().get(0).getImage0()==null){
-            viewHolder.prodImg.setImageDrawable(context.getDrawable(R.drawable.productnoimage));
+            viewHolder.prodImg.setImageDrawable(context.getResources().getDrawable(R.drawable.productnoimage));
         }else {
             Picasso.with(context)
                     .load(Constants.getLOGIN_URL() + order.getResults().get(position).getQuotes().get(0).getImage0())

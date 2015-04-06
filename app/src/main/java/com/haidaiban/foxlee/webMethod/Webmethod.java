@@ -89,7 +89,7 @@ public class Webmethod {
     public static String get()throws IOException,JSONException{
 
         token = getToken();
-        httpGet = new HttpGet(url+"api/offers");
+        httpGet = new HttpGet(Constants.getLOGIN_URL()+"api/offers");
         //httpGet.setHeader("Accept","applicatiton/json; indent=4");
         //System.out.println("token"+token);
         httpGet.setHeader("Authorization","Token "+token);
@@ -102,7 +102,7 @@ public class Webmethod {
     }
 
     public static Message getMessage() throws IOException{
-        httpGet = new HttpGet(url+"api/sitemessages");
+        httpGet = new HttpGet(Constants.getLOGIN_URL()+"api/sitemessages");
         httpResponse = httpClient.execute(httpGet);
         entity = httpResponse.getEntity();
         response = EntityUtils.toString(entity,"UTF-8");
@@ -112,7 +112,7 @@ public class Webmethod {
 
     public static Deal getDeals()throws IOException,JSONException{
         token = getToken();
-        httpGet = new HttpGet(url+"api/deals");
+        httpGet = new HttpGet(Constants.getLOGIN_URL()+"api/deals");
         httpGet.setHeader("Authorization","Token "+token);
         httpResponse = httpClient.execute(httpGet);
         entity = httpResponse.getEntity();
@@ -122,7 +122,7 @@ public class Webmethod {
 
     public static QuoteList getQuotes()throws IOException,JSONException{
         token = getToken();
-        httpGet = new HttpGet(url+"api/quotes/?type=cart");
+        httpGet = new HttpGet(Constants.getLOGIN_URL()+"api/quotes/?type=cart");
         httpGet.setHeader("Authorization","Token "+token);
         httpResponse = httpClient.execute(httpGet);
         entity = httpResponse.getEntity();
@@ -141,7 +141,7 @@ public class Webmethod {
      * @throws IOException
      */
     public static String register(String userName, String password1, String password2, String email)throws IOException{
-        httpPost = new HttpPost(url+"/rest-auth/registration/");
+        httpPost = new HttpPost(Constants.getLOGIN_URL()+"/rest-auth/registration/");
         httpPost.setHeader("username",userName);
         httpPost.setHeader("password1",password1);
         httpPost.setHeader("password2",password2);
@@ -162,7 +162,7 @@ public class Webmethod {
         basicAuthClient = HttpClientBuilder.create().setDefaultCredentialsProvider(credentialsProvider).build();
         pair = new ArrayList<NameValuePair>();
         token = getToken();
-        httpPost = new HttpPost(url+"api/quotes/"+uid);
+        httpPost = new HttpPost(Constants.getLOGIN_URL()+"api/quotes/"+uid);
         httpPost.setHeader("Authorization","Token "+token);
         pair.add(new BasicNameValuePair("_method","DELETE"));
         httpPost.setEntity(new UrlEncodedFormEntity(pair));
@@ -186,7 +186,7 @@ public class Webmethod {
         pair.add(new BasicNameValuePair("username",userName));
         pair.add(new BasicNameValuePair("password",password));
 
-        HttpPost httpPost = new HttpPost(url+"/rest-auth/login/");
+        HttpPost httpPost = new HttpPost(Constants.getLOGIN_URL()+"/rest-auth/login/");
         //BasicClientCookie clientCookie = new BasicClientCookie("csrftoken",middleWareToken.getValue());
         //clientCookie.setPath("/Login");
         //cookieStore.addCookie(clientCookie);
@@ -234,7 +234,7 @@ public class Webmethod {
         pair.add(new BasicNameValuePair("is_favorite",result.getIsFavorite()?"True":"False"));
         pair.add(new BasicNameValuePair("is_draft","True"));
 
-        httpPost = new HttpPost(url+"api/quotes/"+result.getUid());
+        httpPost = new HttpPost(Constants.getLOGIN_URL()+"api/quotes/"+result.getUid());
         httpPost.setHeader("Authorization","Token "+token);
         httpPost.setEntity(new UrlEncodedFormEntity(pair));
         httpResponse = basicAuthClient.execute(httpPost);

@@ -155,7 +155,7 @@ public class Quote {
      * @return
      * The recommendation
      */
-    public Object getRecommendation() {
+    public Recommendation getRecommendation() {
         return recommendation;
     }
 
@@ -164,7 +164,7 @@ public class Quote {
      * @param recommendation
      * The recommendation
      */
-    public void setRecommendation(Object recommendation) {
+    public void setRecommendation(Recommendation recommendation) {
         this.recommendation = recommendation;
     }
 
