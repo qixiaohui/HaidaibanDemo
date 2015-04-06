@@ -11,6 +11,7 @@ import com.haidaiban.foxlee.model.comment.Comment;
 import com.haidaiban.foxlee.model.deal.Deal;
 import com.haidaiban.foxlee.model.message.Message;
 import com.haidaiban.foxlee.model.offer.Offer;
+import com.haidaiban.foxlee.model.order.Order;
 import com.haidaiban.foxlee.model.quotelist.QuoteList;
 import com.haidaiban.foxlee.model.quotelist.Result;
 import com.securepreferences.SecurePreferences;
@@ -341,5 +342,16 @@ public class Webmethod {
         entity = httpResponse.getEntity();
         response = EntityUtils.toString(entity,"UTF-8");
         return new Gson().fromJson(response,Deal.class);
+    }
+
+    public static Order getOrder(String condition) throws IOException{
+        token = getToken();
+        httpGet = new HttpGet(Constants.getLOGIN_URL()+"api/orders/"+condition);
+        httpGet.setHeader("Authorization","Token "+token);
+        httpResponse = httpClient.execute(httpGet);
+        entity = httpResponse.getEntity();
+        response = EntityUtils.toString(entity, "UTF-8");
+        System.out.println(response);
+        return new Gson().fromJson(response,Order.class);
     }
 }

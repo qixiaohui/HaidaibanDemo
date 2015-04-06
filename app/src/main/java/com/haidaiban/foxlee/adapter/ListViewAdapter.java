@@ -53,7 +53,7 @@ public class ListViewAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         view = convertView;
         if (view == null) {
-            view = inflater.inflate(R.layout.list_row, parent, false);
+            view = inflater.inflate(R.layout.offer_list_row, parent, false);
         }
         ViewHolder viewHolder = null;
         if(viewHolder == null) {

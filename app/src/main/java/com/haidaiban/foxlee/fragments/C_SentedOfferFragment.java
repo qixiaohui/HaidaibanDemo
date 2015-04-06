@@ -25,9 +25,10 @@ public class C_SentedOfferFragment extends Fragment{
     private TabPagerAdapter tabPagerAdapter;
     private String[] categorys;
     private List<Fragment> fragments;
-    private DealList dealList;
+    private OrderList orderList;
     private ActionBar actionBar;
     private SlidingTabLayout slidingTabLayout;
+    private int index;
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -42,10 +43,11 @@ public class C_SentedOfferFragment extends Fragment{
         super.onViewCreated(view, savedInstanceState);
         categorys = getActivity().getResources().getStringArray(R.array.SendedPriceTitle);
         fragments = new Vector<Fragment>();
+        index = 0;
         for(String category: categorys){
-            dealList = new DealList();
-            dealList.setTitle(title,category);
-            fragments.add(dealList);
+            orderList = new OrderList();
+            orderList.setIndex(index);
+            fragments.add(orderList);
         }
 //        getSupportFragmentManager()
         tabPagerAdapter = new TabPagerAdapter(getChildFragmentManager(),fragments,categorys);
