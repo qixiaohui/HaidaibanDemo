@@ -21,7 +21,7 @@ public class Quote {
     @Expose
     private Object image2;
     @Expose
-    private Object recommendation;
+    private Recommendation recommendation;
     @SerializedName("is_submitted")
     @Expose
     private Boolean isSubmitted;
