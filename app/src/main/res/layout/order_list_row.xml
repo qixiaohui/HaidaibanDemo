@@ -38,8 +38,8 @@
         android:layout_width="fill_parent">
         <ImageView
             android:layout_margin="10dp"
-            android:layout_height="150dp"
-            android:layout_width="150dp"
+            android:layout_height="120dp"
+            android:layout_width="120dp"
             android:id="@+id/orderImage" />
         <TextView
             android:layout_marginTop="10dp"
@@ -55,6 +55,8 @@
             android:layout_width="wrap_content"
             android:id="@+id/remainTime"
             android:layout_marginTop="10dp"
+            android:textSize="12sp"
+            android:textStyle="italic"
             android:layout_marginRight="20dp"
             android:textColor="@color/grey"
             android:layout_toRightOf="@id/orderImage"
