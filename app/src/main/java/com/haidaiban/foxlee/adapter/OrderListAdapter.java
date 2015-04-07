@@ -69,6 +69,7 @@ public class OrderListAdapter extends BaseAdapter {
             viewHolder.status.setText("已报价");
             viewHolder.status.setTextColor(context.getResources().getColor(R.color.white));
             viewHolder.status.setBackgroundColor(context.getResources().getColor(R.color.grey));
+            viewHolder.timeRemain.setText("已收到代办\""+order.getResults().get(position).getOpenOffers().get(0).getAgent()+"\"的报价");
         }else if(order.getResults().get(position).getIsOpen()&&order.getResults().get(position).getOpenOffers().size()==0){
             viewHolder.status.setText("待报价");
             viewHolder.status.setTextColor(context.getResources().getColor(R.color.white));
@@ -79,6 +80,7 @@ public class OrderListAdapter extends BaseAdapter {
             viewHolder.status.setText("已关闭");
             viewHolder.status.setTextColor(context.getResources().getColor(R.color.white));
             viewHolder.status.setBackgroundColor(context.getResources().getColor(R.color.green));
+            viewHolder.timeRemain.setText("超时无代办接单或无进行中的报价，系统已终止询价");
         }
         viewHolder.dealName.setText(order.getResults().get(position).getQuotes().get(0).getTitle());
         viewHolder.orderNumber.setText("询价单号: "+order.getResults().get(position).getQuotes().get(0).getOrder());
