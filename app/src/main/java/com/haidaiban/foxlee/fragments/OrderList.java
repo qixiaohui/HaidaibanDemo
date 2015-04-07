@@ -1,5 +1,6 @@
 package com.haidaiban.foxlee.fragments;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -7,9 +8,13 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 
+import com.haidaiban.foxlee.Util.DataHolder;
+import com.haidaiban.foxlee.activitys.OrderDetails;
+import com.haidaiban.foxlee.activitys.ProductDetail;
 import com.haidaiban.foxlee.adapter.ListViewAdapter;
 import com.haidaiban.foxlee.adapter.OrderListAdapter;
 import com.haidaiban.foxlee.model.order.Order;
@@ -29,6 +34,8 @@ public class OrderList extends Fragment {
     ListView listView;
     Order order;
     int index;
+    Intent intent;
+
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
@@ -91,6 +98,16 @@ public class OrderList extends Fragment {
             if(listView != null && order != null && getActivity() != null) {
                 System.out.println("asynctask*****");
                 listView.setAdapter(new OrderListAdapter((getActivity().getApplicationContext()), order));
+
+                // get details of orderlist
+                listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                        intent = new Intent(getActivity().getApplicationContext(), OrderDetails.class);
+                     //   DataHolder.setDealResult(deals.getResults().get(position));
+                        startActivity(intent);
+                    }
+                });
             }
         }
     }
