@@ -69,6 +69,7 @@ public class OrderList extends Fragment {
                     title = "?status=is_closed";
             }
             try {
+                System.out.println(index+"$%^%*");
                 order = webmethod.getOrder(title);
             }catch (IOException e){
 

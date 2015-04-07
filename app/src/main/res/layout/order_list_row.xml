@@ -11,12 +11,19 @@
     <TextView
         android:layout_height="fill_parent"
         android:layout_width="0dp"
-        android:layout_weight="0.5"
+        android:textSize="12sp"
+        android:gravity="center"
+        android:paddingRight="5dp"
+        android:layout_weight="0.7"
         android:id="@+id/orderState" />
     <TextView
         android:layout_height="fill_parent"
         android:textColor="@color/grey"
+        android:layout_marginLeft="10dp"
         android:layout_width="0dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:textSize="12sp"
         android:layout_weight="2"
         android:id="@+id/orderNumber" />
     <TextView
@@ -35,9 +42,11 @@
             android:layout_width="150dp"
             android:id="@+id/orderImage" />
         <TextView
+            android:layout_marginTop="10dp"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
             android:id="@+id/dealName"
+            android:layout_marginRight="20dp"
             android:textColor="@color/black"
             android:layout_toRightOf="@id/orderImage"
             android:textStyle="bold" />
@@ -45,6 +54,8 @@
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
             android:id="@+id/remainTime"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="20dp"
             android:textColor="@color/grey"
             android:layout_toRightOf="@id/orderImage"
             android:layout_below="@id/dealName" />

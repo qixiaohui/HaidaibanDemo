@@ -48,6 +48,7 @@ public class C_SentedOfferFragment extends Fragment{
             orderList = new OrderList();
             orderList.setIndex(index);
             fragments.add(orderList);
+            index++;
         }
 //        getSupportFragmentManager()
         tabPagerAdapter = new TabPagerAdapter(getChildFragmentManager(),fragments,categorys);

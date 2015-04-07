@@ -84,11 +84,11 @@ public class OrderListAdapter extends BaseAdapter {
         }
         viewHolder.dealName.setText(order.getResults().get(position).getQuotes().get(0).getTitle());
         viewHolder.orderNumber.setText("询价单号: "+order.getResults().get(position).getQuotes().get(0).getOrder());
-        if(order.getResults().get(position).getQuotes().get(0).getImage0()==null){
+        if(order.getResults().get(position).getQuotes().get(0).getDeal()==null){
             viewHolder.prodImg.setImageDrawable(context.getResources().getDrawable(R.drawable.productnoimage));
         }else {
             Picasso.with(context)
-                    .load(Constants.getLOGIN_URL() + order.getResults().get(position).getQuotes().get(0).getImage0())
+                    .load(Constants.getLOGIN_URL() + order.getResults().get(position).getQuotes().get(0).getDeal().getImage())
                     .resize(150, 150)
                     .centerCrop()
                     .into(viewHolder.prodImg);
