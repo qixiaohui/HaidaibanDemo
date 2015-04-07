@@ -96,7 +96,7 @@ public class OrderListAdapter extends BaseAdapter {
         return view;
     }
 
-    public class ViewHolder{
+    public static class ViewHolder{
         TextView status;
         TextView orderNumber;
         TextView timeElapse;

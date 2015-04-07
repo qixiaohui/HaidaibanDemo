@@ -1,28 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="wrap_content"
+    android:id="@+id/upperRow"
+    android:orientation="vertical"
+    android:layout_width="fill_parent">
     <LinearLayout
-        android:layout_height="wrap_content"
-        android:id="@+id/upperRow"
         android:orientation="horizontal"
+        android:layout_height="wrap_content"
         android:layout_width="fill_parent">
-        <TextView
-            android:layout_height="fill_parent"
-            android:layout_width="0dp"
-            android:layout_weight="0.5"
-            android:id="@+id/orderState" />
-        <TextView
-            android:layout_height="fill_parent"
-            android:textColor="@color/grey"
-            android:layout_width="0dp"
-            android:layout_weight="2"
-            android:id="@+id/orderNumber" />
-        <TextView
-            android:layout_height="fill_parent"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:id="@+id/orderTime" />
+    <TextView
+        android:layout_height="fill_parent"
+        android:layout_width="0dp"
+        android:layout_weight="0.5"
+        android:id="@+id/orderState" />
+    <TextView
+        android:layout_height="fill_parent"
+        android:textColor="@color/grey"
+        android:layout_width="0dp"
+        android:layout_weight="2"
+        android:id="@+id/orderNumber" />
+    <TextView
+        android:layout_height="fill_parent"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:id="@+id/orderTime" />
     </LinearLayout>
     <RelativeLayout
         android:layout_height="wrap_content"
@@ -38,20 +39,21 @@
             android:layout_width="wrap_content"
             android:id="@+id/dealName"
             android:textColor="@color/black"
-            android:layout_alignRight="@id/orderImage"
+            android:layout_toRightOf="@id/orderImage"
             android:textStyle="bold" />
         <TextView
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
             android:id="@+id/remainTime"
             android:textColor="@color/grey"
-            android:layout_alignRight="@id/orderImage"
-            android:layout_alignBottom="@id/dealName" />
+            android:layout_toRightOf="@id/orderImage"
+            android:layout_below="@id/dealName" />
         <ImageView
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
+            android:layout_marginTop="50dp"
+            android:layout_height="20dp"
+            android:layout_width="20dp"
             android:layout_alignParentRight="true"
             android:src="@drawable/arrow_right"
             android:layout_alignRight="@id/dealName" />
     </RelativeLayout>
-</RelativeLayout>
+</LinearLayout>
