@@ -9,7 +9,7 @@ public class Constants {
 
     public static String APP_NAME ="";
 
-    public static String LOGIN_URL ="https://stage.sanqtech.com/";
+    public static String LOGIN_URL ="https://stage.sanqtech.com:7443/";
 
     public static String getAPP_NAME() {
         return APP_NAME;
