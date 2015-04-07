@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:fillViewport="true"
+    android:background="@color/white">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@color/white"
+        android:weightSum="1">
+       <LinearLayout
+           android:layout_height="30dp"
+           android:layout_width="match_parent"
+           android:orientation="horizontal"
+           android:background="@color/gray"
+           >
+
+
+           <TextView
+               android:layout_height="fill_parent"
+               android:layout_width="0dp"
+               android:textSize="12sp"
+               android:gravity="center"
+               android:paddingRight="5dp"
+               android:layout_weight="0.7"
+               android:id="@+id/textView_temporder"
+               />
+           <TextView
+               android:layout_width="40dp"
+               android:layout_weight="1"
+               android:layout_height="match_parent"
+               android:text="Medium Text"
+               android:id="@+id/textView_ordernumber" />
+           <TextView
+               android:layout_width="40dp"
+               android:layout_weight="1"
+               android:layout_height="match_parent"
+               android:text="Medium Text"
+               android:id="@+id/textView_updatetimer" />
+       </LinearLayout>
+        <RelativeLayout
+            android:layout_height="150dp"
+            android:layout_width="match_parent"
+            android:background="@color/gray"
+            >
+        <ImageView
+            android:layout_marginLeft="20dp"
+            android:layout_width="140dp"
+            android:layout_height="140dp"
+            android:id="@+id/c0_img"
+            />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/c_orderdetails_18hours"
+                android:id="@+id/textView"
+                android:textSize="14sp"
+                android:layout_alignParentTop="true"
+                android:layout_toRightOf="@+id/c0_img"
+                android:layout_marginLeft="36dp"
+                android:layout_marginStart="36dp"
+                android:layout_marginTop="17dp"
+                android:layout_alignRight="@+id/button"
+                android:layout_alignEnd="@+id/button" />
+
+            <Button
+                android:layout_width="100dp"
+                android:layout_height="30dp"
+                android:text="@string/c_orderdetails_cancel"
+                android:gravity="center"
+                android:textSize="@dimen/medium_text_size"
+                android:id="@+id/button"
+                android:textColor="@color/black"
+                android:background="@color/yellow"
+                android:layout_alignBottom="@+id/c0_img"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginRight="27dp"
+                android:layout_marginEnd="27dp" />
+        </RelativeLayout>
+
+    </LinearLayout>
+</ScrollView>
