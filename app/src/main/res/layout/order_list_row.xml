@@ -36,11 +36,22 @@
         android:layout_height="wrap_content"
         android:layout_alignBottom="@id/upperRow"
         android:layout_width="fill_parent">
+        <FrameLayout
+            android:id="@+id/index_miaosha_image_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_margin="5dp" >
         <ImageView
-            android:layout_margin="10dp"
-            android:layout_height="120dp"
-            android:layout_width="120dp"
-            android:id="@+id/orderImage" />
+            android:layout_height="147dp"
+            android:layout_width="147dp"
+            android:id="@+id/orderImage" />               <ImageView
+        android:id="@+id/index_miaosha_discount_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top|left"
+        android:background="@drawable/app_limit_buy_sale" />
+        </FrameLayout>
         <TextView
             android:layout_marginTop="10dp"
             android:layout_height="wrap_content"
@@ -48,7 +59,7 @@
             android:id="@+id/dealName"
             android:layout_marginRight="20dp"
             android:textColor="@color/black"
-            android:layout_toRightOf="@id/orderImage"
+            android:layout_toRightOf="@id/index_miaosha_image_layout"
             android:textStyle="bold" />
         <TextView
             android:layout_height="wrap_content"
@@ -59,7 +70,7 @@
             android:textStyle="italic"
             android:layout_marginRight="20dp"
             android:textColor="@color/grey"
-            android:layout_toRightOf="@id/orderImage"
+            android:layout_toRightOf="@id/index_miaosha_image_layout"
             android:layout_below="@id/dealName" />
         <ImageView
             android:layout_marginTop="50dp"
