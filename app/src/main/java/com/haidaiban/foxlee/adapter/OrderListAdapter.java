@@ -101,14 +101,6 @@ public class OrderListAdapter extends BaseAdapter {
                     .centerCrop()
                     .into(viewHolder.prodImg);
         }
-        view.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                intent = new Intent(context, OrderDetails.class);
-                DataHolder.setOrderResult(order.getResults().get(position));
-                context.startActivity(intent);
-            }
-        });
 
         return view;
     }

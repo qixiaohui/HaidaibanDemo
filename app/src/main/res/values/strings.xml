@@ -232,7 +232,11 @@
     <string name="c_orderdetails_dialog_question"> 确认终止报价？</string>
     <string name="c_orderdetails_dialog_cancel">取消</string>
     <string name="c_orderdetails_dialog_yes">确认</string>
-
-
+    <string name="c_orderdetails_waiting">待报价</string>
+    <string name="c_orderdetails_closed">已关闭</string>
+    <string name="c_orderdetails_accepted">已报价</string>
+    <string name="orderClosed">超时无代办接单或无进行中的报价，系统已终止询价</string>
+    <string name="orderAccepted_1">已收到代办</string>
+    <string name="orderAccepted_2">的报价</string>
 
 </resources>
