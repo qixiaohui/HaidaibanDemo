@@ -1,6 +1,7 @@
 package com.haidaiban.foxlee.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,6 +9,8 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.haidaiban.foxlee.Util.DataHolder;
+import com.haidaiban.foxlee.activitys.OrderDetails;
 import com.haidaiban.foxlee.config.Constants;
 import com.haidaiban.foxlee.fragments.R;
 import com.haidaiban.foxlee.model.order.Order;
@@ -23,6 +26,7 @@ public class OrderListAdapter extends BaseAdapter {
     Order order;
     LayoutInflater inflater;
     View view;
+    Intent intent;
 
 
     public OrderListAdapter(Context context, Order order) {
@@ -47,7 +51,7 @@ public class OrderListAdapter extends BaseAdapter {
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, View convertView, ViewGroup parent) {
         view = convertView;
         if(view == null){
             view = inflater.inflate(R.layout.order_list_row,parent,false);
@@ -88,7 +92,7 @@ public class OrderListAdapter extends BaseAdapter {
             Picasso.with(context)
                     .load(R.drawable.productnoimage)
                     .centerCrop()
-                    .resize(120,120)
+                    .resize(120, 120)
                     .into(viewHolder.prodImg);
         }else {
             Picasso.with(context)
@@ -97,6 +101,15 @@ public class OrderListAdapter extends BaseAdapter {
                     .centerCrop()
                     .into(viewHolder.prodImg);
         }
+        view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                intent = new Intent(context, OrderDetails.class);
+                DataHolder.setOrderResult(order.getResults().get(position));
+                context.startActivity(intent);
+            }
+        });
+
         return view;
     }
 
