@@ -227,6 +227,9 @@
 
     <string name="c_orderdetails_18hours">正在等待代办接单，若18小时内无人接单，则询价单将被关闭。</string>
     <string name="c_orderdetails_cancel">终止询价</string>
+    <string name="c_orderdetails_dialog_question"> 确认终止报价？</string>
+    <string name="c_orderdetails_dialog_cancel">取消</string>
+    <string name="c_orderdetails_dialog_yes">确认</string>
 
 
 
