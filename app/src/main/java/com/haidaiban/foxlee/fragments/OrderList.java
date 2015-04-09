@@ -26,7 +26,7 @@ import java.util.logging.Handler;
 /**
  * Created by tom on 4/5/15.
  */
-public class OrderList extends Fragment {
+public class OrderList extends Fragment implements ChildMethod{
     View view;
     RelativeLayout loading;
     String title;
@@ -36,6 +36,7 @@ public class OrderList extends Fragment {
     Order order;
     int index;
     Intent intent;
+    ParentMethods parenView;
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -45,6 +46,7 @@ public class OrderList extends Fragment {
         listView = (ListView) view.findViewById(R.id.list);
         loading.setVisibility(View.GONE);
         view.setBackgroundColor(getResources().getColor(R.color.white));
+        parenView = (ParentMethods) getParentFragment();
         return view;
     }
 
@@ -66,13 +68,11 @@ public class OrderList extends Fragment {
                 }
             case 1:
                 if(DataHolder.getOrderWaiting()==null){
-                    asyn = new Async();
-                    asyn.execute();
+                    loading.setVisibility(View.VISIBLE);
                 }else{
                     handler.postDelayed(new Runnable() {
                         public void run() {
                             order = DataHolder.getOrderWaiting();
-                            loading.setVisibility(View.INVISIBLE);
                             loadListView();
                         }
                     }, 200);
@@ -80,13 +80,11 @@ public class OrderList extends Fragment {
                 }
             case 2:
                 if(DataHolder.getOrderAccepted() == null){
-                    asyn = new Async();
-                    asyn.execute();
+                    loading.setVisibility(View.VISIBLE);
                 }else{
                     handler.postDelayed(new Runnable() {
                         public void run() {
                             order = DataHolder.getOrderAccepted();
-                            loading.setVisibility(View.INVISIBLE);
                             loadListView();
                         }
                     }, 200);
@@ -94,13 +92,11 @@ public class OrderList extends Fragment {
                 }
             case 3:
                 if(DataHolder.getOrderClosed() == null){
-                    asyn = new Async();
-                    asyn.execute();
+                    loading.setVisibility(View.VISIBLE);
                 }else{
                     handler.postDelayed(new Runnable() {
                         public void run() {
                             order = DataHolder.getOrderClosed();
-                            loading.setVisibility(View.INVISIBLE);
                             loadListView();
                         }
                     }, 200);
@@ -112,6 +108,7 @@ public class OrderList extends Fragment {
 
     public void loadListView(){
         if(listView != null && order != null && getActivity() != null) {
+            loading.setVisibility(View.INVISIBLE);
             System.out.println("asynctask*****");
             listView.setAdapter(new OrderListAdapter((getActivity().getApplicationContext()), order));
 
@@ -136,21 +133,8 @@ public class OrderList extends Fragment {
         @Override
         protected String doInBackground(String... params) {
             webmethod = new Webmethod(getActivity().getApplicationContext());
-            switch (index){
-                case 0:
-                    title = "";
-                    break;
-                case 1:
-                    title = "?status=no_offer";
-                    break;
-                case 2:
-                    title = "?status=has_offer";
-                    break;
-                case 3:
-                    title = "?status=is_closed";
-            }
             try {
-                order = webmethod.getOrder(title);
+                order = webmethod.getOrder();
             }catch (IOException e){
 
             }
@@ -168,16 +152,8 @@ public class OrderList extends Fragment {
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
             loading.setVisibility(View.GONE);
-            switch (index){
-                case 0:
-                    DataHolder.setOrderAll(order);
-                case 1:
-                    DataHolder.setOrderWaiting(order);
-                case 2:
-                    DataHolder.setOrderAccepted(order);
-                case 3:
-                    DataHolder.setOrderClosed(order);
-            }
+            DataHolder.setOrderAll(order);
+            parenView.setData();
 
             if(listView != null && order != null && getActivity() != null) {
                 System.out.println("asynctask*****");
@@ -195,5 +171,21 @@ public class OrderList extends Fragment {
                 });
             }
         }
+    }
+
+    @Override
+    public void getData() {
+        switch (index){
+            case 1:
+                order = DataHolder.getOrderWaiting();
+                break;
+            case 2:
+                order = DataHolder.getOrderAccepted();
+                break;
+            case 3:
+                order = DataHolder.getOrderClosed();
+                break;
+        }
+    loadListView();
     }
 }

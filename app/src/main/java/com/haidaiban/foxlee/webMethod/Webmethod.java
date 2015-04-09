@@ -344,9 +344,9 @@ public class Webmethod {
         return new Gson().fromJson(response,Deal.class);
     }
 
-    public static Order getOrder(String condition) throws IOException{
+    public static Order getOrder() throws IOException{
         token = getToken();
-        httpGet = new HttpGet(Constants.getLOGIN_URL()+"api/orders/"+condition);
+        httpGet = new HttpGet(Constants.getLOGIN_URL()+"api/orders/");
         httpGet.setHeader("Authorization","Token "+token);
         httpResponse = httpClient.execute(httpGet);
         entity = httpResponse.getEntity();

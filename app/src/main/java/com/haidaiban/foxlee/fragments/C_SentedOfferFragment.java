@@ -14,10 +14,13 @@ import android.support.v4.app.FragmentManager;
 import java.util.List;
 import java.util.Vector;
 
+import com.haidaiban.foxlee.Util.DataHolder;
 import com.haidaiban.foxlee.adapter.TabPagerAdapter;
 import com.haidaiban.foxlee.google.SlidingTabLayout;
+import com.haidaiban.foxlee.model.order.Order;
+import com.haidaiban.foxlee.model.order.Result;
 
-public class C_SentedOfferFragment extends Fragment{
+public class C_SentedOfferFragment extends Fragment implements ParentMethods{
 
     private String title;
     private View view;
@@ -29,6 +32,12 @@ public class C_SentedOfferFragment extends Fragment{
     private ActionBar actionBar;
     private SlidingTabLayout slidingTabLayout;
     private int index;
+    ChildMethod orderWaiting;
+    ChildMethod orderAccepted;
+    ChildMethod orderClosed;
+    Order orderWaitingPojo;
+    Order orderAcceptedPojo;
+    Order orderClosedPojo;
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -58,6 +67,12 @@ public class C_SentedOfferFragment extends Fragment{
         slidingTabLayout.setDistributeEvenly(true);
         slidingTabLayout.setViewPager(viewPager);
         slidingTabLayout.setBackgroundColor(getResources().getColor(R.color.fragment_c_viewpager));
+        orderWaiting = (ChildMethod) fragments.get(1);
+        orderAccepted = (ChildMethod) fragments.get(2);
+        orderClosed = (ChildMethod) fragments.get(3);
+        orderWaitingPojo = new Order();
+        orderAcceptedPojo = new Order();
+        orderClosedPojo = new Order();
 
     }
 
@@ -66,5 +81,27 @@ public class C_SentedOfferFragment extends Fragment{
     }
     public String getTitle(){
         return title;
+    }
+
+    @Override
+    public void setData() {
+        for(Result result : DataHolder.getOrderAll().getResults()){
+            if(result.getOpenOffers().size()>0){
+                orderAcceptedPojo.getResults().add(result);
+            }else{
+                if(result.getIsOpen()){
+                    orderWaitingPojo.getResults().add(result);
+                }else {
+                    orderClosedPojo.getResults().add(result);
+                }
+            }
+        }
+        DataHolder.setOrderAccepted(orderAcceptedPojo);
+        orderAccepted.getData();
+        DataHolder.setOrderWaiting(orderWaitingPojo);
+        orderWaiting.getData();
+        DataHolder.setOrderClosed(orderClosedPojo);
+        orderClosed.getData();
+
     }
 }
