@@ -35,6 +35,7 @@ public class OrderList extends Fragment {
     Order order;
     int index;
     Intent intent;
+    private boolean state = false;
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -50,8 +51,62 @@ public class OrderList extends Fragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        asyn = new Async();
-        asyn.execute();
+        switch (index){
+            case 0:
+                if(DataHolder.getOrderAll() == null){
+                    asyn = new Async();
+                    asyn.execute();
+                }else {
+                    state = true;
+                    order = DataHolder.getOrderAll();
+                    break;
+                }
+            case 1:
+                if(DataHolder.getOrderWaiting()==null){
+                    asyn = new Async();
+                    asyn.execute();
+                }else{
+                    state = true;
+                    order = DataHolder.getOrderWaiting();
+                    break;
+                }
+            case 2:
+                if(DataHolder.getOrderAccepted() == null){
+                    asyn = new Async();
+                    asyn.execute();
+                }else{
+                    state = true;
+                    order = DataHolder.getOrderAccepted();
+                    break;
+                }
+            case 3:
+                if(DataHolder.getOrderClosed() == null){
+                    asyn = new Async();
+                    asyn.execute();
+                }else{
+                    state = true;
+                    order = DataHolder.getOrderClosed();
+                    break;
+                }
+        }
+        if(state){
+            if(listView != null && order != null && getActivity() != null) {
+                System.out.println("asynctask*****");
+                listView.setAdapter(new OrderListAdapter((getActivity().getApplicationContext()), order));
+
+                // get details of orderlist
+                listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                        intent = new Intent(getActivity().getApplicationContext(), OrderDetails.class);
+                        DataHolder.setOrderResult(order.getResults().get(position));
+                        //   DataHolder.setDealResult(deals.getResults().get(position));
+                        startActivity(intent);
+                    }
+                });
+            }
+        }
+
     }
 
     public void setIndex(int index) {
@@ -76,7 +131,6 @@ public class OrderList extends Fragment {
                     title = "?status=is_closed";
             }
             try {
-                System.out.println(index+"$%^%*");
                 order = webmethod.getOrder(title);
             }catch (IOException e){
 
@@ -95,6 +149,17 @@ public class OrderList extends Fragment {
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
             loading.setVisibility(View.GONE);
+            switch (index){
+                case 0:
+                    DataHolder.setOrderAll(order);
+                case 1:
+                    DataHolder.setOrderWaiting(order);
+                case 2:
+                    DataHolder.setOrderAccepted(order);
+                case 3:
+                    DataHolder.setOrderClosed(order);
+            }
+
             if(listView != null && order != null && getActivity() != null) {
                 System.out.println("asynctask*****");
                 listView.setAdapter(new OrderListAdapter((getActivity().getApplicationContext()), order));

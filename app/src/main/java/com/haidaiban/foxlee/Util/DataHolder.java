@@ -6,6 +6,7 @@ import com.haidaiban.foxlee.fragments.DealList;
 import com.haidaiban.foxlee.model.deal.Deal;
 import com.haidaiban.foxlee.model.deal.Result;
 import com.haidaiban.foxlee.model.message.Message;
+import com.haidaiban.foxlee.model.order.Order;
 import com.haidaiban.foxlee.model.quotelist.QuoteList;
 
 /**
@@ -18,6 +19,10 @@ public class DataHolder {
     private static Result dealResult;
     private static com.haidaiban.foxlee.model.quotelist.Result quotelistResult;
     private static com.haidaiban.foxlee.model.order.Result orderResult;
+    private static Order orderAll;
+    private static Order orderAccepted;
+    private static Order orderWaiting;
+    private static Order orderClosed;
 
     public static Deal getDeal() {
         return deal;
@@ -65,5 +70,37 @@ public class DataHolder {
 
     public static void setOrderResult(com.haidaiban.foxlee.model.order.Result orderResult) {
         DataHolder.orderResult = orderResult;
+    }
+
+    public static Order getOrderAll() {
+        return orderAll;
+    }
+
+    public static void setOrderAll(Order orderAll) {
+        DataHolder.orderAll = orderAll;
+    }
+
+    public static Order getOrderAccepted() {
+        return orderAccepted;
+    }
+
+    public static void setOrderAccepted(Order orderAccepted) {
+        DataHolder.orderAccepted = orderAccepted;
+    }
+
+    public static Order getOrderWaiting() {
+        return orderWaiting;
+    }
+
+    public static void setOrderWaiting(Order orderWaiting) {
+        DataHolder.orderWaiting = orderWaiting;
+    }
+
+    public static Order getOrderClosed() {
+        return orderClosed;
+    }
+
+    public static void setOrderClosed(Order orderClosed) {
+        DataHolder.orderClosed = orderClosed;
     }
 }
