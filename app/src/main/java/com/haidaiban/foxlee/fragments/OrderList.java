@@ -52,6 +52,7 @@ public class OrderList extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         android.os.Handler handler = new android.os.Handler();
+        loading.setVisibility(View.VISIBLE);
         switch (index){
             case 0:
                 if(DataHolder.getOrderAll() == null){
@@ -59,6 +60,7 @@ public class OrderList extends Fragment {
                     asyn.execute();
                 }else {
                     order = DataHolder.getOrderAll();
+                    loading.setVisibility(View.INVISIBLE);
                     loadListView();
                     break;
                 }
@@ -70,6 +72,7 @@ public class OrderList extends Fragment {
                     handler.postDelayed(new Runnable() {
                         public void run() {
                             order = DataHolder.getOrderWaiting();
+                            loading.setVisibility(View.INVISIBLE);
                             loadListView();
                         }
                     }, 200);
@@ -83,6 +86,7 @@ public class OrderList extends Fragment {
                     handler.postDelayed(new Runnable() {
                         public void run() {
                             order = DataHolder.getOrderAccepted();
+                            loading.setVisibility(View.INVISIBLE);
                             loadListView();
                         }
                     }, 200);
@@ -96,6 +100,7 @@ public class OrderList extends Fragment {
                     handler.postDelayed(new Runnable() {
                         public void run() {
                             order = DataHolder.getOrderClosed();
+                            loading.setVisibility(View.INVISIBLE);
                             loadListView();
                         }
                     }, 200);
