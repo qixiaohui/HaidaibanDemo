@@ -10,12 +10,14 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.haidaiban.foxlee.Util.DataHolder;
+import com.haidaiban.foxlee.Util.Utility;
 import com.haidaiban.foxlee.activitys.OrderDetails;
 import com.haidaiban.foxlee.config.Constants;
 import com.haidaiban.foxlee.fragments.R;
 import com.haidaiban.foxlee.model.order.Order;
 import com.squareup.picasso.Picasso;
 
+import java.text.ParseException;
 import java.util.zip.Inflater;
 
 /**
@@ -27,6 +29,7 @@ public class OrderListAdapter extends BaseAdapter {
     LayoutInflater inflater;
     View view;
     Intent intent;
+    String time;
 
 
     public OrderListAdapter(Context context, Order order) {
@@ -101,7 +104,14 @@ public class OrderListAdapter extends BaseAdapter {
                     .centerCrop()
                     .into(viewHolder.prodImg);
         }
-
+        try {
+            time = Utility.getTimeSpan(order.getResults().get(position).getLastUpdate());
+            if(!time.equals("")){
+                viewHolder.timeElapse.setText("更新于"+time+"前");
+            }
+        }catch (ParseException e) {
+            System.out.println("parse time exception***");
+        }
         return view;
     }
 

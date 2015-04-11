@@ -14,7 +14,7 @@ public class Result {
 
     @SerializedName("preferred_agent")
     @Expose
-    private Object preferredAgent;
+    private PreferredAgent preferredAgent;
     @Expose
     private List<Quote> quotes = new ArrayList<Quote>();
     @SerializedName("distribute_date")
@@ -79,7 +79,7 @@ public class Result {
      * @param preferredAgent
      * The preferred_agent
      */
-    public void setPreferredAgent(Object preferredAgent) {
+    public void setPreferredAgent(PreferredAgent preferredAgent) {
         this.preferredAgent = preferredAgent;
     }
 
