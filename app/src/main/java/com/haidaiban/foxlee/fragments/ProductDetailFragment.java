@@ -192,7 +192,7 @@ public class ProductDetailFragment extends Fragment {
         endDate.setText(deal.getEndDate() == null ? "" : deal.getEndDate());
         tip.setText(deal.getTip() == null ? "" : deal.getTip());
         info.setVisibility(View.GONE);
-        if (deal.getIsLike()) {
+        if (deal.getIsLike()!=null&&deal.getIsLike()) {
             bookmark.setImageDrawable(getResources().getDrawable(R.drawable.mark));
         } else {
             bookmark.setImageDrawable(getResources().getDrawable(R.drawable.unmark));
