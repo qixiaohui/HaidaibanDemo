@@ -20,6 +20,9 @@ import com.haidaiban.foxlee.Util.DataHolder;
 import com.haidaiban.foxlee.activitys.ProductDetail;
 import com.haidaiban.foxlee.adapter.ListViewAdapter;
 import com.haidaiban.foxlee.model.deal.Deal;
+import com.haidaiban.foxlee.pullrefreshview.PullToRefreshBase;
+import com.haidaiban.foxlee.pullrefreshview.PullToRefreshListView;
+import com.haidaiban.foxlee.pullrefreshview.PullToRefreshBase.OnRefreshListener;
 import com.haidaiban.foxlee.webMethod.Webmethod;
 
 import org.json.JSONException;
@@ -40,11 +43,51 @@ public class DealList extends Fragment{
     private RelativeLayout loading;
     private static DataHolder dataHolder;
     private Intent intent;
+    private PullToRefreshListView PTL ;
+    private ListViewAdapter adapter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view  = inflater.inflate(R.layout.offerlist,null);
-        listView = (ListView) view.findViewById(R.id.list);
+//        listView = (ListView) view.findViewById(R.id.list);
+        PTL = (PullToRefreshListView) view.findViewById(R.id.pull_to_refresh_listview);
+
+        // 上拉加载不可用
+        PTL.setPullLoadEnabled(false);
+        // 滚动到底自动加载可用
+        PTL.setScrollLoadEnabled(true);
+        // 得到实际的ListView  设置点击
+
+        PTL.setOnRefreshListener(new OnRefreshListener<ListView>() {
+
+            @Override
+            public void onPullDownToRefresh(
+                    PullToRefreshBase<ListView> refreshView) {
+
+                loadData = new asyncTask();
+                loadData.execute();
+            }
+
+            @Override
+            public void onPullUpToRefresh(
+                    PullToRefreshBase<ListView> refreshView) {
+                loadData = new asyncTask();
+                loadData.execute();
+            }
+        });
+
+
+        PTL.getRefreshableView().setOnItemClickListener(
+                new AdapterView.OnItemClickListener() {
+
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view,
+                                            int position, long id) {
+                        intent = new Intent(getActivity().getApplicationContext(), ProductDetail.class);
+                        DataHolder.setDealResult(deals.getResults().get(position));
+                        startActivity(intent);
+                    }
+                });
         loading  = (RelativeLayout) view.findViewById(R.id.loadingPanel);
         loading.setVisibility(View.GONE);
         view.setBackgroundColor(getResources().getColor(R.color.white));
@@ -91,22 +134,44 @@ public class DealList extends Fragment{
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
             loading.setVisibility(View.GONE);
-            if(listView != null && deals != null && getActivity() != null) {
+            if(PTL != null && deals != null && getActivity() != null) {
+//            if(listView != null && deals != null && getActivity() != null) {
                 System.out.println("asynctask*****");
-                listView.setAdapter(new ListViewAdapter(deals, getActivity().getApplicationContext()));
+//                listView.setAdapter(new ListViewAdapter(deals, getActivity().getApplicationContext()));
+
+                if (adapter == null) {
+                    adapter = new ListViewAdapter(deals, getActivity().getApplicationContext());
+                    PTL.getRefreshableView().setAdapter(adapter);
+                } else {
+                    adapter.notifyDataSetChanged();
+                }
+                onLoaded();
+
+//                PTL.getRefreshableView().setAdapter(new ListViewAdapter(deals, getActivity().getApplicationContext()));
             }
 
-            listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                @Override
-                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                    intent = new Intent(getActivity().getApplicationContext(), ProductDetail.class);
-                    DataHolder.setDealResult(deals.getResults().get(position));
-                    startActivity(intent);
-                }
-            });
+
+//            listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//                @Override
+//                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+//                    intent = new Intent(getActivity().getApplicationContext(), ProductDetail.class);
+//                    DataHolder.setDealResult(deals.getResults().get(position));
+//                    startActivity(intent);
+//                }
+//            });
+
+            // onclick listener
+
+
+
+
         }
     }
-
+    private void onLoaded() {
+//        if(loadingView)
+        PTL.onPullDownRefreshComplete();
+        PTL.onPullUpRefreshComplete();
+    }
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);

@@ -4,13 +4,18 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity" >
 
-    <ListView
-        android:id="@+id/list"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:divider="@color/list_divider"
-        android:dividerHeight="1dp"
-        android:listSelector="@drawable/list_row_selector" />
+    <!--<ListView-->
+        <!--android:id="@+id/list"-->
+        <!--android:layout_width="fill_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:divider="@color/list_divider"-->
+        <!--android:dividerHeight="1dp"-->
+        <!--android:listSelector="@drawable/list_row_selector" />-->
+
+    <com.haidaiban.foxlee.pullrefreshview.PullToRefreshListView
+        android:id="@+id/pull_to_refresh_listview"
+        android:layout_height="fill_parent"
+        android:layout_width="fill_parent" />
     <RelativeLayout
         android:id="@+id/loadingPanel"
         android:layout_width="match_parent"
@@ -21,5 +26,10 @@
             android:layout_height="wrap_content"
             android:indeterminate="true" />
     </RelativeLayout>
+
+
+    <!--<include-->
+        <!--android:id="@+id/loading_view"-->
+        <!--layout="@layout/layout_loading" />-->
 
 </RelativeLayout>
