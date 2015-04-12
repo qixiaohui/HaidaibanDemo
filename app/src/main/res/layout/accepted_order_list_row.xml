@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="wrap_content"
+    android:id="@+id/upperRow"
+    android:background="#F8F8F8"
+    android:orientation="vertical"
+    android:layout_width="fill_parent">
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_height="wrap_content"
+        android:layout_width="fill_parent">
+        <TextView
+            android:layout_height="fill_parent"
+            android:layout_width="0dp"
+            android:textSize="12sp"
+            android:gravity="center"
+            android:paddingRight="5dp"
+            android:layout_weight="0.7"
+            android:id="@+id/orderState" />
+        <TextView
+            android:layout_height="fill_parent"
+            android:textColor="@color/grey"
+            android:layout_marginLeft="10dp"
+            android:layout_width="0dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:textSize="12sp"
+            android:layout_weight="2"
+            android:id="@+id/orderNumber" />
+        <TextView
+            android:layout_height="fill_parent"
+            android:layout_width="0dp"
+            android:layout_marginTop="7dp"
+            android:textColor="@color/grey"
+            android:textSize="10sp"
+            android:layout_weight="1"
+            android:id="@+id/orderTime" />
+    </LinearLayout>
+    <RelativeLayout
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/upperRow"
+        android:layout_width="fill_parent">
+        <FrameLayout
+            android:id="@+id/index_miaosha_image_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:layout_centerVertical="true"
+            android:layout_margin="5dp" >
+            <ImageView
+                android:layout_height="120dp"
+                android:layout_width="120dp"
+                android:id="@+id/orderImage" />
+            <ImageView
+            android:id="@+id/index_miaosha_discount_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top|left"
+            android:background="@drawable/app_limit_buy_sale" />
+        </FrameLayout>
+        <TextView
+            android:layout_marginTop="10dp"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:id="@+id/dealName"
+            android:textSize="12sp"
+            android:layout_marginRight="20dp"
+            android:textColor="@color/black"
+            android:layout_toRightOf="@id/index_miaosha_image_layout" />
+        <LinearLayout
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:orientation="horizontal"
+            android:layout_below="@id/dealName">
+            <ImageView
+                android:id="@+id/avatar"
+                android:src="@drawable/profile_no_avarta_icon"
+                android:layout_height="40dp"
+                android:layout_width="40dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"/>
+            <TextView
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:textSize="10sp"
+                android:id="@+id/agentName"
+                android:textColor="@color/grey"/>
+        </LinearLayout>
+        <ImageView
+            android:layout_marginTop="50dp"
+            android:layout_height="20dp"
+            android:layout_width="20dp"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/arrow_right"
+            android:layout_alignRight="@id/dealName" />
+    </RelativeLayout>
+</LinearLayout>
