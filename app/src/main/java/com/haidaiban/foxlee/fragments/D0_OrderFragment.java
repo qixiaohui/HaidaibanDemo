@@ -110,6 +110,10 @@ public class D0_OrderFragment extends Fragment{
         @Override
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
+            offerPaid.setResults(new ArrayList<Result>());
+            offerBuying.setResults(new ArrayList<Result>());
+            offerDelivering.setResults(new ArrayList<Result>());
+            offerCanceled.setResults(new ArrayList<Result>());
             DataHolder.setOfferAll(offer);
             for(int i=0; i<offer.getResults().size(); i++){
                 if(offer
@@ -120,8 +124,16 @@ public class D0_OrderFragment extends Fragment{
                         .equals(getActivity()
                                 .getApplicationContext()
                                 .getResources()
-                                .getStringArray(R.array.OrderTitle)[1])){
-                    offerPaid.setResults(new ArrayList<Result>());
+                                .getStringArray(R.array.OrderTitle)[1])
+                        ||offer
+                        .getResults()
+                        .get(i)
+                        .getTransactionState()
+                        .getState()
+                        .equals(getActivity()
+                                .getApplicationContext()
+                                .getResources()
+                                .getString(R.string.paiedDeposit))){
                     offerPaid.getResults().add(offer.getResults().get(i));
                 }else if(offer
                         .getResults()
@@ -132,7 +144,6 @@ public class D0_OrderFragment extends Fragment{
                                 .getApplicationContext()
                                 .getResources()
                                 .getStringArray(R.array.OrderTitle)[2])){
-                    offerBuying.setResults(new ArrayList<Result>());
                     offerBuying.getResults().add(offer.getResults().get(i));
                 }else if(offer
                         .getResults()
@@ -143,7 +154,6 @@ public class D0_OrderFragment extends Fragment{
                                 .getApplicationContext()
                                 .getResources()
                                 .getStringArray(R.array.OrderTitle)[3])){
-                    offerDelivering.setResults(new ArrayList<Result>());
                     offerDelivering.getResults().add(offer.getResults().get(i));
                 }else if(offer
                         .getResults()
@@ -165,7 +175,6 @@ public class D0_OrderFragment extends Fragment{
                                 .getApplicationContext()
                                 .getResources()
                                 .getStringArray(R.array.OrderTitle)[5])){
-                    offerCanceled.setResults(new ArrayList<Result>());
                     offerCanceled.getResults().add(offer.getResults().get(i));
                 }
             }

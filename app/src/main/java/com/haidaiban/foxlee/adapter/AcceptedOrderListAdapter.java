@@ -78,7 +78,8 @@ public class AcceptedOrderListAdapter extends BaseAdapter {
         viewHolder.status.setText(status);
         if(index == 0){
 
-            if(status.equals(context.getResources().getStringArray(R.array.OrderTitle)[1])){
+            if(status.equals(context.getResources().getStringArray(R.array.OrderTitle)[1])
+                    ||status.equals(context.getResources().getString(R.string.paiedDeposit))){
                 viewHolder.status.setTextColor(context.getResources().getColor(R.color.green));
             }else if(status.equals(context.getResources().getStringArray(R.array.OrderTitle)[2])){
                 viewHolder.status.setTextColor(context.getResources().getColor(R.color.blue));
