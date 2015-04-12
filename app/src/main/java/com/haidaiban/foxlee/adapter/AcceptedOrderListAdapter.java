@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.haidaiban.foxlee.Util.Utility;
 import com.haidaiban.foxlee.config.Constants;
@@ -143,6 +144,12 @@ public class AcceptedOrderListAdapter extends BaseAdapter {
         }
         viewHolder.agentName.setText("代办:"+acceptedOffers.getResults().get(position).getAgent().getUsername());
 
+        view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(context,"clicked",Toast.LENGTH_LONG).show();
+            }
+        });
         return view;
     }
 
