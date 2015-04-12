@@ -101,7 +101,7 @@ public class AcceptedOrderListAdapter extends BaseAdapter {
             viewHolder.status.setTextColor(context.getResources().getColor(R.color.grey));
         }
 
-        viewHolder.orderNumber.setText(acceptedOffers.getResults().get(position).getOrder());
+        viewHolder.orderNumber.setText("询价单号: "+acceptedOffers.getResults().get(position).getOrder());
         try {
             time = Utility.getTimeSpan(acceptedOffers.getResults().get(position).getLastUpdate());
             if(!time.equals("")){
@@ -132,13 +132,13 @@ public class AcceptedOrderListAdapter extends BaseAdapter {
                     .load(R.drawable.profile_no_avarta_icon)
                     .centerCrop()
                     .resize(40, 40)
-                    .into(viewHolder.dealImage);
+                    .into(viewHolder.avatar);
         }else{
             Picasso.with(context)
                     .load(Constants.getLOGIN_URL() + acceptedOffers.getResults().get(position).getAgent().getIcon())
                     .resize(40, 40)
                     .centerCrop()
-                    .into(viewHolder.dealImage);
+                    .into(viewHolder.avatar);
         }
         viewHolder.agentName.setText("代办:"+acceptedOffers.getResults().get(position).getAgent().getUsername());
 

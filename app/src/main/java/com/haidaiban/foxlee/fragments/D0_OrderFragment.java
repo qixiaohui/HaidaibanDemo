@@ -172,7 +172,7 @@ public class D0_OrderFragment extends Fragment{
             DataHolder.setOfferPaid(offerPaid);
             DataHolder.setOfferDelivering(offerDelivering);
             DataHolder.setOfferBuying(offerBuying);
-            DataHolder.setOfferComplete(offerCanceled);
+            DataHolder.setOfferComplete(offerCompleted);
             DataHolder.setOfferCanceled(offerCanceled);
             for (int i=0; i<fragments.size(); i++){
                 childMethod = (ChildMethod)fragments.get(i);

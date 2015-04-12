@@ -12,7 +12,8 @@
         <TextView
             android:layout_height="fill_parent"
             android:layout_width="0dp"
-            android:textSize="12sp"
+            android:textSize="11sp"
+            android:layout_marginLeft="5dp"
             android:gravity="center"
             android:paddingRight="5dp"
             android:layout_weight="0.7"
@@ -24,7 +25,7 @@
             android:layout_width="0dp"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp"
-            android:textSize="12sp"
+            android:textSize="11sp"
             android:layout_weight="2"
             android:id="@+id/orderNumber" />
         <TextView
@@ -50,6 +51,7 @@
             <ImageView
                 android:layout_height="120dp"
                 android:layout_width="120dp"
+                android:src="@drawable/productnoimage"
                 android:id="@+id/orderImage" />
             <ImageView
             android:id="@+id/index_miaosha_discount_icon"
@@ -71,6 +73,8 @@
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
             android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_toRightOf="@id/index_miaosha_image_layout"
             android:layout_below="@id/dealName">
             <ImageView
                 android:id="@+id/avatar"
@@ -83,6 +87,9 @@
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
                 android:textSize="10sp"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="10dp"
+                android:layout_gravity="center"
                 android:id="@+id/agentName"
                 android:textColor="@color/grey"/>
         </LinearLayout>

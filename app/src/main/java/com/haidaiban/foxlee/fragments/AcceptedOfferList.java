@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 
 import com.haidaiban.foxlee.Util.DataHolder;
 import com.haidaiban.foxlee.adapter.AcceptedOrderListAdapter;
@@ -21,10 +22,13 @@ public class AcceptedOfferList extends Fragment implements ChildMethod{
     private Offer offer;
     private int index;
     ListView list;
+    RelativeLayout loading;
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.acceptedorderlist, null);
         list = (ListView) view.findViewById(R.id.list);
+        loading = (RelativeLayout) view.findViewById(R.id.loadingPanel);
+        loading.setVisibility(View.VISIBLE);
         offer = new Offer();
         return view;
     }
@@ -37,7 +41,9 @@ public class AcceptedOfferList extends Fragment implements ChildMethod{
             case 0:
                 if(DataHolder.getOfferAll()!=null){
                     offer = DataHolder.getOfferAll();
-                    list.setAdapter(new AcceptedOrderListAdapter((getActivity().getApplicationContext()), offer, index));
+                    if(offer.getResults()!=null)
+                        list.setAdapter(new AcceptedOrderListAdapter((getActivity().getApplicationContext()), offer, index));
+                    loading.setVisibility(View.INVISIBLE);
                     break;
                 }
             case 1:
@@ -45,7 +51,9 @@ public class AcceptedOfferList extends Fragment implements ChildMethod{
                     handler.postDelayed(new Runnable() {
                         public void run() {
                             offer = DataHolder.getOfferPaid();
-                            list.setAdapter(new AcceptedOrderListAdapter((getActivity().getApplicationContext()), offer, index));
+                            if(offer.getResults()!=null)
+                                list.setAdapter(new AcceptedOrderListAdapter((getActivity().getApplicationContext()), offer, index));
+                            loading.setVisibility(View.INVISIBLE);
                         }
                     }, 100);
                     break;
@@ -55,7 +63,9 @@ public class AcceptedOfferList extends Fragment implements ChildMethod{
                     handler.postDelayed(new Runnable() {
                         public void run() {
                             offer = DataHolder.getOfferBuying();
-                            list.setAdapter(new AcceptedOrderListAdapter((getActivity().getApplicationContext()), offer, index));
+                            if(offer.getResults()!=null)
+                                list.setAdapter(new AcceptedOrderListAdapter((getActivity().getApplicationContext()), offer, index));
+                            loading.setVisibility(View.INVISIBLE);
                         }
                     }, 200);
                     break;
@@ -65,9 +75,11 @@ public class AcceptedOfferList extends Fragment implements ChildMethod{
                     handler.postDelayed(new Runnable() {
                         public void run() {
                             offer = DataHolder.getOfferDelivering();
-                            list.setAdapter(new AcceptedOrderListAdapter((getActivity().getApplicationContext()), offer, index));
-                        }
-                    }, 300);
+                            if(offer.getResults()!=null)
+                                list.setAdapter(new AcceptedOrderListAdapter((getActivity().getApplicationContext()), offer, index));
+                            loading.setVisibility(View.INVISIBLE);
+                            }
+                        }, 300);
                     break;
                 }
             case 4:
@@ -75,7 +87,10 @@ public class AcceptedOfferList extends Fragment implements ChildMethod{
                     handler.postDelayed(new Runnable() {
                         public void run() {
                             offer = DataHolder.getOfferComplete();
-                            list.setAdapter(new AcceptedOrderListAdapter((getActivity().getApplicationContext()), offer, index));
+                            if(offer.getResults()!=null)
+                                list.setAdapter(new AcceptedOrderListAdapter((getActivity().getApplicationContext()), offer, index));
+                            loading.setVisibility(View.INVISIBLE);
+
                         }
                     }, 400);
                     break;
@@ -85,7 +100,9 @@ public class AcceptedOfferList extends Fragment implements ChildMethod{
                     handler.postDelayed(new Runnable() {
                         public void run() {
                             offer = DataHolder.getOfferCanceled();
-                            list.setAdapter(new AcceptedOrderListAdapter((getActivity().getApplicationContext()), offer, index));
+                            if(offer.getResults()!=null)
+                                list.setAdapter(new AcceptedOrderListAdapter((getActivity().getApplicationContext()), offer, index));
+                            loading.setVisibility(View.INVISIBLE);
                         }
                     }, 500);
                     break;
@@ -100,31 +117,37 @@ public class AcceptedOfferList extends Fragment implements ChildMethod{
                 offer = DataHolder.getOfferAll();
                 if(offer.getResults()!=null)
                 list.setAdapter(new AcceptedOrderListAdapter((getActivity().getApplicationContext()), offer, index));
+                loading.setVisibility(View.INVISIBLE);
                 break;
             case 1:
                 offer = DataHolder.getOfferPaid();
                 if(offer.getResults()!=null)
                 list.setAdapter(new AcceptedOrderListAdapter((getActivity().getApplicationContext()), offer, index));
+                loading.setVisibility(View.INVISIBLE);
                 break;
             case 2:
                 offer = DataHolder.getOfferBuying();
                 if(offer.getResults()!=null)
                 list.setAdapter(new AcceptedOrderListAdapter((getActivity().getApplicationContext()), offer, index));
+                loading.setVisibility(View.INVISIBLE);
                 break;
             case 3:
                 offer = DataHolder.getOfferDelivering();
                 if(offer.getResults()!=null)
                 list.setAdapter(new AcceptedOrderListAdapter((getActivity().getApplicationContext()), offer, index));
+                loading.setVisibility(View.INVISIBLE);
                 break;
             case 4:
                 offer = DataHolder.getOfferComplete();
                 if(offer.getResults()!=null)
                 list.setAdapter(new AcceptedOrderListAdapter((getActivity().getApplicationContext()), offer, index));
+                loading.setVisibility(View.INVISIBLE);
                 break;
             case 5:
                 offer = DataHolder.getOfferCanceled();
                 if(offer.getResults()!=null)
                 list.setAdapter(new AcceptedOrderListAdapter((getActivity().getApplicationContext()), offer, index));
+                loading.setVisibility(View.INVISIBLE);
                 break;
         }
     }
