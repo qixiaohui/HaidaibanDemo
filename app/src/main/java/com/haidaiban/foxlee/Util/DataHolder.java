@@ -6,6 +6,7 @@ import com.haidaiban.foxlee.fragments.DealList;
 import com.haidaiban.foxlee.model.deal.Deal;
 import com.haidaiban.foxlee.model.deal.Result;
 import com.haidaiban.foxlee.model.message.Message;
+import com.haidaiban.foxlee.model.offer.Offer;
 import com.haidaiban.foxlee.model.order.Order;
 import com.haidaiban.foxlee.model.quotelist.QuoteList;
 
@@ -23,6 +24,12 @@ public class DataHolder {
     private static Order orderAccepted;
     private static Order orderWaiting;
     private static Order orderClosed;
+    private static Offer offerAll;
+    private static Offer offerPaid;
+    private static Offer offerBuying;
+    private static Offer offerDelivering;
+    private static Offer offerComplete;
+    private static Offer offerCanceled;
 
     public static Deal getDeal() {
         return deal;
@@ -102,5 +109,53 @@ public class DataHolder {
 
     public static void setOrderClosed(Order orderClosed) {
         DataHolder.orderClosed = orderClosed;
+    }
+
+    public static Offer getOfferAll() {
+        return offerAll;
+    }
+
+    public static void setOfferAll(Offer offerAll) {
+        DataHolder.offerAll = offerAll;
+    }
+
+    public static Offer getOfferPaid() {
+        return offerPaid;
+    }
+
+    public static void setOfferPaid(Offer offerPaid) {
+        DataHolder.offerPaid = offerPaid;
+    }
+
+    public static Offer getOfferBuying() {
+        return offerBuying;
+    }
+
+    public static void setOfferBuying(Offer offerBuying) {
+        DataHolder.offerBuying = offerBuying;
+    }
+
+    public static Offer getOfferDelivering() {
+        return offerDelivering;
+    }
+
+    public static void setOfferDelivering(Offer offerDelivering) {
+        DataHolder.offerDelivering = offerDelivering;
+    }
+
+    public static Offer getOfferComplete() {
+        return offerComplete;
+    }
+
+    public static void setOfferComplete(Offer offerComplete) {
+        DataHolder.offerComplete = offerComplete;
+    }
+
+    public static Offer getOfferCanceled() {
+        return offerCanceled;
+    }
+
+    public static void setOfferCanceled(Offer offerCanceled) {
+        DataHolder.offerCanceled = offerCanceled;
     }
 }

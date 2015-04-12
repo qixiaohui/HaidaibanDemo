@@ -75,7 +75,7 @@ public class OrderList extends Fragment implements ChildMethod{
                             order = DataHolder.getOrderWaiting();
                             loadListView();
                         }
-                    }, 200);
+                    }, 100);
                     break;
                 }
             case 2:
@@ -99,7 +99,7 @@ public class OrderList extends Fragment implements ChildMethod{
                             order = DataHolder.getOrderClosed();
                             loadListView();
                         }
-                    }, 200);
+                    }, 300);
                     break;
                 }
         }
