@@ -1,6 +1,7 @@
 package com.haidaiban.foxlee.adapter;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -147,7 +148,8 @@ public class AcceptedOrderListAdapter extends BaseAdapter {
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(context,"clicked",Toast.LENGTH_LONG).show();
+                Toast.makeText(context, "clicked", Toast.LENGTH_LONG).show();
+                Log.d("TAG", "************************++++****");
             }
         });
         return view;

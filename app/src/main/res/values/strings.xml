@@ -240,4 +240,18 @@
     <string name="orderAccepted_1">已收到代办</string>
     <string name="orderAccepted_2">的报价</string>
 
+    <!-- D_1 订单详情-->
+    <string name="d1_ordertitle">订单详情</string>
+    <string name="d1_orderstatus">订单状态</string>
+    <string name="d1_ordertrack">订单追终</string>
+    <string name="d1_orderinfo">订单信息</string>
+    <string name="d1_consignee">收货人信息</string>
+    <string name="d1_status0">已付款</string>
+    <string name="d1_status1">采购中</string>
+    <string name="d1_status2">投递中</string>
+    <string name="d1_status3">已完成</string>
+
+
+
+
 </resources>
