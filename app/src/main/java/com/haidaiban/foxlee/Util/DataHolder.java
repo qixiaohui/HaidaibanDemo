@@ -30,6 +30,15 @@ public class DataHolder {
     private static Offer offerDelivering;
     private static Offer offerComplete;
     private static Offer offerCanceled;
+    private static com.haidaiban.foxlee.model.offer.Result acceptedOffer;
+
+    public static com.haidaiban.foxlee.model.offer.Result getAcceptedOffer() {
+        return acceptedOffer;
+    }
+
+    public static void setAcceptedOffer(com.haidaiban.foxlee.model.offer.Result acceptedOffer) {
+        DataHolder.acceptedOffer = acceptedOffer;
+    }
 
     public static Deal getDeal() {
         return deal;

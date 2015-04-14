@@ -1,6 +1,7 @@
 package com.haidaiban.foxlee.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,7 +11,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.haidaiban.foxlee.Util.DataHolder;
 import com.haidaiban.foxlee.Util.Utility;
+import com.haidaiban.foxlee.activitys.AcceptedOrderDetails;
 import com.haidaiban.foxlee.config.Constants;
 import com.haidaiban.foxlee.fragments.R;
 import com.haidaiban.foxlee.model.offer.Offer;
@@ -29,6 +32,7 @@ public class AcceptedOrderListAdapter extends BaseAdapter {
     int index;
     String status;
     String time;
+    Intent intent;
 
     public AcceptedOrderListAdapter(Context context, Offer acceptedOffers, int index) {
         this.context = context;
@@ -53,7 +57,7 @@ public class AcceptedOrderListAdapter extends BaseAdapter {
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, View convertView, ViewGroup parent) {
         view = convertView;
         if(convertView == null){
             view = inflater.inflate(R.layout.accepted_order_list_row,null);
@@ -148,8 +152,10 @@ public class AcceptedOrderListAdapter extends BaseAdapter {
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(context, "clicked", Toast.LENGTH_LONG).show();
-                Log.d("TAG", "************************++++****");
+                DataHolder.setAcceptedOffer(acceptedOffers.getResults().get(position));
+                intent = new Intent(context, AcceptedOrderDetails.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                context.startActivity(intent);
             }
         });
         return view;

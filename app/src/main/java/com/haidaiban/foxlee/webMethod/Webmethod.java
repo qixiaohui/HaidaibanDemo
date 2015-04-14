@@ -120,6 +120,16 @@ public class Webmethod {
         return new Gson().fromJson(response,Deal.class);
     }
 
+    public static Deal getMoreDeals(String url)throws IOException,JSONException{
+        token = getToken();
+        httpGet = new HttpGet(url);
+        httpGet.setHeader("Authorization","Token "+token);
+        httpResponse = httpClient.execute(httpGet);
+        entity = httpResponse.getEntity();
+        response = EntityUtils.toString(entity,"UTF-8");
+        return new Gson().fromJson(response,Deal.class);
+    }
+
     public static QuoteList getQuotes()throws IOException,JSONException{
         token = getToken();
         httpGet = new HttpGet(Constants.getLOGIN_URL()+"api/quotes/?type=cart");

@@ -20,6 +20,7 @@ import com.haidaiban.foxlee.Util.DataHolder;
 import com.haidaiban.foxlee.activitys.ProductDetail;
 import com.haidaiban.foxlee.adapter.ListViewAdapter;
 import com.haidaiban.foxlee.model.deal.Deal;
+import com.haidaiban.foxlee.model.deal.Result;
 import com.haidaiban.foxlee.pullrefreshview.PullToRefreshBase;
 import com.haidaiban.foxlee.pullrefreshview.PullToRefreshListView;
 import com.haidaiban.foxlee.pullrefreshview.PullToRefreshBase.OnRefreshListener;
@@ -39,6 +40,7 @@ public class DealList extends Fragment{
     private ListView listView;
     private Webmethod webmethod;
     private static Deal deals;
+    private static Deal moreDeals;
     private asyncTask loadData;
     private RelativeLayout loading;
     private static DataHolder dataHolder;
@@ -55,7 +57,7 @@ public class DealList extends Fragment{
         // 上拉加载不可用
         PTL.setPullLoadEnabled(false);
         // 滚动到底自动加载可用
-        PTL.setScrollLoadEnabled(true);
+        PTL.setScrollLoadEnabled(false);
         // 得到实际的ListView  设置点击
 
         PTL.setOnRefreshListener(new OnRefreshListener<ListView>() {
@@ -63,16 +65,14 @@ public class DealList extends Fragment{
             @Override
             public void onPullDownToRefresh(
                     PullToRefreshBase<ListView> refreshView) {
-
-                loadData = new asyncTask();
-                loadData.execute();
             }
 
             @Override
             public void onPullUpToRefresh(
                     PullToRefreshBase<ListView> refreshView) {
+                deals = DataHolder.getDeal();
                 loadData = new asyncTask();
-                loadData.execute();
+                loadData.execute("load more");
             }
         });
 
@@ -97,8 +97,10 @@ public class DealList extends Fragment{
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        loadData = new asyncTask();
-        loadData.execute();
+        if(DataHolder.getDeal() == null) {
+            loadData = new asyncTask();
+            loadData.execute("first load");
+        }
     }
 
     public void setTitle(String title,String category){
@@ -112,21 +114,25 @@ public class DealList extends Fragment{
         @Override
         protected String doInBackground(String... params) {
             try {
-                if(deals == null) {
-                    webmethod = new Webmethod(getActivity());
+                webmethod = new Webmethod(getActivity());
+                if(params[0].equals("first load")) {
                     deals = webmethod.getDeals();
+                }else if(params[0].equals("load more")
+                        &&deals.getNext()!=null){
+                    moreDeals = webmethod.getMoreDeals(deals.getNext());
                 }
             }catch (IOException e){
 
             }catch (JSONException e){
 
             }
-            return null;
+            return params[0];
         }
 
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
+            if(DataHolder.getDeal()==null)
             loading.setVisibility(View.VISIBLE);
         }
 
@@ -134,13 +140,15 @@ public class DealList extends Fragment{
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
             loading.setVisibility(View.GONE);
-            if(PTL != null && deals != null && getActivity() != null) {
+            if(PTL != null && deals != null && getActivity() != null && s.equals("first load")) {
 //            if(listView != null && deals != null && getActivity() != null) {
                 System.out.println("asynctask*****");
 //                listView.setAdapter(new ListViewAdapter(deals, getActivity().getApplicationContext()));
 
                 if (adapter == null) {
+                    PTL.setScrollLoadEnabled(true);
                     adapter = new ListViewAdapter(deals, getActivity().getApplicationContext());
+                    DataHolder.setDeal(deals);
                     PTL.getRefreshableView().setAdapter(adapter);
                 } else {
                     adapter.notifyDataSetChanged();
@@ -148,6 +156,14 @@ public class DealList extends Fragment{
                 onLoaded();
 
 //                PTL.getRefreshableView().setAdapter(new ListViewAdapter(deals, getActivity().getApplicationContext()));
+            }else if(s.equals("load more")){
+                System.out.println("should update list");
+                deals.setNext(moreDeals.getNext());
+                for(Result deal:moreDeals.getResults()){
+                    deals.getResults().add(deal);
+                }
+                DataHolder.setDeal(deals);
+                adapter.notifyDataSetChanged();
             }
 
 
