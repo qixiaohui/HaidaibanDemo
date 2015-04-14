@@ -13,14 +13,47 @@
         android:layout_height="match_parent"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true">
-
-        <LinearLayout
+    <!-- 订单编号 ， 最近更新-->
+        <RelativeLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="30dp"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
-            android:background="@color/gray"></LinearLayout>
+            android:background="@color/gray">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:text="@string/d1_title_ordernumber"
+                android:textColor="@color/black"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="5dp"
+                android:textSize="@dimen/small_text_size"
+                android:id="@+id/textView"></TextView>
+            <TextView
+                android:id="@+id/tx_title_ordernumber"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:textColor="@color/black"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="5dp"
+                android:textSize="@dimen/small_text_size"></TextView>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:text="@string/d1_title_order_time"
+                android:textColor="@color/black"
+                android:layout_marginRight="44dp"
+                android:textSize="@dimen/small_text_size"
+                android:layout_marginEnd="44dp"
+                android:layout_alignTop="@+id/textView"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"></TextView>
+
+
+        </RelativeLayout>
 
 
         <LinearLayout
@@ -37,6 +70,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="20dp"
                 android:text="@string/d1_orderstatus"
+                android:textColor="@color/black"
                 android:layout_marginLeft="5dp"
                 android:layout_marginTop="5dp"
                 android:textSize="@dimen/small_text_size"></TextView>
@@ -105,7 +139,7 @@
                  android:layout_weight="1.40"
                  android:text="@string/d1_status0"
                  android:textSize="@dimen/small_text_size"
-
+                 android:textColor="@color/black"
 
                  ></TextView>
                     <TextView
@@ -115,6 +149,8 @@
                         android:layout_weight="1.44"
                         android:text="@string/d1_status1"
                         android:textSize="@dimen/small_text_size"
+                        android:textColor="@color/black"
+
 
                         ></TextView>
                     <TextView
@@ -124,6 +160,7 @@
                         android:layout_weight="1"
                         android:text="@string/d1_status2"
                         android:textSize="@dimen/small_text_size"
+                        android:textColor="@color/black"
 
 
                         ></TextView>
@@ -136,6 +173,7 @@
                         android:text="@string/d1_status3"
                         android:textSize="@dimen/small_text_size"
                         android:gravity="right"
+                        android:textColor="@color/black"
 
                         ></TextView>
 
@@ -153,39 +191,187 @@
             android:layout_height="10dp"></View>
 
         <LinearLayout
-            android:orientation="horizontal"
+            android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
-            android:background="@color/whitesmoke"></LinearLayout>
+            android:background="@color/whitesmoke">
+            <TextView
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="@string/d1_ordertrack"
+                android:textSize="@dimen/small_text_size"
+                android:textColor="@color/black"
+                ></TextView>
+
+            <!-- 内部分割线-->
+
+            <View
+                android:layout_height="1dp"
+                android:layout_width="match_parent"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:background="@color/gray"
+                ></View>
+
+            <LinearLayout
+                android:layout_height="30dp"
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                ></LinearLayout>
+
+            <View
+                android:layout_height="1dp"
+                android:layout_width="match_parent"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:background="@color/gray"
+                ></View>
+
+
+        </LinearLayout>
 
         <View
             android:layout_width="match_parent"
             android:layout_height="10dp"></View>
 
         <LinearLayout
-            android:orientation="horizontal"
+            android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
-            android:background="@color/whitesmoke"></LinearLayout>
+            android:background="@color/whitesmoke">
+            <TextView
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="@string/d1_orderinfo"
+                android:textSize="@dimen/small_text_size"
+                android:textColor="@color/black"
+                ></TextView>
+
+            <!-- 内部分割线-->
+
+            <View
+                android:layout_height="1dp"
+                android:layout_width="match_parent"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:background="@color/gray"
+                ></View>
+
+            <LinearLayout
+                android:layout_height="30dp"
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                ></LinearLayout>
+
+            <View
+                android:layout_height="1dp"
+                android:layout_width="match_parent"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:background="@color/gray"
+                ></View>
+        </LinearLayout>
 
         <View
             android:layout_width="match_parent"
             android:layout_height="10dp"></View>
 
+        <!-- 收件人信息-->
         <LinearLayout
-            android:orientation="horizontal"
+            android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
-            android:background="@color/whitesmoke"></LinearLayout>
+            android:background="@color/whitesmoke">
+
+            <TextView
+                android:id="@+id/tx_d1_consignee"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:text="@string/d1_consignee"
+                android:textColor="@color/black"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="5dp"
+                android:textSize="@dimen/small_text_size"></TextView>
+            <LinearLayout
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+                    android:text="@string/d1_consignee_name"
+                    android:textColor="@color/black"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="5dp"
+                    android:textSize="@dimen/small_text_size"></TextView>
+                <TextView
+                    android:id="@+id/tx_d1_consignee_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+                    android:textColor="@color/black"
+                    android:layout_marginTop="5dp"
+                    android:textSize="@dimen/small_text_size"></TextView>
+
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+                    android:text="@string/d1_consignee_add"
+                    android:textColor="@color/black"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="5dp"
+                    android:textSize="@dimen/small_text_size"></TextView>
+                <TextView
+                    android:id="@+id/tx_d1_consignee_add"
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+                    android:textColor="@color/black"
+                    android:layout_marginTop="5dp"
+                    android:textSize="@dimen/small_text_size"></TextView>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+                    android:text="@string/d1_consignee_phone"
+                    android:textColor="@color/black"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="5dp"
+                    android:textSize="@dimen/small_text_size"></TextView>
+                <TextView
+                    android:id="@+id/tx_d1_consignee_phone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+                    android:textColor="@color/black"
+                    android:layout_marginTop="5dp"
+                    android:textSize="@dimen/small_text_size"></TextView>
+
+
+            </LinearLayout>
+
+
+        </LinearLayout>
 
         <View
             android:layout_width="match_parent"
@@ -205,6 +391,10 @@
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:id="@+id/btn_1"
+                android:text="@string/d1_btn_addmoney"
+                android:textSize="@dimen/small_text_size"
+                android:gravity="center"
+                android:textColor="@color/black"
                 android:background="@color/blue"></Button>
 
             <Button
@@ -212,6 +402,10 @@
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:id="@+id/btn_2"
+                android:text="@string/d1_btn_addtime"
+                android:textSize="@dimen/small_text_size"
+                android:gravity="center"
+                android:textColor="@color/black"
                 android:background="@color/green"></Button>
 
             <Button
@@ -219,12 +413,21 @@
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:id="@+id/btn_3"
+                android:text="@string/d1_btn_getstuff"
+                android:textSize="@dimen/small_text_size"
+                android:gravity="center"
+                android:textColor="@color/black"
                 android:background="@color/yellow"></Button>
 
             <Button
                 android:layout_height="match_parent"
                 android:layout_width="0dp"
                 android:layout_weight="1"
+                android:background="@color/powderblue"
+                android:text="@string/d1_btn_shareorder"
+                android:textSize="@dimen/small_text_size"
+                android:gravity="center"
+                android:textColor="@color/black"
                 android:id="@+id/btn_4"></Button>
 
             <Button
@@ -232,6 +435,10 @@
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:id="@+id/btn_5"
+                android:text="@string/d1_btn_orderagain"
+                android:textSize="@dimen/small_text_size"
+                android:gravity="center"
+                android:textColor="@color/black"
                 android:background="@color/pink"></Button>
         </LinearLayout>
 

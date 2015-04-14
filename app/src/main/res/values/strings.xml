@@ -243,13 +243,37 @@
     <!-- D_1 订单详情-->
     <string name="d1_ordertitle">订单详情</string>
     <string name="d1_orderstatus">订单状态</string>
-    <string name="d1_ordertrack">订单追终</string>
+    <string name="d1_ordertrack">订单追踪</string>
     <string name="d1_orderinfo">订单信息</string>
     <string name="d1_consignee">收货人信息</string>
     <string name="d1_status0">已付款</string>
     <string name="d1_status1">采购中</string>
     <string name="d1_status2">投递中</string>
     <string name="d1_status3">已完成</string>
+    <string name="d1_title_ordernumber">订单编号：</string>
+    <string name="d1_title_order_time">最近更新 ：</string>
+
+    <string name="d1_consignee_name">收货人 :</string>
+    <string name="d1_consignee_add">地 址 :</string>
+    <string name="d1_consignee_phone">电 话 :</string>
+
+    <string name="d1_btn_argue">投诉维权</string>
+    <string name="d1_btn_cancelorder">弃单</string>
+    <string name="d1_btn_addmoney">补款</string>
+    <string name="d1_btn_addtime">申请延期</string>
+    <string name="d1_btn_getstuff">确认收货</string>
+    <string name="d1_btn_shareorder">晒单</string>
+    <string name="d1_btn_orderagain">再次下单</string>
+
+
+    <string name="d1_info_goods">商品</string>
+    <string name="d1_info_nums">数量</string>
+    <string name="d1_info_type">型号</string>
+    <string name="d1_info_shipping">邮寄方式</string>
+    <string name="d1_info_tax">是否包税</string>
+
+
+
 
 
 
