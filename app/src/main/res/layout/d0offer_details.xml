@@ -141,6 +141,8 @@
                  android:id="@+id/tx_d1_status0"
                  android:layout_height="wrap_content"
                  android:layout_width="0dp"
+                 android:layout_marginBottom="10dp"
+                 android:layout_marginTop="10dp"
                  android:layout_weight="1.40"
                  android:text="@string/d1_status0"
                  android:textSize="@dimen/small_text_size"
@@ -150,6 +152,8 @@
                     <TextView
                         android:id="@+id/tx_d1_status1"
                         android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginTop="10dp"
                         android:layout_width="0dp"
                         android:layout_weight="1.44"
                         android:text="@string/d1_status1"
@@ -161,6 +165,8 @@
                     <TextView
                         android:id="@+id/tx_d1_status2"
                         android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginTop="10dp"
                         android:layout_width="0dp"
                         android:layout_weight="1"
                         android:text="@string/d1_status2"
@@ -173,6 +179,8 @@
                     <TextView
                         android:id="@+id/tx_d1_status3"
                         android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginTop="10dp"
                         android:layout_width="0dp"
                         android:layout_weight="0.75"
                         android:text="@string/d1_status3"
@@ -206,6 +214,8 @@
             <TextView
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
                 android:text="@string/d1_ordertrack"
                 android:textSize="@dimen/small_text_size"
                 android:layout_marginLeft="10dp"
@@ -233,10 +243,14 @@
                     android:textSize="12sp"
                     android:textColor="@color/black"
                     android:gravity="center"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginTop="5dp"
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content" />
                 <TextView
                     android:text="处理状态"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginTop="5dp"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:textSize="12sp"
@@ -245,6 +259,8 @@
                     android:layout_width="wrap_content" />
                 <TextView
                     android:text="备注"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginTop="5dp"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:textSize="12sp"
@@ -269,6 +285,8 @@
                 <TextView
                     android:layout_weight="1"
                     android:textSize="12sp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginTop="5dp"
                     android:textColor="@color/black"
                     android:gravity="center"
                     android:id="@+id/updateDate"
@@ -279,6 +297,8 @@
                     android:id="@+id/statusMethod"
                     android:layout_weight="1"
                     android:gravity="right"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginTop="5dp"
                     android:layout_marginRight="10dp"
                     android:textSize="12sp"
                     android:textColor="@color/black"
@@ -289,6 +309,8 @@
                     android:layout_weight="1"
                     android:gravity="right"
                     android:textSize="12sp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginTop="5dp"
                     android:layout_marginRight="10dp"
                     android:textColor="@color/black"
                     android:layout_height="wrap_content"
@@ -314,6 +336,7 @@
                 android:text="@string/d1_orderinfo"
                 android:textSize="@dimen/small_text_size"
                 android:textColor="@color/black"
+                android:layout_marginLeft="10dp"
                 ></TextView>
 
             <!-- 内部分割线-->
@@ -361,7 +384,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/d1_consignee"
                 android:textColor="@color/black"
-                android:layout_marginLeft="5dp"
+                android:layout_marginLeft="10dp"
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="5dp"
                 android:textSize="@dimen/small_text_size"></TextView>
@@ -375,7 +398,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/d1_consignee_name"
                     android:textColor="@color/black"
-                    android:layout_marginLeft="5dp"
+                    android:layout_marginLeft="10dp"
                     android:layout_marginTop="5dp"
                     android:layout_marginBottom="5dp"
                     android:textSize="@dimen/small_text_size"></TextView>
@@ -400,7 +423,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/d1_consignee_add"
                     android:textColor="@color/black"
-                    android:layout_marginLeft="5dp"
+                    android:layout_marginLeft="10dp"
                     android:layout_marginTop="5dp"
                     android:layout_marginBottom="5dp"
                     android:textSize="@dimen/small_text_size"></TextView>
@@ -424,7 +447,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/d1_consignee_phone"
                     android:textColor="@color/black"
-                    android:layout_marginLeft="5dp"
+                    android:layout_marginLeft="10dp"
                     android:layout_marginTop="5dp"
                     android:textSize="@dimen/small_text_size"></TextView>
                 <TextView
