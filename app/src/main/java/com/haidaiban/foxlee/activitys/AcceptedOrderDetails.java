@@ -1,13 +1,19 @@
 package com.haidaiban.foxlee.activitys;
 
+import android.app.ActionBar;
 import android.app.Activity;
 import android.os.Bundle;
 import android.text.Html;
+import android.view.Gravity;
+import android.view.LayoutInflater;
+import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.haidaiban.foxlee.Util.DataHolder;
 import com.haidaiban.foxlee.Util.Utility;
 import com.haidaiban.foxlee.fragments.R;
+import com.haidaiban.foxlee.model.offer.Counterquote;
 import com.haidaiban.foxlee.model.offer.Result;
 
 import java.text.ParseException;
@@ -27,6 +33,7 @@ public class AcceptedOrderDetails extends Activity{
     private TextView updateDateTable;
     private TextView statusTable;
     private TextView moreTable;
+    private LinearLayout orderInfoContainer;
 
 
     private Result acceptedOffer;
@@ -57,6 +64,39 @@ public class AcceptedOrderDetails extends Activity{
         statusTable.setText(acceptedOffer.getTransactionState().getState());
         moreTable.setText(Html.fromHtml("定金金额:<br/>"+acceptedOffer.getDownPayment()));
 
+        for(Counterquote counterquote:acceptedOffer.getCounterquotes()){
+            LinearLayout linearLayout = new LinearLayout(this);
+            LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.MATCH_PARENT);
+            linearLayout.setOrientation(LinearLayout.HORIZONTAL);
+            linearLayout.setLayoutParams(layoutParams);
+            TextView name = new TextView(this);
+            name.setTextSize(12);
+            name.setTextColor(getResources().getColor(R.color.black));
+            name.setText(counterquote.getTitle());
+            name.setGravity(Gravity.CENTER);
+            LinearLayout.LayoutParams textParam = new LinearLayout.LayoutParams(Utility.getWindowSize(getApplicationContext())[0]/3, ViewGroup.LayoutParams.WRAP_CONTENT);
+            textParam.weight = 1.0f;
+            textParam.setMargins(0,5,0,5);
+            name.setLayoutParams(textParam);
+            TextView quantity = new TextView(this);
+            quantity.setTextSize(12);
+            quantity.setTextColor(getResources().getColor(R.color.black));
+            quantity.setText(counterquote.getQuantity() == null ? "" : Integer.toString(counterquote.getQuantity()));
+            quantity.setGravity(Gravity.CENTER);
+            quantity.setLayoutParams(textParam);
+            TextView style = new TextView(this);
+            style.setTextSize(12);
+            style.setTextColor(getResources().getColor(R.color.black));
+            style.setText(counterquote.getStyle());
+            style.setGravity(Gravity.CENTER);
+            style.setLayoutParams(textParam);
+            linearLayout.addView(name);
+            linearLayout.addView(quantity);
+            linearLayout.addView(style);
+            orderInfoContainer.addView(linearLayout);
+        }
+
+
     }
 
     private void initView() {
@@ -69,5 +109,6 @@ public class AcceptedOrderDetails extends Activity{
         updateDateTable = (TextView) findViewById(R.id.updateDate);
         statusTable = (TextView) findViewById(R.id.statusMethod);
         moreTable = (TextView) findViewById(R.id.more);
+        orderInfoContainer = (LinearLayout) findViewById(R.id.orderInfoContainer);
     }
 }

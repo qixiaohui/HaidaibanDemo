@@ -326,6 +326,7 @@
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:id="@+id/orderInfoContainer"
             android:layout_weight="1"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
@@ -334,6 +335,8 @@
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
                 android:text="@string/d1_orderinfo"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
                 android:textSize="@dimen/small_text_size"
                 android:textColor="@color/black"
                 android:layout_marginLeft="10dp"
@@ -350,10 +353,38 @@
                 ></View>
 
             <LinearLayout
-                android:layout_height="30dp"
+                android:layout_height="wrap_content"
                 android:layout_width="match_parent"
                 android:orientation="horizontal"
-                ></LinearLayout>
+                >
+                <TextView android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:textColor="@color/black"
+                    android:textSize="12sp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:text="商品" />
+                <TextView android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:textColor="@color/black"
+                    android:textSize="12sp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:text="数量" />
+                <TextView android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:textColor="@color/black"
+                    android:textSize="12sp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:text="型号" />
+                </LinearLayout>
 
             <View
                 android:layout_height="1dp"
@@ -469,51 +500,50 @@
             android:layout_height="10dp"></View>
 
         <LinearLayout
-            android:orientation="horizontal"
+            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="0.5"
+            android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
             android:background="@color/whitesmoke">
 
             <Button
-                android:layout_height="match_parent"
-                android:layout_width="0dp"
-                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
                 android:id="@+id/btn_1"
                 android:text="@string/d1_btn_addmoney"
                 android:textSize="@dimen/small_text_size"
                 android:gravity="center"
+                android:layout_margin="15dp"
                 android:textColor="@color/black"
                 android:background="@color/blue"></Button>
 
             <Button
-                android:layout_height="match_parent"
-                android:layout_width="0dp"
-                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
                 android:id="@+id/btn_2"
                 android:text="@string/d1_btn_addtime"
                 android:textSize="@dimen/small_text_size"
                 android:gravity="center"
+                android:layout_margin="15dp"
                 android:textColor="@color/black"
                 android:background="@color/green"></Button>
 
             <Button
-                android:layout_height="match_parent"
-                android:layout_width="0dp"
-                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
                 android:id="@+id/btn_3"
                 android:text="@string/d1_btn_getstuff"
                 android:textSize="@dimen/small_text_size"
                 android:gravity="center"
+                android:layout_margin="15dp"
                 android:textColor="@color/black"
                 android:background="@color/yellow"></Button>
 
             <Button
-                android:layout_height="match_parent"
-                android:layout_width="0dp"
-                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_margin="15dp"
                 android:background="@color/powderblue"
                 android:text="@string/d1_btn_shareorder"
                 android:textSize="@dimen/small_text_size"
@@ -522,10 +552,10 @@
                 android:id="@+id/btn_4"></Button>
 
             <Button
-                android:layout_height="match_parent"
-                android:layout_width="0dp"
-                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
                 android:id="@+id/btn_5"
+                android:layout_margin="15dp"
                 android:text="@string/d1_btn_orderagain"
                 android:textSize="@dimen/small_text_size"
                 android:gravity="center"
