@@ -2,11 +2,14 @@ package com.haidaiban.foxlee.activitys;
 
 import android.app.ActionBar;
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Html;
 import android.view.Gravity;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -34,7 +37,9 @@ public class AcceptedOrderDetails extends Activity{
     private TextView statusTable;
     private TextView moreTable;
     private LinearLayout orderInfoContainer;
-
+    private com.haidaiban.foxlee.model.quotelist.Result quoteListResult;
+    Button refillQuote;
+    Intent intent;
 
     private Result acceptedOffer;
     @Override
@@ -97,6 +102,24 @@ public class AcceptedOrderDetails extends Activity{
         }
 
 
+        refillQuote.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                intent = new Intent(getApplicationContext(), Activity_PriceFill.class);
+                quoteListResult = new com.haidaiban.foxlee.model.quotelist.Result();
+                quoteListResult.setTitle(acceptedOffer.getCounterquotes().get(0).getTitle());
+                quoteListResult.setQuantity(
+                        acceptedOffer.getCounterquotes().get(0).getQuantity()==null?
+                                1:
+                                acceptedOffer.getCounterquotes().get(0).getQuantity());
+                quoteListResult.setWebLink(acceptedOffer.getCounterquotes().get(0).getWebLink());
+                quoteListResult.setCoupon(acceptedOffer.getCounterquotes().get(0).getCoupon());
+                quoteListResult.setRemark(acceptedOffer.getCounterquotes().get(0).getRemark());
+                DataHolder.setQuotelistResult(quoteListResult);
+                intent.putExtra("flag",1);
+                startActivity(intent);
+            }
+        });
     }
 
     private void initView() {
@@ -110,5 +133,6 @@ public class AcceptedOrderDetails extends Activity{
         statusTable = (TextView) findViewById(R.id.statusMethod);
         moreTable = (TextView) findViewById(R.id.more);
         orderInfoContainer = (LinearLayout) findViewById(R.id.orderInfoContainer);
+        refillQuote = (Button) findViewById(R.id.refillQuote);
     }
 }
