@@ -10,6 +10,8 @@ import com.haidaiban.foxlee.model.offer.Offer;
 import com.haidaiban.foxlee.model.order.Order;
 import com.haidaiban.foxlee.model.quotelist.QuoteList;
 
+import java.util.HashMap;
+
 /**
  * Created by qixiaohui on 3/24/15.
  */
@@ -31,6 +33,16 @@ public class DataHolder {
     private static Offer offerComplete;
     private static Offer offerCanceled;
     private static com.haidaiban.foxlee.model.offer.Result acceptedOffer;
+    private static HashMap<String, Deal> limitedDeal = new HashMap<String, Deal>();
+
+
+    public static Deal getLimitedDeal(String category) {
+        return limitedDeal.get(category);
+    }
+
+    public static void setLimitedDeal(String categoty, Deal dealData) {
+        limitedDeal.put(categoty, dealData);
+    }
 
     public static com.haidaiban.foxlee.model.offer.Result getAcceptedOffer() {
         return acceptedOffer;

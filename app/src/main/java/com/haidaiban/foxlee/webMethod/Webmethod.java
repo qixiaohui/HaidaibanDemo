@@ -89,7 +89,7 @@ public class Webmethod {
     public static String get()throws IOException,JSONException{
 
         token = getToken();
-        httpGet = new HttpGet(Constants.getLOGIN_URL()+"api/offers");
+        httpGet = new HttpGet(Constants.getLOGIN_URL()+"api/offers/");
         //httpGet.setHeader("Accept","applicatiton/json; indent=4");
         //System.out.println("token"+token);
         httpGet.setHeader("Authorization","Token "+token);
@@ -110,9 +110,9 @@ public class Webmethod {
         return new Gson().fromJson(response,Message.class);
     }
 
-    public static Deal getDeals()throws IOException,JSONException{
+    public static Deal getDeals(String q)throws IOException,JSONException{
         token = getToken();
-        httpGet = new HttpGet(Constants.getLOGIN_URL()+"api/deals");
+        httpGet = new HttpGet(Constants.getLOGIN_URL()+"api/deal/search/?q="+q);
         httpGet.setHeader("Authorization","Token "+token);
         httpResponse = httpClient.execute(httpGet);
         entity = httpResponse.getEntity();

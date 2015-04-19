@@ -52,7 +52,7 @@ public class LimitedDealFragment extends Fragment {
 //        getSupportFragmentManager()
         tabPagerAdapter = new TabPagerAdapter(getChildFragmentManager(),fragments,categorys);
         viewPager.setAdapter(tabPagerAdapter);
-        viewPager.setOffscreenPageLimit(10);
+        viewPager.setOffscreenPageLimit(0);
         // Center the tabs in the layout
         slidingTabLayout.setDistributeEvenly(true);
         slidingTabLayout.setViewPager(viewPager);

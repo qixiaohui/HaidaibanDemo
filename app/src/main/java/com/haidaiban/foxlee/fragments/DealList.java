@@ -65,16 +65,18 @@ public class DealList extends Fragment{
             @Override
             public void onPullDownToRefresh(
                     PullToRefreshBase<ListView> refreshView) {
+                System.out.println("pull up refresh");
             }
 
             @Override
             public void onPullUpToRefresh(
                     PullToRefreshBase<ListView> refreshView) {
-                deals = DataHolder.getDeal();
+                System.out.println("update list");
                 loadData = new asyncTask();
                 loadData.execute("load more");
             }
         });
+
 
 
         PTL.getRefreshableView().setOnItemClickListener(
@@ -97,7 +99,7 @@ public class DealList extends Fragment{
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        if(DataHolder.getDeal() == null) {
+        if(DataHolder.getLimitedDeal(category) == null) {
             loadData = new asyncTask();
             loadData.execute("first load");
         }
@@ -116,10 +118,16 @@ public class DealList extends Fragment{
             try {
                 webmethod = new Webmethod(getActivity());
                 if(params[0].equals("first load")) {
-                    deals = webmethod.getDeals();
+                    deals = webmethod.getDeals(category);
+                    DataHolder.setLimitedDeal(category,deals);
                 }else if(params[0].equals("load more")
-                        &&deals.getNext()!=null){
+                        &&deals.getNext()!=null
+                        &&deals.getResults().size()!=0){
+                    System.out.println("*****"+deals.getNext());
                     moreDeals = webmethod.getMoreDeals(deals.getNext());
+                    DataHolder.setLimitedDeal(category,deals);
+                }else{
+                    return "No data";
                 }
             }catch (IOException e){
 
@@ -132,7 +140,7 @@ public class DealList extends Fragment{
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            if(DataHolder.getDeal()==null)
+            if(DataHolder.getLimitedDeal(category)==null)
             loading.setVisibility(View.VISIBLE);
         }
 
@@ -140,7 +148,10 @@ public class DealList extends Fragment{
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
             loading.setVisibility(View.GONE);
-            if(PTL != null && deals != null && getActivity() != null && s.equals("first load")) {
+            if(PTL != null
+                    && deals.getResults().size() != 0
+                    && getActivity() != null
+                    && s.equals("first load")) {
 //            if(listView != null && deals != null && getActivity() != null) {
                 System.out.println("asynctask*****");
 //                listView.setAdapter(new ListViewAdapter(deals, getActivity().getApplicationContext()));
@@ -157,13 +168,16 @@ public class DealList extends Fragment{
 
 //                PTL.getRefreshableView().setAdapter(new ListViewAdapter(deals, getActivity().getApplicationContext()));
             }else if(s.equals("load more")){
-                System.out.println("should update list");
                 deals.setNext(moreDeals.getNext());
+                PTL.setHasMoreData(true);
                 for(Result deal:moreDeals.getResults()){
                     deals.getResults().add(deal);
                 }
                 DataHolder.setDeal(deals);
                 adapter.notifyDataSetChanged();
+                onLoaded();
+            }else{
+                onLoaded();
             }
 
 
@@ -191,10 +205,6 @@ public class DealList extends Fragment{
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
-        if(DataHolder.getDeal() != null){
-            System.out.println(DataHolder.getDeal().getResults().get(0).getTitle()+"********");
-            this.deals = DataHolder.getDeal();
-        }
     }
 
     @Override
