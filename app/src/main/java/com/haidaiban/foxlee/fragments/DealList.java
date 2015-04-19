@@ -54,12 +54,6 @@ public class DealList extends Fragment{
 //        listView = (ListView) view.findViewById(R.id.list);
         PTL = (PullToRefreshListView) view.findViewById(R.id.pull_to_refresh_listview);
 
-        // 上拉加载不可用
-        PTL.setPullLoadEnabled(false);
-        // 滚动到底自动加载可用
-        PTL.setScrollLoadEnabled(false);
-        // 得到实际的ListView  设置点击
-
         PTL.setOnRefreshListener(new OnRefreshListener<ListView>() {
 
             @Override
@@ -102,6 +96,10 @@ public class DealList extends Fragment{
         if(DataHolder.getLimitedDeal(category) == null) {
             loadData = new asyncTask();
             loadData.execute("first load");
+        }else{
+            deals = DataHolder.getLimitedDeal(category);
+            adapter = new ListViewAdapter(deals, getActivity().getApplicationContext());
+            PTL.getRefreshableView().setAdapter(adapter);
         }
     }
 
@@ -116,7 +114,7 @@ public class DealList extends Fragment{
         @Override
         protected String doInBackground(String... params) {
             try {
-                webmethod = new Webmethod(getActivity());
+                webmethod = new Webmethod(getParentFragment().getActivity());
                 if(params[0].equals("first load")) {
                     deals = webmethod.getDeals(category);
                     DataHolder.setLimitedDeal(category,deals);
@@ -210,6 +208,5 @@ public class DealList extends Fragment{
     @Override
     public void onDetach() {
         super.onDetach();
-        DataHolder.setDeal(deals);
     }
 }
