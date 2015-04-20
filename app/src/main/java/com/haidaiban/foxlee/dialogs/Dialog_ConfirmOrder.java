@@ -1,4 +1,4 @@
-package com.haidaiban.foxlee.ui;
+package com.haidaiban.foxlee.dialogs;
 
 /**
  *
@@ -21,7 +21,7 @@ import com.haidaiban.foxlee.fragments.R;
  *
  *         Time:2015年3月22日
  */
-public class MyCameraDialog extends Dialog {
+public class Dialog_ConfirmOrder extends Dialog {
 
     private TextView tv_my_camera_take_photo;
     private TextView tv_my_camera_from_album;
@@ -45,13 +45,13 @@ public class MyCameraDialog extends Dialog {
      * @param theme
      *            样式
      */
-    public MyCameraDialog(Context context, int theme, int num) {
+    public Dialog_ConfirmOrder(Context context, int theme, int num) {
         super(context, theme);
         this.mContext = context;
         this.num = num;
     }
 
-    public MyCameraDialog(Context context) {
+    public Dialog_ConfirmOrder(Context context) {
         super(context, mTheme);
         this.mContext = context;
     }
@@ -64,12 +64,12 @@ public class MyCameraDialog extends Dialog {
         tv_my_camera_from_album = (TextView) findViewById(R.id.dialog_upload);
 
         tv_my_camera_take_photo
-                .setOnClickListener(new android.view.View.OnClickListener() {
+                .setOnClickListener(new View.OnClickListener() {
 
                     @Override
                     public void onClick(View v) {
                         mode = 0;
-                        MyCameraDialog.this.dismiss();
+                        Dialog_ConfirmOrder.this.dismiss();
                         //拍照选择
                         Intent intent = new Intent(
                                 "android.media.action.IMAGE_CAPTURE");
@@ -79,13 +79,13 @@ public class MyCameraDialog extends Dialog {
                 });
 
         tv_my_camera_from_album
-                .setOnClickListener(new android.view.View.OnClickListener() {
+                .setOnClickListener(new View.OnClickListener() {
 
                     @Override
                     public void onClick(View v) {
                         //从相册选择
                         mode = 1;
-                        MyCameraDialog.this.dismiss();
+                        Dialog_ConfirmOrder.this.dismiss();
                         Intent intent = new Intent(
                                 Intent.ACTION_PICK,
                                 android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);

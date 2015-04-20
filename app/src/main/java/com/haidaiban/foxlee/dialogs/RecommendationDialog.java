@@ -1,4 +1,4 @@
-package com.haidaiban.foxlee.ui;
+package com.haidaiban.foxlee.dialogs;
 
 /**
  *
@@ -10,14 +10,12 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.haidaiban.foxlee.Util.DataHolder;
 import com.haidaiban.foxlee.activitys.Activity_PriceFill;
 import com.haidaiban.foxlee.activitys.WebActivity;
-import com.haidaiban.foxlee.config.Constants;
 import com.haidaiban.foxlee.fragments.R;
 import com.haidaiban.foxlee.model.deal.Result;
 import com.haidaiban.foxlee.webMethod.Webmethod;
