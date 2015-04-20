@@ -80,6 +80,12 @@ public class DealList extends Fragment{
                     public void onItemClick(AdapterView<?> parent, View view,
                                             int position, long id) {
                         intent = new Intent(getActivity().getApplicationContext(), ProductDetail.class);
+                        if (PTL.getRefreshableView().getHeaderViewsCount() > 0) {
+                            DataHolder.setDealResult(deals.getResults().get(position -1));
+
+                        } else {
+                            DataHolder.setDealResult(deals.getResults().get(position));
+                        }
                         DataHolder.setDealResult(deals.getResults().get(position));
                         startActivity(intent);
                     }

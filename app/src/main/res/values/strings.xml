@@ -265,12 +265,16 @@
     <string name="d1_btn_shareorder">晒单</string>
     <string name="d1_btn_orderagain">再次下单</string>
 
-
     <string name="d1_info_goods">商品</string>
     <string name="d1_info_nums">数量</string>
     <string name="d1_info_type">型号</string>
     <string name="d1_info_shipping">邮寄方式</string>
     <string name="d1_info_tax">是否包税</string>
+
+    <string name="money">￥</string>
+    <string name="d1_addtime">延期天数</string>
+    <string name="d1_addtimereason">延期原因</string>
+
 
 
 

@@ -23,8 +23,7 @@ import com.haidaiban.foxlee.fragments.R;
  */
 public class Dialog_ConfirmOrder extends Dialog {
 
-    private TextView tv_my_camera_take_photo;
-    private TextView tv_my_camera_from_album;
+    private TextView tv_dialog_btn_confirm;
     private Context mContext;
     private static int mTheme = R.style.CustomDialog;
     private static int num = 0;
@@ -45,10 +44,9 @@ public class Dialog_ConfirmOrder extends Dialog {
      * @param theme
      *            样式
      */
-    public Dialog_ConfirmOrder(Context context, int theme, int num) {
+    public Dialog_ConfirmOrder(Context context, int theme) {
         super(context, theme);
         this.mContext = context;
-        this.num = num;
     }
 
     public Dialog_ConfirmOrder(Context context) {
@@ -59,40 +57,9 @@ public class Dialog_ConfirmOrder extends Dialog {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.dialog_layout);
-        tv_my_camera_take_photo = (TextView) findViewById(R.id.dialog_camera);
-        tv_my_camera_from_album = (TextView) findViewById(R.id.dialog_upload);
-
-        tv_my_camera_take_photo
-                .setOnClickListener(new View.OnClickListener() {
-
-                    @Override
-                    public void onClick(View v) {
-                        mode = 0;
-                        Dialog_ConfirmOrder.this.dismiss();
-                        //拍照选择
-                        Intent intent = new Intent(
-                                "android.media.action.IMAGE_CAPTURE");
-                        ((Activity) mContext).startActivityForResult(intent,request_code);
-
-                    }
-                });
-
-        tv_my_camera_from_album
-                .setOnClickListener(new View.OnClickListener() {
-
-                    @Override
-                    public void onClick(View v) {
-                        //从相册选择
-                        mode = 1;
-                        Dialog_ConfirmOrder.this.dismiss();
-                        Intent intent = new Intent(
-                                Intent.ACTION_PICK,
-                                android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-                        ((Activity) mContext).startActivityForResult(intent, request_code);
-                    }
-                });
-
+        setContentView(R.layout.dialog_d0_confirm);
+        // add textview click on here
+        tv_dialog_btn_confirm = (TextView) findViewById(R.id.dialog_btn_confirm);
     }
 
     public static int getNum() {

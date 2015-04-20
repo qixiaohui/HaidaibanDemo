@@ -45,10 +45,9 @@ public class Dialog_AddMoney extends Dialog {
      * @param theme
      *            样式
      */
-    public Dialog_AddMoney(Context context, int theme, int num) {
+    public Dialog_AddMoney(Context context, int theme) {
         super(context, theme);
         this.mContext = context;
-        this.num = num;
     }
 
     public Dialog_AddMoney(Context context) {
@@ -59,39 +58,8 @@ public class Dialog_AddMoney extends Dialog {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.dialog_layout);
-        tv_my_camera_take_photo = (TextView) findViewById(R.id.dialog_camera);
-        tv_my_camera_from_album = (TextView) findViewById(R.id.dialog_upload);
+        setContentView(R.layout.dialog_d0_addmoney);
 
-        tv_my_camera_take_photo
-                .setOnClickListener(new View.OnClickListener() {
-
-                    @Override
-                    public void onClick(View v) {
-                        mode = 0;
-                        Dialog_AddMoney.this.dismiss();
-                        //拍照选择
-                        Intent intent = new Intent(
-                                "android.media.action.IMAGE_CAPTURE");
-                        ((Activity) mContext).startActivityForResult(intent,request_code);
-
-                    }
-                });
-
-        tv_my_camera_from_album
-                .setOnClickListener(new View.OnClickListener() {
-
-                    @Override
-                    public void onClick(View v) {
-                        //从相册选择
-                        mode = 1;
-                        Dialog_AddMoney.this.dismiss();
-                        Intent intent = new Intent(
-                                Intent.ACTION_PICK,
-                                android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-                        ((Activity) mContext).startActivityForResult(intent, request_code);
-                    }
-                });
 
     }
 

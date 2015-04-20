@@ -1,22 +1,15 @@
 package com.haidaiban.foxlee.activitys;
 
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.Path;
-import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.util.Base64;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
@@ -25,14 +18,11 @@ import com.haidaiban.foxlee.Util.DataHolder;
 import com.haidaiban.foxlee.config.Constants;
 import com.haidaiban.foxlee.fragments.R;
 import com.haidaiban.foxlee.model.quotelist.Result;
-import com.haidaiban.foxlee.ui.MyCameraDialog;
+import com.haidaiban.foxlee.dialogs.MyCameraDialog;
 import com.haidaiban.foxlee.webMethod.Webmethod;
 import com.squareup.picasso.Picasso;
 
-import java.io.ByteArrayInputStream;
 import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.net.URI;
 
 
 /**

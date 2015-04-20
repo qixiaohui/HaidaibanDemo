@@ -12,8 +12,6 @@ import android.view.ViewGroup;
 import android.widget.HorizontalScrollView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ListView;
-import android.widget.RelativeLayout;
 import android.widget.TableLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -22,15 +20,11 @@ import com.haidaiban.foxlee.Util.DataHolder;
 import com.haidaiban.foxlee.Util.Utility;
 import com.haidaiban.foxlee.activitys.Activity_PriceFill;
 import com.haidaiban.foxlee.activitys.WebActivity;
-import com.haidaiban.foxlee.adapter.CommentAdapter;
 import com.haidaiban.foxlee.config.Constants;
-import com.haidaiban.foxlee.model.comment.Comment;
 import com.haidaiban.foxlee.model.deal.Result;
-import com.haidaiban.foxlee.ui.RecommendationDialog;
+import com.haidaiban.foxlee.dialogs.RecommendationDialog;
 import com.haidaiban.foxlee.webMethod.Webmethod;
 import com.squareup.picasso.Picasso;
-
-import org.json.JSONException;
 
 import java.io.IOException;
 import java.util.ArrayList;

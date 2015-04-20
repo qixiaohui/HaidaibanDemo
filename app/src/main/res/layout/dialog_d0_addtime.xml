@@ -25,17 +25,19 @@
             android:orientation="horizontal" >
             <TextView
                 android:layout_height="50dp"
-                android:layout_width="20dp"
-                android:text="@string/money"
-                android:textSize="@dimen/large_text_size"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:text="@string/d1_addtime"
+                android:textSize="@dimen/small_text_size"
                 android:gravity="center"
                 android:layout_marginLeft="10dp"
                 ></TextView>
             <EditText
                 android:id="@+id/et_comment"
-                android:layout_width="202dp"
+                android:layout_width="0dp"
+                android:layout_weight="1"
                 android:layout_height="50dp"
-                android:layout_marginLeft="15dp"
+
                 android:gravity="center"
                 android:inputType="number"
                 android:textColor="@color/black"

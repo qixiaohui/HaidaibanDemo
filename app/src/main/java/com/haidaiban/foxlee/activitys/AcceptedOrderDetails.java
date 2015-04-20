@@ -2,6 +2,7 @@ package com.haidaiban.foxlee.activitys;
 
 import android.app.ActionBar;
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Html;
@@ -15,6 +16,9 @@ import android.widget.TextView;
 
 import com.haidaiban.foxlee.Util.DataHolder;
 import com.haidaiban.foxlee.Util.Utility;
+import com.haidaiban.foxlee.dialogs.Dialog_AddMoney;
+import com.haidaiban.foxlee.dialogs.Dialog_AddTime;
+import com.haidaiban.foxlee.dialogs.Dialog_ConfirmOrder;
 import com.haidaiban.foxlee.fragments.R;
 import com.haidaiban.foxlee.model.offer.Counterquote;
 import com.haidaiban.foxlee.model.offer.Result;
@@ -39,8 +43,11 @@ public class AcceptedOrderDetails extends Activity{
     private LinearLayout orderInfoContainer;
     private com.haidaiban.foxlee.model.quotelist.Result quoteListResult;
     Button refillQuote;
+    Button btn_confirm;
+    Button btn_addTime;
+    Button btn_addMoney;
+    Button btn_ShareOrder;
     Intent intent;
-
     private Result acceptedOffer;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +56,29 @@ public class AcceptedOrderDetails extends Activity{
         acceptedOffer = DataHolder.getAcceptedOffer();
 
         initView();
+        btn_addMoney.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new Dialog_AddMoney(AcceptedOrderDetails.this, R.style.CustomDialog).show();
+            }
+        });
+
+        btn_addTime.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new Dialog_AddTime(AcceptedOrderDetails.this,R.style.CustomDialog).show();
+            }
+        });
+
+        btn_confirm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                new Dialog_ConfirmOrder(AcceptedOrderDetails.this,R.style.CustomDialog).show();
+
+            }
+        });
+
         setData();
     }
 
@@ -134,5 +164,10 @@ public class AcceptedOrderDetails extends Activity{
         moreTable = (TextView) findViewById(R.id.more);
         orderInfoContainer = (LinearLayout) findViewById(R.id.orderInfoContainer);
         refillQuote = (Button) findViewById(R.id.refillQuote);
+        btn_addMoney = (Button) findViewById(R.id.btn_addmoney);
+        btn_addTime = (Button) findViewById(R.id.btn_addtime);
+        btn_confirm = (Button) findViewById(R.id.btn_confirm);
+        btn_ShareOrder = (Button) findViewById(R.id.btn_shareorder);
+
     }
 }

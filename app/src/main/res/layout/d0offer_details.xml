@@ -510,7 +510,7 @@
             <Button
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent"
-                android:id="@+id/btn_1"
+                android:id="@+id/btn_addmoney"
                 android:text="@string/d1_btn_addmoney"
                 android:textSize="@dimen/small_text_size"
                 android:gravity="center"
@@ -521,7 +521,7 @@
             <Button
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent"
-                android:id="@+id/btn_2"
+                android:id="@+id/btn_addtime"
                 android:text="@string/d1_btn_addtime"
                 android:textSize="@dimen/small_text_size"
                 android:gravity="center"
@@ -532,7 +532,7 @@
             <Button
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent"
-                android:id="@+id/btn_3"
+                android:id="@+id/btn_confirm"
                 android:text="@string/d1_btn_getstuff"
                 android:textSize="@dimen/small_text_size"
                 android:gravity="center"
@@ -541,6 +541,7 @@
                 android:background="@color/yellow"></Button>
 
             <Button
+
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent"
                 android:layout_margin="15dp"
@@ -549,7 +550,7 @@
                 android:textSize="@dimen/small_text_size"
                 android:gravity="center"
                 android:textColor="@color/black"
-                android:id="@+id/btn_4"></Button>
+                android:id="@+id/btn_shareorder"></Button>
 
             <Button
                 android:layout_height="wrap_content"
