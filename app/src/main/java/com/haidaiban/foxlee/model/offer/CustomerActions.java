@@ -1,47 +1,94 @@
 package com.haidaiban.foxlee.model.offer;
 
-import android.hardware.Camera;
-
+import java.util.ArrayList;
 import java.util.List;
+import javax.annotation.Generated;
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
 
-/**
- * Created by tom on 4/11/15.
- */
+@Generated("org.jsonschema2pojo")
 public class CustomerActions {
-    private String description;
-    private List<Parameters> parameters;
-    private String name;
+
+    @SerializedName("next_state")
+    @Expose
     private NextState nextState;
+    @Expose
+    private String description;
+    @Expose
+    private String name;
+    @Expose
+    private List<Parameter> parameters = new ArrayList<Parameter>();
 
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public List<Parameters> getParameters() {
-        return parameters;
-    }
-
-    public void setParameters(List<Parameters> parameters) {
-        this.parameters = parameters;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
+    /**
+     *
+     * @return
+     * The nextState
+     */
     public NextState getNextState() {
         return nextState;
     }
 
+    /**
+     *
+     * @param nextState
+     * The next_state
+     */
     public void setNextState(NextState nextState) {
         this.nextState = nextState;
     }
+
+    /**
+     *
+     * @return
+     * The description
+     */
+    public String getDescription() {
+        return description;
+    }
+
+    /**
+     *
+     * @param description
+     * The description
+     */
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    /**
+     *
+     * @return
+     * The name
+     */
+    public String getName() {
+        return name;
+    }
+
+    /**
+     *
+     * @param name
+     * The name
+     */
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    /**
+     *
+     * @return
+     * The parameters
+     */
+    public List<Parameter> getParameters() {
+        return parameters;
+    }
+
+    /**
+     *
+     * @param parameters
+     * The parameters
+     */
+    public void setParameters(List<Parameter> parameters) {
+        this.parameters = parameters;
+    }
+
 }

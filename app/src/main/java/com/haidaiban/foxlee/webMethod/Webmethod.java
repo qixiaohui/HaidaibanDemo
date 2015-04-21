@@ -14,6 +14,8 @@ import com.haidaiban.foxlee.model.offer.Offer;
 import com.haidaiban.foxlee.model.order.Order;
 import com.haidaiban.foxlee.model.quotelist.QuoteList;
 import com.haidaiban.foxlee.model.quotelist.Result;
+import com.haidaiban.foxlee.model.states.States;
+import com.haidaiban.foxlee.model.transactionlog.TransactionLog;
 import com.securepreferences.SecurePreferences;
 
 import org.apache.http.HttpEntity;
@@ -374,4 +376,27 @@ public class Webmethod {
         response = EntityUtils.toString(entity,"UTF-8");
         return new Gson().fromJson(response,Offer.class);
     }
+
+    public static States getStates() throws IOException,JSONException{
+        token = getToken();
+        httpGet = new HttpGet(Constants.getLOGIN_URL()+"api/offer/transaction/states/");
+        httpGet.setHeader("Authorization", "Token "+token);
+        httpResponse = httpClient.execute(httpGet);
+        entity = httpResponse.getEntity();
+        response = EntityUtils.toString(entity,"UTF-8");
+        return new Gson().fromJson(response, States.class);
+    }
+
+    public static TransactionLog  statLog(String uid) throws IOException, JSONException{
+        token = getToken();
+        httpGet = new HttpGet(Constants.getLOGIN_URL()+"api/offer/transactionlogs/"+uid);
+        httpGet.setHeader("Authorization","Token "+token);
+        httpResponse = httpClient.execute(httpGet);
+        entity = httpResponse.getEntity();
+        response = EntityUtils.toString(entity,"UTF-8");
+        return new Gson().fromJson(response, TransactionLog.class);
+    }
+
+
+
 }

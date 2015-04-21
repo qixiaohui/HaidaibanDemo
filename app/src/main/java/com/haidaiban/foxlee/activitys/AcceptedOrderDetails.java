@@ -23,7 +23,10 @@ import com.haidaiban.foxlee.fragments.R;
 import com.haidaiban.foxlee.model.offer.Counterquote;
 import com.haidaiban.foxlee.model.offer.Result;
 
+import java.lang.reflect.Array;
 import java.text.ParseException;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  * Created by tom on 4/13/15.
@@ -47,7 +50,9 @@ public class AcceptedOrderDetails extends Activity{
     Button btn_addTime;
     Button btn_addMoney;
     Button btn_ShareOrder;
+    Button ditch_quote;
     Intent intent;
+    ArrayList<String> customerActions;
     private Result acceptedOffer;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,6 +89,7 @@ public class AcceptedOrderDetails extends Activity{
 
     private void setData() {
         orderDetail = DataHolder.getAcceptedOffer();
+        customerActions = new ArrayList<String>(Arrays.asList(getApplicationContext().getResources().getStringArray(R.array.customerAction)));
         orderNumber.append(orderDetail.getOrder());
 
         try {
@@ -98,6 +104,24 @@ public class AcceptedOrderDetails extends Activity{
         orderStatus.append(": "+acceptedOffer.getTransactionState().getState());
         statusTable.setText(acceptedOffer.getTransactionState().getState());
         moreTable.setText(Html.fromHtml("定金金额:<br/>"+acceptedOffer.getDownPayment()));
+
+        for (int i = 0; i < acceptedOffer.getTransactionState().getCustomerActions().size(); i++) {
+            String action = acceptedOffer.getTransactionState().getCustomerActions().get(i).getName();
+            System.out.println(action);
+            if (action.equals(refillQuote.getText())) {
+                refillQuote.setVisibility(View.VISIBLE);
+            } else if (action.equals(btn_confirm.getText())) {
+                btn_confirm.setVisibility(View.VISIBLE);
+            } else if (action.equals(btn_addTime)) {
+                btn_addTime.setVisibility(View.VISIBLE);
+            } else if (action.equals(btn_addMoney)) {
+                btn_addMoney.setVisibility(View.VISIBLE);
+            } else if (action.equals(btn_ShareOrder.getText())) {
+                btn_ShareOrder.setVisibility(View.VISIBLE);
+            } else if (action.equals(ditch_quote.getText())) {
+                ditch_quote.setVisibility(View.VISIBLE);
+            }
+        }
 
         for(Counterquote counterquote:acceptedOffer.getCounterquotes()){
             LinearLayout linearLayout = new LinearLayout(this);
@@ -168,6 +192,7 @@ public class AcceptedOrderDetails extends Activity{
         btn_addTime = (Button) findViewById(R.id.btn_addtime);
         btn_confirm = (Button) findViewById(R.id.btn_confirm);
         btn_ShareOrder = (Button) findViewById(R.id.btn_shareorder);
+        ditch_quote = (Button) findViewById(R.id.ditchQutoe);
 
     }
 }

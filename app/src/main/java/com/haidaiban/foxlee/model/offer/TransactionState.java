@@ -4,6 +4,9 @@ package com.haidaiban.foxlee.model.offer;
  * Created by qixiaohui on 3/12/15.
  */
 
+import com.google.gson.annotations.Expose;
+
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Generated;
@@ -11,9 +14,10 @@ import javax.annotation.Generated;
 @Generated("org.jsonschema2pojo")
 public class TransactionState {
     private String 定金金额;
-    private List<CustomerActions> customerActions;
+    @Expose
+    private List<CustomerActions> customerActions = new ArrayList<CustomerActions>();
     private String 交易编号;
-    private List<AgentActions> agentActions;
+    private List<AgentActions> agentActions = new ArrayList<AgentActions>();
     private String state;
     private String flowType;
     private String stateDescription;

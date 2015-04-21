@@ -274,8 +274,17 @@
     <string name="money">￥</string>
     <string name="d1_addtime">延期天数</string>
     <string name="d1_addtimereason">延期原因</string>
+    <string name="ditchOrder">弃单</string>
 
-
+    <string-array name="customerAction">
+        <item>弃单</item>
+        <item>再次下单</item>
+        <item>晒单</item>
+        <item>确认收货</item>
+        <item>申请延期</item>
+        <item>补款</item>
+        <item>投诉维权</item>
+    </string-array>
 
 
 
