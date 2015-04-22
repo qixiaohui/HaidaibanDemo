@@ -11,6 +11,8 @@ import com.haidaiban.foxlee.model.comment.Comment;
 import com.haidaiban.foxlee.model.deal.Deal;
 import com.haidaiban.foxlee.model.message.Message;
 import com.haidaiban.foxlee.model.offer.Offer;
+import com.haidaiban.foxlee.model.offer.Parameter;
+import com.haidaiban.foxlee.model.offer.Parameter_;
 import com.haidaiban.foxlee.model.order.Order;
 import com.haidaiban.foxlee.model.quotelist.QuoteList;
 import com.haidaiban.foxlee.model.quotelist.Result;
@@ -374,6 +376,7 @@ public class Webmethod {
         httpResponse = httpClient.execute(httpGet);
         entity = httpResponse.getEntity();
         response = EntityUtils.toString(entity,"UTF-8");
+        System.out.println(response);
         return new Gson().fromJson(response,Offer.class);
     }
 
@@ -395,6 +398,20 @@ public class Webmethod {
         entity = httpResponse.getEntity();
         response = EntityUtils.toString(entity,"UTF-8");
         return new Gson().fromJson(response, TransactionLog.class);
+    }
+
+    public static int offerUpdateAction(String action, ArrayList<Parameter_> parameters, String uid) throws JSONException, IOException{
+        token = getToken();
+        httpPost = new HttpPost(Constants.getLOGIN_URL()+"api/offer/transaction/"+uid);
+        httpPost.setHeader("Authorization","Toekn "+token);
+        httpPost.setHeader("action",action);
+        for(Parameter_ parameter:parameters){
+            httpPost.setHeader(parameter.getName(),parameter.getDescription());
+        }
+        httpResponse = httpClient.execute(httpPost);
+        entity = httpResponse.getEntity();
+        response = EntityUtils.toString(entity,"UTF-8");
+        return httpResponse.getStatusLine().getStatusCode();
     }
 
 

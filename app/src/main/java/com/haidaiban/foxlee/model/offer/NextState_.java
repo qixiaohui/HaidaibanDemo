@@ -1,13 +1,13 @@
 package com.haidaiban.foxlee.model.offer;
 
 /**
- * Created by tom on 4/11/15.
+ * Created by tom on 4/21/15.
  */
 import javax.annotation.Generated;
 import com.google.gson.annotations.Expose;
 
 @Generated("org.jsonschema2pojo")
-public class NextState {
+public class NextState_ {
 
     @Expose
     private String flow;

@@ -1,38 +1,18 @@
 package com.haidaiban.foxlee.model.offer;
 
 /**
- * Created by tom on 4/11/15.
+ * Created by tom on 4/21/15.
  */
 import javax.annotation.Generated;
 import com.google.gson.annotations.Expose;
 
 @Generated("org.jsonschema2pojo")
-public class NextState {
+public class Parameter_ {
 
-    @Expose
-    private String flow;
     @Expose
     private String description;
     @Expose
     private String name;
-
-    /**
-     *
-     * @return
-     * The flow
-     */
-    public String getFlow() {
-        return flow;
-    }
-
-    /**
-     *
-     * @param flow
-     * The flow
-     */
-    public void setFlow(String flow) {
-        this.flow = flow;
-    }
 
     /**
      *

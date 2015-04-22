@@ -7,24 +7,24 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 @Generated("org.jsonschema2pojo")
-public class CustomerActions {
+public class CustomerAction {
 
     @SerializedName("next_state")
     @Expose
-    private NextState nextState;
+    private NextState_ nextState;
     @Expose
     private String description;
     @Expose
     private String name;
     @Expose
-    private List<Parameter> parameters = new ArrayList<Parameter>();
+    private List<Parameter_> parameters = new ArrayList<Parameter_>();
 
     /**
      *
      * @return
      * The nextState
      */
-    public NextState getNextState() {
+    public NextState_ getNextState() {
         return nextState;
     }
 
@@ -33,7 +33,7 @@ public class CustomerActions {
      * @param nextState
      * The next_state
      */
-    public void setNextState(NextState nextState) {
+    public void setNextState(NextState_ nextState) {
         this.nextState = nextState;
     }
 
@@ -78,7 +78,7 @@ public class CustomerActions {
      * @return
      * The parameters
      */
-    public List<Parameter> getParameters() {
+    public List<Parameter_> getParameters() {
         return parameters;
     }
 
@@ -87,7 +87,7 @@ public class CustomerActions {
      * @param parameters
      * The parameters
      */
-    public void setParameters(List<Parameter> parameters) {
+    public void setParameters(List<Parameter_> parameters) {
         this.parameters = parameters;
     }
 

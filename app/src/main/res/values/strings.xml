@@ -275,6 +275,7 @@
     <string name="d1_addtime">延期天数</string>
     <string name="d1_addtimereason">延期原因</string>
     <string name="ditchOrder">弃单</string>
+    <string name="ditchReason">弃单原因</string>
 
     <string-array name="customerAction">
         <item>弃单</item>

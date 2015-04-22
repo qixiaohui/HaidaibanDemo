@@ -19,6 +19,7 @@ import com.haidaiban.foxlee.Util.Utility;
 import com.haidaiban.foxlee.dialogs.Dialog_AddMoney;
 import com.haidaiban.foxlee.dialogs.Dialog_AddTime;
 import com.haidaiban.foxlee.dialogs.Dialog_ConfirmOrder;
+import com.haidaiban.foxlee.dialogs.Dialog_DitchOffer;
 import com.haidaiban.foxlee.fragments.R;
 import com.haidaiban.foxlee.model.offer.Counterquote;
 import com.haidaiban.foxlee.model.offer.Result;
@@ -81,6 +82,14 @@ public class AcceptedOrderDetails extends Activity{
 
                 new Dialog_ConfirmOrder(AcceptedOrderDetails.this,R.style.CustomDialog).show();
 
+            }
+        });
+
+        ditch_quote.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                new Dialog_DitchOffer(AcceptedOrderDetails.this,R.style.CustomDialog).show();
             }
         });
 
@@ -174,6 +183,7 @@ public class AcceptedOrderDetails extends Activity{
                 startActivity(intent);
             }
         });
+
     }
 
     private void initView() {

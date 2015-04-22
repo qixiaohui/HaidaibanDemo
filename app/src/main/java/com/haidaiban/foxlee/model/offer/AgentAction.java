@@ -1,37 +1,40 @@
 package com.haidaiban.foxlee.model.offer;
 
-/**
- * Created by tom on 4/11/15.
- */
+import java.util.ArrayList;
+import java.util.List;
 import javax.annotation.Generated;
 import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
 
 @Generated("org.jsonschema2pojo")
-public class NextState {
+public class AgentAction {
 
+    @SerializedName("next_state")
     @Expose
-    private String flow;
+    private NextState nextState;
     @Expose
     private String description;
     @Expose
     private String name;
+    @Expose
+    private List<Parameter> parameters = new ArrayList<Parameter>();
 
     /**
      *
      * @return
-     * The flow
+     * The nextState
      */
-    public String getFlow() {
-        return flow;
+    public NextState getNextState() {
+        return nextState;
     }
 
     /**
      *
-     * @param flow
-     * The flow
+     * @param nextState
+     * The next_state
      */
-    public void setFlow(String flow) {
-        this.flow = flow;
+    public void setNextState(NextState nextState) {
+        this.nextState = nextState;
     }
 
     /**
@@ -68,6 +71,24 @@ public class NextState {
      */
     public void setName(String name) {
         this.name = name;
+    }
+
+    /**
+     *
+     * @return
+     * The parameters
+     */
+    public List<Parameter> getParameters() {
+        return parameters;
+    }
+
+    /**
+     *
+     * @param parameters
+     * The parameters
+     */
+    public void setParameters(List<Parameter> parameters) {
+        this.parameters = parameters;
     }
 
 }
