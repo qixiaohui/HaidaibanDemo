@@ -20,6 +20,7 @@ import com.haidaiban.foxlee.dialogs.Dialog_AddMoney;
 import com.haidaiban.foxlee.dialogs.Dialog_AddTime;
 import com.haidaiban.foxlee.dialogs.Dialog_ConfirmOrder;
 import com.haidaiban.foxlee.dialogs.Dialog_DitchOffer;
+import com.haidaiban.foxlee.fragments.ChildMethod;
 import com.haidaiban.foxlee.fragments.R;
 import com.haidaiban.foxlee.model.offer.Counterquote;
 import com.haidaiban.foxlee.model.offer.Result;
@@ -88,13 +89,13 @@ public class AcceptedOrderDetails extends Activity{
         ditch_quote.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 new Dialog_DitchOffer(AcceptedOrderDetails.this,R.style.CustomDialog).show();
             }
         });
 
         setData();
     }
+
 
     private void setData() {
         orderDetail = DataHolder.getAcceptedOffer();
@@ -128,6 +129,7 @@ public class AcceptedOrderDetails extends Activity{
             } else if (action.equals(btn_ShareOrder.getText())) {
                 btn_ShareOrder.setVisibility(View.VISIBLE);
             } else if (action.equals(ditch_quote.getText())) {
+                DataHolder.setCustomerAction(acceptedOffer.getTransactionState().getCustomerActions().get(i));
                 ditch_quote.setVisibility(View.VISIBLE);
             }
         }

@@ -6,6 +6,7 @@ import com.haidaiban.foxlee.fragments.DealList;
 import com.haidaiban.foxlee.model.deal.Deal;
 import com.haidaiban.foxlee.model.deal.Result;
 import com.haidaiban.foxlee.model.message.Message;
+import com.haidaiban.foxlee.model.offer.CustomerAction;
 import com.haidaiban.foxlee.model.offer.Offer;
 import com.haidaiban.foxlee.model.order.Order;
 import com.haidaiban.foxlee.model.quotelist.QuoteList;
@@ -34,7 +35,23 @@ public class DataHolder {
     private static Offer offerCanceled;
     private static com.haidaiban.foxlee.model.offer.Result acceptedOffer;
     private static HashMap<String, Deal> limitedDeal = new HashMap<String, Deal>();
+    private static CustomerAction customerAction;
 
+    public static HashMap<String, Deal> getLimitedDeal() {
+        return limitedDeal;
+    }
+
+    public static void setLimitedDeal(HashMap<String, Deal> limitedDeal) {
+        DataHolder.limitedDeal = limitedDeal;
+    }
+
+    public static CustomerAction getCustomerAction() {
+        return customerAction;
+    }
+
+    public static void setCustomerAction(CustomerAction customerAction) {
+        DataHolder.customerAction = customerAction;
+    }
 
     public static Deal getLimitedDeal(String category) {
         return limitedDeal.get(category);

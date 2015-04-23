@@ -46,6 +46,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import java.io.IOException;
+import java.util.StringTokenizer;
 
 /**
  * Created by qixiaohui on 3/8/15.
@@ -338,7 +339,7 @@ public class Webmethod {
         pair = new ArrayList<NameValuePair>();
         pair.add(new BasicNameValuePair("content_type","deal.deal"));
         pair.add(new BasicNameValuePair("object_pk",id));
-        pair.add(new BasicNameValuePair("comment",comment));
+        pair.add(new BasicNameValuePair("comment",new String(comment.getBytes("UTF-8"),"ISO8859-1")));
         httpPost = new HttpPost(Constants.getLOGIN_URL()+"api/comment/write/");
         httpPost.setHeader("Authorization","Token "+token);
         httpPost.setEntity(new UrlEncodedFormEntity(pair));
@@ -400,17 +401,22 @@ public class Webmethod {
         return new Gson().fromJson(response, TransactionLog.class);
     }
 
-    public static int offerUpdateAction(String action, ArrayList<Parameter_> parameters, String uid) throws JSONException, IOException{
+    public static int offerUpdateAction(String action, List<Parameter_> parameters, String uid) throws JSONException, IOException{
         token = getToken();
+        pair = new ArrayList<NameValuePair>();
+        pair.add(new BasicNameValuePair("action",new String(action.getBytes("UTF-8"),"ISO08859-1")));
         httpPost = new HttpPost(Constants.getLOGIN_URL()+"api/offer/transaction/"+uid);
-        httpPost.setHeader("Authorization","Toekn "+token);
-        httpPost.setHeader("action",action);
+        httpPost.setHeader("Authorization","Token "+token);
+        System.out.println(action+"action");
         for(Parameter_ parameter:parameters){
-            httpPost.setHeader(parameter.getName(),parameter.getDescription());
+            pair.add(new BasicNameValuePair(new String(parameter.getName().getBytes("UTF-8"),"ISO08859-1"),new String(parameter.getDescription().getBytes("UTF-8"),"ISO08859-1")));
         }
+        httpPost.setEntity(new UrlEncodedFormEntity(pair));
         httpResponse = httpClient.execute(httpPost);
         entity = httpResponse.getEntity();
         response = EntityUtils.toString(entity,"UTF-8");
+        System.out.println(response);
+        System.out.println(httpResponse.getStatusLine().getStatusCode());
         return httpResponse.getStatusLine().getStatusCode();
     }
 
