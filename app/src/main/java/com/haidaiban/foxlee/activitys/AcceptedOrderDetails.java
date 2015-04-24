@@ -2,8 +2,10 @@ package com.haidaiban.foxlee.activitys;
 
 import android.app.ActionBar;
 import android.app.Activity;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.Html;
 import android.view.Gravity;
@@ -11,7 +13,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.haidaiban.foxlee.Util.DataHolder;
@@ -19,21 +23,27 @@ import com.haidaiban.foxlee.Util.Utility;
 import com.haidaiban.foxlee.dialogs.Dialog_AddMoney;
 import com.haidaiban.foxlee.dialogs.Dialog_AddTime;
 import com.haidaiban.foxlee.dialogs.Dialog_ConfirmOrder;
-import com.haidaiban.foxlee.dialogs.Dialog_DitchOffer;
 import com.haidaiban.foxlee.fragments.ChildMethod;
 import com.haidaiban.foxlee.fragments.R;
 import com.haidaiban.foxlee.model.offer.Counterquote;
+import com.haidaiban.foxlee.model.offer.CustomerAction;
+import com.haidaiban.foxlee.model.offer.Offer;
 import com.haidaiban.foxlee.model.offer.Result;
+import com.haidaiban.foxlee.webMethod.Webmethod;
 
+import org.json.JSONException;
+
+import java.io.IOException;
 import java.lang.reflect.Array;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 /**
  * Created by tom on 4/13/15.
  */
-public class AcceptedOrderDetails extends Activity{
+public class AcceptedOrderDetails extends Activity implements ChildMethod{
 
     private TextView tx_persion_name;
     private TextView tx_persion_adds;
@@ -56,12 +66,24 @@ public class AcceptedOrderDetails extends Activity{
     Intent intent;
     ArrayList<String> customerActions;
     private Result acceptedOffer;
+    private RelativeLayout acceptedOfferDetail;
+    private Offer offersAll;
+    private Offer offerUpdate;
+    private Offer offerPaid;
+    private Offer offerBuying;
+    private Offer offerDelivering;
+    private Offer offerCompleted;
+    private Offer offerCanceled;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.d0offer_details);
         acceptedOffer = DataHolder.getAcceptedOffer();
-
+        offerPaid = new Offer();
+        offerBuying = new Offer();
+        offerDelivering = new Offer();
+        offerCompleted = new Offer();
+        offerCanceled = new Offer();
         initView();
         btn_addMoney.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -89,7 +111,8 @@ public class AcceptedOrderDetails extends Activity{
         ditch_quote.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new Dialog_DitchOffer(AcceptedOrderDetails.this,R.style.CustomDialog).show();
+                new Dialog_DitchOffer(AcceptedOrderDetails.this,R.style.CustomDialog, AcceptedOrderDetails.this
+                ).show();
             }
         });
 
@@ -188,7 +211,13 @@ public class AcceptedOrderDetails extends Activity{
 
     }
 
+    @Override
+    public void getData() {
+        acceptedOfferDetail.invalidate();
+    }
+
     private void initView() {
+        acceptedOfferDetail = (RelativeLayout) findViewById(R.id.acceptedOfferDetail);
         tx_persion_adds  = (TextView) findViewById(R.id.tx_d1_consignee_add);
         tx_persion_name  = (TextView) findViewById(R.id.tx_d1_consignee_name);
         tx_persion_phone  = (TextView) findViewById(R.id.tx_d1_consignee_phone);
@@ -206,5 +235,157 @@ public class AcceptedOrderDetails extends Activity{
         btn_ShareOrder = (Button) findViewById(R.id.btn_shareorder);
         ditch_quote = (Button) findViewById(R.id.ditchQutoe);
 
+    }
+
+    public class Dialog_DitchOffer extends Dialog {
+
+        private Context mContext;
+        private int mTheme = R.style.CustomDialog;
+        private EditText comment;
+        private Button confirm;
+        private Button cancel;
+        private Async async;
+        private CustomerAction customerAction;
+        private Result acceptedOffer;
+        private Webmethod webmethod;
+        private int result;
+        private ChildMethod ownerActivity;
+
+
+        public Dialog_DitchOffer(Context context, int theme, ChildMethod ownerActivity) {
+            super(context, theme);
+            this.mContext = context;
+            this.ownerActivity = ownerActivity;
+        }
+
+        @Override
+        protected void onCreate(Bundle savedInstanceState) {
+            super.onCreate(savedInstanceState);
+            setContentView(R.layout.dialog_d0_ditchoffer);
+            comment = (EditText) findViewById(R.id.et_comment);
+            confirm = (Button) findViewById(R.id.dialog_btn_sentcomment);
+            cancel = (Button) findViewById(R.id.dialog_btn_cancel);
+            webmethod = new Webmethod(getContext());
+            async = new Async();
+
+            confirm.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    customerAction = DataHolder.getCustomerAction();
+                    acceptedOffer = DataHolder.getAcceptedOffer();
+                    async.execute();
+                    Dialog_DitchOffer.this.dismiss();
+                }
+            });
+
+            cancel.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Dialog_DitchOffer.this.dismiss();
+                }
+            });
+
+        }
+
+        public class Async extends AsyncTask<String, String, String> {
+            @Override
+            protected String doInBackground(String... params) {
+                try {
+                    result = webmethod.offerUpdateAction(customerAction.getName(), customerAction.getParameters(), acceptedOffer.getUid());
+                }catch (IOException e){
+
+                }catch (JSONException e){
+
+                }
+                return Integer.toString(result);
+            }
+
+            @Override
+            protected void onPreExecute() {
+                super.onPreExecute();
+            }
+
+            @Override
+            protected void onPostExecute(String s) {
+                super.onPostExecute(s);
+                if(s.equals("200")){
+                    offersAll = DataHolder.getOfferAll();
+
+                    for(int i=0; i<offersAll.getResults().size();i++){
+                        if(offersAll.getResults().get(i).getUid().equals(DataHolder.getAcceptedOffer().getUid())){
+                            offersAll.getResults().remove(i);
+                            offersAll.getResults().add(i,DataHolder.getAcceptedOffer());
+                            DataHolder.setOfferAll(offersAll);
+                            break;
+                        }
+                    }
+                    for(int i=0; i<offersAll.getResults().size(); i++){
+                        if(offersAll
+                                .getResults()
+                                .get(i)
+                                .getTransactionState()
+                                .getState()
+                                .equals(getApplicationContext()
+                                        .getResources()
+                                        .getStringArray(R.array.OrderTitle)[1])
+                                ||offersAll
+                                .getResults()
+                                .get(i)
+                                .getTransactionState()
+                                .getState()
+                                .equals(getApplicationContext()
+                                        .getResources()
+                                        .getString(R.string.paiedDeposit))){
+                            offerPaid.getResults().add(offersAll.getResults().get(i));
+                        }else if(offersAll
+                                .getResults()
+                                .get(i)
+                                .getTransactionState()
+                                .getState()
+                                .equals(getApplicationContext()
+                                        .getResources()
+                                        .getStringArray(R.array.OrderTitle)[2])){
+                            offerBuying.getResults().add(offersAll.getResults().get(i));
+                        }else if(offersAll
+                                .getResults()
+                                .get(i)
+                                .getTransactionState()
+                                .getState()
+                                .equals(getApplicationContext()
+                                        .getResources()
+                                        .getStringArray(R.array.OrderTitle)[3])){
+                            offerDelivering.getResults().add(offersAll.getResults().get(i));
+                        }else if(offersAll
+                                .getResults()
+                                .get(i)
+                                .getTransactionState()
+                                .getState()
+                                .equals(getApplicationContext()
+                                        .getResources()
+                                        .getStringArray(R.array.OrderTitle)[4])){
+                            offerCompleted.setResults(new ArrayList<Result>());
+                            offerCompleted.getResults().add(offersAll.getResults().get(i));
+                        }else if(offersAll
+                                .getResults()
+                                .get(i)
+                                .getTransactionState()
+                                .getState()
+                                .equals(getApplicationContext()
+                                        .getResources()
+                                        .getStringArray(R.array.OrderTitle)[5])){
+                            offerCanceled.getResults().add(offersAll.getResults().get(i));
+                        }
+                    }
+                    DataHolder.setOfferPaid(offerPaid);
+                    DataHolder.setOfferDelivering(offerDelivering);
+                    DataHolder.setOfferBuying(offerBuying);
+                    DataHolder.setOfferComplete(offerCompleted);
+                    DataHolder.setOfferCanceled(offerCanceled);
+
+
+                    ownerActivity.getData();
+                }
+            }
+        }
     }
 }

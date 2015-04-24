@@ -6,6 +6,7 @@ import android.os.Looper;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
+import com.haidaiban.foxlee.Util.DataHolder;
 import com.haidaiban.foxlee.config.Constants;
 import com.haidaiban.foxlee.model.comment.Comment;
 import com.haidaiban.foxlee.model.deal.Deal;
@@ -417,6 +418,9 @@ public class Webmethod {
         response = EntityUtils.toString(entity,"UTF-8");
         System.out.println(response);
         System.out.println(httpResponse.getStatusLine().getStatusCode());
+        if(httpResponse.getStatusLine().getStatusCode() == 200){
+            DataHolder.setAcceptedOffer(new Gson().fromJson(response, com.haidaiban.foxlee.model.offer.Result.class));
+        }
         return httpResponse.getStatusLine().getStatusCode();
     }
 

@@ -82,6 +82,10 @@ public class D0_OrderFragment extends Fragment{
         }
     }
 
+    public void sortCategory(){
+
+    }
+
     public void setTitle(String title){
         this.title = title;
     }
