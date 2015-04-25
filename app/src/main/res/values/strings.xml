@@ -288,7 +288,16 @@
     </string-array>
 
 
+    <!--E0-->
+    <string name="cashsum">资金总额</string>
+    <string name="cashnumber">123456.00</string>
 
+    <string name="cashout">提现</string>
+    <string name="cashin">充值</string>
+
+    <string name="myredcash">我的红包</string>
+    <string name="mycoupon">我的优惠券</string>
+    <string name="mymoneypassword">设置交易密码</string>
 
 
 

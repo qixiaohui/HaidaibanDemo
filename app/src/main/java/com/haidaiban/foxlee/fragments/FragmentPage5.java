@@ -10,9 +10,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.haidaiban.foxlee.activitys.E1_MyMoney_Activity;
 import com.haidaiban.foxlee.activitys.Login_Activity;
 import com.haidaiban.foxlee.webMethod.Webmethod;
 import com.securepreferences.SecurePreferences;
@@ -31,6 +33,11 @@ public class FragmentPage5 extends Fragment{
     private static SharedPreferences sharedPreferences;
     private static SharedPreferences.Editor editor;
     private static Intent intent;
+
+    private LinearLayout myMoney ;
+
+
+
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
@@ -75,6 +82,18 @@ public class FragmentPage5 extends Fragment{
 //                login.execute();
 //            }
 //        });
+
+        myMoney = (LinearLayout) getActivity().findViewById(R.id.linearLayout_mymoney);
+
+        myMoney.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getActivity(), E1_MyMoney_Activity.class);
+                startActivity(i);
+            }
+        });
+
+
     }
 
 }

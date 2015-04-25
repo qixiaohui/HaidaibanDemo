@@ -8,6 +8,11 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
+    <meta-data
+        android:name="EASEMOB_APPKEY"
+        android:value="hangzhousanqtech#fatcatnet"
+        />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -25,6 +30,10 @@
             </intent-filter>
         </activity>
 
+        <activity android:name="com.haidaiban.foxlee.activitys.E1_MyMoney_Activity"
+            android:windowSoftInputMode="adjustPan|stateHidden"
+
+            ></activity>
         <activity android:name="com.haidaiban.foxlee.activitys.MainTabActivity"
             android:windowSoftInputMode="adjustPan|stateHidden"
             ></activity>
