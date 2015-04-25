@@ -13,19 +13,17 @@
         android:orientation="vertical">
         <!-- 资金总额-->
         <TextView
-            android:layout_height="0dp"
+            android:layout_height="wrap_content"
             android:layout_width="wrap_content"
-            android:layout_weight="0.3"
             android:text="@string/cashsum"
+            android:layout_marginTop="10dp"
             android:textSize="@dimen/medium_text_size"
             android:layout_marginLeft="20dp"
-            android:layout_marginTop="10dp"
             android:textColor="@color/white"
             ></TextView>
         <LinearLayout
-            android:layout_height="0dp"
+            android:layout_height="wrap_content"
             android:layout_width="match_parent"
-            android:layout_weight="1"
             android:orientation="horizontal"
             android:weightSum="1">
             <TextView
@@ -40,12 +38,11 @@
             <HorizontalScrollView
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
-
                 >
             <TextView
                 android:text="@string/cashnumber"
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:textColor="@color/white"
                 android:textSize="@dimen/exlarge_text_size"
                 android:gravity="left"
