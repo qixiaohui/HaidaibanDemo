@@ -121,6 +121,7 @@ public class DealList extends Fragment{
         protected String doInBackground(String... params) {
             try {
                 webmethod = new Webmethod(getParentFragment().getActivity());
+                deals = DataHolder.getLimitedDeal(category);
                 if(params[0].equals("first load")) {
                     deals = webmethod.getDeals(category);
                     DataHolder.setLimitedDeal(category,deals);
