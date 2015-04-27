@@ -8,12 +8,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.haidaiban.foxlee.Util.DataHolder;
 import com.haidaiban.foxlee.Util.Utility;
 import com.haidaiban.foxlee.activitys.AcceptedOrderDetails;
+import com.haidaiban.foxlee.activitys.HuanXinMessaging;
 import com.haidaiban.foxlee.config.Constants;
 import com.haidaiban.foxlee.fragments.R;
 import com.haidaiban.foxlee.model.offer.Offer;
@@ -72,6 +74,7 @@ public class AcceptedOrderListAdapter extends BaseAdapter {
             viewHolder.dealName = (TextView) view.findViewById(R.id.dealName);
             viewHolder.avatar = (ImageView) view.findViewById(R.id.avatar);
             viewHolder.agentName = (TextView) view.findViewById(R.id.agentName);
+            viewHolder.agent = (LinearLayout) view.findViewById(R.id.agent);
             view.setTag(viewHolder);
         }else {
             viewHolder = (ViewHolder) view.getTag();
@@ -158,6 +161,15 @@ public class AcceptedOrderListAdapter extends BaseAdapter {
                 context.startActivity(intent);
             }
         });
+
+        viewHolder.agent.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                intent = new Intent(context, HuanXinMessaging.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                context.startActivity(intent);
+            }
+        });
         return view;
     }
 
@@ -169,5 +181,6 @@ public class AcceptedOrderListAdapter extends BaseAdapter {
         TextView dealName;
         ImageView dealImage;
         TextView agentName;
+        LinearLayout agent;
     }
 }

@@ -74,6 +74,7 @@
             android:layout_width="wrap_content"
             android:orientation="horizontal"
             android:gravity="center"
+            android:id="@+id/agent"
             android:layout_toRightOf="@id/index_miaosha_image_layout"
             android:layout_below="@id/dealName">
             <ImageView

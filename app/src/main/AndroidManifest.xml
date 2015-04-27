@@ -8,16 +8,15 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
-    <meta-data
-        android:name="EASEMOB_APPKEY"
-        android:value="hangzhousanqtech#fatcatnet"
-        />
-
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+        <meta-data
+            android:name="EASEMOB_APPKEY"
+            android:value="hangzhousanqtech#fatcatnet"
+            />
         <activity
             android:name="com.haidaiban.foxlee.activitys.Login_Activity"
             android:windowSoftInputMode="adjustPan|stateHidden"
@@ -59,6 +58,9 @@
             android:windowSoftInputMode="adjustPan|stateHidden"></activity>
         <activity
             android:name="com.haidaiban.foxlee.activitys.AcceptedOrderDetails"
+            android:windowSoftInputMode="adjustPan|stateHidden"></activity>
+        <activity
+            android:name="com.haidaiban.foxlee.activitys.HuanXinMessaging"
             android:windowSoftInputMode="adjustPan|stateHidden"></activity>
         <activity
             android:name="com.haidaiban.foxlee.activitys.Search_Activity"
