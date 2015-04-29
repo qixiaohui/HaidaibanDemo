@@ -289,6 +289,9 @@
 
 
     <!--E0-->
+    <string name="profile_username">用户名</string>
+    <string name="profile_usermoney">账户余额 ：</string>
+
     <string name="cashsum">资金总额</string>
     <string name="cashnumber">123456.00</string>
 
