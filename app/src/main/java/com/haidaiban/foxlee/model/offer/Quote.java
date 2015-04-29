@@ -22,7 +22,7 @@ public class Quote {
     @Expose
     private Object image2;
     @Expose
-    private Object recommendation;
+    private Recommendation recommendation;
     @SerializedName("is_submitted")
     @Expose
     private Boolean isSubmitted;
@@ -156,7 +156,7 @@ public class Quote {
      * @return
      * The recommendation
      */
-    public Object getRecommendation() {
+    public Recommendation getRecommendation() {
         return recommendation;
     }
 
@@ -165,7 +165,7 @@ public class Quote {
      * @param recommendation
      * The recommendation
      */
-    public void setRecommendation(Object recommendation) {
+    public void setRecommendation(Recommendation recommendation) {
         this.recommendation = recommendation;
     }
 
