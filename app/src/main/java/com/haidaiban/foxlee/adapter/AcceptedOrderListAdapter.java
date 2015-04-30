@@ -15,7 +15,6 @@ import android.widget.Toast;
 import com.haidaiban.foxlee.Util.DataHolder;
 import com.haidaiban.foxlee.Util.Utility;
 import com.haidaiban.foxlee.activitys.AcceptedOrderDetails;
-import com.haidaiban.foxlee.activitys.HuanXinMessaging;
 import com.haidaiban.foxlee.config.Constants;
 import com.haidaiban.foxlee.fragments.R;
 import com.haidaiban.foxlee.model.offer.Offer;
@@ -162,14 +161,6 @@ public class AcceptedOrderListAdapter extends BaseAdapter {
             }
         });
 
-        viewHolder.agent.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                intent = new Intent(context, HuanXinMessaging.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                context.startActivity(intent);
-            }
-        });
         return view;
     }
 
