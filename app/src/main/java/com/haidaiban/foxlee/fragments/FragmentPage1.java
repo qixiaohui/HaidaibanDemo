@@ -17,10 +17,6 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 
-import com.daimajia.slider.library.SliderLayout;
-import com.daimajia.slider.library.Animations.DescriptionAnimation;
-import com.daimajia.slider.library.SliderTypes.TextSliderView;
-import com.daimajia.slider.library.SliderTypes.BaseSliderView;
 import com.haidaiban.foxlee.Util.DataHolder;
 import com.haidaiban.foxlee.activitys.Activity_PriceFill;
 import com.haidaiban.foxlee.activitys.LimitedTimeOffer;
@@ -32,8 +28,6 @@ import com.haidaiban.foxlee.webMethod.Webmethod;
 public class FragmentPage1 extends Fragment{
 
     private View view;
-
-    private SliderLayout slider;
 
     private Context context;
     private ImageView mBtn_discount;
@@ -81,7 +75,6 @@ public class FragmentPage1 extends Fragment{
 
     private void initView() {
 
-        slider = (SliderLayout)view.findViewById(R.id.slider);
         mBtn_discount = (ImageView) view.findViewById(R.id.btn_new_discount);
         mBtn_fillprice = (ImageView) view.findViewById(R.id.btn_fillprice);
         loading = (RelativeLayout) view.findViewById(R.id.loadingPanel);
@@ -93,7 +86,6 @@ public class FragmentPage1 extends Fragment{
     public void onAttach(Activity activity) {
         super.onAttach(activity);
 
-        System.out.println("on attachment"+slider);
         if(DataHolder.getMessage() != null){
             message = DataHolder.getMessage();
         }
@@ -131,12 +123,7 @@ public class FragmentPage1 extends Fragment{
             loading.setVisibility(View.GONE);
             HashMap<String, String> urlMap = new HashMap<String,String>();
             for(Result result : message.getResults()){
-                TextSliderView sliderView = new TextSliderView(context);
-                sliderView
-                        .description(result.getMessage())
-                        .image(Constants.getLOGIN_URL()+result.getImage())
-                        .setScaleType(BaseSliderView.ScaleType.Fit);
-                slider.addSlider(sliderView);
+
             }
 //            urlMap.put("Haniba","http://static2.hypable.com/wp-content/uploads/2013/12/hannibal-season-2-release-date.jpg");
 //            urlMap.put("big bang","http://tvfiles.alphacoders.com/100/hdclearart-10.png");
@@ -150,10 +137,6 @@ public class FragmentPage1 extends Fragment{
 //            fileMap.put("game of throne",R.drawable.game_of_thrones);
 
 
-            slider.setPresetTransformer(SliderLayout.Transformer.Accordion);
-            slider.setPresetIndicator(SliderLayout.PresetIndicators.Center_Bottom);
-            slider.setCustomAnimation(new DescriptionAnimation());
-            slider.setDuration(4000);
 
         }
     }

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.haidaiban.foxlee.fragments">
     <!--for action bar tab listener min version is 11-->
     <uses-sdk android:minSdkVersion="11" />
@@ -12,6 +13,7 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        tools:replace="android:icon"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
         <meta-data
             android:name="EASEMOB_APPKEY"
@@ -68,7 +70,20 @@
                 <action android:name="android.intent.action.SEARCH" />
             </intent-filter>
 
-            </activity>
+        </activity>
+        <activity android:name="com.haidaiban.foxlee.rong_cloud.ConversationActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data
+                    android:host="com.haidaiban.foxlee.rong_cloud"
+                    android:pathPrefix="/conversation/"
+                    android:scheme="rong" />
+            </intent-filter>
+
+        </activity>
     </application>
 
 

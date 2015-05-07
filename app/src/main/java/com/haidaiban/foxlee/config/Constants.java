@@ -9,21 +9,19 @@ public class Constants {
 
     public static String APP_NAME ="";
 
-    public static String LOGIN_URL ="https://stage.sanqtech.com:7443/";
+    public static final String LOGIN_URL ="https://stage.sanqtech.com:7443/";
+
+    public static final String rongClourPubKey = "pwe86ga5els76";
 
     public static String getAPP_NAME() {
         return APP_NAME;
-    }
-
-    public static void setAPP_NAME(String APP_NAME) {
-        Constants.APP_NAME = APP_NAME;
     }
 
     public static String getLOGIN_URL() {
         return LOGIN_URL;
     }
 
-    public static void setLOGIN_URL(String LOGIN_URL) {
-        Constants.LOGIN_URL = LOGIN_URL;
+    public static String getRongClourPubKey() {
+        return rongClourPubKey;
     }
 }

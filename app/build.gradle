@@ -28,7 +28,6 @@ dependencies {
     compile 'com.android.support:support-v4:+'
     compile 'com.squareup.picasso:picasso:2.3.2'
     compile 'com.nineoldandroids:library:2.4.0'
-    compile 'com.daimajia.slider:library:1.1.2@aar'
     compile 'com.etsy.android.grid:library:1.0.5'
     compile 'com.loopj.android:android-async-http:1.4.5'
     compile 'com.scottyab:secure-preferences-lib:0.0.4'
@@ -37,4 +36,5 @@ dependencies {
     compile 'com.google.code.gson:gson:1.7.2'
     compile 'org.apache.httpcomponents:httpclient-android:4.3.5.1'
     compile files('/home/tom/workspace/Haidaiban/HaidaibanDemo/libs/easemobchat_2.1.8.jar')
+    compile project(':IMkit')
 }

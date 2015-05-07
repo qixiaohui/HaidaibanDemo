@@ -3,11 +3,13 @@ package com.haidaiban.foxlee.activitys;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTabHost;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TabHost.TabSpec;
 
+import com.haidaiban.foxlee.config.Constants;
 import com.haidaiban.foxlee.fragments.C_SentedOfferFragment;
 import com.haidaiban.foxlee.fragments.D0_OrderFragment;
 import com.haidaiban.foxlee.fragments.FragmentPage1;
@@ -15,13 +17,16 @@ import com.haidaiban.foxlee.fragments.FragmentPage2;
 import com.haidaiban.foxlee.fragments.FragmentPage5;
 import com.haidaiban.foxlee.fragments.R;
 
+import io.rong.imkit.RongIM;
+import io.rong.imlib.RongIMClient;
+
 /**
  * ji li 3.2.2015
  */
 public class MainTabActivity extends FragmentActivity{	
 	private FragmentTabHost mTabHost;
-
 	private LayoutInflater layoutInflater;
+    private String rongCloudPubKey;
 		
 	// each fragment
 	private Class fragmentArray[] = {FragmentPage1.class,FragmentPage2.class,C_SentedOfferFragment.class,D0_OrderFragment.class,FragmentPage5.class};
@@ -38,6 +43,8 @@ public class MainTabActivity extends FragmentActivity{
         setContentView(R.layout.main_tab_layout);
         
         initView();
+
+        registerRongCloud();
     }
 	 
 
@@ -56,6 +63,26 @@ public class MainTabActivity extends FragmentActivity{
 		}
         mTabHost.setBackgroundColor(getResources().getColor(R.color.white));
 	}
+
+    private void registerRongCloud(){
+
+        //initizlize rongyun
+        RongIM.init(this);
+        //access api pub key
+        rongCloudPubKey = Constants.getRongClourPubKey();
+        //setup connection with rongyun server
+        RongIM.connect(rongCloudPubKey, new RongIMClient.ConnectCallback() {
+            @Override
+            public void onSuccess(String userId) {
+                Log.e("MainActivity", "------onSuccess----" + userId);
+            }
+
+            @Override
+            public void onError(RongIMClient.ErrorCode errorCode) {
+                Log.e("Connection error",errorCode.toString());
+            }
+        });
+    }
 
 	private View getTabItemView(int index){
 		View view = layoutInflater.inflate(R.layout.tab_item_view, null);

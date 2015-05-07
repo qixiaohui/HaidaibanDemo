@@ -22,6 +22,8 @@ import com.squareup.picasso.Picasso;
 
 import java.text.ParseException;
 
+import io.rong.imkit.RongIM;
+
 /**
  * Created by tom on 4/11/15.
  */
@@ -158,6 +160,15 @@ public class AcceptedOrderListAdapter extends BaseAdapter {
                 intent = new Intent(context, AcceptedOrderDetails.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 context.startActivity(intent);
+            }
+        });
+
+        viewHolder.agent.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (RongIM.getInstance() != null) {
+                    RongIM.getInstance().startPrivateChat(context, "2462", "hello");
+                }
             }
         });
 
