@@ -1,5 +1,6 @@
 package com.haidaiban.foxlee.adapter;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
@@ -15,6 +16,7 @@ import android.widget.Toast;
 import com.haidaiban.foxlee.Util.DataHolder;
 import com.haidaiban.foxlee.Util.Utility;
 import com.haidaiban.foxlee.activitys.AcceptedOrderDetails;
+import com.haidaiban.foxlee.activitys.MainTabActivity;
 import com.haidaiban.foxlee.config.Constants;
 import com.haidaiban.foxlee.fragments.R;
 import com.haidaiban.foxlee.model.offer.Offer;
@@ -36,12 +38,14 @@ public class AcceptedOrderListAdapter extends BaseAdapter {
     String status;
     String time;
     Intent intent;
+    Activity activity;
 
-    public AcceptedOrderListAdapter(Context context, Offer acceptedOffers, int index) {
+    public AcceptedOrderListAdapter(Context context, Offer acceptedOffers, int index, Activity activity) {
         this.context = context;
         this.acceptedOffers = acceptedOffers;
         this.inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         this.index = index;
+        this.activity = activity;
     }
 
     @Override
@@ -167,7 +171,7 @@ public class AcceptedOrderListAdapter extends BaseAdapter {
             @Override
             public void onClick(View v) {
                 if (RongIM.getInstance() != null) {
-                    RongIM.getInstance().startPrivateChat(context, "2462", "hello");
+                    RongIM.getInstance().startPrivateChat(activity, "2462", "hello");
                 }
             }
         });

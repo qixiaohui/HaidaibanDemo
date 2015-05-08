@@ -41,7 +41,6 @@ public class FragmentPage1 extends Fragment{
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 
-
         context = container.getContext();
 
 
