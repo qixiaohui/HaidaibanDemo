@@ -71,14 +71,15 @@
             </intent-filter>
 
         </activity>
-        <activity android:name="com.haidaiban.foxlee.rong_cloud.ConversationActivity">
+        <activity android:name="com.haidaiban.foxlee.rong_cloud.ConversationActivity"
+            android:theme="@style/Theme.AppCompat.Light.DarkActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
 
                 <category android:name="android.intent.category.DEFAULT" />
 
                 <data
-                    android:host="com.haidaiban.foxlee.rong_cloud"
+                    android:host="com.haidaiban.foxlee.haidaibandemo"
                     android:pathPrefix="/conversation/"
                     android:scheme="rong" />
             </intent-filter>
