@@ -1,0 +1,192 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical"
+              android:background="#ECECEC"
+        >
+
+
+    <View
+            android:layout_height="0dp"
+            android:layout_weight="0.2"
+            android:layout_width="match_parent"
+            />
+    <LinearLayout
+            android:layout_height="0dp"
+            android:layout_weight="0.5"
+            android:layout_width="match_parent"
+            android:background="@color/white"
+            android:orientation="horizontal"
+            >
+        <TextView
+                android:layout_height="match_parent"
+                android:layout_width="100dp"
+                android:text="@string/my_adds_province"
+                android:gravity="left|center"
+                android:layout_marginLeft="15dp"
+                android:textSize="@dimen/medium_text_size"
+
+                android:textColor="#7F7F7F"
+                ></TextView>
+        <EditText
+                android:id="@+id/et_adds_province"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+
+                />
+
+    </LinearLayout>
+    <View
+            android:layout_height="1dp"
+            android:layout_width="match_parent"
+            />
+    <LinearLayout
+            android:layout_height="0dp"
+            android:layout_weight="0.5"
+            android:layout_width="match_parent"
+            android:background="@color/white"
+            >
+        <TextView
+                android:layout_height="match_parent"
+                android:layout_width="100dp"
+                android:text="@string/my_adds_town"
+                android:gravity="left|center"
+                android:layout_marginLeft="15dp"
+                android:textSize="@dimen/medium_text_size"
+                android:textColor="#7F7F7F"
+                ></TextView>
+            <EditText
+                    android:id="@+id/et_adds_street"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+
+                    />
+
+
+
+    </LinearLayout>
+    <View
+            android:layout_height="1dp"
+            android:layout_width="match_parent"
+            />
+    <LinearLayout
+            android:layout_height="0dp"
+            android:layout_weight="0.5"
+            android:layout_width="match_parent"
+            android:background="@color/white"
+            >
+        <TextView
+                android:layout_height="match_parent"
+                android:layout_width="100dp"
+                android:text="@string/my_adds_details"
+                android:gravity="left|center"
+                android:layout_marginLeft="15dp"
+                android:textSize="@dimen/medium_text_size"
+                android:textColor="#7F7F7F"
+                ></TextView>
+            <EditText
+                    android:id="@+id/et_adds_details"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+
+                    />
+
+
+    </LinearLayout>
+    <LinearLayout
+            android:layout_height="0dp"
+            android:layout_weight="0.5"
+            android:layout_width="match_parent"
+            android:background="@color/white"
+            >
+        <TextView
+                android:layout_height="match_parent"
+                android:layout_width="100dp"
+                android:text="@string/my_adds_person_name"
+                android:gravity="left|center"
+                android:layout_marginLeft="15dp"
+                android:textSize="@dimen/medium_text_size"
+                android:textColor="#7F7F7F"
+                ></TextView>
+            <EditText
+                    android:id="@+id/et_adds_person"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+
+                    />
+
+
+    </LinearLayout>
+    <LinearLayout
+            android:layout_height="0dp"
+            android:layout_weight="0.5"
+            android:layout_width="match_parent"
+            android:background="@color/white"
+            >
+        <TextView
+                android:layout_height="match_parent"
+                android:layout_width="100dp"
+                android:text="@string/my_adds_person_phone_num"
+                android:gravity="left|center"
+                android:layout_marginLeft="15dp"
+                android:textSize="@dimen/medium_text_size"
+                android:textColor="#7F7F7F"
+                ></TextView>
+            <EditText
+                    android:id="@+id/et_adds_person_phone_number"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+
+                    />
+
+
+    </LinearLayout>
+    <LinearLayout
+            android:layout_height="0dp"
+            android:layout_weight="0.5"
+            android:layout_width="match_parent"
+            android:background="@color/white"
+            >
+            <CheckBox
+                    android:layout_height="21dp"
+                    android:layout_width="30dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_gravity="center_vertical"></CheckBox>
+        <TextView
+                android:layout_height="match_parent"
+                android:layout_width="0dp"
+                android:layout_weight="0.2"
+                android:text="@string/my_adds_set_default"
+                android:gravity="left|center"
+                android:layout_marginLeft="40dp"
+                android:textSize="@dimen/medium_text_size"
+                android:textColor="#7F7F7F"
+                ></TextView>
+    </LinearLayout>
+        <LinearLayout
+            android:layout_height="0dp"
+            android:layout_weight="0.5"
+            android:layout_width="match_parent"
+            android:background="@color/white"
+            >
+        <TextView
+                android:id="@+id/tx_my_add_save"
+                android:layout_height="match_parent"
+                android:layout_width="0dp"
+                android:layout_weight="0.2"
+                android:text="@string/my_save"
+                android:gravity="center"
+                android:textSize="@dimen/medium_text_size"
+                android:textColor="@color/white"
+                android:background="@color/skyblue"
+                ></TextView>
+
+    </LinearLayout>
+
+
+</LinearLayout>
