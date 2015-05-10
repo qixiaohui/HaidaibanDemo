@@ -302,6 +302,17 @@
     <string name="mycoupon">我的优惠券</string>
     <string name="mymoneypassword">设置交易密码</string>
 
+    <!-- 地址-->
+    <string name="my_adds_province">省市区</string>
+    <string name="my_adds_town">乡镇/街道</string>
+    <string name="my_adds_details">详细地址</string>
+    <string name="my_adds_person_name">收件人</string>
+    <string name="my_adds_person_phone_num">手机号</string>
+    <string name="my_adds_set_default">设置为默认收货地址</string>
+    <string name="my_save">保存</string>
+
+
+
 
 
 </resources>

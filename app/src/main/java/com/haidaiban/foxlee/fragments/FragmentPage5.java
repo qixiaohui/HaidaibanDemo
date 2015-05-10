@@ -10,10 +10,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.haidaiban.foxlee.activitys.E1_MyAddress_Activity;
 import com.haidaiban.foxlee.activitys.E1_MyMoney_Activity;
 import com.haidaiban.foxlee.activitys.Login_Activity;
 import com.haidaiban.foxlee.webMethod.Webmethod;
@@ -34,12 +36,12 @@ public class FragmentPage5 extends Fragment{
     private static SharedPreferences.Editor editor;
     private static Intent intent;
 
-    private LinearLayout myMoney ;
+    private FrameLayout myMoney ;
+
+    private FrameLayout myAdds;
 
 
-
-
-	@Override
+    @Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
         view  = inflater.inflate(R.layout.e0_profile_head, null);
 		return view;
@@ -83,12 +85,20 @@ public class FragmentPage5 extends Fragment{
 //            }
 //        });
 
-        myMoney = (LinearLayout) getActivity().findViewById(R.id.linearLayout_mymoney);
+        myMoney = (FrameLayout) getActivity().findViewById(R.id.profile_head_payment);
+        myAdds = (FrameLayout) getActivity().findViewById(R.id.profile_head_ship);
 
         myMoney.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(getActivity(), E1_MyMoney_Activity.class);
+                startActivity(i);
+            }
+        });
+        myAdds.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getActivity(), E1_MyAddress_Activity.class);
                 startActivity(i);
             }
         });
