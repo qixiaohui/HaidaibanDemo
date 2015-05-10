@@ -11,7 +11,7 @@ public class Constants {
 
     public static final String LOGIN_URL ="https://stage.sanqtech.com:7443/";
 
-    public static final String rongClourPubKey = "pwe86ga5els76";
+    public static final String rongClourPubKey = "K46W22cdG0oHGt7I4PVF4WAwJU2GddqpEYRSJl2JdjPuwTriFLXASIPCSG1PtDVX1p4lSyqG1QHZsH7gX/4aDA==";
 
     public static String getAPP_NAME() {
         return APP_NAME;
