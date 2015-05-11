@@ -95,10 +95,6 @@ public class Login_Activity extends Activity {
                         }
                     });
 
-                    intent = new Intent(getApplicationContext(),MainTabActivity.class);
-                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                    startActivity(intent);
-                    finish();
                 }
 //                }else{
 //                    Toast.makeText(getActivity().getApplicationContext(),"Already login",Toast.LENGTH_SHORT).show();
@@ -140,8 +136,14 @@ public class Login_Activity extends Activity {
             try {
                 rongToken = webMethod.getRongToken();
                 editor = sharedPreferences.edit();
+                System.out.println(rongToken.getToken());
                 editor.putString("RongToken",rongToken.getToken());
                 editor.commit();
+
+                intent = new Intent(getApplicationContext(),MainTabActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
+                finish();
             }catch (IOException e){
 
             }
