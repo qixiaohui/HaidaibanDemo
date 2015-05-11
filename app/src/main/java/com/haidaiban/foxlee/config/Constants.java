@@ -1,5 +1,10 @@
 package com.haidaiban.foxlee.config;
 
+import android.content.Context;
+import android.content.SharedPreferences;
+
+import com.securepreferences.SecurePreferences;
+
 /**
  * Created by jili on 3/8/15.
  *
@@ -11,7 +16,15 @@ public class Constants {
 
     public static final String LOGIN_URL ="https://stage.sanqtech.com:7443/";
 
-    public static final String rongClourPubKey = "K46W22cdG0oHGt7I4PVF4WAwJU2GddqpEYRSJl2JdjPuwTriFLXASIPCSG1PtDVX1p4lSyqG1QHZsH7gX/4aDA==";
+    private static SharedPreferences sharedPreferences;
+
+    public static String getToken(Context context){
+        if(sharedPreferences == null){
+            sharedPreferences = new SecurePreferences(context);
+        }
+
+        return sharedPreferences.getString("RongToken",null);
+    }
 
     public static String getAPP_NAME() {
         return APP_NAME;
@@ -21,7 +34,4 @@ public class Constants {
         return LOGIN_URL;
     }
 
-    public static String getRongClourPubKey() {
-        return rongClourPubKey;
-    }
 }

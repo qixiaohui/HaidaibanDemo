@@ -12,6 +12,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.haidaiban.foxlee.fragments.R;
+import com.haidaiban.foxlee.model.token.Token;
 import com.haidaiban.foxlee.webMethod.Webmethod;
 import com.securepreferences.SecurePreferences;
 
@@ -33,6 +34,7 @@ public class Login_Activity extends Activity {
     private static SharedPreferences sharedPreferences;
     private static SharedPreferences.Editor editor;
     private static Intent intent;
+    private static Token rongToken;
 
     @Override
     protected void onStart() {
@@ -80,6 +82,9 @@ public class Login_Activity extends Activity {
                     editor.putString("userName",params[0]);
                     editor.putString("password",params[1]);
                     editor.commit();
+                    tokenAsync tokenAsync = new tokenAsync();
+                    tokenAsync.execute();
+
                     runOnUiThread(new Runnable() {
 
                         @Override
@@ -115,6 +120,34 @@ public class Login_Activity extends Activity {
             return null;
         }
 
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+        }
+    }
+
+    public class tokenAsync extends AsyncTask<String, String, String>{
+
+        @Override
+        protected String doInBackground(String... params) {
+            final Webmethod webMethod = new Webmethod(getApplicationContext());
+            try {
+                rongToken = webMethod.getRongToken();
+                editor = sharedPreferences.edit();
+                editor.putString("RongToken",rongToken.getToken());
+                editor.commit();
+            }catch (IOException e){
+
+            }
+
+            return null;
+        }
 
         @Override
         protected void onPreExecute() {

@@ -171,7 +171,7 @@ public class AcceptedOrderListAdapter extends BaseAdapter {
             @Override
             public void onClick(View v) {
                 if (RongIM.getInstance() != null) {
-                    RongIM.getInstance().startPrivateChat(activity, "12345", "hello");
+                    RongIM.getInstance().startPrivateChat(activity, acceptedOffers.getResults().get(index).getAgent().getUser().toString(), "hello");
                 }
             }
         });

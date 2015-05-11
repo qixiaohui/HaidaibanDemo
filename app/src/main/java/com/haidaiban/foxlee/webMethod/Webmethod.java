@@ -18,6 +18,7 @@ import com.haidaiban.foxlee.model.order.Order;
 import com.haidaiban.foxlee.model.quotelist.QuoteList;
 import com.haidaiban.foxlee.model.quotelist.Result;
 import com.haidaiban.foxlee.model.states.States;
+import com.haidaiban.foxlee.model.token.Token;
 import com.haidaiban.foxlee.model.transactionlog.TransactionLog;
 import com.securepreferences.SecurePreferences;
 
@@ -424,6 +425,14 @@ public class Webmethod {
         return httpResponse.getStatusLine().getStatusCode();
     }
 
-
+    public static Token getRongToken()throws IOException{
+        token = getToken();
+        httpGet = new HttpGet(Constants.getLOGIN_URL()+"api/rt/user/gettoken/");
+        httpGet.setHeader("Authorization","Token "+token);
+        httpResponse = httpClient.execute(httpGet);
+        entity = httpResponse.getEntity();
+        response = EntityUtils.toString(entity,"UTF-8");
+        return new Gson().fromJson(response, Token.class);
+    }
 
 }

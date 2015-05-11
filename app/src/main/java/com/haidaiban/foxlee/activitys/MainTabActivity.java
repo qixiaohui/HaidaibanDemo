@@ -68,7 +68,7 @@ public class MainTabActivity extends FragmentActivity{
     private void registerRongCloud(){
 
         //access api pub key
-        rongCloudPubKey = Constants.getRongClourPubKey();
+        rongCloudPubKey = Constants.getToken(getApplicationContext());
         //setup connection with rongyun server
         RongIM.connect(rongCloudPubKey, new RongIMClient.ConnectCallback() {
             @Override
