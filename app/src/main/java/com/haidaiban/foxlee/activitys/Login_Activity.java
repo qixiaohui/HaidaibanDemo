@@ -12,6 +12,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.haidaiban.foxlee.fragments.R;
+import com.haidaiban.foxlee.model.profile.UserProfile;
 import com.haidaiban.foxlee.model.token.Token;
 import com.haidaiban.foxlee.webMethod.Webmethod;
 import com.securepreferences.SecurePreferences;
@@ -35,6 +36,7 @@ public class Login_Activity extends Activity {
     private static SharedPreferences.Editor editor;
     private static Intent intent;
     private static Token rongToken;
+    private static UserProfile profile;
 
     @Override
     protected void onStart() {
@@ -84,6 +86,9 @@ public class Login_Activity extends Activity {
                     editor.commit();
                     tokenAsync tokenAsync = new tokenAsync();
                     tokenAsync.execute();
+
+                    checkAgent checkAgent = new checkAgent();
+                    checkAgent.execute();
 
                     runOnUiThread(new Runnable() {
 
@@ -135,19 +140,47 @@ public class Login_Activity extends Activity {
             final Webmethod webMethod = new Webmethod(getApplicationContext());
             try {
                 rongToken = webMethod.getRongToken();
-                editor = sharedPreferences.edit();
+                editor=sharedPreferences.edit();
                 System.out.println(rongToken.getToken());
                 editor.putString("RongToken",rongToken.getToken());
                 editor.commit();
 
-                intent = new Intent(getApplicationContext(),MainTabActivity.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(intent);
                 finish();
             }catch (IOException e){
 
             }
 
+            return null;
+        }
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+        }
+    }
+
+    public class checkAgent extends AsyncTask<String, String, String>{
+        @Override
+        protected String doInBackground(String... params) {
+            final Webmethod webmethod = new Webmethod(getApplication().getApplicationContext());
+            try {
+                profile = webmethod.isAgent(userNameEdit.getText().toString());
+
+                intent=new Intent(getApplicationContext(),MainTabActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                intent.putExtra("isAgent",profile.getAccountType());
+                startActivity(intent);
+
+            }catch (IOException e){
+
+            }catch (JSONException e){
+
+            }
             return null;
         }
 

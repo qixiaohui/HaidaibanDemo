@@ -15,6 +15,7 @@ import com.haidaiban.foxlee.model.offer.Offer;
 import com.haidaiban.foxlee.model.offer.Parameter;
 import com.haidaiban.foxlee.model.offer.Parameter_;
 import com.haidaiban.foxlee.model.order.Order;
+import com.haidaiban.foxlee.model.profile.UserProfile;
 import com.haidaiban.foxlee.model.quotelist.QuoteList;
 import com.haidaiban.foxlee.model.quotelist.Result;
 import com.haidaiban.foxlee.model.states.States;
@@ -49,6 +50,8 @@ import java.util.List;
 
 import java.io.IOException;
 import java.util.StringTokenizer;
+
+import me.add1.network.Const;
 
 /**
  * Created by qixiaohui on 3/8/15.
@@ -312,7 +315,6 @@ public class Webmethod {
 
     public static int deleteBookmark(String id) throws IOException{
         token = getToken();
-        token = getToken();
         pair = new ArrayList<NameValuePair>();
         pair.add(new BasicNameValuePair("id",id));
         pair.add(new BasicNameValuePair("_method","DELETE"));
@@ -432,7 +434,19 @@ public class Webmethod {
         httpResponse = httpClient.execute(httpGet);
         entity = httpResponse.getEntity();
         response = EntityUtils.toString(entity,"UTF-8");
+        System.out.println("RongToken"+response);
         return new Gson().fromJson(response, Token.class);
+    }
+
+    public static UserProfile isAgent(String userName)throws IOException,JSONException{
+        token = getToken();
+        httpGet = new HttpGet(Constants.getLOGIN_URL()+"api/profilen/"+userName);
+        httpGet.setHeader("Authorization","Token "+token);
+        httpResponse = httpClient.execute(httpGet);
+        entity = httpResponse.getEntity();
+        response = EntityUtils.toString(entity,"UTF-8");
+        System.out.println(response);
+        return new Gson().fromJson(response, UserProfile.class);
     }
 
 }

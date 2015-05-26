@@ -28,6 +28,7 @@ public class MainTabActivity extends FragmentActivity{
 	private FragmentTabHost mTabHost;
 	private LayoutInflater layoutInflater;
     private String rongCloudPubKey;
+    private String agentType;
 		
 	// each fragment
 	private Class fragmentArray[] = {FragmentPage1.class,FragmentPage2.class,C_SentedOfferFragment.class,D0_OrderFragment.class,FragmentPage5.class};
@@ -42,7 +43,8 @@ public class MainTabActivity extends FragmentActivity{
 	public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_tab_layout);
-        
+        agentType = getIntent().getStringExtra("isAgent");
+        System.out.println("isAgent"+agentType);
         initView();
 
         registerRongCloud();
@@ -79,6 +81,7 @@ public class MainTabActivity extends FragmentActivity{
 
             @Override
             public void onError(RongIMClient.ErrorCode errorCode) {
+                System.out.println(rongCloudPubKey);
                 System.out.println("fail");
                 Log.e("Connection error",errorCode.toString());
             }

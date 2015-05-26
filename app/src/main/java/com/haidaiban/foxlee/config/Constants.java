@@ -22,7 +22,6 @@ public class Constants {
         if(sharedPreferences == null){
             sharedPreferences = new SecurePreferences(context);
         }
-
         return sharedPreferences.getString("RongToken",null);
     }
 
