@@ -11,6 +11,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.haidaiban.foxlee.Util.DataHolder;
 import com.haidaiban.foxlee.fragments.R;
 import com.haidaiban.foxlee.model.profile.UserProfile;
 import com.haidaiban.foxlee.model.token.Token;
@@ -170,7 +172,7 @@ public class Login_Activity extends Activity {
             final Webmethod webmethod = new Webmethod(getApplication().getApplicationContext());
             try {
                 profile = webmethod.isAgent(userNameEdit.getText().toString());
-
+                DataHolder.setUserProfile(profile);
                 intent=new Intent(getApplicationContext(),MainTabActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 intent.putExtra("isAgent",profile.getAccountType());

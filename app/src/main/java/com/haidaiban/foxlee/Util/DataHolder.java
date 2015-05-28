@@ -9,6 +9,7 @@ import com.haidaiban.foxlee.model.message.Message;
 import com.haidaiban.foxlee.model.offer.CustomerAction;
 import com.haidaiban.foxlee.model.offer.Offer;
 import com.haidaiban.foxlee.model.order.Order;
+import com.haidaiban.foxlee.model.profile.UserProfile;
 import com.haidaiban.foxlee.model.quotelist.QuoteList;
 
 import java.util.HashMap;
@@ -36,6 +37,15 @@ public class DataHolder {
     private static com.haidaiban.foxlee.model.offer.Result acceptedOffer;
     private static HashMap<String, Deal> limitedDeal = new HashMap<String, Deal>();
     private static CustomerAction customerAction;
+    private static UserProfile userProfile;
+
+    public static UserProfile getUserProfile() {
+        return userProfile;
+    }
+
+    public static void setUserProfile(UserProfile userProfile) {
+        DataHolder.userProfile = userProfile;
+    }
 
     public static HashMap<String, Deal> getLimitedDeal() {
         return limitedDeal;
