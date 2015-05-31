@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TabHost.TabSpec;
 
+import com.haidaiban.foxlee.Util.DataHolder;
 import com.haidaiban.foxlee.config.Constants;
 import com.haidaiban.foxlee.fragments.C_SentedOfferFragment;
 import com.haidaiban.foxlee.fragments.D0_OrderFragment;
@@ -45,6 +46,11 @@ public class MainTabActivity extends FragmentActivity{
         setContentView(R.layout.main_tab_layout);
         agentType = getIntent().getStringExtra("isAgent");
         System.out.println("isAgent"+agentType);
+        if(agentType.equals("agent")){
+            DataHolder.setIsAgent(true);
+        }else{
+            DataHolder.setIsAgent(false);
+        }
         initView();
 
         registerRongCloud();

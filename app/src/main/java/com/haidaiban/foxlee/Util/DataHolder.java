@@ -38,6 +38,7 @@ public class DataHolder {
     private static HashMap<String, Deal> limitedDeal = new HashMap<String, Deal>();
     private static CustomerAction customerAction;
     private static UserProfile userProfile;
+    private static Boolean isAgent;
 
     public static UserProfile getUserProfile() {
         return userProfile;
@@ -205,5 +206,13 @@ public class DataHolder {
 
     public static void setOfferCanceled(Offer offerCanceled) {
         DataHolder.offerCanceled = offerCanceled;
+    }
+
+    public static Boolean getIsAgent() {
+        return isAgent;
+    }
+
+    public static void setIsAgent(Boolean isAgent) {
+        DataHolder.isAgent = isAgent;
     }
 }

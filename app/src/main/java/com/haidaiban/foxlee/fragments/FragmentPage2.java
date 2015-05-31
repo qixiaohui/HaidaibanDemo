@@ -22,6 +22,7 @@ import com.haidaiban.foxlee.Util.Utility;
 import com.haidaiban.foxlee.activitys.Activity_PriceFill;
 import com.haidaiban.foxlee.activitys.OfferMenu_Activity;
 import com.haidaiban.foxlee.adapter.TempOfferAdapter;
+import com.haidaiban.foxlee.model.order.Order;
 import com.haidaiban.foxlee.model.quotelist.QuoteList;
 import com.haidaiban.foxlee.webMethod.Webmethod;
 import com.securepreferences.SecurePreferences;
@@ -35,6 +36,7 @@ public class FragmentPage2 extends Fragment{
     private String offer;
     private Gson gson;
     private QuoteList quotes;
+    private Order orders;
 
     //ui
 
@@ -47,11 +49,13 @@ public class FragmentPage2 extends Fragment{
 
     private View view ;
     private ListView myTemp_List;
+    private Boolean isAgent; //flag is agent
 
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
+        isAgent = DataHolder.getIsAgent();
         view = inflater.inflate(R.layout.fragment_2,null);
         myTemp_List =(ListView) view.findViewById(R.id.listview_tempoffer);
 
@@ -111,8 +115,13 @@ public class FragmentPage2 extends Fragment{
             try {
                 //get json files
                 if(quotes == null) {
+
                     webmethod = new Webmethod(getActivity().getApplicationContext());
-                    quotes = webmethod.getQuotes();
+                    if(isAgent){    //call agent webmethod
+                        orders = webmethod.getAgentOrders();
+                    }else {         //call customer webmethod
+                        quotes = webmethod.getQuotes();
+                    }
                 }
                 //转化对应offer java class
 
