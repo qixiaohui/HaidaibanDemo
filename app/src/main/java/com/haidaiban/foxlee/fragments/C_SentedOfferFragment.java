@@ -47,6 +47,11 @@ public class C_SentedOfferFragment extends Fragment implements ParentMethods{
         return view;
     }
 
+    public void setCustomerView(){
+
+
+    }
+
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);

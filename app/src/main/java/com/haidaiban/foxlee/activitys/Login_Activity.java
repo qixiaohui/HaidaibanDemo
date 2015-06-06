@@ -54,6 +54,7 @@ public class Login_Activity extends Activity {
         if(sharedPreferences.contains("token")){
             intent = new Intent(this,MainTabActivity.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            intent.putExtra("isAgent",sharedPreferences.getString("isAgent","agent"));
             startActivity(intent);
             finish();
         }
@@ -175,6 +176,9 @@ public class Login_Activity extends Activity {
                 DataHolder.setUserProfile(profile);
                 intent=new Intent(getApplicationContext(),MainTabActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                editor = sharedPreferences.edit();
+                editor.putString("isAgent",profile.getAccountType());
+                editor.commit();
                 intent.putExtra("isAgent",profile.getAccountType());
                 startActivity(intent);
 
