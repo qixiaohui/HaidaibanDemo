@@ -16,7 +16,7 @@ public class ShippingAddress1 {
     @Expose
     private String district;
     @Expose
-    private Object city;
+    private String city;
     @Expose
     private String cellphone;
     @Expose
@@ -81,7 +81,7 @@ public class ShippingAddress1 {
      * @return
      * The city
      */
-    public Object getCity() {
+    public String getCity() {
         return city;
     }
 
@@ -90,7 +90,7 @@ public class ShippingAddress1 {
      * @param city
      * The city
      */
-    public void setCity(Object city) {
+    public void setCity(String city) {
         this.city = city;
     }
 
