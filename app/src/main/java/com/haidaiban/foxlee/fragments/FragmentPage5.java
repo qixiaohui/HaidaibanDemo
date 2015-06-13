@@ -11,17 +11,23 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.haidaiban.foxlee.Util.DataHolder;
 import com.haidaiban.foxlee.activitys.E1_MyAddress_Activity;
 import com.haidaiban.foxlee.activitys.E1_MyMoney_Activity;
 import com.haidaiban.foxlee.activitys.Login_Activity;
+import com.haidaiban.foxlee.config.Constants;
+import com.haidaiban.foxlee.model.profile.UserProfile;
 import com.haidaiban.foxlee.webMethod.Webmethod;
 import com.securepreferences.SecurePreferences;
+import com.squareup.picasso.Picasso;
 
 import org.json.JSONException;
+import org.w3c.dom.Text;
 
 import java.io.IOException;
 import java.lang.Runnable;
@@ -32,6 +38,8 @@ public class FragmentPage5 extends Fragment{
     private static Button button;
     private static Button get;
     private static TextView logout;
+    private static TextView nickName;
+    private static ImageView  icon;
     private static SharedPreferences sharedPreferences;
     private static SharedPreferences.Editor editor;
     private static Intent intent;
@@ -39,13 +47,15 @@ public class FragmentPage5 extends Fragment{
     private FrameLayout myMoney ;
 
     private FrameLayout myAdds;
+    private UserProfile userProfile;
 
 
     @Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
         view  = inflater.inflate(R.layout.e0_profile_head, null);
-		return view;
-	}
+        userProfile = DataHolder.getUserProfile();
+        return view;
+    }
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
@@ -87,6 +97,16 @@ public class FragmentPage5 extends Fragment{
 
         myMoney = (FrameLayout) getActivity().findViewById(R.id.profile_head_payment);
         myAdds = (FrameLayout) getActivity().findViewById(R.id.profile_head_ship);
+        nickName = (TextView) getActivity().findViewById(R.id.nickName);
+        icon = (ImageView) getActivity().findViewById(R.id.icon);
+
+        nickName.setText(userProfile.getNickname());
+
+        Picasso.with(getActivity().getApplicationContext())
+                .load(Constants.getLOGIN_URL()+userProfile.getIcon())
+                .centerCrop()
+                .resize(70, 70)
+                .into(icon);
 
         myMoney.setOnClickListener(new View.OnClickListener() {
             @Override
