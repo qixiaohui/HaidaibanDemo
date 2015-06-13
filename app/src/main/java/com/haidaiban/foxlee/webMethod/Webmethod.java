@@ -15,6 +15,7 @@ import com.haidaiban.foxlee.model.offer.Offer;
 import com.haidaiban.foxlee.model.offer.Parameter;
 import com.haidaiban.foxlee.model.offer.Parameter_;
 import com.haidaiban.foxlee.model.order.Order;
+import com.haidaiban.foxlee.model.profile.UserProfile;
 import com.haidaiban.foxlee.model.quotelist.QuoteList;
 import com.haidaiban.foxlee.model.quotelist.Result;
 import com.haidaiban.foxlee.model.states.States;
@@ -89,8 +90,8 @@ public class Webmethod {
 
     public static void getCredential(){
         credentials = new String [2];
-        credentials[0] = sharedPreferences.getString("userName",null);
-        credentials[1] = sharedPreferences.getString("password",null);
+        credentials[0] = sharedPreferences.getString("userName", null);
+        credentials[1] = sharedPreferences.getString("password", null);
     }
 
     public static String get()throws IOException,JSONException{
@@ -112,7 +113,7 @@ public class Webmethod {
         httpGet = new HttpGet(Constants.getLOGIN_URL()+"api/sitemessages");
         httpResponse = httpClient.execute(httpGet);
         entity = httpResponse.getEntity();
-        response = EntityUtils.toString(entity,"UTF-8");
+        response = EntityUtils.toString(entity, "UTF-8");
         System.out.println(response);
         return new Gson().fromJson(response,Message.class);
     }
@@ -199,7 +200,7 @@ public class Webmethod {
 //            }
 //        }
 //        pair.add(new BasicNameValuePair("csrfmiddlewaretoken",middleWareToken.getValue()));
-        System.out.println(userName+password+"*********");
+        System.out.println(userName + password + "*********");
         pair.add(new BasicNameValuePair("username",userName));
         pair.add(new BasicNameValuePair("password",password));
 
@@ -208,13 +209,13 @@ public class Webmethod {
         //clientCookie.setPath("/Login");
         //cookieStore.addCookie(clientCookie);
         httpClient.setCookieStore(cookieStore);
-        httpPost.setHeader("content-type","application/x-www-form-urlencoded");
+        httpPost.setHeader("content-type", "application/x-www-form-urlencoded");
         httpPost.setEntity(new UrlEncodedFormEntity(pair));
         HttpResponse httpResponse = httpClient.execute(httpPost);
         System.out.println(httpResponse.getStatusLine() + "status******");
         HttpEntity entity = httpResponse.getEntity();
         String response = EntityUtils.toString(entity,"UTF-8");
-        System.out.println(response+"*************");
+        System.out.println(response + "*************");
         JSONTokener tokener = new JSONTokener(response);
         result = new JSONObject(tokener);
         System.out.println(result.get("key"));
@@ -331,7 +332,7 @@ public class Webmethod {
         httpGet.setHeader("Authorization",token);
         httpResponse = httpClient.execute(httpGet);
         entity = httpResponse.getEntity();
-        response = EntityUtils.toString(entity,"UTF-8");
+        response = EntityUtils.toString(entity, "UTF-8");
         System.out.println(response+"****");
         return new Gson().fromJson(response,Comment.class);
     }
@@ -378,7 +379,7 @@ public class Webmethod {
         httpGet.setHeader("Authorization","Token "+token);
         httpResponse = httpClient.execute(httpGet);
         entity = httpResponse.getEntity();
-        response = EntityUtils.toString(entity,"UTF-8");
+        response = EntityUtils.toString(entity, "UTF-8");
         System.out.println(response);
         return new Gson().fromJson(response,Offer.class);
     }
@@ -386,7 +387,7 @@ public class Webmethod {
     public static States getStates() throws IOException,JSONException{
         token = getToken();
         httpGet = new HttpGet(Constants.getLOGIN_URL()+"api/offer/transaction/states/");
-        httpGet.setHeader("Authorization", "Token "+token);
+        httpGet.setHeader("Authorization", "Token " + token);
         httpResponse = httpClient.execute(httpGet);
         entity = httpResponse.getEntity();
         response = EntityUtils.toString(entity,"UTF-8");
@@ -406,7 +407,7 @@ public class Webmethod {
     public static int offerUpdateAction(String action, List<Parameter_> parameters, String uid) throws JSONException, IOException{
         token = getToken();
         pair = new ArrayList<NameValuePair>();
-        pair.add(new BasicNameValuePair("action",new String(action.getBytes("UTF-8"),"ISO08859-1")));
+        pair.add(new BasicNameValuePair("action", new String(action.getBytes("UTF-8"), "ISO08859-1")));
         httpPost = new HttpPost(Constants.getLOGIN_URL()+"api/offer/transaction/"+uid);
         httpPost.setHeader("Authorization","Token "+token);
         System.out.println(action+"action");
@@ -433,6 +434,19 @@ public class Webmethod {
         entity = httpResponse.getEntity();
         response = EntityUtils.toString(entity,"UTF-8");
         return new Gson().fromJson(response, Token.class);
+    }
+
+
+
+    public static UserProfile isAgent(String userName)throws IOException,JSONException{
+        token = getToken();
+        httpGet = new HttpGet(Constants.getLOGIN_URL()+"api/profilen/"+userName);
+        httpGet.setHeader("Authorization","Token "+token);
+        httpResponse = httpClient.execute(httpGet);
+        entity = httpResponse.getEntity();
+        response = EntityUtils.toString(entity,"UTF-8");
+        System.out.println(response);
+        return new Gson().fromJson(response, UserProfile.class);
     }
 
 }
