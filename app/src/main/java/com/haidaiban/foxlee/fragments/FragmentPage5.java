@@ -119,9 +119,14 @@ public class FragmentPage5 extends Fragment{
             }
         });
 
-        //call async to get user profile
-        getUserProfile = new GetUserProfile();
-        getUserProfile.execute(userName);
+        if(DataHolder.getUserProfile() == null) {
+            //call async to get user profile
+            getUserProfile = new GetUserProfile();
+            getUserProfile.execute(userName);
+        }else{
+            userProfile = DataHolder.getUserProfile();
+            loadData();
+        }
 
     }
 
@@ -147,6 +152,7 @@ public class FragmentPage5 extends Fragment{
             webmethod = new Webmethod(getActivity().getApplicationContext());
             try {
                 userProfile = webmethod.isAgent(params[0]);
+                DataHolder.setUserProfile(userProfile);
             }catch (IOException e){
                 Toast.makeText(getActivity().getApplicationContext(),"can't load user profile, try later",Toast.LENGTH_LONG).show();
             }catch (JSONException e){
