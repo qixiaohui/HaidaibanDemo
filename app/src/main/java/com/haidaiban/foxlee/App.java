@@ -2,6 +2,7 @@ package com.haidaiban.foxlee;
 import android.app.Application;
 
 import io.rong.imkit.RongIM;
+import io.rong.imlib.RongIMClient;
 
 /**
  * Created by jili on 5/4/15.

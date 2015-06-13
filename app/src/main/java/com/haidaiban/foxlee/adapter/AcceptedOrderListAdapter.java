@@ -25,6 +25,7 @@ import com.squareup.picasso.Picasso;
 import java.text.ParseException;
 
 import io.rong.imkit.RongIM;
+import io.rong.imlib.RongIMClient;
 
 /**
  * Created by tom on 4/11/15.
@@ -39,6 +40,7 @@ public class AcceptedOrderListAdapter extends BaseAdapter {
     String time;
     Intent intent;
     Activity activity;
+
 
     public AcceptedOrderListAdapter(Context context, Offer acceptedOffers, int index, Activity activity) {
         this.context = context;
@@ -171,6 +173,7 @@ public class AcceptedOrderListAdapter extends BaseAdapter {
             @Override
             public void onClick(View v) {
                 if (RongIM.getInstance() != null) {
+
                     RongIM.getInstance().startPrivateChat(activity, acceptedOffers.getResults().get(index).getAgent().getUser().toString(), "hello");
                 }
             }

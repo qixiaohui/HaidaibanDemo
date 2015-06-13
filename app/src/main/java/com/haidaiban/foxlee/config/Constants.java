@@ -14,7 +14,7 @@ public class Constants {
 
     public static String APP_NAME ="";
 
-    public static final String LOGIN_URL ="http://stage.haidaiban.com:7777/";
+    public static final String LOGIN_URL ="http://stage.haidaiban.com/";
 
     private static SharedPreferences sharedPreferences;
 
