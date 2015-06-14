@@ -12,16 +12,11 @@
         android:layout_alignParentTop="true"
         android:gravity="center_vertical"
         android:orientation="horizontal" >
-        <RelativeLayout
-            android:id="@+id/loadingPanel"
+        <WebView  xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/webview"
             android:layout_width="match_parent"
             android:layout_height="200dp"
-            android:gravity="center" >
-            <ProgressBar
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:indeterminate="true" />
-        </RelativeLayout>
+            />
         <!--<com.daimajia.slider.library.SliderLayout-->
             <!--android:id="@+id/slider"-->
             <!--android:layout_width="match_parent"-->

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html ng-app="image">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <link href="file:///android_asset/css/bootstrap.min.css" rel="stylesheet" />
+    <script type="text/javascript" src="file:///android_asset/libs/angular.min.js"></script>
+    <script type="text/javascript" src="file:///android_asset/libs/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="file:///android_asset/libs/angular-animate.min.js"></script>
+    <script type="text/javascript" src="file:///android_asset/js/imageController.js"></script>
+    <script type="text/javascript" src="file:///android_asset/js/services.js"></script>
+</head>
+<body ng-controller="ImageController">
+    <div class="container slider">
+        <img ng-repeat="slider in imageUrls" style="padding:10dp;width:360px;height:200px" class="slider" ng-hide="!isCurrentSliderIndex($index)" ng-src="{{slider.result}}" />
+    </div>
+</body>
+</html>
