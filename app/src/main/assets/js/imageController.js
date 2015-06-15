@@ -8,21 +8,26 @@ app.controller("ImageController",function($scope,imageService){
     $( ".size" ).css({'width':width+"px"});
     $( ".size" ).css({'height':height+"px"});
 
+//    imageService.success(function(data){
+//
+//        $scope.imageUrls = data;
+//    });
+
     $scope.imageUrls = [
     {'result':'file:///android_asset/img/image1.gif'}
     ,{'result':'file:///android_asset/img/image2.gif'}
     ,{'result':'file:///android_asset/img/image3.png'}
     ];
 
-    $scope.currentIndex = 0;
+    $("#slideshow > div:gt(0)").hide();
 
-    $scope.setCurrentIndex = function(index){
-        $scope.currentIndex = index;
-    }
-
-    $scope.isCurrentSliderIndex = function(index){
-        console.log(index)
-        return $scope.currentIndex === index;
-    }
+    setInterval(function() {
+      $('#slideshow > div:first')
+        .fadeOut(1000)
+        .next()
+        .fadeIn(1000)
+        .end()
+        .appendTo('#slideshow');
+    },  3000);
 
 });
