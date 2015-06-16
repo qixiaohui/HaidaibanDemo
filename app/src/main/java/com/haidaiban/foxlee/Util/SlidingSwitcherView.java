@@ -1,5 +1,7 @@
 package com.haidaiban.foxlee.Util;
 
+import com.haidaiban.foxlee.fragments.R;
+
 import android.content.Context;
 import android.os.AsyncTask;
 import android.util.AttributeSet;

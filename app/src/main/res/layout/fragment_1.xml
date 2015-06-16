@@ -12,11 +12,11 @@
         android:layout_alignParentTop="true"
         android:gravity="center_vertical"
         android:orientation="horizontal" >
-        <WebView  xmlns:android="http://schemas.android.com/apk/res/android"
-            android:id="@+id/webview"
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            />
+        <!--<WebView  xmlns:android="http://schemas.android.com/apk/res/android"-->
+            <!--android:id="@+id/webview"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="200dp"-->
+            <!--/>-->
         <!--<com.daimajia.slider.library.SliderLayout-->
             <!--android:id="@+id/slider"-->
             <!--android:layout_width="match_parent"-->
@@ -47,6 +47,48 @@
             <!--custom:unselected_height="6dp"-->
             <!--android:layout_marginBottom="20dp"-->
             <!--/>-->
+
+        <com.haidaiban.foxlee.Util.SlidingSwitcherView
+                android:id="@+id/slidingLayout"
+                android:layout_width="fill_parent"
+                android:layout_height="200dp" >
+
+            <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:orientation="horizontal" >
+
+                <Button
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:background="@drawable/image1" />
+
+                <Button
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:background="@drawable/image2" />
+
+                <Button
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:background="@drawable/image3" />
+
+                <Button
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:background="@drawable/image4" />
+            </LinearLayout>
+
+            <LinearLayout
+                    android:layout_width="60dip"
+                    android:layout_height="20dip"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_margin="15dip"
+                    android:orientation="horizontal" >
+            </LinearLayout>
+        </com.haidaiban.foxlee.Util.SlidingSwitcherView>
+
     </LinearLayout>
     <!-- 下半部分图片框架-->
     <LinearLayout

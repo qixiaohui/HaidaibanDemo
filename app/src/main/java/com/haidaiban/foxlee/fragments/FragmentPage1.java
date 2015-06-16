@@ -78,11 +78,11 @@ public class FragmentPage1 extends Fragment{
 
         mBtn_discount = (ImageView) view.findViewById(R.id.btn_new_discount);
         mBtn_fillprice = (ImageView) view.findViewById(R.id.btn_fillprice);
-        webView = (WebView) view.findViewById(R.id.webview);
-        webView.getSettings().setJavaScriptEnabled(true);
-        webView.getSettings().setLoadWithOverviewMode(true);
-        webView.getSettings().setUseWideViewPort(true);
-        webView.loadUrl("file:///android_asset/imageslider.html");
+//        webView = (WebView) view.findViewById(R.id.webview);
+//        webView.getSettings().setJavaScriptEnabled(true);
+//        webView.getSettings().setLoadWithOverviewMode(true);
+//        webView.getSettings().setUseWideViewPort(true);
+//        webView.loadUrl("file:///android_asset/imageslider.html");
 
     }
 
