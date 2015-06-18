@@ -1,15 +1,23 @@
 package com.haidaiban.foxlee.fragments;
 
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.net.URI;
+import java.net.URL;
 import java.util.HashMap;
 import java.util.logging.Handler;
 
+import android.annotation.SuppressLint;
+import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.Display;
@@ -108,6 +116,8 @@ public class FragmentPage1 extends Fragment{
     }
 
     public class getMessage extends AsyncTask<String,String,String>{
+
+        Bitmap bmp ;
         @Override
         protected String doInBackground(String... params) {
             try {
@@ -118,6 +128,8 @@ public class FragmentPage1 extends Fragment{
             return null;
         }
 
+        @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
+        @SuppressLint("NewApi")
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
@@ -127,7 +139,20 @@ public class FragmentPage1 extends Fragment{
                 button = new Button(context);
                 LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.FILL_PARENT,
                         ViewGroup.LayoutParams.FILL_PARENT);
-                button.setRes
+
+                URL url = null;
+                try {
+                    url = new URL("http://mmbiz.qpic.cn/mmbiz/VHNt5WiceD77KRVeNzxvyDvrDEicMicF0gDFqdqRSIb0kCnpfGCINkeowoP8jX4cf1eiaGYiaC954FwicOT1ibtGG4HGg/640?wx_fmt=jpeg&tp=webp&wxfrom=5");
+                } catch (MalformedURLException e) {
+                    e.printStackTrace();
+                }
+                try {
+                  bmp  = BitmapFactory.decodeStream(url.openConnection().getInputStream());
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                BitmapDrawable bdrawable = new BitmapDrawable(bmp);
+                button.setBackground(bdrawable);
                 gallery.addView(button);
             }
 
