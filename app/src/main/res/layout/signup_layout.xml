@@ -11,16 +11,16 @@
         android:layout_centerHorizontal="true"
         android:orientation="vertical">
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:text="@string/signup_title"
-            android:textColor="@color/white"
-            android:textSize="@dimen/large_text_size"
-            android:gravity="center"
-            >
+        <!--<TextView-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="50dp"-->
+            <!--android:text="@string/signup_title"-->
+            <!--android:textColor="@color/white"-->
+            <!--android:textSize="@dimen/large_text_size"-->
+            <!--android:gravity="center"-->
+            <!-->-->
 
-            </TextView>
+            <!--</TextView>-->
 
         <!-- Logo -->
 

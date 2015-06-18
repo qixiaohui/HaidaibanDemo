@@ -122,6 +122,7 @@
                         android:textColorHint="@color/gray"
                         android:textSize="@dimen/medium_text_size"
                         android:textColor="@color/black"
+                        android:password="true"
                         >
 
                     </EditText>
@@ -175,17 +176,8 @@
                 <!--自动登入-->
 
 
-                <CheckBox
-
-                    android:id="@+id/checkBox"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/signin_btn_autosignin"
-                    android:textColor="@color/white"
-                    android:textSize="12sp" />
-
                 <TextView
+                        android:gravity="center"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -195,6 +187,7 @@
                     android:textSize="12sp"></TextView>
 
                 <TextView
+                        android:gravity="center"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -210,89 +203,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="10dp"></TextView>
 
-            <LinearLayout
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="25dp"
-                android:layout_marginLeft="25dp"
-                android:layout_gravity="center"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="1dp"
-                    android:layout_gravity="center"
-                    android:layout_weight="1"
-                    android:background="@color/white"></TextView>
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="30dp"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:text="@string/signin_3rdsign"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/medium_text_size"></TextView>
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="1dp"
-                    android:layout_gravity="center"
-                    android:layout_weight="1"
-                    android:background="@color/white"></TextView>
-
-            </LinearLayout>
             <!--分割线 下面是第三方-->
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="10dp"></TextView>
-
-            <LinearLayout
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_marginLeft="25dp"
-                android:layout_marginRight="25dp"
-                android:layout_gravity="center"
-                android:orientation="horizontal"
-                android:layout_marginBottom="40dp"
-
-                >
-
-                <ImageView
-                    android:id="@+id/sign_iv_qq"
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
-                    android:layout_weight="1"
-                    android:src="@drawable/sign_img_qq"
-
-                    >
-
-                </ImageView>
-
-                <ImageView
-                    android:id="@+id/sign_iv_sina"
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
-                    android:layout_weight="1"
-                    android:src="@drawable/sign_img_sina"
-
-                    >
-
-                </ImageView>
-
-
-                <ImageView
-                    android:id="@+id/sign_iv_wechat"
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
-                    android:layout_weight="1"
-                    android:src="@drawable/sign_img_wechat">
-
-                </ImageView>
-
-
-            </LinearLayout>
 
 
         </LinearLayout>
