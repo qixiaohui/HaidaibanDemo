@@ -30,13 +30,16 @@ import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.webkit.WebView;
 import android.widget.Button;
+import android.widget.HorizontalScrollView;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.haidaiban.foxlee.Util.DataHolder;
+import com.haidaiban.foxlee.Util.Utility;
 import com.haidaiban.foxlee.activitys.Activity_PriceFill;
 import com.haidaiban.foxlee.activitys.LimitedTimeOffer;
 import com.haidaiban.foxlee.activitys.WebActivity;
@@ -54,24 +57,14 @@ public class FragmentPage1 extends Fragment{
     private Context context;
     private ImageView mBtn_discount;
     private ImageView mBtn_fillprice;
-    private LinearLayout gallery;
-    private WebView webView;
     private Webmethod webmethod;
     private Message message;
-    private ImageLoader imageLoader;
-    private Bitmap bitmap1;
-    private Bitmap bitmap2;
-    private Bitmap bitmap3;
-    private BitmapDrawable bitmapDrawable1;
-    private BitmapDrawable bitmapDrawable2;
-    private BitmapDrawable bitmapDrawable3;
-    private ImageButton imageButton1;
-    private ImageButton imageButton2;
-    private ImageButton imageButton3;
     private GetMessage getMessage;
     private RelativeLayout progressBar;
     private Intent intent;
-    private ArrayList<BitmapDrawable> caches;
+    private LinearLayout container;
+    private LinearLayout child;
+    private int[] size;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -79,7 +72,6 @@ public class FragmentPage1 extends Fragment{
 
         context = container.getContext();
         webmethod = new Webmethod(context);
-        imageLoader = ImageLoader.getInstance();
         intent = new Intent(getActivity().getApplicationContext(),WebActivity.class);
         view = inflater.inflate(R.layout.fragment_1, null);
     //init views ;
@@ -101,39 +93,11 @@ public class FragmentPage1 extends Fragment{
             }
         });
 
-        if((message = DataHolder.getMessage())==null) {
+        if(message==null) {
             getMessage = new GetMessage();
             getMessage.execute();
         }else{
-            progressBar.setVisibility(View.GONE);
-            caches = DataHolder.getBitmapDrawables();
-            imageButton1.setBackgroundDrawable(caches.get(0));
-            imageButton2.setBackgroundDrawable(caches.get(1));
-            imageButton3.setBackgroundDrawable(caches.get(2));
-
-            imageButton1.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    intent.putExtra("url", message.getResults().get(0).getWebLink());
-                    startActivity(intent);
-                }
-            });
-
-            imageButton2.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    intent.putExtra("url",message.getResults().get(1).getWebLink());
-                    startActivity(intent);
-                }
-            });
-
-            imageButton3.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    intent.putExtra("url",message.getResults().get(2).getWebLink());
-                    startActivity(intent);
-                }
-            });
+            setAd();
         }
 
 		return view;
@@ -142,13 +106,11 @@ public class FragmentPage1 extends Fragment{
 
     private void initView() {
 
+        size = Utility.getWindowSize(getActivity().getApplicationContext());
         mBtn_discount = (ImageView) view.findViewById(R.id.btn_new_discount);
         mBtn_fillprice = (ImageView) view.findViewById(R.id.btn_fillprice);
-        gallery = (LinearLayout) view.findViewById(R.id.gallery);
-        imageButton1 = (ImageButton) view.findViewById(R.id.ad1);
-        imageButton2 = (ImageButton) view.findViewById(R.id.ad2);
-        imageButton3 = (ImageButton) view.findViewById(R.id.ad3);
         progressBar = (RelativeLayout) view.findViewById(R.id.loadingPanel);
+        container = (LinearLayout) view.findViewById(R.id.container);
 //        webView = (WebView) view.findViewById(R.id.webview);
 //        webView.getSettings().setJavaScriptEnabled(true);
 //        webView.getSettings().setLoadWithOverviewMode(true);
@@ -183,21 +145,7 @@ public class FragmentPage1 extends Fragment{
             }catch (IOException e){
 
             }
-            System.out.println();
-            // synchronously cache the bitmap in backgorund thread
-            bitmap1 = imageLoader.loadImageSync(Constants.getLOGIN_URL()+message.getResults().get(0).getImage());
-            bitmap2 = imageLoader.loadImageSync(Constants.getLOGIN_URL()+message.getResults().get(1).getImage());
-            bitmap3 = imageLoader.loadImageSync(Constants.getLOGIN_URL()+message.getResults().get(2).getImage());
-            bitmapDrawable1 = new BitmapDrawable(getResources(),bitmap1);
-            bitmapDrawable2 = new BitmapDrawable(getResources(),bitmap2);
-            bitmapDrawable3 = new BitmapDrawable(getResources(),bitmap3);
-            caches = new ArrayList<BitmapDrawable>();
-            caches.add(bitmapDrawable1);
-            caches.add(bitmapDrawable2);
-            caches.add(bitmapDrawable3);
-            DataHolder.setBitmapDrawables(caches);
             DataHolder.setMessage(message);  //make sure if dataholder has message then it must also has bitmaps
-            caches = null;
             return null;
         }
 
@@ -212,74 +160,45 @@ public class FragmentPage1 extends Fragment{
         @Override
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
-            imageButton1.setBackgroundDrawable(bitmapDrawable1);
-            imageButton2.setBackgroundDrawable(bitmapDrawable2);
-            imageButton3.setBackgroundDrawable(bitmapDrawable3);
-            progressBar.setVisibility(View.GONE);
-            imageButton1.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    System.out.println("touched");
-                }
-            });
-            imageButton1.setOnTouchListener(new View.OnTouchListener() {
-                int buttonX1 = 0;
-
-                @Override
-                public boolean onTouch(View v, MotionEvent event) {
-                    System.out.println("clicked" + event.getAction());
-                    switch (event.getAction()) {
-                        case MotionEvent.ACTION_DOWN:
-                            buttonX1 = Math.round(event.getX());
-                        case MotionEvent.ACTION_UP:
-                            System.out.println(Math.round(event.getX()) + "ndkjsa" + buttonX1);
-                            if (Math.abs(Math.round(event.getX()) - buttonX1) < 10) {
-                                intent.putExtra("url", message.getResults().get(0).getWebLink());
-                                startActivity(intent);
-                            }
-                    }
-                    return false;
-                }
-            });
-
-            imageButton2.setOnTouchListener(new View.OnTouchListener() {
-                int buttonX2 = 0;
-                @Override
-                public boolean onTouch(View v, MotionEvent event) {
-                    switch (event.getAction()){
-                        case MotionEvent.ACTION_DOWN:
-                            buttonX2 = Math.round(event.getX());
-                        case MotionEvent.ACTION_UP:
-                            if(Math.abs(Math.round(event.getX())-buttonX2)<10){
-                                intent.putExtra("url", message.getResults().get(1).getWebLink());
-                                startActivity(intent);
-                            }
-                    }
-                    return false;
-                }
-            });
-
-            imageButton3.setOnTouchListener(new View.OnTouchListener() {
-                int buttonX3 = 0;
-                @Override
-                public boolean onTouch(View v, MotionEvent event) {
-                    switch (event.getAction()){
-                        case MotionEvent.ACTION_DOWN:
-                            buttonX3 = Math.round(event.getX());
-                        case MotionEvent.ACTION_UP:
-                            if(Math.abs(Math.round(event.getX())-buttonX3)<10){
-                                intent.putExtra("url", message.getResults().get(2).getWebLink());
-                                startActivity(intent);
-                            }
-                    }
-                    return false;
-                }
-            });
+            setAd();
         }
 
         @Override
         protected void onProgressUpdate(String... values) {
             super.onProgressUpdate(values);
+        }
+    }
+
+    public void setAd(){
+
+        for (int i = 0; i < message.getResults().size(); i++) {
+
+            child = new LinearLayout(getActivity().getApplicationContext());
+            LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
+                    ViewGroup.LayoutParams.MATCH_PARENT, (int) size[1]/3);
+            layoutParams.setMargins(5, 5, 5, 5);
+            child.setTag(i);
+            ImageView image = new ImageView(getActivity().getApplicationContext());
+            image.setScaleType(ImageView.ScaleType.FIT_XY);
+            Picasso.with(getActivity().getApplicationContext())
+                    .load(Constants.getLOGIN_URL() + message.getResults().get(i).getImage())
+                    .resize(size[0],Math.round(size[1]*2/5))
+                    .into(image);
+            System.out.println(Constants.getLoginUrl1() + message.getResults().get(i).getImage());
+            child.addView(image);
+            container.addView(child, layoutParams);
+        }
+        progressBar.setVisibility(View.GONE);
+
+        for(int i = 0; i< message.getResults().size(); i++){
+            container.getChildAt(i).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    intent = new Intent(getActivity().getApplicationContext(),WebActivity.class);
+                    intent.putExtra("url",message.getResults().get(Integer.parseInt(v.getTag().toString())).getWebLink());
+                    startActivity(intent);
+                }
+            });
         }
     }
 }

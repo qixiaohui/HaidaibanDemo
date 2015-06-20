@@ -16,7 +16,13 @@ public class Constants {
 
     public static final String LOGIN_URL ="http://stage.haidaiban.com/";
 
+    public static final String LOGIN_URL1 = "http://stage.haidaiban.com";
+
     private static SharedPreferences sharedPreferences;
+
+    public static String getLoginUrl1() {
+        return LOGIN_URL1;
+    }
 
     public static String getToken(Context context){
         if(sharedPreferences == null){
