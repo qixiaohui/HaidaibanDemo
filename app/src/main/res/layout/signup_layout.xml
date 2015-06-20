@@ -1,4 +1,9 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+<RelativeLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background_login">
@@ -104,6 +109,7 @@
                     android:layout_width="200dp"
                     android:layout_height="match_parent"
                     android:gravity="center"
+                    android:textColor="@color/grey"
                     android:hint="@string/signup_email"
                     android:textColorHint="@color/gray"
                     android:textSize="@dimen/medium_text_size">
@@ -140,6 +146,7 @@
                     android:layout_width="200dp"
                     android:layout_height="match_parent"
                     android:gravity="center"
+                    android:textColor="@color/grey"
                     android:hint="@string/signup_username"
                     android:textColorHint="@color/gray"
                     android:textSize="@dimen/medium_text_size">
@@ -178,6 +185,7 @@
                     android:layout_width="200dp"
                     android:layout_height="match_parent"
                     android:gravity="center"
+                    android:textColor="@color/grey"
                     android:hint="@string/signup_setpassword"
                     android:textColorHint="@color/gray"
                     android:textSize="@dimen/medium_text_size">
@@ -225,6 +233,7 @@
                     android:layout_width="200dp"
                     android:layout_height="match_parent"
                     android:gravity="center"
+                    android:textColor="@color/grey"
                     android:hint="@string/signup_setpasswordagain"
                     android:textColorHint="@color/gray"
                     android:textSize="@dimen/medium_text_size">
@@ -247,6 +256,7 @@
             android:background="#0c8ed4"
             android:gravity="center"
             android:text="@string/signin_btn_signup"
+            android:id="@+id/register"
             android:textColor="@color/white"
             android:textSize="@dimen/medium_text_size"></Button>
 
@@ -268,3 +278,4 @@
 
     </LinearLayout>
 </RelativeLayout>
+</ScrollView>

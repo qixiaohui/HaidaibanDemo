@@ -184,7 +184,6 @@ public class FragmentPage1 extends Fragment{
                     .load(Constants.getLOGIN_URL() + message.getResults().get(i).getImage())
                     .resize(size[0],Math.round(size[1]*2/5))
                     .into(image);
-            System.out.println(Constants.getLoginUrl1() + message.getResults().get(i).getImage());
             child.addView(image);
             container.addView(child, layoutParams);
         }

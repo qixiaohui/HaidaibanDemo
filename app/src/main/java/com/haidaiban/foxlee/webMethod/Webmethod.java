@@ -110,7 +110,7 @@ public class Webmethod {
     }
 
     public static Message getMessage() throws IOException{
-        httpGet = new HttpGet(Constants.getLOGIN_URL()+"api/sitemessages");
+        httpGet = new HttpGet(Constants.getLOGIN_URL()+"/api/sitemessages");
         httpResponse = httpClient.execute(httpGet);
         entity = httpResponse.getEntity();
         response = EntityUtils.toString(entity, "UTF-8");
@@ -120,7 +120,7 @@ public class Webmethod {
 
     public static Deal getDeals(String q)throws IOException,JSONException{
         token = getToken();
-        httpGet = new HttpGet(Constants.getLOGIN_URL()+"api/deal/search/?q="+q);
+        httpGet = new HttpGet(Constants.getLOGIN_URL()+"/api/deal/search/?q="+q);
         httpGet.setHeader("Authorization","Token "+token);
         httpResponse = httpClient.execute(httpGet);
         entity = httpResponse.getEntity();
@@ -158,7 +158,7 @@ public class Webmethod {
      * @return
      * @throws IOException
      */
-    public static String register(String userName, String password1, String password2, String email)throws IOException{
+    public static int register(String userName, String password1, String password2, String email)throws IOException{
         httpPost = new HttpPost(Constants.getLOGIN_URL()+"/rest-auth/registration/");
         httpPost.setHeader("username",userName);
         httpPost.setHeader("password1",password1);
@@ -169,7 +169,7 @@ public class Webmethod {
         String response = EntityUtils.toString(entity,"UTF-8");
         System.out.println(response);
         System.out.println(httpResponse.getStatusLine()+"status****");
-        return response;
+        return httpResponse.getStatusLine().getStatusCode();
     }
 
     public static void deleteQuote(String uid) throws IOException{
