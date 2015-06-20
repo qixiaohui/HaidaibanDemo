@@ -216,15 +216,24 @@ public class FragmentPage1 extends Fragment{
             imageButton2.setBackgroundDrawable(bitmapDrawable2);
             imageButton3.setBackgroundDrawable(bitmapDrawable3);
             progressBar.setVisibility(View.GONE);
+            imageButton1.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    System.out.println("touched");
+                }
+            });
             imageButton1.setOnTouchListener(new View.OnTouchListener() {
                 int buttonX1 = 0;
+
                 @Override
                 public boolean onTouch(View v, MotionEvent event) {
-                    switch (event.getAction()){
+                    System.out.println("clicked" + event.getAction());
+                    switch (event.getAction()) {
                         case MotionEvent.ACTION_DOWN:
                             buttonX1 = Math.round(event.getX());
                         case MotionEvent.ACTION_UP:
-                            if(Math.abs(Math.round(event.getX())-buttonX1)<10){
+                            System.out.println(Math.round(event.getX()) + "ndkjsa" + buttonX1);
+                            if (Math.abs(Math.round(event.getX()) - buttonX1) < 10) {
                                 intent.putExtra("url", message.getResults().get(0).getWebLink());
                                 startActivity(intent);
                             }
