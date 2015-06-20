@@ -18,6 +18,18 @@ public class Result {
     @Expose
     private String lastUpdate;
 
+    @SerializedName("web_link")
+    @Expose
+    private String webLink;
+
+    public String getWebLink() {
+        return webLink;
+    }
+
+    public void setWebLink(String webLink) {
+        this.webLink = webLink;
+    }
+
     /**
      *
      * @return

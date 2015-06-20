@@ -1,5 +1,6 @@
 package com.haidaiban.foxlee.Util;
 
+import android.graphics.drawable.BitmapDrawable;
 import android.widget.ListView;
 
 import com.haidaiban.foxlee.fragments.DealList;
@@ -12,6 +13,7 @@ import com.haidaiban.foxlee.model.order.Order;
 import com.haidaiban.foxlee.model.profile.UserProfile;
 import com.haidaiban.foxlee.model.quotelist.QuoteList;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
@@ -39,6 +41,15 @@ public class DataHolder {
     private static CustomerAction customerAction;
     private static UserProfile userProfile;
     private static Boolean isAgent;
+    private static ArrayList<BitmapDrawable> bitmapDrawables;
+
+    public static ArrayList<BitmapDrawable> getBitmapDrawables() {
+        return bitmapDrawables;
+    }
+
+    public static void setBitmapDrawables(ArrayList<BitmapDrawable> bitmapDrawables) {
+        DataHolder.bitmapDrawables = bitmapDrawables;
+    }
 
     public static UserProfile getUserProfile() {
         return userProfile;

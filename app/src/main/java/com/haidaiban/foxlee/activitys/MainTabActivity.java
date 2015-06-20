@@ -17,6 +17,8 @@ import com.haidaiban.foxlee.fragments.FragmentPage1;
 import com.haidaiban.foxlee.fragments.FragmentPage2;
 import com.haidaiban.foxlee.fragments.FragmentPage5;
 import com.haidaiban.foxlee.fragments.R;
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 
 import io.rong.imkit.RongIM;
 import io.rong.imlib.RongIMClient;
@@ -44,7 +46,9 @@ public class MainTabActivity extends FragmentActivity{
         setContentView(R.layout.main_tab_layout);
         
         initView();
-
+        //initialize universal image loader
+        ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(this).build();
+        ImageLoader.getInstance().init(config);
         registerRongCloud();
     }
 	 

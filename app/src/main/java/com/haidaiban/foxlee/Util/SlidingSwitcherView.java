@@ -3,7 +3,9 @@ package com.haidaiban.foxlee.Util;
 import com.haidaiban.foxlee.fragments.R;
 
 import android.content.Context;
+import android.content.res.TypedArray;
 import android.os.AsyncTask;
+import android.os.Handler;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;
@@ -13,6 +15,9 @@ import android.view.View.OnTouchListener;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class SlidingSwitcherView extends RelativeLayout implements OnTouchListener {
 
@@ -98,11 +103,17 @@ public class SlidingSwitcherView extends RelativeLayout implements OnTouchListen
 	 * @param context
 	 * @param attrs
 	 */
-	public SlidingSwitcherView(Context context, AttributeSet attrs) {
-		super(context, attrs);
-	}
+    public SlidingSwitcherView(Context context, AttributeSet attrs) {
+        super(context, attrs);
+        TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.SlidingSwitcherView);
+        boolean isAutoPlay = a.getBoolean(R.styleable.SlidingSwitcherView_auto_play, false);
+        if (isAutoPlay) {
+            startAutoPlay();
+        }
+        a.recycle();
+    }
 
-	/**
+    /**
 	 * 滚动到下一个元素。
 	 */
 	public void scrollToNext() {
@@ -367,7 +378,7 @@ public class SlidingSwitcherView extends RelativeLayout implements OnTouchListen
 				}
 				publishProgress(leftMargin);
 				// 为了要有滚动效果产生，每次循环使线程睡眠10毫秒，这样肉眼才能够看到滚动动画。
-				sleep(10);
+				sleep(5);
 			}
 			return leftMargin;
 		}
@@ -398,4 +409,79 @@ public class SlidingSwitcherView extends RelativeLayout implements OnTouchListen
 			e.printStackTrace();
 		}
 	}
+
+    class ScrollToFirstItemTask extends AsyncTask<Integer, Integer, Integer> {
+
+        @Override
+        protected Integer doInBackground(Integer... speed) {
+            int leftMargin = firstItemParams.leftMargin;
+            while (true) {
+                leftMargin = leftMargin + speed[0];
+                // 当leftMargin大于0时，说明已经滚动到了第一个元素，跳出循环
+                if (leftMargin > 0) {
+                    leftMargin = 0;
+                    break;
+                }
+                publishProgress(leftMargin);
+                sleep(30);
+            }
+            return leftMargin;
+        }
+
+        @Override
+        protected void onProgressUpdate(Integer... leftMargin) {
+            firstItemParams.leftMargin = leftMargin[0];
+            firstItem.setLayoutParams(firstItemParams);
+        }
+
+        @Override
+        protected void onPostExecute(Integer leftMargin) {
+            firstItemParams.leftMargin = leftMargin;
+            firstItem.setLayoutParams(firstItemParams);
+        }
+
+    }
+
+    /**
+     * 滚动到第一个元素。
+     */
+    public void scrollToFirstItem() {
+        new ScrollToFirstItemTask().execute(30 * itemsCount);
+    }
+
+
+    /**
+     * 用于在定时器当中操作UI界面。
+     */
+    private Handler handler = new Handler();
+
+    /**
+     * 开启图片自动播放功能，当滚动到最后一张图片的时候，会自动回滚到第一张图片。
+     */
+    public void startAutoPlay() {
+        new Timer().scheduleAtFixedRate(new TimerTask() {
+            @Override
+            public void run() {
+                if (currentItemIndex == itemsCount - 1) {
+                    currentItemIndex = 0;
+                    handler.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            scrollToFirstItem();
+                            refreshDotsLayout();
+                        }
+                    });
+                } else {
+                    currentItemIndex++;
+                    handler.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            scrollToNext();
+                            refreshDotsLayout();
+                        }
+                    });
+                }
+            }
+        }, 3000, 3000);
+    }
 }
