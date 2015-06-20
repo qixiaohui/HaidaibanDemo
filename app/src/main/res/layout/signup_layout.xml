@@ -30,38 +30,38 @@
             android:layout_gravity="center_horizontal"
             android:src="@drawable/signin_haidailogo" />
         <LinearLayout
-            android:layout_height="50dp"
+            android:layout_height="1dp"
             android:layout_width="300dp"
             android:orientation="horizontal"
             android:layout_gravity="center"
             >
-            <Button
-                android:id="@+id/signup_btn_user"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:text="@string/signup_btn_user"
-                android:textSize="@dimen/medium_text_size"
-                android:textColor="@color/white"
-                android:gravity="center"
+            <!--<Button-->
+                <!--android:id="@+id/signup_btn_user"-->
+                <!--android:layout_width="0dp"-->
+                <!--android:layout_height="match_parent"-->
+                <!--android:layout_weight="1"-->
+                <!--android:text="@string/signup_btn_user"-->
+                <!--android:textSize="@dimen/medium_text_size"-->
+                <!--android:textColor="@color/white"-->
+                <!--android:gravity="center"-->
 
 
-                >
+                <!-->-->
 
-            </Button>
+            <!--</Button>-->
 
-            <Button
-            android:id="@+id/signup_btn_again"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:text="@string/signup_btn_again"
-            android:textSize="@dimen/medium_text_size"
-            android:textColor="@color/white"
-            android:gravity="center"
-            >
+            <!--<Button-->
+            <!--android:id="@+id/signup_btn_again"-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_weight="1"-->
+            <!--android:text="@string/signup_btn_again"-->
+            <!--android:textSize="@dimen/medium_text_size"-->
+            <!--android:textColor="@color/white"-->
+            <!--android:gravity="center"-->
+            <!-->-->
 
-        </Button>
+        <!--</Button>-->
 
         </LinearLayout>
         <TextView
