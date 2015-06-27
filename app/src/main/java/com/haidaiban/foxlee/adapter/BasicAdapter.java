@@ -10,6 +10,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.haidaiban.foxlee.Util.DataHolder;
+import com.haidaiban.foxlee.dialogs.Dialog_Quote;
 import com.haidaiban.foxlee.fragments.R;
 import com.haidaiban.foxlee.model.offer.Offer;
 import com.haidaiban.foxlee.model.order.Result;
@@ -39,7 +41,7 @@ public class BasicAdapter extends BaseAdapter {
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, View convertView, ViewGroup parent) {
         view = convertView;
         if(convertView == null){
             view = layoutInflater.inflate(R.layout.basic_order_list_row,null);
@@ -54,6 +56,14 @@ public class BasicAdapter extends BaseAdapter {
         }
 
         viewHolder.quote.setText(orders.getQuotes().get(position).getTitle());
+
+        view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DataHolder.setQuote(orders.getQuotes().get(position));
+                new Dialog_Quote(context,R.style.CustomDialog).show();
+            }
+        });
         return view;
     }
 

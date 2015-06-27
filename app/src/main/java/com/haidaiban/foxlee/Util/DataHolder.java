@@ -10,6 +10,7 @@ import com.haidaiban.foxlee.model.message.Message;
 import com.haidaiban.foxlee.model.offer.CustomerAction;
 import com.haidaiban.foxlee.model.offer.Offer;
 import com.haidaiban.foxlee.model.order.Order;
+import com.haidaiban.foxlee.model.order.Quote;
 import com.haidaiban.foxlee.model.profile.UserProfile;
 import com.haidaiban.foxlee.model.quotelist.QuoteList;
 
@@ -42,6 +43,15 @@ public class DataHolder {
     private static UserProfile userProfile;
     private static Boolean isAgent;
     private static ArrayList<BitmapDrawable> bitmapDrawables;
+    private static Quote quote;
+
+    public static Quote getQuote() {
+        return quote;
+    }
+
+    public static void setQuote(Quote quote) {
+        DataHolder.quote = quote;
+    }
 
     public static ArrayList<BitmapDrawable> getBitmapDrawables() {
         return bitmapDrawables;

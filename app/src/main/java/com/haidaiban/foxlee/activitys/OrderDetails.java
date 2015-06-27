@@ -78,7 +78,7 @@ public class OrderDetails extends Activity {
             orderStatus.setText("超时无代办接单，系统已终止询价。");
         }
 
-        listView.setAdapter(new BasicAdapter(getApplicationContext(),order));
+        listView.setAdapter(new BasicAdapter(OrderDetails.this,order));
 //
 //        if(order.getIsSystemClosed()) {
 //            tempOrder.setText(getResources().getString(R.string.c_orderdetails_closed));
