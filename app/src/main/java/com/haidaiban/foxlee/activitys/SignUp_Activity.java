@@ -107,7 +107,7 @@ public class SignUp_Activity extends Activity {
         @Override
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
-            if(result == 200){
+            if(result == 201){
                 Toast.makeText(getApplicationContext(),"Please check your activivation email!",Toast.LENGTH_LONG).show();
                 startActivity(intent);
                 finish();

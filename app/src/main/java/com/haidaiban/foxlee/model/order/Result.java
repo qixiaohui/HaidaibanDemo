@@ -64,6 +64,17 @@ public class Result {
     @SerializedName("open_offers")
     @Expose
     private List<OpenOffer> openOffers = new ArrayList<OpenOffer>();
+    @SerializedName("accepted_offers")
+    @Expose
+    private List<AcceptedOffer> acceptedOfferses = new ArrayList<AcceptedOffer>();
+
+    public List<AcceptedOffer> getAcceptedOfferses() {
+        return acceptedOfferses;
+    }
+
+    public void setAcceptedOfferses(List<AcceptedOffer> acceptedOfferses) {
+        this.acceptedOfferses = acceptedOfferses;
+    }
 
     /**
      *

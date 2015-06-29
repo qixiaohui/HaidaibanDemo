@@ -83,7 +83,13 @@ public class OrderListAdapter extends BaseAdapter {
             viewHolder.status.setBackgroundColor(context.getResources().getColor(R.color.blue));
             viewHolder.timeElapse.setText("更新于"+Integer.toString(23-Integer.parseInt(order.getResults().get(position).getCloseTaskEta().toString().substring(0,2)))+"小时前");
             viewHolder.timeRemain.setText("正在等待代办接单 ，若"+order.getResults().get(position).getCloseTaskEta().toString().substring(0,2)+"小时内无人接单，则询价单将被关闭");
-        }else {
+        }else if(order.getResults().get(position).getAcceptedOfferses().size()>0){
+            viewHolder.status.setText("已下单");
+            viewHolder.status.setTextColor(context.getResources().getColor(R.color.white));
+            viewHolder.status.setBackgroundColor(context.getResources().getColor(R.color.grey));
+            viewHolder.timeRemain.setText("已收到代办\""+order.getResults().get(position).getAcceptedOfferses().get(0).getAgent()+"\"的报价");
+        }
+        else {
             viewHolder.status.setText("已关闭");
             viewHolder.status.setTextColor(context.getResources().getColor(R.color.white));
             viewHolder.status.setBackgroundColor(context.getResources().getColor(R.color.green));

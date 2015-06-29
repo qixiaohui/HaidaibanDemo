@@ -13,10 +13,12 @@ import android.widget.ListView;
 import android.widget.RelativeLayout;
 
 import com.haidaiban.foxlee.Util.DataHolder;
+import com.haidaiban.foxlee.activitys.AcceptedOrderDetails;
 import com.haidaiban.foxlee.activitys.OrderDetails;
 import com.haidaiban.foxlee.activitys.ProductDetail;
 import com.haidaiban.foxlee.adapter.ListViewAdapter;
 import com.haidaiban.foxlee.adapter.OrderListAdapter;
+import com.haidaiban.foxlee.model.offer.Result;
 import com.haidaiban.foxlee.model.order.Order;
 import com.haidaiban.foxlee.webMethod.Webmethod;
 

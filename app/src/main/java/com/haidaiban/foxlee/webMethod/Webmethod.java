@@ -160,12 +160,15 @@ public class Webmethod {
      */
     public static int register(String userName, String password1, String password2, String email)throws IOException{
         httpPost = new HttpPost(Constants.getLOGIN_URL()+"/rest-auth/registration/");
-        httpPost.setHeader("username",userName);
-        httpPost.setHeader("password1",password1);
-        httpPost.setHeader("password2",password2);
-        httpPost.setHeader("email",email);
-        httpPost.setHeader("groups","Customer");
-        HttpResponse httpResponse = httpClient.execute(httpPost);
+        basicAuthClient = HttpClientBuilder.create().setDefaultCredentialsProvider(credentialsProvider).build();
+        pair = new ArrayList<NameValuePair>();
+        pair.add(new BasicNameValuePair("username",userName));
+        pair.add(new BasicNameValuePair("password1",password1));
+        pair.add(new BasicNameValuePair("password2",password2));
+        pair.add(new BasicNameValuePair("groups","Customer"));
+        pair.add(new BasicNameValuePair("email",email));
+        httpPost.setEntity(new UrlEncodedFormEntity(pair));
+        HttpResponse httpResponse = basicAuthClient.execute(httpPost);
         HttpEntity entity = httpResponse.getEntity();
         String response = EntityUtils.toString(entity,"UTF-8");
         System.out.println(response);
