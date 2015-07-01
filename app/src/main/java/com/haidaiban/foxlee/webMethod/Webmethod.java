@@ -14,6 +14,7 @@ import com.haidaiban.foxlee.model.message.Message;
 import com.haidaiban.foxlee.model.offer.Offer;
 import com.haidaiban.foxlee.model.offer.Parameter;
 import com.haidaiban.foxlee.model.offer.Parameter_;
+import com.haidaiban.foxlee.model.openoffer.OpenOffer;
 import com.haidaiban.foxlee.model.order.Order;
 import com.haidaiban.foxlee.model.profile.UserProfile;
 import com.haidaiban.foxlee.model.quotelist.QuoteList;
@@ -106,6 +107,21 @@ public class Webmethod {
         response = EntityUtils.toString(entity,"UTF-8");
         //System.out.println(response+"***********");
         return  response;
+
+    }
+
+    public static OpenOffer getOpenOffer(String uid)throws IOException,JSONException{
+        token = getToken();
+        httpGet = new HttpGet(Constants.getLOGIN_URL()+"/api/offers/"+uid);
+        //httpGet.setHeader("Accept","applicatiton/json; indent=4");
+        //System.out.println("token"+token);
+        httpGet.setHeader("Authorization","Token "+token);
+        httpGet.setHeader("method","get");
+        httpResponse = httpClient.execute(httpGet);
+        entity = httpResponse.getEntity();
+        response = EntityUtils.toString(entity,"UTF-8");
+        //System.out.println(response+"***********");
+        return  new Gson().fromJson(response,OpenOffer.class);
 
     }
 
