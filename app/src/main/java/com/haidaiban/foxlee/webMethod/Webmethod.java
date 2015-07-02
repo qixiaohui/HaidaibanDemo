@@ -8,6 +8,7 @@ import android.widget.Toast;
 import com.google.gson.Gson;
 import com.haidaiban.foxlee.Util.DataHolder;
 import com.haidaiban.foxlee.config.Constants;
+import com.haidaiban.foxlee.model.acceptedoffer.AcceptedOffer;
 import com.haidaiban.foxlee.model.comment.Comment;
 import com.haidaiban.foxlee.model.deal.Deal;
 import com.haidaiban.foxlee.model.message.Message;
@@ -125,6 +126,21 @@ public class Webmethod {
 
     }
 
+    public static AcceptedOffer getAcceptedOffer(String uid)throws IOException,JSONException{
+        token = getToken();
+        httpGet = new HttpGet(Constants.getLOGIN_URL()+"/api/offers/"+uid);
+        //httpGet.setHeader("Accept","applicatiton/json; indent=4");
+        //System.out.println("token"+token);
+        httpGet.setHeader("Authorization","Token "+token);
+        httpGet.setHeader("method","get");
+        httpResponse = httpClient.execute(httpGet);
+        entity = httpResponse.getEntity();
+        response = EntityUtils.toString(entity,"UTF-8");
+        //System.out.println(response+"***********");
+        return  new Gson().fromJson(response,AcceptedOffer.class);
+
+    }
+
     public static Message getMessage() throws IOException{
         httpGet = new HttpGet(Constants.getLOGIN_URL()+"/api/sitemessages");
         httpResponse = httpClient.execute(httpGet);
@@ -179,10 +195,10 @@ public class Webmethod {
         basicAuthClient = HttpClientBuilder.create().setDefaultCredentialsProvider(credentialsProvider).build();
         pair = new ArrayList<NameValuePair>();
         pair.add(new BasicNameValuePair("username",userName));
-        pair.add(new BasicNameValuePair("password1",password1));
-        pair.add(new BasicNameValuePair("password2",password2));
-        pair.add(new BasicNameValuePair("groups","Customer"));
-        pair.add(new BasicNameValuePair("email",email));
+        pair.add(new BasicNameValuePair("password1", password1));
+        pair.add(new BasicNameValuePair("password2", password2));
+        pair.add(new BasicNameValuePair("groups", "Customer"));
+        pair.add(new BasicNameValuePair("email", email));
         httpPost.setEntity(new UrlEncodedFormEntity(pair));
         HttpResponse httpResponse = basicAuthClient.execute(httpPost);
         HttpEntity entity = httpResponse.getEntity();
