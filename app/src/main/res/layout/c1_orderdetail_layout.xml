@@ -47,7 +47,7 @@
                android:id="@+id/textView_updatetimer" />
        </LinearLayout>
         <RelativeLayout
-            android:layout_height="150dp"
+            android:layout_height="wrap_content"
             android:layout_width="match_parent"
             android:background="#F8F8F8"
             >
@@ -71,9 +71,79 @@
                 android:layout_toRightOf="@+id/c0_img"
                 android:layout_marginLeft="36dp"
                 android:layout_marginStart="36dp"
+                android:visibility="gone"
                 android:layout_marginTop="17dp" />
-
-
+            <LinearLayout
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_alignParentRight="true"
+                android:layout_toRightOf="@+id/c0_img"
+                android:orientation="vertical">
+                <RelativeLayout
+                    android:id="@+id/loadingPanel"
+                    android:visibility="gone"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center" >
+                    <ProgressBar
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:indeterminate="true" />
+                </RelativeLayout>
+            <LinearLayout
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:visibility="gone"
+                android:id="@+id/priceLinear"
+                android:orientation="vertical" >
+                 <TextView
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:id="@+id/price"
+                     android:textStyle="bold"
+                     android:textColor="@color/black"
+                     android:textSize="10sp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="*买家下单后如主动弃单，代办将有权扣除定金。"
+                    android:textSize="8sp"
+                    android:textColor="@color/black" />
+                <TextView android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:textColor="@color/black"
+                    android:textSize="9sp"
+                    android:id="@+id/offerTime" />
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <LinearLayout android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/buttons"
+                    android:orientation="horizontal"
+                     >
+                    <Button
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:id="@+id/buy"
+                        android:text="下单付款"
+                        android:textColor="@color/white" />
+                    <Button
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:id="@+id/terminate"
+                        android:text="终止报价"
+                        android:textColor="@color/orange" />
+                </LinearLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="*如果您对此次报价不满意，可选择终止报价。并有机会获得其他代办的服务。"
+                android:textSize="7sp"
+                android:textColor="@color/black" />
+        </LinearLayout>
+        </LinearLayout>
         </RelativeLayout>
         <ListView
             android:id="@+id/list"

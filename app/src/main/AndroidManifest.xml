@@ -70,6 +70,9 @@
                 android:name="com.haidaiban.foxlee.activitys.SignUp_Activity"
                 android:windowSoftInputMode="adjustPan|stateHidden"></activity>
         <activity
+            android:name="com.haidaiban.foxlee.activitys.OrderPayment"
+            android:windowSoftInputMode="adjustPan|stateHidden"></activity>
+        <activity
             android:name="com.haidaiban.foxlee.activitys.Search_Activity"
             android:theme="@style/Theme.AppCompat.Light.DarkActionBar"
             android:windowSoftInputMode="adjustPan|stateHidden">

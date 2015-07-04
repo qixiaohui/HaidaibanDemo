@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content" android:layout_height="match_parent"
+    android:background="#F0F0F0">
+    <LinearLayout
+        android:layout_width="280dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:orientation="vertical">
+    <TextView
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:text="确定终止报价？"
+        android:gravity="center_horizontal"
+        android:textColor="@color/green"
+        android:textSize="10sp" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="9sp"
+        android:text="继续获得其他代办报价(还有2次机会)?"
+        android:textColor="@color/black" />
+    <RadioGroup
+        android:id="@+id/keepOffer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
+
+        <RadioButton
+            android:id="@+id/yes"
+            android:textColor="@color/black"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="是"
+            android:checked="true" />
+
+        <RadioButton
+            android:id="@+id/no"
+            android:textColor="@color/black"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="否" />
+
+    </RadioGroup>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:textSize="9sp"
+        android:text="留言给对方(选填)"
+        android:textColor="@color/black" />
+    <EditText
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:id="@+id/hint" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:textSize="7sp"
+        android:text="*终止报价后，将无法继续针对此报价进行沟通。"
+        android:textColor="@color/black" />
+    <LinearLayout android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/buttons"
+        android:orientation="horizontal"
+        >
+        <Button
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:id="@+id/ok"
+            android:text="确定"
+            android:layout_weight="1"
+            android:textColor="@color/green" />
+        <Button
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:id="@+id/terminate"
+            android:text="取消"
+            android:layout_weight="1"
+            android:textColor="@color/black" />
+    </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

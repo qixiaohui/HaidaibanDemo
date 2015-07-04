@@ -9,6 +9,7 @@ import com.haidaiban.foxlee.model.deal.Result;
 import com.haidaiban.foxlee.model.message.Message;
 import com.haidaiban.foxlee.model.offer.CustomerAction;
 import com.haidaiban.foxlee.model.offer.Offer;
+import com.haidaiban.foxlee.model.openoffer.OpenOffer;
 import com.haidaiban.foxlee.model.order.Order;
 import com.haidaiban.foxlee.model.order.Quote;
 import com.haidaiban.foxlee.model.profile.UserProfile;
@@ -44,6 +45,15 @@ public class DataHolder {
     private static Boolean isAgent;
     private static ArrayList<BitmapDrawable> bitmapDrawables;
     private static Quote quote;
+    private static OpenOffer openOffer;
+
+    public static OpenOffer getOpenOffer() {
+        return openOffer;
+    }
+
+    public static void setOpenOffer(OpenOffer openOffer) {
+        DataHolder.openOffer = openOffer;
+    }
 
     public static Quote getQuote() {
         return quote;

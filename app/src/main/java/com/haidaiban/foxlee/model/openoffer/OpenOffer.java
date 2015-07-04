@@ -25,10 +25,10 @@ public class OpenOffer {
     private Integer redistributeCount;
     @SerializedName("offer_price")
     @Expose
-    private Object offerPrice;
+    private Float offerPrice;
     @SerializedName("price_adj")
     @Expose
-    private Object priceAdj;
+    private Float priceAdj;
     @SerializedName("down_payment")
     @Expose
     private String downPayment;
@@ -201,7 +201,7 @@ public class OpenOffer {
      * @return
      * The offerPrice
      */
-    public Object getOfferPrice() {
+    public Float getOfferPrice() {
         return offerPrice;
     }
 
@@ -210,7 +210,7 @@ public class OpenOffer {
      * @param offerPrice
      * The offer_price
      */
-    public void setOfferPrice(Object offerPrice) {
+    public void setOfferPrice(Float offerPrice) {
         this.offerPrice = offerPrice;
     }
 
@@ -219,7 +219,7 @@ public class OpenOffer {
      * @return
      * The priceAdj
      */
-    public Object getPriceAdj() {
+    public Float getPriceAdj() {
         return priceAdj;
     }
 
@@ -228,7 +228,7 @@ public class OpenOffer {
      * @param priceAdj
      * The price_adj
      */
-    public void setPriceAdj(Object priceAdj) {
+    public void setPriceAdj(Float priceAdj) {
         this.priceAdj = priceAdj;
     }
 
