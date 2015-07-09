@@ -100,11 +100,13 @@ public class AcceptedOrderListAdapter extends BaseAdapter {
             }else if(status.equals(context.getResources().getStringArray(R.array.OrderTitle)[2])){
                 viewHolder.status.setTextColor(context.getResources().getColor(R.color.blue));
             }else if(status.equals(context.getResources().getStringArray(R.array.OrderTitle)[3])){
-                viewHolder.status.setTextColor(context.getResources().getColor(R.color.yellow));
+                viewHolder.status.setTextColor(context.getResources().getColor(R.color.lightgreen));
             }else if(status.equals(context.getResources().getStringArray(R.array.OrderTitle)[4])){
                 viewHolder.status.setTextColor(context.getResources().getColor(R.color.orange));
             }else if(status.equals(context.getResources().getStringArray(R.array.OrderTitle)[5])){
                 viewHolder.status.setTextColor(context.getResources().getColor(R.color.grey));
+            }else if(status.equals(context.getResources().getStringArray(R.array.OrderTitle)[6])){
+                viewHolder.status.setTextColor(context.getResources().getColor(R.color.orange));
             }
         }else if(index == 1){
             viewHolder.status.setTextColor(context.getResources().getColor(R.color.green));
@@ -164,6 +166,7 @@ public class AcceptedOrderListAdapter extends BaseAdapter {
             public void onClick(View v) {
                 DataHolder.setAcceptedOffer(acceptedOffers.getResults().get(position));
                 intent = new Intent(context, AcceptedOrderDetails.class);
+                intent.putExtra("LoadData",false);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 context.startActivity(intent);
             }

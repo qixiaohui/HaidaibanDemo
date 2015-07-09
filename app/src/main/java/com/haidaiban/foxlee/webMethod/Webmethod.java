@@ -126,7 +126,7 @@ public class Webmethod {
 
     }
 
-    public static AcceptedOffer getAcceptedOffer(String uid)throws IOException,JSONException{
+    public static com.haidaiban.foxlee.model.offer.Result getAcceptedOffer(String uid)throws IOException,JSONException{
         token = getToken();
         httpGet = new HttpGet(Constants.getLOGIN_URL()+"/api/offers/"+uid);
         //httpGet.setHeader("Accept","applicatiton/json; indent=4");
@@ -137,7 +137,7 @@ public class Webmethod {
         entity = httpResponse.getEntity();
         response = EntityUtils.toString(entity,"UTF-8");
         //System.out.println(response+"***********");
-        return  new Gson().fromJson(response,AcceptedOffer.class);
+        return  new Gson().fromJson(response, com.haidaiban.foxlee.model.offer.Result.class);
 
     }
 

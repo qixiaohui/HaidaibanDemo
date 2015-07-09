@@ -63,7 +63,6 @@ public class AcceptedOrderDetails extends Activity implements ChildMethod{
     Button btn_addMoney;
     Button btn_ShareOrder;
     Button ditch_quote;
-    Intent intent;
     ArrayList<String> customerActions;
     private Result acceptedOffer;
     private RelativeLayout acceptedOfferDetail;
@@ -74,6 +73,9 @@ public class AcceptedOrderDetails extends Activity implements ChildMethod{
     private Offer offerDelivering;
     private Offer offerCompleted;
     private Offer offerCanceled;
+    private Intent intent;
+    private String uid;
+    private static GetAcceptedOffer getAcceptedOffer;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -116,7 +118,15 @@ public class AcceptedOrderDetails extends Activity implements ChildMethod{
             }
         });
 
-        setData();
+        intent = getIntent();
+        if(!intent.getBooleanExtra("LoadData",false)){
+            setData();
+        }else{
+            uid = intent.getStringExtra("uid");
+            getAcceptedOffer = new GetAcceptedOffer();
+            getAcceptedOffer.execute();
+        }
+
     }
 
 
@@ -386,6 +396,34 @@ public class AcceptedOrderDetails extends Activity implements ChildMethod{
                     ownerActivity.getData();
                 }
             }
+        }
+    }
+
+
+    public class GetAcceptedOffer extends AsyncTask<String,String,String>{
+
+        @Override
+        protected String doInBackground(String... params) {
+            try {
+                acceptedOffer = new Webmethod(getApplicationContext()).getAcceptedOffer(uid);
+            }catch (IOException e){
+
+            }catch (JSONException e){
+
+            }
+
+            return null;
+        }
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+            setData();
         }
     }
 }

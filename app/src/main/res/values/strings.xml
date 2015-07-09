@@ -183,6 +183,7 @@
         <item>投递中</item>
         <item>交易完成</item>
         <item>交易取消</item>
+        <item>付款采购中</item>
     </string-array>
     <string name="paiedDeposit">已付定金</string>
 

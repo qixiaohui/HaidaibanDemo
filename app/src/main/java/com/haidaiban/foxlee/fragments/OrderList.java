@@ -118,10 +118,17 @@ public class OrderList extends Fragment implements ChildMethod{
             listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                    intent = new Intent(getActivity().getApplicationContext(), OrderDetails.class);
-                    DataHolder.setOrderResult(order.getResults().get(position));
-                    //   DataHolder.setDealResult(deals.getResults().get(position));
-                    startActivity(intent);
+                    if(order.getResults().get(position).getAcceptedOfferses().size()>0){
+                        intent = new Intent(getActivity().getApplicationContext(),AcceptedOrderDetails.class);
+                        intent.putExtra("LoadData",true);
+                        intent.putExtra("uid",order.getResults().get(position).getAcceptedOfferses().get(0).getUid());
+                        startActivity(intent);
+                    }else {
+                        intent = new Intent(getActivity().getApplicationContext(), OrderDetails.class);
+                        DataHolder.setOrderResult(order.getResults().get(position));
+                        //   DataHolder.setDealResult(deals.getResults().get(position));
+                        startActivity(intent);
+                    }
                 }
             });
         }
